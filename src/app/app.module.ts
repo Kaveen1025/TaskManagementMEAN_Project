@@ -6,17 +6,25 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FeaturespageComponent } from './staticcomponents/featurespage/featurespage.component';
 import { GetstartedComponent } from './buttons/getstarted/getstarted.component';
+import { SidebarComponent } from './navigation/sidebar/sidebar.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
     AppComponent,
     FeaturespageComponent,
-    GetstartedComponent
+    GetstartedComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NgbModule
+    NgbModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
