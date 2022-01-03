@@ -1,0 +1,36 @@
+.featuresPage .icons {
+  max-height: 150px;
+}
+
+.featuresPage .headerText{
+  text-align:center;
+  color:#364F6B;
+  font-size: 40px;
+  line-height: 62px;
+  font-family: Roboto, normal, serif;
+}
+
+.featuresPage .subHeaderText{
+  text-align:center;
+  color:#3FC1C9;
+  font-family: Roboto, normal, serif;
+}
+
+.featuresPage .card{
+  border:none !important;
+  border-radius:0;
+}
+
+.featuresPage .bottomCard{
+  background-color : #3FC1C9;
+}
+
+.featuresPage .bottomText{
+  color:#F5F5F5;
+}
+
+.featuresPage .titlePara{
+  color:#364F6B;
+  text-align:center;
+  font-family: Roboto, normal, serif;
+}

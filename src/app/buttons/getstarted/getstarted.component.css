@@ -1,0 +1,11 @@
+@charset "utf-8";
+#getStartedBtn:hover{
+  background-color : #F5F5F5;
+  color : #FC5185;
+}
+
+#getStartedBtn{
+  background-color:#FC5185;
+  color:#F5F5F5;
+  border-radius:2px;
+}
