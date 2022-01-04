@@ -5,27 +5,27 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   FirstName: {
     type: String,
-    required: true,
+    required: [true, "User must have a First Name"],
   },
 
   LastName: {
     type: String,
-    required: true,
+    required: [true, "User must have a Last Name"],
   },
 
   Username: {
     type: String,
-    required: true,
+    required: [true, "User must have a User Name"],
   },
 
   Email: {
     type: String,
-    required: true,
+    required: [true, "User must have a Email"],
   },
 
   Password: {
     type: String,
-    required: true,
+    required: [true, "User must have a Password"],
   },
 
   Friends : [{
@@ -63,7 +63,7 @@ const userSchema = new Schema({
     required : false
   }],
 
-  ProjectInvitationIDs : [{
+  WorkSpaceInvitationIDs : [{
     type : String,
     required : false
   }],
@@ -72,5 +72,5 @@ const userSchema = new Schema({
 
 });
 
-const Admin = mongoose.model("Admin", adminSchema);
-module.exports = Admin;
+const User = mongoose.model("User", userSchema);
+module.exports = User;
