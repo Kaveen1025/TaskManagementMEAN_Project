@@ -10,6 +10,17 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import {NzAvatarModule} from "ng-zorro-antd/avatar";
+import {NzDividerModule} from "ng-zorro-antd/divider";
+import {NzToolTipModule} from "ng-zorro-antd/tooltip";
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -24,9 +35,14 @@ import {MatIconModule} from "@angular/material/icon";
     NgbModule,
     MatSidenavModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    HttpClientModule,
+    NzAvatarModule,
+    NzDividerModule,
+    NzToolTipModule
   ],
-  providers: [],
+  providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
