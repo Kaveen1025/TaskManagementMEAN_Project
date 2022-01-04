@@ -3,7 +3,18 @@ let Workspace = require("../models/workspace");
 
 //Create new Workspace
 router.route("/create").post((req, res) => {
-  const { WorkspaceName, Description, MainImage, CoverImage, AdminID, ProjectIDs, MemberIDs, guestIDs, addedDateTime, insertedUser} = req.body;
+  const {
+    WorkspaceName,
+    Description,
+    MainImage,
+    CoverImage,
+    AdminID,
+    ProjectIDs,
+    MemberIDs,
+    guestIDs,
+    addedDateTime,
+    insertedUser
+  } = req.body;
 
   const newWorkspace = new Workspace({
     WorkspaceName,
@@ -25,7 +36,7 @@ router.route("/create").post((req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(404).json({ message: error.message });
+      res.status(404).json({message: error.message});
     });
 });
 
@@ -55,7 +66,7 @@ router.route("/getWorkspaceByID/:id").get(async (req, res) => {
       console.log(err.message);
       res
         .status(500)
-        .send({ status: "Error with get Order", error: err.message });
+        .send({status: "Error with get Order", error: err.message});
     });
 });
 
@@ -65,13 +76,13 @@ router.route("/deleteWorkspace/:id").delete(async (req, res) => {
 
   await Workspace.findByIdAndDelete(workspceID)
     .then(() => {
-      res.status(200).send({ status: "Workspace deleted" });
+      res.status(200).send({status: "Workspace deleted"});
     })
     .catch((err) => {
       console.log(err.message);
       res
         .status(500)
-        .send({ status: "Error while deleting workspace", error: err.message });
+        .send({status: "Error while deleting workspace", error: err.message});
     });
 });
 
@@ -89,10 +100,10 @@ router.route("/updateWorkspace/:id").put(async (req, res) => {
   let year = date_ob.getFullYear();
 
   let workspaceID = req.params.id;
-  const { WorkspaceName, Description, MainImage, CoverImage, updatedUser } = req.body;
+  const {WorkspaceName, Description, MainImage, CoverImage, updatedUser} = req.body;
 
   const updatedWorkspace = await Workspace.updateOne(
-    { _id: workspaceID },
+    {_id: workspaceID},
     {
       $set: {
         WorkspaceName: WorkspaceName,
@@ -105,13 +116,13 @@ router.route("/updateWorkspace/:id").put(async (req, res) => {
     }
   )
     .then(() => {
-      res.status(200).send({ status: "Updated" });
+      res.status(200).send({status: "Updated"});
     })
     .catch((err) => {
       console.log(err);
       res
         .status(500)
-        .send({ status: "Error with updating data", error: err.message });
+        .send({status: "Error with updating data", error: err.message});
     });
 });
 
@@ -122,31 +133,31 @@ router.route("/deleteWorkspace/:id").delete(async (req, res) => {
 
   await Workspace.findByIdAndDelete(workspceID)
     .then(() => {
-      res.status(200).send({ status: "Workspace deleted" });
+      res.status(200).send({status: "Workspace deleted"});
     })
     .catch((err) => {
       console.log(err.message);
       res
         .status(500)
-        .send({ status: "Error while deleting workspace", error: err.message });
+        .send({status: "Error while deleting workspace", error: err.message});
     });
 });
 
 //delete Project from Workspace
 router.route("/removeProject/:workspaceID/:projectID").delete(async (req, res) => {
-    let workspaceID = req.params.workspaceID;
-    let projectID = req.params.projectID;
+  let workspaceID = req.params.workspaceID;
+  let projectID = req.params.projectID;
 
-    try {
-      const result = await Workspace.findOneAndUpdate(
-        { _id: workspaceID },
-        { $pull: { ProjectIDs: projectID } }
-      );
-      res.status(200).send({ status: "Project removed successfully" });
-    } catch (error) {
-      res.status(404).json({ message: error.message });
-    }
-  });
+  try {
+    const result = await Workspace.findOneAndUpdate(
+      {_id: workspaceID},
+      {$pull: {ProjectIDs: projectID}}
+    );
+    res.status(200).send({status: "Project removed successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
 
 //remove Member from Workspace
 router.route("/removeMember/:workspaceID/:memberID").delete(async (req, res) => {
@@ -155,12 +166,12 @@ router.route("/removeMember/:workspaceID/:memberID").delete(async (req, res) => 
 
   try {
     const result = await Workspace.findOneAndUpdate(
-      { _id: workspaceID },
-      { $pull: { MemberIDs: memberID } }
+      {_id: workspaceID},
+      {$pull: {MemberIDs: memberID}}
     );
-    res.status(200).send({ status: "Member removed successfully" });
+    res.status(200).send({status: "Member removed successfully"});
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({message: error.message});
   }
 });
 
@@ -170,15 +181,15 @@ router.route("/checkProject/:workspaceid/:projectid").get((req, res) => {
   let projectid = req.params.projectid;
   let status = false;
 
-  const getOne = Workspace.findOne({ _id: workspaceid }).exec((err, post) => {
+  const getOne = Workspace.findOne({_id: workspaceid}).exec((err, post) => {
     if (err) {
       console.log(err);
     } else {
-      for(let i = 0; i < post.ProjectIDs.length; i++){
-        if(projectid === post.ProjectIDs[i]){
+      for (let i = 0; i < post.ProjectIDs.length; i++) {
+        if (projectid === post.ProjectIDs[i]) {
           status = true;
           break;
-        }else{
+        } else {
           status = false
         }
       }
@@ -193,15 +204,15 @@ router.route("/checkMember/:workspaceid/:memberID").get((req, res) => {
   let memberID = req.params.memberID;
   let status = false;
 
-  const getOne = Workspace.findOne({ _id: workspaceid }).exec((err, post) => {
+  const getOne = Workspace.findOne({_id: workspaceid}).exec((err, post) => {
     if (err) {
       console.log(err);
     } else {
-      for(let i = 0; i < post.MemberIDs.length; i++){
-        if(memberID === post.MemberIDs[i]){
+      for (let i = 0; i < post.MemberIDs.length; i++) {
+        if (memberID === post.MemberIDs[i]) {
           status = true;
           break;
-        }else{
+        } else {
           status = false
         }
       }
@@ -216,15 +227,15 @@ router.route("/checkGuest/:workspaceid/:guestID").get((req, res) => {
   let guestID = req.params.guestID;
   let status = false;
 
-  const getOne = Workspace.findOne({ _id: workspaceid }).exec((err, post) => {
+  const getOne = Workspace.findOne({_id: workspaceid}).exec((err, post) => {
     if (err) {
       console.log(err);
     } else {
-      for(let i = 0; i < post.guestIDs.length; i++){
-        if(guestID === post.guestIDs[i]){
+      for (let i = 0; i < post.guestIDs.length; i++) {
+        if (guestID === post.guestIDs[i]) {
           status = true;
           break;
-        }else{
+        } else {
           status = false
         }
       }
@@ -240,12 +251,12 @@ router.route("/addProject/:workspaceID/:projectID").put(async (req, res) => {
 
   try {
     const result = await Workspace.findOneAndUpdate(
-      { _id: workspaceID },
-      { $push: { ProjectIDs: projectID } }
+      {_id: workspaceID},
+      {$push: {ProjectIDs: projectID}}
     );
-    res.status(200).send({ status: "Project added to workspace successfully" });
+    res.status(200).send({status: "Project added to workspace successfully"});
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({message: error.message});
   }
 });
 
@@ -256,12 +267,12 @@ router.route("/addMember/:workspaceID/:memberID").put(async (req, res) => {
 
   try {
     const result = await Workspace.findOneAndUpdate(
-      { _id: workspaceID },
-      { $push: { MemberIDs: memberID } }
+      {_id: workspaceID},
+      {$push: {MemberIDs: memberID}}
     );
-    res.status(200).send({ status: "Member added to workspace successfully" });
+    res.status(200).send({status: "Member added to workspace successfully"});
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({message: error.message});
   }
 });
 
@@ -272,12 +283,12 @@ router.route("/addGuest/:workspaceID/:guestID").put(async (req, res) => {
 
   try {
     const result = await Workspace.findOneAndUpdate(
-      { _id: workspaceID },
-      { $push: { guestIDs: guestID } }
+      {_id: workspaceID},
+      {$push: {guestIDs: guestID}}
     );
-    res.status(200).send({ status: "Guest added to workspace successfully" });
+    res.status(200).send({status: "Guest added to workspace successfully"});
   } catch (error) {
-    res.status(404).json({ message: error.message });
+    res.status(404).json({message: error.message});
   }
 });
 
