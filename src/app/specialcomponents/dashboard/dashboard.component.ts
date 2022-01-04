@@ -36,7 +36,10 @@ export class DashboardComponent implements OnInit {
   }
 
   dynamicWallpaper(timePrefix:String):void{
-    if( Number(timePrefix) >= 4 && Number(timePrefix) < 6){
+    if(Number(timePrefix) >= 0 && Number(timePrefix) < 4) {
+      this.imageURL = this.imagePath + "Time_12_4.png"
+      return
+    }else if( Number(timePrefix) >= 4 && Number(timePrefix) < 6){
       this.imageURL = this.imagePath + "Time_4_6.png"
       return
     }else if( Number(timePrefix) >= 6 && Number(timePrefix) < 8){
@@ -66,16 +69,16 @@ export class DashboardComponent implements OnInit {
     }else if( Number(timePrefix) >= 22 && Number(timePrefix) < 0){
       this.imageURL = this.imagePath + "Time_22_12.png"
       return
-    }else if( Number(timePrefix) >= 0 && Number(timePrefix) < 4){
-      this.imageURL = this.imagePath + "Time_12_4.png"
-      return
     }else{
       this.imageURL = this.imagePath + "Time_12_4.png"
+      console.log("f")
       return
     }
   }
   greetingsChange(timePrefix:String):void{
-    console.log(timePrefix)
+    if(Number(timePrefix) == 0){
+      timePrefix = "24"
+    }
     if(Number(timePrefix) >= 5 && Number(timePrefix) < 12){
         this.greetings = "good morning"
       return
@@ -91,43 +94,6 @@ export class DashboardComponent implements OnInit {
     }else{
       this.greetings = "Hello!"
       return
-    }
-  }
-  changeImage(number: number) {
-    switch (number) {
-      case 1:
-        this.imageURL = this.imagePath + "Time_4_6.png"
-        break;
-        case 2:
-          this.imageURL = this.imagePath + "Time_6_8.png"
-        break;
-      case 3:
-        this.imageURL = this.imagePath + "Time_8_10.png"
-        break;
-      case 4:
-        this.imageURL = this.imagePath + "Time_10_12.png"
-        break;
-      case 5:
-        this.imageURL = this.imagePath + "Time_12_14.png"
-        break;
-      case 6:
-        this.imageURL = this.imagePath + "Time_14_16.png"
-        break;
-      case 7:
-        this.imageURL = this.imagePath + "Time_16_18.png"
-        break;
-      case 8:
-        this.imageURL = this.imagePath + "Time_18_20.png"
-        break;
-      case 9:
-        this.imageURL = this.imagePath + "Time_20_22.png"
-        break;
-      case 10:
-        this.imageURL = this.imagePath + "Time_22_12.png"
-        break;
-      case 11:
-        this.imageURL = this.imagePath + "Time_12_4.png"
-        break;
     }
   }
 
