@@ -27,6 +27,10 @@ connection.once("open", () => {
 const studentRouter = require("./routes/students.js");
 app.use("/student", studentRouter);
 
+const workspaceRouter = require("./routes/workspace");
+app.use("/workspace", workspaceRouter);
+
+
 
 
 
