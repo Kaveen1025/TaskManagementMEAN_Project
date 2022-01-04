@@ -23,6 +23,7 @@
   text-transform: uppercase;
 }
 
+/*remove this*/
 .userProfile .userDetails{
   height: 500px;
   border-radius: 15px 15px 0 0 ;
