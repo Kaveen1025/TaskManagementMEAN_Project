@@ -233,5 +233,53 @@ router.route("/checkGuest/:workspaceid/:guestID").get((req, res) => {
   });
 });
 
+//Add a project to a Workspace
+router.route("/addProject/:workspaceID/:projectID").put(async (req, res) => {
+  let workspaceID = req.params.workspaceID;
+  let projectID = req.params.projectID;
+
+  try {
+    const result = await Workspace.findOneAndUpdate(
+      { _id: workspaceID },
+      { $push: { ProjectIDs: projectID } }
+    );
+    res.status(200).send({ status: "Project added to workspace successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+//Add a member to a Workspace
+router.route("/addMember/:workspaceID/:memberID").put(async (req, res) => {
+  let workspaceID = req.params.workspaceID;
+  let memberID = req.params.memberID;
+
+  try {
+    const result = await Workspace.findOneAndUpdate(
+      { _id: workspaceID },
+      { $push: { MemberIDs: memberID } }
+    );
+    res.status(200).send({ status: "Member added to workspace successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+//Add a guest to a Workspace
+router.route("/addGuest/:workspaceID/:guestID").put(async (req, res) => {
+  let workspaceID = req.params.workspaceID;
+  let guestID = req.params.guestID;
+
+  try {
+    const result = await Workspace.findOneAndUpdate(
+      { _id: workspaceID },
+      { $push: { guestIDs: guestID } }
+    );
+    res.status(200).send({ status: "Guest added to workspace successfully" });
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
 
 module.exports = router;
