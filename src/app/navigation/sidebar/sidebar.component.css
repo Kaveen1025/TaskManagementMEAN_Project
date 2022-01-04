@@ -166,7 +166,7 @@
   width:calc(100% - 78px);
   left:78px;
   background:var(--sky-color);
-  box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
   transition:all 0.5s ease;
 }
 .dashboard .sidebar.active ~ .home_content{

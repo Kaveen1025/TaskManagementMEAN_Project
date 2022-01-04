@@ -20,6 +20,7 @@ import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzToolTipModule} from "ng-zorro-antd/tooltip";
 import { AvatarGroupComponent } from './specialcomponents/avatargroup/avatar-group.component';
+import { UserprofileComponent } from './components/userprofile/userprofile.component';
 
 registerLocaleData(en);
 
@@ -30,6 +31,7 @@ registerLocaleData(en);
     GetstartedComponent,
     SidebarComponent,
     AvatarGroupComponent,
+    UserprofileComponent,
   ],
   imports: [
     BrowserModule,

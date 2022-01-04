@@ -1,0 +1,35 @@
+.userProfile .userImageCard{
+  border: none !important;
+}
+.userProfile{
+  background: rgb(63,193,201);
+  background: linear-gradient(90deg, rgba(63,193,201,1) 14%, rgba(252,81,133,1) 56%, rgba(245,245,245,1) 100%);
+}
+.userProfile .card-body{
+  box-shadow: none !important;
+}
+
+.userProfile .userCardBody{
+  background: rgb(63,193,201);
+  background: linear-gradient(90deg, rgba(63,193,201,1) 14%, rgba(252,81,133,1) 56%, rgba(245,245,245,1) 100%);
+}
+
+
+
+.userProfile .username{
+  color: #F5F5F5;
+  font-family: Roboto, normal, serif;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+.userProfile .userDetails{
+  height: 500px;
+  border-radius: 15px 15px 0 0 ;
+}
+
+@media screen and (min-width: 350px) {
+  .userProfile .userProfileImg{
+    max-width : 250px;
+  }
+}
