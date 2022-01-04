@@ -30,6 +30,8 @@ app.use("/student", studentRouter);
 const workspaceRouter = require("./routes/workspace");
 app.use("/workspace", workspaceRouter);
 
+const userRouter = require("./routes/users");
+app.use("/user", userRouter);
 
 
 
