@@ -75,7 +75,7 @@ const userSchema = new Schema({
 
 //hashing password
 userSchema.pre("save", async function (next) {
-  console.log("hi")
+
 
   if (this.isModified("Password")) {
     let salt = bcrypt.genSaltSync(12);
