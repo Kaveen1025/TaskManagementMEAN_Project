@@ -1,17 +1,19 @@
 const router = require("express").Router();
 let Student = require("../models/student");
 
+//GG
+
 //Insert
 router.route("/add").post((req, res) => {
   const name = req.body.name;
   const age = parseInt(req.body.age);
   const gender = req.body.gender;
-  
+
   const newStudent = new Student({
     name,
     age,
     gender,
-    
+
   });
 
   newStudent
@@ -100,13 +102,13 @@ router.route("/get/:id").get(async (req, res) => {
 
 
 
-    
+
 router.post("/getByName", (req, res) => {
     const { name } = req.body;
-  // when there are two equals inputs in the database the first document will be retireved from the database 
-  
+  // when there are two equals inputs in the database the first document will be retireved from the database
+
     Student.findOne({ name }).then((studentsss) => {
-    
+
       res.json({
         studentsss: {
           name: studentsss.name,
@@ -116,7 +118,7 @@ router.post("/getByName", (req, res) => {
       });
     });
   });
-  
+
 
 
 
