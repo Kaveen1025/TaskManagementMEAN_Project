@@ -1,0 +1,9 @@
+.avatarGroup{
+  width: 150px;
+  height:150px;
+}
+.avatarGroup .textAvatar{
+  border: 1px solid #FC5185;
+  background-color: #F5F5F5;
+  color: #364F6B;
+}

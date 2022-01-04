@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AvatargroupComponent } from './avatargroup.component';
+import { AvatarGroupComponent } from './avatar-group.component';
 
 describe('AvatargroupComponent', () => {
-  let component: AvatargroupComponent;
-  let fixture: ComponentFixture<AvatargroupComponent>;
+  let component: AvatarGroupComponent;
+  let fixture: ComponentFixture<AvatarGroupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AvatargroupComponent ]
+      declarations: [ AvatarGroupComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AvatargroupComponent);
+    fixture = TestBed.createComponent(AvatarGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

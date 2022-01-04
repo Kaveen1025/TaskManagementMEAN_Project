@@ -19,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzDividerModule} from "ng-zorro-antd/divider";
 import {NzToolTipModule} from "ng-zorro-antd/tooltip";
-import { AvatargroupComponent } from './specialcomponents/avatargroup/avatargroup.component';
+import { AvatarGroupComponent } from './specialcomponents/avatargroup/avatar-group.component';
 
 registerLocaleData(en);
 
@@ -29,7 +29,7 @@ registerLocaleData(en);
     FeaturespageComponent,
     GetstartedComponent,
     SidebarComponent,
-    AvatargroupComponent,
+    AvatarGroupComponent,
   ],
   imports: [
     BrowserModule,
