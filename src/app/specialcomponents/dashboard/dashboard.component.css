@@ -121,5 +121,25 @@
   }
 }
 
+@media screen and (max-width: 300px) {
+  .dashboard .timeAndDate{
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .dashboard .greetings{
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 5px;
+    letter-spacing: 1px;
+  }
+  .dashboard .t1{
+    display: none !important;
+  }
+}
+
 
 
