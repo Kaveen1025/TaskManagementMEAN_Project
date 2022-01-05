@@ -34,3 +34,18 @@
     max-width : 250px;
   }
 }
+
+
+@media screen and (min-width: 1400px) {
+
+  .userProfile .pencil{
+    width: 30px;
+    position:absolute;
+    top:260px;
+    right : 570px;
+  }
+}
+
+.userProfile .pencil{
+  width: 30px;
+}
