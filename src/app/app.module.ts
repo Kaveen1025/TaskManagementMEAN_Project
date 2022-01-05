@@ -22,6 +22,8 @@ import {NzToolTipModule} from "ng-zorro-antd/tooltip";
 import { AvatarGroupComponent } from './specialcomponents/avatargroup/avatar-group.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { DashboardComponent } from './specialcomponents/dashboard/dashboard.component';
+import { AcceptordeclinebtnComponent } from './buttons/acceptordeclinebtn/acceptordeclinebtn.component';
+import { ClearallComponent } from './buttons/clearall/clearall.component';
 
 registerLocaleData(en);
 
@@ -34,6 +36,9 @@ registerLocaleData(en);
     AvatarGroupComponent,
     UserprofileComponent,
     DashboardComponent,
+    AcceptordeclinebtnComponent,
+    ClearallComponent,
+
   ],
   imports: [
     BrowserModule,

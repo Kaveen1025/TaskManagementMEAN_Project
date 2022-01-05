@@ -43,7 +43,7 @@ router.route("/create").post((req, res) => {
 
 //Get All Workspaces
 router.route("/getWorkspaces").get((req, res) => {
-  //Variable declared at line 5
+
   Workspace.find()
     .then((workspace) => {
       res.json(workspace);
@@ -66,7 +66,7 @@ router.route("/getWorkspaceByID/:id").get(async (req, res) => {
       console.log(err.message);
       res
         .status(500)
-        .send({status: "Error with get Order", error: err.message});
+        .send({status: "Error while getting workspace", error: err.message});
     });
 });
 
@@ -127,21 +127,6 @@ router.route("/updateWorkspace/:id").put(async (req, res) => {
 });
 
 
-//Delete Project from Workspace
-router.route("/deleteWorkspace/:id").delete(async (req, res) => {
-  let workspceID = req.params.id;
-
-  await Workspace.findByIdAndDelete(workspceID)
-    .then(() => {
-      res.status(200).send({status: "Workspace deleted"});
-    })
-    .catch((err) => {
-      console.log(err.message);
-      res
-        .status(500)
-        .send({status: "Error while deleting workspace", error: err.message});
-    });
-});
 
 //delete Project from Workspace
 router.route("/removeProject/:workspaceID/:projectID").delete(async (req, res) => {
@@ -181,7 +166,7 @@ router.route("/checkProject/:workspaceid/:projectid").get((req, res) => {
   let projectid = req.params.projectid;
   let status = false;
 
-  const getOne = Workspace.findOne({_id: workspaceid}).exec((err, post) => {
+    Workspace.findOne({_id: workspaceid}).exec((err, post) => {
     if (err) {
       console.log(err);
     } else {
@@ -204,7 +189,7 @@ router.route("/checkMember/:workspaceid/:memberID").get((req, res) => {
   let memberID = req.params.memberID;
   let status = false;
 
-  const getOne = Workspace.findOne({_id: workspaceid}).exec((err, post) => {
+  Workspace.findOne({_id: workspaceid}).exec((err, post) => {
     if (err) {
       console.log(err);
     } else {
@@ -227,7 +212,7 @@ router.route("/checkGuest/:workspaceid/:guestID").get((req, res) => {
   let guestID = req.params.guestID;
   let status = false;
 
-  const getOne = Workspace.findOne({_id: workspaceid}).exec((err, post) => {
+  Workspace.findOne({_id: workspaceid}).exec((err, post) => {
     if (err) {
       console.log(err);
     } else {
