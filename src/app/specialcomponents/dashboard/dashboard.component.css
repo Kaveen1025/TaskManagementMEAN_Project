@@ -17,27 +17,109 @@
 
 .dashboard .timeAndDate{
   color: #F5F5F5;
-  font-size: 50px;
   text-align:right;
-  letter-spacing: 10px;
   text-transform: uppercase;
   font-family: Roboto, normal, serif;
 }
 
 .dashboard .greetings{
   color: #F5F5F5;
-  font-size: 80px;
   text-align:center;
-  letter-spacing: 10px;
   text-transform: uppercase;
   font-family: Roboto, normal, serif;
 }
 
 .dashboard .notificationsAndReq{
   color: #F5F5F5;
-  font-size: 40px;
   text-align:center;
-  letter-spacing: 10px;
   text-transform: uppercase;
   font-family: Roboto, normal, serif;
 }
+
+
+
+
+@media screen and (min-width: 1010px) {
+  .dashboard .timeAndDate{
+   font-size: 50px;
+    letter-spacing: 10px;
+  }
+
+  .dashboard .greetings{
+    font-size: 80px;
+    letter-spacing: 10px;
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 40px;
+    letter-spacing: 10px;
+  }
+
+}
+
+@media screen and (max-width: 1009px) {
+  .dashboard .timeAndDate{
+    font-size: 30px;
+    letter-spacing: 5px;
+  }
+
+  .dashboard .greetings{
+    font-size: 40px;
+    letter-spacing: 5px;
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 20px;
+    letter-spacing: 5px;
+  }
+
+}
+
+@media screen and (max-width: 700px){
+  .dashboard .t1{
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .dashboard .timeAndDate{
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .dashboard .greetings{
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+  .dashboard .t1{
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .dashboard .timeAndDate{
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .dashboard .greetings{
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+  .dashboard .t1{
+    display: none !important;
+  }
+}
+
+
+
