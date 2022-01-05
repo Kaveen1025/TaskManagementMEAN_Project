@@ -23,10 +23,9 @@
   text-transform: uppercase;
 }
 
-/*remove this*/
 .userProfile .userDetails{
-  height: 500px;
-  border-radius: 15px 15px 0 0 ;
+  border-radius: 15px 15px 0 0;
+  min-height: 1000px;
 }
 
 @media screen and (min-width: 350px) {
@@ -48,4 +47,27 @@
 
 .userProfile .pencil{
   width: 30px;
+}
+
+.userProfile .imageIcon{
+  max-height: 40px;
+}
+
+.userProfile .editIcon{
+  max-height : 20px;
+}
+
+#email{
+  text-decoration: underline;
+}
+
+.userProfile .innerCard{
+  border: none
+}
+
+.userProfile .details{
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 20px;
+  color :#364F6B;
 }
