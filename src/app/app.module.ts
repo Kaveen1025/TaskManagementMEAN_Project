@@ -22,6 +22,7 @@ import {NzToolTipModule} from "ng-zorro-antd/tooltip";
 import { AvatarGroupComponent } from './specialcomponents/avatargroup/avatar-group.component';
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { DashboardComponent } from './specialcomponents/dashboard/dashboard.component';
+import { LoadinganimationComponent } from './specialcomponents/loadinganimation/loadinganimation.component';
 
 registerLocaleData(en);
 
@@ -34,6 +35,7 @@ registerLocaleData(en);
     AvatarGroupComponent,
     UserprofileComponent,
     DashboardComponent,
+    LoadinganimationComponent,
   ],
   imports: [
     BrowserModule,
