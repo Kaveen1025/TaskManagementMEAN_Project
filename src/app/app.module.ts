@@ -24,6 +24,8 @@ import { UserprofileComponent } from './components/userprofile/userprofile.compo
 import { DashboardComponent } from './specialcomponents/dashboard/dashboard.component';
 import { AcceptordeclinebtnComponent } from './buttons/acceptordeclinebtn/acceptordeclinebtn.component';
 import { ClearallComponent } from './buttons/clearall/clearall.component';
+import {MatCardModule} from "@angular/material/card";
+import { FriendrequestComponent } from './cards/friendrequest/friendrequest.component';
 
 registerLocaleData(en);
 
@@ -38,6 +40,7 @@ registerLocaleData(en);
     DashboardComponent,
     AcceptordeclinebtnComponent,
     ClearallComponent,
+    FriendrequestComponent,
 
   ],
   imports: [
@@ -51,7 +54,8 @@ registerLocaleData(en);
     HttpClientModule,
     NzAvatarModule,
     NzDividerModule,
-    NzToolTipModule
+    NzToolTipModule,
+    MatCardModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
