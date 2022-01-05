@@ -23,6 +23,8 @@ import { AvatarGroupComponent } from './specialcomponents/avatargroup/avatar-gro
 import { UserprofileComponent } from './components/userprofile/userprofile.component';
 import { DashboardComponent } from './specialcomponents/dashboard/dashboard.component';
 import { LoadinganimationComponent } from './specialcomponents/loadinganimation/loadinganimation.component';
+import { UserdetailsComponent } from './reusablecomponent/userdetails/userdetails.component';
+import { ChangepasswordComponent } from './reusablecomponent/changepassword/changepassword.component';
 
 registerLocaleData(en);
 
@@ -36,6 +38,8 @@ registerLocaleData(en);
     UserprofileComponent,
     DashboardComponent,
     LoadinganimationComponent,
+    UserdetailsComponent,
+    ChangepasswordComponent,
   ],
   imports: [
     BrowserModule,
