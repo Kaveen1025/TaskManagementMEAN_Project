@@ -1,0 +1,13 @@
+@charset "utf-8";
+#clearAllBtn:hover{
+  background-color : #F5F5F5;
+  color : #FC5185;
+}
+
+#clearAllBtn{
+  background-color:#FC5185;
+  color:#F5F5F5;
+  border-radius:3px;
+  font-size: 15px;
+  font-weight: bold;
+}

@@ -1,0 +1,23 @@
+.body{
+  text-align: center;
+  border-width: 2px;
+  border-color: #3FC1C9;
+  box-shadow: 4px 5px #888888;
+  font-family: Rambla;
+  width: 16rem;
+}
+.btn.btn-rounded {
+  border-radius: 50px
+}
+
+.crdImg{
+  border-radius: 50%;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.imgBtn {
+
+  border-radius: 100%;
+  width: 40px;
+}
