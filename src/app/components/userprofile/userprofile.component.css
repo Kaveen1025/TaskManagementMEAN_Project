@@ -71,3 +71,46 @@
   font-size: 20px;
   color :#364F6B;
 }
+
+@media screen and (max-width:500px){
+  .userProfile .details{
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 15px;
+    color :#364F6B;
+  }
+
+  .userProfile .imageIcon{
+    max-height: 25px;
+  }
+
+  .userProfile .editIcon{
+    max-height :10px;
+  }
+  /*.userProfile .breakingSpaces{*/
+  /*  display: none;*/
+  /*}*/
+}
+
+@media screen and (max-width:400px){
+  .userProfile .details{
+    margin-left: 3px;
+    margin-right: 5px;
+    font-size: 10px;
+    color :#364F6B;
+  }
+
+  .userProfile .imageIcon{
+    max-height: 20px;
+  }
+
+  .userProfile .editIcon{
+    max-height :10px;
+  }
+
+  .userProfile .breakingSpaces{
+    display: none;
+  }
+}
+
+
