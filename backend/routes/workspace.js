@@ -1,6 +1,6 @@
 const router = require("express").Router();
 let Workspace = require("../models/workspace");
-const mongoose = require("mongoose").ObjectId;
+
 const {
   ObjectId
 } = require('mongodb');
@@ -267,9 +267,9 @@ router.route("/addGuest/:workspaceID/:guestID").put(async (req, res) => {
 });
 
 
-//Get all projects belongs to a workspace
-router.route("/test/:id").get(async (req, res) => {
-  let workspaceID = req.params.id;
+//Get all projects belongs to a single workspace
+router.route("/test/:workspaceID").get(async (req, res) => {
+  let workspaceID = req.params.workspaceID;
   try {
     const result = await Workspace.aggregate([
       {

@@ -1,4 +1,4 @@
-.body{
+.sendfriendrequestdiv .body{
   box-shadow: 2px 4px 4px 2px rgba(54, 79, 107, 0.25);
   border: 1px solid #364F6B;
   box-sizing: border-box;
@@ -7,36 +7,36 @@
   padding: 0px 20px 0px 20px;
   border-radius: 10px;
 }
-.btn.btn-rounded {
+.sendfriendrequestdiv .btn.btn-rounded {
   border-radius: 50px
 }
 
-.crdImg{
+.sendfriendrequestdiv .crdImg{
   border-radius: 50%;
   width: 150px;
   margin-left: auto;
   margin-right: auto;
 }
-.profileImg {
+.sendfriendrequestdiv .profileImg {
 
   border-radius: 100%;
   width: 60px;
 }
 
-hr{
+.sendfriendrequestdiv hr{
   color:#3FC1C9;
 }
 
-.example-form {
+.sendfriendrequestdiv .example-form {
   background-color: white;
   color:black;
 }
 
-.example-full-width {
+.sendfriendrequestdiv .example-full-width {
   width: 100%;
 }
 
-.field{
+.sendfriendrequestdiv .field{
   border: 1px solid #CED4DA;
   width: 99%;
   height:35px;
@@ -45,7 +45,7 @@ hr{
   border-radius: 4px;
 }
 
-input{
+.sendfriendrequestdiv input{
   border-radius: 3px;
   padding-left: 10px;
 
@@ -58,7 +58,7 @@ input{
 }
 
 
-.column {
+.sendfriendrequestdiv .column {
   float: left;
   width: 33.33%;
   padding-left: 5px;
@@ -66,7 +66,7 @@ input{
 
 }
 
-.column1 {
+.sendfriendrequestdiv .column1 {
   float: left;
   width: 33.33%;
   padding-left: 5px;
