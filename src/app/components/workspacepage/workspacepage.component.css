@@ -1,0 +1,80 @@
+.workspace{
+  overflow-x: hidden;
+}
+
+.workspace .bg-box {
+  max-height:460px;
+  border : none !important;
+}
+
+.workspace .dynamicImage{
+  max-height:460px;
+}
+
+.workspace .workspacename{
+
+
+}
+
+.workspace .description{
+  font-family: Rambla, Roboto, normal, serif;
+  color: #3FC1C9;
+  font-size: 30px;
+  line-height: 35.16px;
+}
+
+.workspace .numbertext{
+  font-family: Rambla, Roboto, normal, serif;
+  color: #FC5185;
+  font-size: 80px;
+  line-height: 35.16px;
+  font-weight: 700;
+}
+
+
+.workspace .titletext{
+  font-family: Rambla, Roboto, normal, serif;
+  color: #364F6B;
+  font-size: 40px;
+  line-height: 35.16px;
+  font-weight: 700;
+}
+.workspace .membergroup{
+  display: flex;
+
+
+}
+
+
+#box1 {
+  float:left;
+  width:32%;
+  height:100px;
+}
+#leftbox {
+  float:left;
+  width:12%;
+  height:100px;
+}
+#middlebox{
+  float:left;
+  width:12%;
+  height:100px;
+}
+#rightbox{
+  float:left;
+  width:12%;
+  height:100px;
+}
+#box2 {
+  float:right;
+  width:32%;
+  height:100px;
+}
+
+@media screen and (min-width: 300px) {
+  .workspace .workspaceImg{
+    max-width : 300px;
+  }
+}
+

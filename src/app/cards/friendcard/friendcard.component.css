@@ -1,4 +1,4 @@
-.body{
+.friendcarddiv .body{
   text-align: center;
   border-width: 2px;
   border: 1px solid #3FC1C9;
@@ -8,18 +8,19 @@
   line-height: 0px;
   border-radius: 10px;
 }
-.btn.btn-rounded {
+
+.friendcarddiv .btn.btn-rounded {
   border-radius: 50px
 }
 
-.crdImg{
+.friendcarddiv .crdImg{
   border-radius: 50%;
   width: 100px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
 }
-.imgBtn {
+.friendcarddiv .imgBtn {
   width: 30px;
   margin-top: 10px;
 }
