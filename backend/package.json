@@ -11,13 +11,13 @@
   "author": "Sonal, Chamodh, Dulan, Kaveen & Tharindu",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.24.0",
     "bcryptjs": "^2.4.3",
     "concurrently": "^6.5.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "mongoose": "^6.1.5",
+    "mongodb": "^4.2.2",
+    "mongoose": "^6.0.12",
     "nodemon": "^2.0.15",
     "socket.io": "^4.4.0"
   }

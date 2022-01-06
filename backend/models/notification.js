@@ -22,21 +22,14 @@ const notificationSchema = new Schema({
   addedDateTime: {
     type: Date,
     required: [true, "Notification must have a Added date"],
+    default: new Date()
   },
 
-  insertedUser: {
-    type: String,
-    required: [true, "Notification must have a Added date"],
-  },
   updatedDateTime: {
     type: date,
     required: false
   },
 
-  updatedUser: {
-    type: String,
-    required: false
-  }
 
 });
 
