@@ -1,4 +1,4 @@
-.toolbar{
+.friendheaderdiv .toolbar{
   background-color: white;
   color: #1d1b31;
   padding-left: 25px;
@@ -7,7 +7,7 @@
   font-family: Rambla, Roboto, normal, serif;
   font-weight: bold;
 }
-span{
+.friendheaderdiv span{
   font-size: 30px;
   letter-spacing: 3px;
 }
@@ -15,16 +15,16 @@ span::first-letter {
   font-size: 150%;
 }
 
-.example-form {
+.friendheaderdiv .example-form {
   background-color: white;
   color:black;
 }
 
-.example-full-width {
+.friendheaderdiv .example-full-width {
   width: 100%;
 }
 
-.field{
+.friendheaderdiv .field{
   border-color: #3FC1C9;
   border-width: 2px;
   width: 100%;
@@ -32,7 +32,7 @@ span::first-letter {
   float: right;
 }
 
-input{
+.friendheaderdiv input{
   background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat scroll 7px 7px;
   padding-left:30px;
   box-shadow: 3px 2px #888888;
