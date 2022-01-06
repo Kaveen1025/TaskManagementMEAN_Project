@@ -45,24 +45,15 @@ const projectSchema = new Schema({
   },
 
   addedDateTime: {
-    type: Date,
-    required: [true, "Project must have a Added date"],
-  },
-
-  insertedUser: {
     type: String,
     required: [true, "Project must have a Added date"],
+    default: new Date().toLocaleString('si-LK', {timeZone : 'Asia/Colombo'}),
   },
+
   updatedDateTime: {
-    type: date,
-    required: false
-  },
-
-  updatedUser: {
-    type: String,
+    type: Date,
     required: false
   }
-
 });
 
 const Project = mongoose.model("Project", projectSchema);

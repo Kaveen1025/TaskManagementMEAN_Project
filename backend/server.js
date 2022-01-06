@@ -33,7 +33,8 @@ app.use("/workspace", workspaceRouter);
 const userRouter = require("./routes/users");
 app.use("/user", userRouter);
 
-
+const ProjectRouter = require("./routes/projects");
+app.use("/project", ProjectRouter);
 
 
 app.listen(PORT, () => {
