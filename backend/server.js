@@ -30,10 +30,15 @@ app.use("/student", studentRouter);
 const workspaceRouter = require("./routes/workspace");
 app.use("/workspace", workspaceRouter);
 
+const workspaceInvitationRouter = require("./routes/workspaceinvitation");
+app.use("/workspaceinvitation", workspaceInvitationRouter);
+
+
 const userRouter = require("./routes/users");
 app.use("/user", userRouter);
 
-
+const ProjectRouter = require("./routes/projects");
+app.use("/project", ProjectRouter);
 
 
 app.listen(PORT, () => {

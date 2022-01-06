@@ -12,4 +12,5 @@ export class GetstartedComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
 }

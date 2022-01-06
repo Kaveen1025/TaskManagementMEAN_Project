@@ -23,10 +23,9 @@
   text-transform: uppercase;
 }
 
-/*remove this*/
 .userProfile .userDetails{
-  height: 500px;
-  border-radius: 15px 15px 0 0 ;
+  border-radius: 15px 15px 0 0;
+  min-height: 1000px;
 }
 
 @media screen and (min-width: 350px) {
@@ -34,3 +33,32 @@
     max-width : 250px;
   }
 }
+
+
+@media screen and (min-width: 1400px) {
+
+  .userProfile .pencil{
+    width: 30px;
+    position:absolute;
+    top:260px;
+    right : 570px;
+  }
+}
+
+.userProfile .pencil{
+  width: 30px;
+}
+
+
+@media screen and (max-width: 500px){
+  .userProfile .username{
+    color: #F5F5F5;
+    font-family: Roboto, normal, serif;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 25px
+  }
+}
+
+
+

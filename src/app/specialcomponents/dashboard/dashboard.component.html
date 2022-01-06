@@ -1,18 +1,27 @@
 <div class="dashboard">
-  <div class="card img-fluid mainDashboardContent">
-    <img class="card-img-top dynamicImage shadow-lg" [src]="imageURL"
+  <div class="card mainDashboardContent">
+    <img class="card-img dynamicImage shadow-lg" [src]="imageURL"
          alt="dynamic image">
     <div class="card-img-overlay">
-      <h1 class = "timeAndDate"><b>{{Time}}</b></h1>
-      <br>
-      <h1 class = "timeAndDate"><b>{{Date}}</b></h1>
-      <br><br><br>
-      <h1 class = "greetings"><b>{{greetings}}</b></h1>
-      <br>
-      <h1 class = "notificationsAndReq"><b>You have new 10 notifications</b></h1>
-      <h1 class = "notificationsAndReq"><b>2 friend requests</b></h1>
+      <h1 class = " card-text timeAndDate"><b>{{Time}}</b></h1>
+      <br class="t1">
+      <h1 class = "card-text timeAndDate"><b>{{Date}}</b></h1>
+      <br class="t1" ><br class="t1" ><br class="t1">
+      <h1 class = "card-text greetings"><b>{{greetings}}</b></h1>
+      <br class="t1">
+      <h1 class = "card-text notificationsAndReq"><b>You have new 10 notifications</b></h1>
+      <h1 class = "card-text notificationsAndReq"><b>2 friend requests</b></h1>
     </div>
   </div>
   <br><br>
-
+  <div>
+  </div>
+  <br>
+<!--  use the loading like this-->
+  <div class="card" style = "border: none">
+      <app-loadinganimation></app-loadinganimation>
+  </div>
 </div>
+
+
+

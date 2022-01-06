@@ -46,21 +46,13 @@ const workspaceSchema = new Schema({
   addedDateTime: {
     type: Date,
     required: [true, "Workspace must have a Added date"],
+    default: new Date()
   },
 
-  insertedUser: {
-    type: String,
-    required: [true, "Workspace must have a Added date"],
-  },
   updatedDateTime: {
     type: Date,
     required: false
   },
-
-  updatedUser: {
-    type: String,
-    required: false
-  }
 
 
 

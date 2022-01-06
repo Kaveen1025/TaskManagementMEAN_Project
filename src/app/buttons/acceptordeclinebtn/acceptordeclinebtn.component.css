@@ -1,0 +1,13 @@
+@charset "utf-8";
+#accecptDeclineBtn:hover{
+  background-color : #F5F5F5;
+  color : #FC5185;
+}
+
+#accecptDeclineBtn{
+  background-color:#FC5185;
+  color:#F5F5F5;
+  border-radius:10px;
+  font-size: 15px;
+  font-weight: bold;
+}

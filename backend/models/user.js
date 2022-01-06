@@ -29,6 +29,11 @@ const userSchema = new Schema({
     required: [true, "User must have a Password"],
   },
 
+  ProfileImage : {
+    type : String,
+    required : false
+  },
+
   Friends : [{
     type : String,
     required : false
@@ -67,7 +72,7 @@ const userSchema = new Schema({
   WorkSpaceInvitationIDs : [{
     type : String,
     required : false
-  }],
+  }]
 
 
 
