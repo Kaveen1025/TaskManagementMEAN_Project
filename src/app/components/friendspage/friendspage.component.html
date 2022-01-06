@@ -1,0 +1,29 @@
+<app-friendsheader></app-friendsheader>
+
+<div class = "" style = "padding-left: 40px; padding-right: 40px">
+  <div class = "row">
+    <div class = "col-md-1">
+      <a href = "bbb"><h1  style = "color: #364F6B; font-weight: bolder;">Friends</h1></a>
+
+    </div>
+    <div class = "col-md-3">
+      <a href = "aaa"><h1 style = "color: #364F6B;  font-weight: bolder;">Friend Requests</h1></a>
+    </div>
+  </div>
+  <div class = "row">
+    <div class = "col-md-7" style = "overflow-y: scroll; height: 660px">
+      <div class = "row">
+        <div class = "col-xs-6 col-md-4" *ngFor="let avatarArrays of requestArray;">
+          <app-friendrequest></app-friendrequest>
+          <br>
+        </div>
+
+      </div>
+    </div>
+    <div class = "col-md-1">
+    </div>
+    <div class = "col-md-4">
+      <app-sendfriendrequestcard></app-sendfriendrequestcard>
+    </div>
+  </div>
+</div>

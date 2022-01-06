@@ -1,0 +1,71 @@
+.body{
+  border-width: 2px;
+  box-shadow: 3px 4px #e3e3e3;
+  font-family: Rambla;
+  height: 450px;
+  padding: 0px 20px 0px 20px;
+  border-radius: 10px;
+}
+.btn.btn-rounded {
+  border-radius: 50px
+}
+
+.crdImg{
+  border-radius: 50%;
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profileImg {
+
+  border-radius: 100%;
+  width: 60px;
+}
+
+hr{
+  color:#3FC1C9;
+}
+
+.example-form {
+  background-color: white;
+  color:black;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.field{
+  border-width: 1px;
+  width: 99%;
+  height:35px;
+  align-content: center;
+}
+
+input{
+  border-radius: 3px;
+  padding-left: 10px;
+}
+
+::placeholder {
+  color: #DCDCDC;
+  opacity: 1;
+  font-weight: bold;
+}
+
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding-left: 5px;
+  padding-bottom: 3px;
+
+}
+
+.column1 {
+  float: left;
+  width: 33.33%;
+  padding-left: 5px;
+  padding-top: 18px;
+}
+
