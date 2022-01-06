@@ -1,6 +1,9 @@
 const router = require("express").Router();
 let Workspace = require("../models/workspace");
-
+const mongoose = require("mongoose").ObjectId;
+const {
+  ObjectId
+} = require('mongodb');
 //Create new Workspace
 router.route("/create").post((req, res) => {
   const {
@@ -264,4 +267,28 @@ router.route("/addGuest/:workspaceID/:guestID").put(async (req, res) => {
 });
 
 
+//Get all projects belongs to a workspace
+router.route("/test/:id").get(async (req, res) => {
+  let workspaceID = req.params.id;
+  try {
+    const result = await Workspace.aggregate([
+      {
+        $match: { _id: ObjectId(workspaceID)},
+      },
+      { "$lookup": {
+          "from": "projects",
+          "let": { "ProjectIDs": "$_id" },
+          "pipeline": [
+            { "$addFields": { "ProjectIDs": { "$toObjectId": "ProjectIDs" }}},
+            { "$match": { "$expr": { "$eq": [ "ProjectIDs", "ProjectIDs" ] } } }
+          ],
+          "as": "output"
+        }}
+      ,
+    ]);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
 module.exports = router;

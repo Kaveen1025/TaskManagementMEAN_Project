@@ -1,8 +1,9 @@
 .body{
-  border-width: 2px;
-  box-shadow: 3px 4px #e3e3e3;
-  font-family: Rambla;
-  height: 450px;
+  box-shadow: 2px 4px 4px 2px rgba(54, 79, 107, 0.25);
+  border: 1px solid #364F6B;
+  box-sizing: border-box;
+  font-family: Rambla, Roboto, normal, serif;
+  height: 550px;
   padding: 0px 20px 0px 20px;
   border-radius: 10px;
 }
@@ -36,15 +37,18 @@ hr{
 }
 
 .field{
-  border-width: 1px;
+  border: 1px solid #CED4DA;
   width: 99%;
   height:35px;
   align-content: center;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
 input{
   border-radius: 3px;
   padding-left: 10px;
+
 }
 
 ::placeholder {
