@@ -40,6 +40,8 @@ import {MatInputModule} from "@angular/material/input";
 import { SendfriendrequestcardComponent } from './cards/sendfriendrequestcard/sendfriendrequestcard.component';
 import { FriendspageComponent } from './components/friendspage/friendspage.component';
 import { FriendcardComponent } from './cards/friendcard/friendcard.component';
+import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
 
 registerLocaleData(en);
 
@@ -52,6 +54,8 @@ registerLocaleData(en);
     AvatarGroupComponent,
     UserprofileComponent,
     DashboardComponent,
+    CrudbuttonComponent,
+    ContactusComponent,
     HomepageComponent,
     FooterComponent,
     SignupforfreeComponent,
