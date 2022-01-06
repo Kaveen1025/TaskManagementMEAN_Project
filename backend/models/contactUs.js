@@ -39,7 +39,7 @@ const contactUsSchema = new Schema({
     required: [true, "ContactUs must have a Added date"],
   },
   updatedDateTime: {
-    type: date,
+    type: Date,
     required: false
   },
 

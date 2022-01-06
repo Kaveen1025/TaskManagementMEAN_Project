@@ -71,14 +71,10 @@ export class DashboardComponent implements OnInit {
       return
     }else{
       this.imageURL = this.imagePath + "Time_12_4.png"
-      console.log("f")
       return
     }
   }
   greetingsChange(timePrefix:String):void{
-    if(Number(timePrefix) == 0){
-      timePrefix = "24"
-    }
     if(Number(timePrefix) >= 5 && Number(timePrefix) < 12){
         this.greetings = "good morning"
       return
@@ -88,11 +84,8 @@ export class DashboardComponent implements OnInit {
     }else if(Number(timePrefix) >= 18 && Number(timePrefix) < 22){
       this.greetings = "good evening"
       return
-    }else if(Number(timePrefix) >= 22){
-      this.greetings = "good night"
-      return
     }else{
-      this.greetings = "Hello!"
+      this.greetings = "good night"
       return
     }
   }

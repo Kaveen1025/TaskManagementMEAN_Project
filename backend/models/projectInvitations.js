@@ -29,7 +29,7 @@ const projectInvitaionSchema = new Schema({
     required: [true, "Project Invitation must have a Added date"],
   },
   updatedDateTime: {
-    type: date,
+    type: Date,
     required: false
   },
 
