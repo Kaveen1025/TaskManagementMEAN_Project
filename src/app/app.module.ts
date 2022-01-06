@@ -14,7 +14,7 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {NzAvatarModule} from "ng-zorro-antd/avatar";
 import {NzDividerModule} from "ng-zorro-antd/divider";
@@ -26,6 +26,14 @@ import { AcceptordeclinebtnComponent } from './buttons/acceptordeclinebtn/accept
 import { ClearallComponent } from './buttons/clearall/clearall.component';
 import {MatCardModule} from "@angular/material/card";
 import { FriendrequestComponent } from './cards/friendrequest/friendrequest.component';
+import { FriendsheaderComponent } from './components/friendsheader/friendsheader.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import { SendfriendrequestcardComponent } from './cards/sendfriendrequestcard/sendfriendrequestcard.component';
+import { FriendspageComponent } from './components/friendspage/friendspage.component';
+import { FriendcardComponent } from './cards/friendcard/friendcard.component';
 
 registerLocaleData(en);
 
@@ -41,6 +49,10 @@ registerLocaleData(en);
     AcceptordeclinebtnComponent,
     ClearallComponent,
     FriendrequestComponent,
+    FriendsheaderComponent,
+    SendfriendrequestcardComponent,
+    FriendspageComponent,
+    FriendcardComponent,
 
   ],
   imports: [
@@ -55,7 +67,13 @@ registerLocaleData(en);
     NzAvatarModule,
     NzDividerModule,
     NzToolTipModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

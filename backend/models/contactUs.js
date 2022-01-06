@@ -32,21 +32,13 @@ const contactUsSchema = new Schema({
   addedDateTime: {
     type: Date,
     required: [true, "ContactUs must have a Added date"],
+    default: new Date()
   },
 
-  insertedUser: {
-    type: String,
-    required: [true, "ContactUs must have a Added date"],
-  },
   updatedDateTime: {
     type: date,
     required: false
   },
-
-  updatedUser: {
-    type: String,
-    required: false
-  }
 
 });
 

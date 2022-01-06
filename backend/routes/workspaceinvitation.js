@@ -7,8 +7,6 @@ router.route("/create").post((req, res) => {
     workspaceID,
     invitedUser,
     sendersID,
-    addedDateTime,
-    insertedUser,
 
   } = req.body;
 
@@ -16,9 +14,6 @@ router.route("/create").post((req, res) => {
     workspaceID,
     invitedUser,
     sendersID,
-    addedDateTime,
-    insertedUser,
-
   });
 
   newWorkspaceInvitation
@@ -62,7 +57,7 @@ router.route("/getWorkspaceInvitationByID/:id").get(async (req, res) => {
     });
 });
 
-//Delete Workspace
+//Delete Workspace Invitation
 router.route("/deleteWorkspaceInvitation/:id").delete(async (req, res) => {
   let workspceInvitaionID = req.params.id;
 

@@ -12,8 +12,7 @@ router.route("/create").post((req, res) => {
     ProjectIDs,
     MemberIDs,
     guestIDs,
-    addedDateTime,
-    insertedUser
+
   } = req.body;
 
   const newWorkspace = new Workspace({
@@ -25,8 +24,6 @@ router.route("/create").post((req, res) => {
     ProjectIDs,
     MemberIDs,
     guestIDs,
-    addedDateTime,
-    insertedUser
   });
 
   newWorkspace
@@ -89,18 +86,9 @@ router.route("/deleteWorkspace/:id").delete(async (req, res) => {
 
 //Update Workspace
 router.route("/updateWorkspace/:id").put(async (req, res) => {
-  let date_ob = new Date();
-  // current date
-  let date = ("0" + date_ob.getDate()).slice(-2);
-
-  // current month
-  let month = ("0" + (date_ob.getMonth() + 1)).slice(-2);
-
-  // current year
-  let year = date_ob.getFullYear();
 
   let workspaceID = req.params.id;
-  const {WorkspaceName, Description, MainImage, CoverImage, updatedUser} = req.body;
+  const {WorkspaceName, Description, MainImage, CoverImage} = req.body;
 
   const updatedWorkspace = await Workspace.updateOne(
     {_id: workspaceID},
@@ -110,13 +98,12 @@ router.route("/updateWorkspace/:id").put(async (req, res) => {
         Description: Description,
         MainImage: MainImage,
         CoverImage: CoverImage,
-        updatedUser: updatedUser,
-        updatedDateTime: year + "-" + month + "-" + date
+        updatedDateTime: new Date()
       },
     }
   )
     .then(() => {
-      res.status(200).send({status: "Updated"});
+      res.status(200).send({status: "Workspace updated"});
     })
     .catch((err) => {
       console.log(err);
@@ -125,7 +112,6 @@ router.route("/updateWorkspace/:id").put(async (req, res) => {
         .send({status: "Error with updating data", error: err.message});
     });
 });
-
 
 
 //delete Project from Workspace
