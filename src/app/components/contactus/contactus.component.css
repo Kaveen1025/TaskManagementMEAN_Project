@@ -36,11 +36,15 @@ span{
     display: none;
   }#col3{
      display: none;
-  }
-  #col4{
+  }#col4{
     display: none;
     }
+}
 
+@media (max-width: 600px){
+  #col5{
+    margin: 20px;
+  }
 }
 
 header{

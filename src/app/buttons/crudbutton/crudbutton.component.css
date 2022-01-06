@@ -5,8 +5,13 @@
 #crudbtn{
   color: #F5F5F5;
   font-family: Roboto, normal, serif;
-  width: 40%;
+  padding: 10px 20px 10px 20px;
   border-radius:2px;
+}
+@media (max-width: 110px) {
+  #crudbtn {
+    width: 100%;
+  }
 }
 
 #crudbtn:hover{
