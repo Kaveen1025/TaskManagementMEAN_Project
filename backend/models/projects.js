@@ -54,7 +54,7 @@ const projectSchema = new Schema({
     required: [true, "Project must have a Added date"],
   },
   updatedDateTime: {
-    type: date,
+    type: Date,
     required: false
   },
 

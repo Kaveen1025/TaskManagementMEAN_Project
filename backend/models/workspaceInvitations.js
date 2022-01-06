@@ -29,7 +29,7 @@ const workspaceInvitationSchema = new Schema({
     required: [true, "Workspace Invitation must have a Added date"],
   },
   updatedDateTime: {
-    type: date,
+    type: Date,
     required: false
   },
 
