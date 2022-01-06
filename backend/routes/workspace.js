@@ -277,10 +277,10 @@ router.route("/test/:id").get(async (req, res) => {
       },
       { "$lookup": {
           "from": "projects",
-          "let": { "ProjectIDs": "$_id" },
+          "let": { "projectIDs": "$_id" },
           "pipeline": [
-            { "$addFields": { "ProjectIDs": { "$toObjectId": "ProjectIDs" }}},
-            { "$match": { "$expr": { "$eq": [ "ProjectIDs", "ProjectIDs" ] } } }
+
+            { "$match": { "$expr": { "$eq": [ "projectIDs", "projectIDs" ] } } }
           ],
           "as": "output"
         }}
