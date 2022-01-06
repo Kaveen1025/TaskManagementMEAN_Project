@@ -2,20 +2,21 @@
 
 @charset "utf-8";
 
-#crudbtn{
+.crud #crudbtn{
   color: #F5F5F5;
   font-family: Roboto, normal, serif;
   padding: 10px 20px 10px 20px;
   border-radius:2px;
 }
-@media (max-width: 110px) {
-  #crudbtn {
-    width: 100%;
-  }
-}
 
-#crudbtn:hover{
+
+.crud #crudbtn:hover{
   background-color : #F5F5F5;
   color : #FC5185;
   border-radius:2px;
+}
+@media (max-width: 110px) {
+  .crud #crudbtn {
+    width: 100%;
+  }
 }
