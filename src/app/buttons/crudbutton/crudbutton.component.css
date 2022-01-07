@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+@charset "utf-8";
+
+#crudbtn{
+  color: #F5F5F5;
+  font-family: Roboto, normal, serif;
+  width: 40%;
+  border-radius:2px;
+}
+
+#crudbtn:hover{
+  background-color : #F5F5F5;
+  color : #FC5185;
+  border-radius:2px;
+}

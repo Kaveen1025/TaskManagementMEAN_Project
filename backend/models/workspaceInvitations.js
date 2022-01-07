@@ -22,21 +22,14 @@ const workspaceInvitationSchema = new Schema({
   addedDateTime: {
     type: Date,
     required: [true, "Workspace Invitation must have a Added date"],
+    default: new Date()
   },
 
-  insertedUser: {
-    type: String,
-    required: [true, "Workspace Invitation must have a Added date"],
-  },
   updatedDateTime: {
-    type: date,
+    type: Date,
     required: false
   },
 
-  updatedUser: {
-    type: String,
-    required: false
-  }
 
 });
 

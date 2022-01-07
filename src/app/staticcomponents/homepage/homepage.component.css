@@ -1,0 +1,180 @@
+.homePage{
+  overflow-x: hidden;
+}
+
+.homePage .hero_area {
+  position: relative;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.homePage .bg-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.homePage .bg-box img {
+  width: 100%;
+  height: 100%;
+
+}
+
+.homePage .mainTitle1{
+
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-weight: bold;
+  font-size: 38px;
+  margin-top: 50px;
+}
+.homePage .mainTitle2{
+
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-size: 38px;
+  font-weight: bold;
+
+}
+
+.homePage .firstpara{
+
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-size: 18px;
+
+}
+
+
+.homePage .mainTitle3{
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#3FC1C9;
+  font-weight: bold;
+}
+
+
+.homePage .mainTitle4{
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-weight: bold;
+  font-size: 55px;
+}
+
+.homePage .secondpara{
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-size: 18px;
+
+}
+
+.homePage #keep{
+
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-weight: bold;
+
+}
+
+.homePage .lead{
+
+  color:#364F6B ;
+}
+
+.homePage .mainTitle5{
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-weight: bold;
+}
+
+.homePage .thirdpara{
+  text-align: center;
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+  font-size: 18px;
+
+}
+
+.homePage .card-deck{
+
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.homePage .card-title{
+
+  font-family: Rambla, sans-serif;
+  color:#364F6B;
+}
+
+.homePage .card-text{
+
+  font-family: Rambla, sans-serif;
+  color: #3FC1C9;
+}
+
+.homePage #card1{
+
+  font-family: Rambla, sans-serif;
+  border: 2px solid #FC5185;
+  box-shadow: #FC5185 0px 0px 16px;
+
+}
+
+.homePage #card2{
+
+  font-family: Rambla, sans-serif;
+  border: 2px solid #3FC1C9;
+  box-shadow: #3FC1C9 0px 0px 16px;
+
+}
+
+.homePage #card3{
+
+  font-family: Rambla, sans-serif;
+  border: 2px solid #FC5185;
+  box-shadow: #FC5185 0px 0px 16px;
+
+}
+
+.homePage #card4{
+
+  font-family: Rambla, sans-serif;
+  border: 2px solid #3FC1C9;
+  box-shadow: #3FC1C9 0px 0px 16px;
+
+}
+
+.homePage #card5{
+
+  font-family: Rambla, sans-serif;
+  background-color: #3FC1C9;
+  text-align: center;
+ margin-right: 30px;
+  margin-left: 30px;
+
+
+}
+
+.homePage #card5 #title{
+
+  color: white;
+  font-family: Rambla, sans-serif;
+
+}
+
+
