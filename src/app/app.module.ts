@@ -42,6 +42,10 @@ import { FriendspageComponent } from './components/friendspage/friendspage.compo
 import { FriendcardComponent } from './cards/friendcard/friendcard.component';
 import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { SharemodalComponent } from './modal/sharemodal/sharemodal.component';
+import { SearchComponent } from './reusablecomponent/search/search.component';
+import { ForgotpasswordComponent } from './reusablecomponent/forgotpassword/forgotpassword.component';
+import { MainmodalComponent } from './modal/mainmodal/mainmodal.component';
 
 registerLocaleData(en);
 
@@ -69,6 +73,10 @@ registerLocaleData(en);
     SendfriendrequestcardComponent,
     FriendspageComponent,
     FriendcardComponent,
+    SharemodalComponent,
+    SearchComponent,
+    ForgotpasswordComponent,
+    MainmodalComponent,
 
   ],
   imports: [

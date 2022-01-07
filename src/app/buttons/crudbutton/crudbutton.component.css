@@ -7,16 +7,17 @@
   font-family: Roboto, normal, serif;
   padding: 10px 20px 10px 20px;
   border-radius:2px;
+  background-color : #3FC1C9;
+  font-weight: bold;
 }
-
 
 .crud #crudbtn:hover{
-  background-color : #F5F5F5;
-  color : #FC5185;
+  background-color : #FC5185;
+  color : #F5F5F5;
   border-radius:2px;
 }
-@media (max-width: 110px) {
-  .crud #crudbtn {
-    width: 100%;
-  }
-}
+/*@media (max-width: 110px) {*/
+/*  .crud #crudbtn {*/
+/*    width: 100%;*/
+/*  }*/
+/*}*/
