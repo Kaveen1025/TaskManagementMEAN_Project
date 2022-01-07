@@ -42,6 +42,7 @@ import { FriendspageComponent } from './components/friendspage/friendspage.compo
 import { FriendcardComponent } from './cards/friendcard/friendcard.component';
 import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { ProjectWorkspacemodalComponent } from './modals/project-workspacemodal/project-workspacemodal.component';
 
 registerLocaleData(en);
 
@@ -69,6 +70,7 @@ registerLocaleData(en);
     SendfriendrequestcardComponent,
     FriendspageComponent,
     FriendcardComponent,
+    ProjectWorkspacemodalComponent,
 
   ],
   imports: [

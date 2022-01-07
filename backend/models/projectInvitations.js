@@ -20,9 +20,9 @@ const projectInvitaionSchema = new Schema({
   },
 
   addedDateTime: {
-    type: Date,
+    type: String,
     required: [true, "Project Invitation must have a Added date"],
-    default: new Date()
+    default: new Date().toLocaleString('si-LK', {timeZone : 'Asia/Colombo'}),
   },
 
   updatedDateTime: {
