@@ -15,6 +15,10 @@
   height:800px;
 }
 
+.dashboard .t3{
+  display:none !important;
+}
+
 .dashboard .timeAndDate{
   color: #F5F5F5;
   text-align:right;
@@ -39,7 +43,7 @@
 
 
 
-@media screen and (min-width: 1010px) {
+@media screen and (min-width: 1054px) {
   .dashboard .timeAndDate{
    font-size: 50px;
     letter-spacing: 10px;
@@ -57,88 +61,211 @@
 
 }
 
-@media screen and (max-width: 1009px) {
+@media screen and (max-width: 1053px) {
   .dashboard .timeAndDate{
+    font-size: 45px;
+    letter-spacing: 5px;
+  }
+
+  .dashboard .greetings{
+    font-size: 60px;
+    letter-spacing: 5px;
+  }
+
+  .dashboard .notificationsAndReq{
     font-size: 30px;
     letter-spacing: 5px;
   }
 
-  .dashboard .greetings{
-    font-size: 40px;
+
+}
+
+@media screen and (max-width: 900px){
+  .dashboard .t2{
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 750px){
+  .dashboard .timeAndDate{
+    font-size: 35px;
     letter-spacing: 5px;
+  }
+
+  .dashboard .greetings{
+    font-size: 50px;
+    letter-spacing: 5px;
+    line-height:2px
   }
 
   .dashboard .notificationsAndReq{
     font-size: 20px;
     letter-spacing: 5px;
   }
-
 }
+
+
 
 @media screen and (max-width: 700px){
-  .dashboard .t1{
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 550px) {
   .dashboard .timeAndDate{
-    font-size: 20px;
-    letter-spacing: 2px;
+    font-size: 35px;
+    letter-spacing: 5px;
+    line-height: 10px
   }
 
   .dashboard .greetings{
+    font-size: 50px;
+    letter-spacing: 5px;
+    line-height:5px;
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 20px;
+    letter-spacing: 5px;
+    line-height: 5px;
+  }
+}
+
+
+@media screen and (max-width: 590px){
+  .dashboard .timeAndDate{
+    font-size: 25px;
+    letter-spacing: 5px;
+  }
+
+  .dashboard .greetings{
+    font-size: 45px;
+    letter-spacing: 5px;
+    line-height:5px;
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 15px;
+    letter-spacing: 5px;
+    line-height: 5px;
+  }
+
+
+  .dashboard .t1{
+    display: none !important;
+  }
+
+  .dashboard .t2{
+    display: block !important;
+  }
+
+}
+
+@media screen and (max-width: 505px) {
+  .dashboard .timeAndDate{
     font-size: 20px;
     letter-spacing: 2px;
+    line-height: 2px
+  }
+
+  .dashboard .greetings{
+    font-size: 25px;
+    letter-spacing: 2px;
+    line-height: 2px
   }
 
   .dashboard .notificationsAndReq{
     font-size: 10px;
     letter-spacing: 2px;
   }
+
   .dashboard .t1{
+    display: none !important;
+  }
+
+  .dashboard .t2{
+    display: block !important;
+  }
+
+}
+
+
+@media screen and (max-width: 450px){
+
+  .dashboard .timeAndDate{
+    font-size: 15px;
+    letter-spacing: 2px;
+    /*line-height: 2px*/
+  }
+
+  .dashboard .greetings{
+    font-size: 20px;
+    letter-spacing: 2px;
+    /*line-height: 2px*/
+  }
+
+  .dashboard .notificationsAndReq{
+    font-size: 10px;
+    /*letter-spacing: 2px;*/
+  }
+
+  .dashboard .t3{
+    display : block !important;
+  }
+  .dashboard .t1{
+    display: none !important;
+  }
+
+  .dashboard .t2{
     display: none !important;
   }
 }
 
-@media screen and (max-width: 350px) {
+
+@media screen and (max-width: 400px) {
+
   .dashboard .timeAndDate{
     font-size: 10px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    /*line-height: 2px*/
   }
 
   .dashboard .greetings{
     font-size: 15px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    /*line-height: 2px*/
   }
 
   .dashboard .notificationsAndReq{
-    font-size: 10px;
-    letter-spacing: 1px;
+    font-size: 8px;
+    /*letter-spacing: 2px;*/
+  }
+  .dashboard .t3{
+    display : none !important;
   }
   .dashboard .t1{
     display: none !important;
   }
+
+  .dashboard .t2{
+    display: none !important;
+  }
+
 }
 
-@media screen and (max-width: 300px) {
+
+@media screen and (max-width: 305px) {
   .dashboard .timeAndDate{
-    font-size: 10px;
+    font-size: 7px;
     letter-spacing: 1px;
   }
 
   .dashboard .greetings{
-    font-size: 10px;
+    font-size: 8px;
     letter-spacing: 1px;
   }
 
   .dashboard .notificationsAndReq{
-    font-size: 5px;
+    font-size: 6px;
     letter-spacing: 1px;
+    line-height: 2px
   }
-  .dashboard .t1{
-    display: none !important;
-  }
+
 }
 
 

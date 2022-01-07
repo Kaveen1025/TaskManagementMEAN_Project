@@ -84,6 +84,18 @@ router.route('/get/:id').get(async (req,res) =>{
 })
 
 
+//Get a user by name
+//URL -->http://localhost:8070/user/getbyname/:name
+router.route("/getbyname/:name").get(async (req,res) => {
+  let name = req.params.name;
+  await User.find({$or:[{'FirstName' : name}, {'LastName' : name}]}).then((user) => {
+    res.json(user);
+  }).catch((err) => {
+        res.status(500)
+      .send({ status: "Error with retrieving  user", error: err.message });
+  })
+})
+
 //Update User --> Edit Profile Page
 //URL --> http://localhost:8070/user/update/:id
 router.route('/update/:id').put(async (req,res)=> {

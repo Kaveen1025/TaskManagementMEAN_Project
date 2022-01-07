@@ -40,6 +40,9 @@ app.use("/user", userRouter);
 const ProjectRouter = require("./routes/projects");
 app.use("/project", ProjectRouter);
 
+const ProjectInvitationsRouter = require("./routes/projectinvitations");
+app.use("/projectinv", ProjectInvitationsRouter);
+
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on PORT ${PORT}`);
