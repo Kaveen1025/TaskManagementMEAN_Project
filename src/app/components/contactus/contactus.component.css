@@ -1,17 +1,18 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-#col2{
+.contact #col2{
   color:#364F6B;
 }
 
-span{
+.contact span{
   font-size: 80%;
   color: #FC5185;
   font-family: Roboto, normal, serif;
+
 }
 
-#form1{
+.contact #form1{
   align-items: center;
   color:#364F6B;
   text-align: left;
@@ -21,6 +22,7 @@ span{
   box-shadow: 2px 2px 1px 1px #FC5185;
   padding: 0px 30px 0px 30px;
   font-family: Roboto, normal, serif;
+  margin-bottom: 20px;
 }
 
 /*.form-group{*/
@@ -30,20 +32,24 @@ span{
 
 
 @media (max-width: 800px){
-  #col1{
+  .contact #col1{
     display: none;
-  }#col2{
+  }.contact #col2{
     display: none;
-  }#col3{
+  }.contact #col3{
      display: none;
-  }
-  #col4{
+  }.contact #col4{
     display: none;
     }
-
 }
 
-header{
+@media (max-width: 600px){
+  .contact #col5{
+    margin: 20px;
+  }
+}
+
+.contact header{
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -57,29 +63,29 @@ header{
   /*font-weight: bold;*/
 }
 
+.contact label{
+  font-size: 110%;
+}
 
-#btn1{
+
+.contact #btn1{
   text-align: center;
   color: #f5f5f5;
   padding: 20px;
 }
 
-input{
+.contact input{
   border-color: #364F6B ;
-  font-family: Roboto, normal, serif;
 }
 
-textarea{
+.contact textarea{
   border-color: #364F6B ;
-  font-family: Roboto, normal, serif;
 }
 
-h1{
+.contact h1{
   color: #364F6B ;
-  font-family: Roboto, normal, serif;
 }
 
-p{
+.contact p{
   color: #364F6B ;
-  font-family: Roboto, normal, serif;
 }

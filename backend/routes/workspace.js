@@ -1,6 +1,6 @@
 const router = require("express").Router();
 let Workspace = require("../models/workspace");
-const mongoose = require("mongoose").ObjectId;
+
 const {
   ObjectId
 } = require('mongodb');
@@ -67,6 +67,40 @@ router.route("/getWorkspaceByID/:id").get(async (req, res) => {
       res
         .status(500)
         .send({status: "Error while getting workspace", error: err.message});
+    });
+});
+
+//Get All workspaces belongto one user
+router.route("/getWorkspacesbelongToaUser/:id").get(async (req, res) => {
+  let userID = req.params.id;
+
+  //can use findOne if searching by another attribute
+  const order = await Workspace.find({AdminID: userID})
+    .then((workspace) => {
+      res.json(workspace);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({status: "Error while getting workspaces", error: err.message});
+    });
+});
+
+//Get All workspaces belongto one user
+router.route("/getWorkspaceByName/:name").get(async (req, res) => {
+  let workspaceName = req.params.name;
+
+  //can use findOne if searching by another attribute
+  const order = await Workspace.find({WorkspaceName: workspaceName})
+    .then((workspace) => {
+      res.json(workspace);
+    })
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({status: "Error while getting workspaces", error: err.message});
     });
 });
 
@@ -267,23 +301,28 @@ router.route("/addGuest/:workspaceID/:guestID").put(async (req, res) => {
 });
 
 
-//Get all projects belongs to a workspace
-router.route("/test/:id").get(async (req, res) => {
-  let workspaceID = req.params.id;
+//Get all projects belongs to a single workspace
+router.route("/test/:workspaceID").get(async (req, res) => {
+  let workspaceID = req.params.workspaceID;
   try {
     const result = await Workspace.aggregate([
       {
         $match: { _id: ObjectId(workspaceID)},
       },
-      { "$lookup": {
-          "from": "projects",
-          "let": { "projectIDs": "$_id" },
-          "pipeline": [
+      {
+        $lookup: {
+          from: "projects",
+          // let: {id: "$ProjectIDs"},
+          "let": { "proje": "$ProjectIDs" },
+          pipeline: [
 
-            { "$match": { "$expr": { "$eq": [ "projectIDs", "projectIDs" ] } } }
+            // {$project: { bid: {"$toObjectId": "$$id"}}},
+            // { "$match": { "$expr": { "$eq": [ "$_id", "id" ] } } }
+            { "$match": { "$expr": { "$eq": [ "proje", "proje" ] } } },
           ],
-          "as": "output"
-        }}
+          as: "output"
+        }
+      }
       ,
     ]);
     res.status(200).json(result);

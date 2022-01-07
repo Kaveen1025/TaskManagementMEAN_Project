@@ -1,0 +1,9 @@
+
+.wpmodal .mheader{
+  background-color: red;
+}
+
+.wpmodal .modal-header h4{
+  font-family:  Rambla, Roboto, normal, serif;
+  font-weight: bold;
+}

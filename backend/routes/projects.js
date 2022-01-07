@@ -6,7 +6,7 @@ let Project = require('../models/projects');
 
 // import getUserDetails from "./generic";
 const generic = require('./generic');
-const User = require("../models/user");
+
 
 //Add Projects --> Create Project Modal
 //URL --> http://localhost:8070/project/add
@@ -60,7 +60,7 @@ router.route("/getbyname/:name").get(async (req, res) => {
 })
 
 
-//Fetch Projects According to the WorkspaceID
+//Fetch Projects According to the WorkspaceID --> Workspaces Page
 //URL -->http://localhost:8070/project/getbyworkspace/:id
 router.route("/getbyworkspace/:id").get(async (req, res) => {
   let workspaceID= req.params.id;
@@ -68,6 +68,19 @@ router.route("/getbyworkspace/:id").get(async (req, res) => {
     res.json(user);
   }).catch((err) => {
     res.status(404).json({message: err.message});
+  })
+})
+
+
+//Delete Project
+//URL -->http://localhost:8070/project/deleteproject/:id
+router.route("/deleteproject/:id").delete(async (req, res) => {
+
+  let ProjectID = req.params.id;
+  await Project.findByIdAndDelete(ProjectID).then(()=>{
+    res.status(200).send({ status: "Project Deleted" });
+  }).catch((err)=>{
+    res.status(500).send({ status: "Error with delete", error: err.message });
   })
 })
 
