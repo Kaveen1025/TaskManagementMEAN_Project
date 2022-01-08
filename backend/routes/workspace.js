@@ -302,7 +302,7 @@ router.route("/addGuest/:workspaceID/:guestID").put(async (req, res) => {
 
 
 //Get all projects belongs to a single workspace
-router.route("/test/:workspaceID").get(async (req, res) => {
+router.route("/getProjectDetails/:workspaceID").get(async (req, res) => {
   let workspaceID = req.params.workspaceID;
   try {
     const result = await Workspace.aggregate([
@@ -310,24 +310,74 @@ router.route("/test/:workspaceID").get(async (req, res) => {
         $match: { _id: ObjectId(workspaceID)},
       },
       {
+        $project: {
+          ProjectIDs: {
+            $map: {
+              input: "$ProjectIDs",
+              as: "projectid",
+              in: {
+                $convert: {
+                  input: "$$projectid",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
         $lookup: {
           from: "projects",
-          // let: {id: "$ProjectIDs"},
-          "let": { "proje": "$ProjectIDs" },
-          pipeline: [
-
-            // {$project: { bid: {"$toObjectId": "$$id"}}},
-            // { "$match": { "$expr": { "$eq": [ "$_id", "id" ] } } }
-            { "$match": { "$expr": { "$eq": [ "proje", "proje" ] } } },
-          ],
-          as: "output"
+          localField: "ProjectIDs",
+          foreignField: "_id",
+          as: "Projects"
         }
       }
-      ,
-    ]);
+    ])
     res.status(200).json(result);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
 });
+
+//Get all Members belongs to a single workspace
+router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
+  let workspaceID = req.params.workspaceID;
+  try {
+    const result = await Workspace.aggregate([
+      {
+        $match: { _id: ObjectId(workspaceID)},
+      },
+      {
+        $project: {
+          MemberIDs: {
+            $map: {
+              input: "$MemberIDs",
+              as: "memberID",
+              in: {
+                $convert: {
+                  input: "$$memberID",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "MemberIDs",
+          foreignField: "_id",
+          as: "Members"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+
 module.exports = router;

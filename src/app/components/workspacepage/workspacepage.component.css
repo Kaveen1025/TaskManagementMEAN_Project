@@ -5,6 +5,7 @@
 .workspace .bg-box {
   max-height:460px;
   border : none !important;
+
 }
 
 .workspace .dynamicImage{
@@ -12,21 +13,29 @@
 }
 
 .workspace .workspacename{
-
-
+  font-size: 35px;
+  color: #364F6B;
+  font-weight: bold;
+  margin-top: 50px;
+}
+.workspace .topic{
+  font-size: 30px;
+  color: #364F6B;
+  font-weight: bold;
+  margin-top: 200px;
 }
 
 .workspace .description{
   font-family: Rambla, Roboto, normal, serif;
   color: #3FC1C9;
-  font-size: 30px;
+  font-size: 20px;
   line-height: 35.16px;
 }
 
 .workspace .numbertext{
   font-family: Rambla, Roboto, normal, serif;
   color: #FC5185;
-  font-size: 80px;
+  font-size: 40px;
   line-height: 35.16px;
   font-weight: 700;
 }
@@ -35,46 +44,190 @@
 .workspace .titletext{
   font-family: Rambla, Roboto, normal, serif;
   color: #364F6B;
-  font-size: 40px;
+  font-size: 30px;
   line-height: 35.16px;
   font-weight: 700;
 }
 .workspace .membergroup{
-  display: flex;
 
+  /*text-align: center;*/
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, +65%)
 
 }
 
 
 #box1 {
   float:left;
-  width:32%;
+  width:35%;
   height:100px;
 }
 #leftbox {
   float:left;
-  width:12%;
+  width:10%;
   height:100px;
 }
 #middlebox{
   float:left;
-  width:12%;
+  width:10%;
   height:100px;
 }
 #rightbox{
   float:left;
-  width:12%;
+  width:10%;
   height:100px;
 }
 #box2 {
   float:right;
-  width:32%;
+  width:35%;
   height:100px;
 }
 
-@media screen and (min-width: 300px) {
+
+.column {
+  float: left;
+  max-width: 30px;
+  margin-left: 15px;
+
+/*text-align: center;*/
+}
+
+.workspace .imgBtn {
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Clearfix (clear floats) */
+.workspace .editrow{
+  /*margin-top: 10px;*/
+  display: flex;
+  margin: 0;
+  position: absolute;
+  left: 49%;
+  margin-right: -50%;
+  transform: translate(-50%, +350%)
+
+}
+.editrow::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+@media screen and (min-width: 400px) {
   .workspace .workspaceImg{
-    max-width : 300px;
+    max-width : 160px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -65%)
   }
 }
 
+@media screen and (max-width: 400px) {
+  .workspace .workspaceImg{
+    max-width : 100px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -65%)
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .workspace .numbertext{
+    font-size: 30px;
+    line-height: 30.16px;
+  }
+  .workspace .titletext{
+    font-size: 20px;
+    line-height: 15.16px;
+
+  }
+
+
+}
+@media screen and (max-width: 760px) {
+  .workspace .numbertext{
+    font-size: 30px;
+    line-height: 15.16px;
+  }
+  .workspace .titletext{
+    font-size: 20px;
+    line-height: 10.16px;
+
+  }
+
+  #box1 {
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  #leftbox {
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  #middlebox{
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  #rightbox{
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  #box2 {
+    float:right;
+    width:20%;
+    height:100px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 415px) {
+  .workspace .numbertext{
+    font-size: 30px;
+    line-height: 15.16px;
+  }
+  .workspace .titletext{
+    font-size: 20px;
+    line-height: 10.16px;
+
+  }
+  #box1 {
+    float:left;
+    width:5%;
+    height:100px;
+  }
+  #leftbox {
+    float:left;
+    width:30%;
+    height:100px;
+  }
+  #middlebox{
+    float:left;
+    width:30%;
+    height:100px;
+  }
+  #rightbox{
+    float:left;
+    width:30%;
+    height:100px;
+  }
+  #box2 {
+    float:right;
+    width:5%;
+    height:100px;
+  }
+}
