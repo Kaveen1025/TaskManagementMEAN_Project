@@ -49,6 +49,7 @@ import { ProjectAddComponent } from './modals/projectadd/project-add.component';
 import { CrudbuttonpinkComponent } from './buttons/crudbuttonpink/crudbuttonpink.component';
 import { WorkspaceaddComponent } from './modals/workspaceadd/workspaceadd.component';
 import { ProjecteditComponent } from './modals/projectedit/projectedit.component';
+import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.component';
 
 registerLocaleData(en);
 
@@ -83,6 +84,7 @@ registerLocaleData(en);
     CrudbuttonpinkComponent,
     WorkspaceaddComponent,
     ProjecteditComponent,
+    WorkspaceeditComponent,
 
   ],
   imports: [
