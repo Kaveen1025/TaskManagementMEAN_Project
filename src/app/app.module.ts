@@ -44,37 +44,39 @@ import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { CentermodalComponent } from './modals/centermodal/centermodal.component';
 import { GeneralnoificationsComponent } from './cards/generalnoifications/generalnoifications.component';
+import {WorkspacepageComponent} from "./components/workspacepage/workspacepage.component";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FeaturespageComponent,
-    GetstartedComponent,
-    SidebarComponent,
-    AvatarGroupComponent,
-    UserprofileComponent,
-    DashboardComponent,
-    CrudbuttonComponent,
-    ContactusComponent,
-    HomepageComponent,
-    FooterComponent,
-    SignupforfreeComponent,
-    LoadinganimationComponent,
-    UserdetailsComponent,
-    ChangepasswordComponent,
-    AcceptordeclinebtnComponent,
-    ClearallComponent,
-    FriendrequestComponent,
-    FriendsheaderComponent,
-    SendfriendrequestcardComponent,
-    FriendspageComponent,
-    FriendcardComponent,
-    CentermodalComponent,
-    GeneralnoificationsComponent,
+    declarations: [
+        AppComponent,
+        FeaturespageComponent,
+        GetstartedComponent,
+        SidebarComponent,
+        AvatarGroupComponent,
+        UserprofileComponent,
+        DashboardComponent,
+        CrudbuttonComponent,
+        ContactusComponent,
+        HomepageComponent,
+        FooterComponent,
+        SignupforfreeComponent,
+        LoadinganimationComponent,
+        UserdetailsComponent,
+        ChangepasswordComponent,
+        AcceptordeclinebtnComponent,
+        ClearallComponent,
+        FriendrequestComponent,
+        FriendsheaderComponent,
+        SendfriendrequestcardComponent,
+        FriendspageComponent,
+        FriendcardComponent,
+        CentermodalComponent,
+        GeneralnoificationsComponent,
+        WorkspacepageComponent,
 
-  ],
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
