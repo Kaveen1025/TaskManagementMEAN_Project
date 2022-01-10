@@ -64,3 +64,8 @@
 .userDetails .card-body{
   box-shadow: none !important;
 }
+
+.iconClickable:hover{
+  -webkit-filter: drop-shadow(5px 5px 5px #3FC1C9);
+  filter: drop-shadow(5px 5px 5px #3FC1C9);
+}
