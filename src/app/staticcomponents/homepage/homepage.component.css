@@ -190,4 +190,55 @@
 
 }
 
+@media only screen and (max-width: 600px) {
+  .homePage .mainTitle1{
+    font-size: 28px;
+  }
+  .homePage .mainTitle2{
+    font-size: 28px;
+  }
+  .homePage .firstpara{
+
+    font-size: 15px;
+  }
+
+  .homePage .mainTitle3{
+    font-size: 25px;
+  }
+
+  .homePage .mainTitle4{
+    font-size: 40px;
+  }
+  .homePage .secondpara {
+    font-size: 15px;
+  }
+  .homePage #keep{
+    font-size: 25px;
+  }
+
+  .homePage .lead{
+
+    font-size: 16px;
+  }
+
+  .homePage .mainTitle5{
+    font-size: 28px;
+  }
+
+  .homePage .thirdpara{
+    font-size: 16px;
+  }
+  .homePage #card5 #title{
+
+    font-size: 25px;
+  }
+
+  }
+
+@media only screen and (max-width: 320px) {
+  .homePage .firstpara{
+    font-size: 12px;
+  }
+
+}
 
