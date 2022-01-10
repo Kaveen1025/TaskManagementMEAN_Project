@@ -1,0 +1,20 @@
+.gnotificationscard .card{
+  border-color: #3FC1C9;
+}
+.gnotificationscard .vl {
+  border-left: 6px solid green;
+  height: auto;
+
+}
+
+
+.gnotificationscard .imgBtn1 {
+  width: 30px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.gnotificationscard .clock{
+  width: 30px;
+  margin-left: 10px;
+}
