@@ -16,12 +16,12 @@
   font-size: 35px;
   color: #364F6B;
   font-weight: bold;
-  margin-top: 50px;
+  margin-top: 70px;
 }
 .workspace .topic{
   font-size: 30px;
   color: #364F6B;
-  font-weight: bold;
+  /*font-weight: bold;*/
   margin-top: 200px;
 }
 
@@ -117,7 +117,18 @@
   display: table;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and (min-width: 420px) {
+  .workspace .workspaceImg{
+    max-width : 200px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -65%)
+  }
+}
+
+@media screen and (max-width: 420px) {
   .workspace .workspaceImg{
     max-width : 160px;
     margin: 0;
@@ -128,7 +139,7 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 370px) {
   .workspace .workspaceImg{
     max-width : 100px;
     margin: 0;
@@ -136,6 +147,12 @@
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -65%)
+  }
+  .workspace .workspacename{
+    font-size: 25px;
+    color: #364F6B;
+    font-weight: bold;
+    margin-top: 30px;
   }
 }
 
