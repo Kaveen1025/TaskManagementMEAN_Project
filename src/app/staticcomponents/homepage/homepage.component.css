@@ -130,31 +130,31 @@
 .homePage #card1{
 
   font-family: Rambla, sans-serif;
-  border: 2px solid #FC5185;
-  box-shadow: #FC5185 0px 0px 16px;
+  border: 1px solid #FC5185;
+  box-shadow: #FC5185 0px 5px 10px -3px,  #FC5185 0px 2px 0px -2px;
 
 }
 
 .homePage #card2{
 
   font-family: Rambla, sans-serif;
-  border: 2px solid #3FC1C9;
-  box-shadow: #3FC1C9 0px 0px 16px;
+  border: 1px solid #3FC1C9;
+  box-shadow: #3FC1C9 0px 5px 10px -3px,  #3FC1C9 0px 2px 0px -2px;
 
 }
 
 .homePage #card3{
 
   font-family: Rambla, sans-serif;
-  border: 2px solid #FC5185;
-  box-shadow: #FC5185 0px 0px 16px;
+  border: 1px solid #FC5185;
+  box-shadow: #FC5185 0px 5px 10px -3px,  #FC5185 0px 2px 0px -2px;
 
 }
 
 .homePage #card4{
 
   font-family: Rambla, sans-serif;
-  border: 2px solid #3FC1C9;
+  border: 1px solid #3FC1C9;
   box-shadow: #3FC1C9 0px 0px 16px;
 
 }

@@ -45,6 +45,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { CentermodalComponent } from './modals/centermodal/centermodal.component';
 import { WorkspacecardComponent } from './cards/workspacecard/workspacecard.component';
 import { ProjectcardComponent } from './cards/projectcard/projectcard.component';
+import { HeaderComponent } from './navigation/header/header.component';
 
 registerLocaleData(en);
 
@@ -75,6 +76,7 @@ registerLocaleData(en);
     CentermodalComponent,
     WorkspacecardComponent,
     ProjectcardComponent,
+    HeaderComponent,
 
   ],
   imports: [
