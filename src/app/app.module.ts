@@ -48,6 +48,7 @@ import { ProjectcardComponent } from './cards/projectcard/projectcard.component'
 import { ProjectAddComponent } from './modals/projectadd/project-add.component';
 import { CrudbuttonpinkComponent } from './buttons/crudbuttonpink/crudbuttonpink.component';
 import { WorkspaceaddComponent } from './modals/workspaceadd/workspaceadd.component';
+import { ProjecteditComponent } from './modals/projectedit/projectedit.component';
 
 registerLocaleData(en);
 
@@ -81,6 +82,7 @@ registerLocaleData(en);
     ProjectAddComponent,
     CrudbuttonpinkComponent,
     WorkspaceaddComponent,
+    ProjecteditComponent,
 
   ],
   imports: [
