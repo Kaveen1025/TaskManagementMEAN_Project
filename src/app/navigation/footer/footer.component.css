@@ -45,7 +45,6 @@
   background-color:#364F6B ;
   border: none;
   border-radius: 50%;
-  display: flex;
 }
 
 .footer #btnss{
@@ -96,6 +95,7 @@
 
   height: 45px;
   width: 45px;
+
 }
 
 .footer #twitter{
