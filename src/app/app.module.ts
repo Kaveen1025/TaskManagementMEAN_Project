@@ -50,6 +50,7 @@ import { CrudbuttonpinkComponent } from './buttons/crudbuttonpink/crudbuttonpink
 import { WorkspaceaddComponent } from './modals/workspaceadd/workspaceadd.component';
 import { ProjecteditComponent } from './modals/projectedit/projectedit.component';
 import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.component';
+import {SearchComponent} from "./reusablecomponent/search/search.component";
 
 registerLocaleData(en);
 
@@ -85,6 +86,7 @@ registerLocaleData(en);
     WorkspaceaddComponent,
     ProjecteditComponent,
     WorkspaceeditComponent,
+    SearchComponent
 
   ],
   imports: [
