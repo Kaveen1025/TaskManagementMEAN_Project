@@ -51,6 +51,7 @@ import { WorkspaceaddComponent } from './modals/workspaceadd/workspaceadd.compon
 import { ProjecteditComponent } from './modals/projectedit/projectedit.component';
 import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.component';
 import {SearchComponent} from "./reusablecomponent/search/search.component";
+import { HeaderComponent } from './navigation/header/header.component';
 
 registerLocaleData(en);
 
@@ -86,7 +87,8 @@ registerLocaleData(en);
     WorkspaceaddComponent,
     ProjecteditComponent,
     WorkspaceeditComponent,
-    SearchComponent
+    SearchComponent,
+    HeaderComponent,
 
   ],
   imports: [

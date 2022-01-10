@@ -1,0 +1,191 @@
+.navigation .vl{
+  border-left: 4px solid  #FC5185;
+  height: 50px;
+  margin-left: 10px;
+  margin-top: 10px;
+
+}
+
+.navigation #companyname {
+
+  font-family: Rambla, sans-serif;
+  color: #364F6B;
+  font-weight: bold;
+  font-size: 50px;
+  margin-left: 10PX;
+  margin-top: 20px;
+  text-shadow: 2px 0px 0px #364F6B;
+
+}
+
+.navigation .image-text {
+  display: flex;
+  font-family: Rambla, sans-serif;
+  margin-left: 40px;
+
+}
+.navigation .image-text__image {
+  flex: 0 0 auto;
+
+}
+.navigation .image-text__image img {
+  display: block;
+  margin-top: 10px;
+  height:50px;
+  width:50px;
+}
+
+.navigation  #overview{
+
+  font-size: 24px;
+  font-family: Rambla, sans-serif;
+  font-weight: bold;
+  color: #364F6B;
+}
+
+.navigation #overview:hover{
+  color: #3FC1C9;
+}
+
+.navigation #features{
+  font-size: 24px;
+  font-family: Rambla, sans-serif;
+  font-weight: bold;
+  color: #364F6B;
+}
+
+.navigation #features:hover{
+  color: #3FC1C9;
+}
+
+
+.navigation #contactus{
+  font-size: 24px;
+  font-family: Rambla, sans-serif;
+  font-weight: bold;
+  color: #364F6B;
+}
+
+.navigation  #contactus:hover{
+  color: #3FC1C9;
+}
+
+.navigation .nav-item{
+
+  margin-right: 25px;
+}
+
+.navigation .btn{
+
+  background-color: #3FC1C9;
+  border: none;
+  width: 80px;
+  font-weight: bold;
+  font-family: Rambla, sans-serif;
+}
+
+.navigation .btn:hover{
+
+background-color: #FC5185;
+
+}
+
+
+@media only screen and (max-width: 600px) {
+
+  .navigation .image-text{
+
+    margin-left: 10px;
+  }
+  .navigation #companyname {
+
+    font-size: 40px;
+  }
+
+  .navigation  #overview{
+    font-size: 18px;
+  }
+  .navigation #features{
+    font-size: 18px;
+  }
+
+  .navigation #contactus{
+    font-size: 18px;
+  }
+
+.navigation #login{
+  margin-left: 100px;
+  margin-top: -58px;
+}
+.navigation .brt{
+  display: none;
+}
+
+
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation #login{
+    margin-left: 100px;
+    margin-top: -58px;
+  }
+  .navigation .brt{
+    display: none;
+  }
+
+
+}
+
+@media only screen and (min-width: 992px) {
+  .navigation  #overview{
+    font-size: 18px;
+  }
+  .navigation #features{
+    font-size: 18px;
+  }
+
+  .navigation #contactus{
+    font-size: 18px;
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+  .navigation #login{
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+
+}
+
+@media only screen and (max-width: 286px) {
+
+  .navigation .image-text{
+
+    margin-left: 2px;
+  }
+  .navigation #companyname {
+
+    font-size: 35px;
+  }
+
+  .navigation  #overview{
+    font-size: 16px;
+  }
+  .navigation #features{
+    font-size: 16px;
+  }
+
+  .navigation #contactus{
+    font-size: 16px;
+  }
+
+  .navigation #login{
+    margin-left: 100px;
+    margin-top: -58px;
+  }
+  .navigation .brt{
+    display: none;
+  }
+
+}
