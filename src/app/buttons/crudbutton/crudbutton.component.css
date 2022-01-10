@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-@charset "utf-8";
+/*@charset "utf-8";*/
 
 .crud #crudbtn{
   color: #F5F5F5;
@@ -21,3 +21,13 @@
 /*    width: 100%;*/
 /*  }*/
 /*}*/
+
+.crud .btnCustom{
+  width: 300px;
+}
+
+@media (max-width:400px){
+  .crud .btnCustom{
+    width: auto;
+  }
+}

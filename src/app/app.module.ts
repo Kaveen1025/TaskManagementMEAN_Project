@@ -43,7 +43,15 @@ import { FriendcardComponent } from './cards/friendcard/friendcard.component';
 import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { CentermodalComponent } from './modals/centermodal/centermodal.component';
-import { GeneralnoificationsComponent } from './cards/generalnoifications/generalnoifications.component';
+import { WorkspacecardComponent } from './cards/workspacecard/workspacecard.component';
+import { ProjectcardComponent } from './cards/projectcard/projectcard.component';
+import { ProjectAddComponent } from './modals/projectadd/project-add.component';
+import { CrudbuttonpinkComponent } from './buttons/crudbuttonpink/crudbuttonpink.component';
+import { WorkspaceaddComponent } from './modals/workspaceadd/workspaceadd.component';
+import { ProjecteditComponent } from './modals/projectedit/projectedit.component';
+import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.component';
+import {SearchComponent} from "./reusablecomponent/search/search.component";
+import { HeaderComponent } from './navigation/header/header.component';
 
 registerLocaleData(en);
 
@@ -72,7 +80,15 @@ registerLocaleData(en);
     FriendspageComponent,
     FriendcardComponent,
     CentermodalComponent,
-    GeneralnoificationsComponent,
+    WorkspacecardComponent,
+    ProjectcardComponent,
+    ProjectAddComponent,
+    CrudbuttonpinkComponent,
+    WorkspaceaddComponent,
+    ProjecteditComponent,
+    WorkspaceeditComponent,
+    SearchComponent,
+    HeaderComponent,
 
   ],
   imports: [

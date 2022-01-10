@@ -10,10 +10,6 @@
   border-radius: 0 0 15px 15px;
 }
 
-/*remove this */
-.dashboard{
-  height:800px;
-}
 
 .dashboard .t3{
   display:none !important;

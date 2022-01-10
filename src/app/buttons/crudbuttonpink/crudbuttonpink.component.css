@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/*@charset "utf-8";*/
+
+.crud #crudbtn{
+  color: #F5F5F5;
+  font-family: Roboto, normal, serif;
+  padding: 10px 20px 10px 20px;
+  border-radius:2px;
+  background-color : #FC5185;
+  font-weight: bold;
+}
+
+.crud #crudbtn:hover{
+  background-color : #3FC1C9;
+  color : #F5F5F5;
+  border-radius:2px;
+}
+.crud .btnCustom{
+  width: 300px;
+}
+
+@media (max-width:400px){
+  .crud .btnCustom{
+    width: auto;
+  }
+}

@@ -13,6 +13,7 @@ export class DashboardComponent implements OnInit {
   Date:String
   todayDataTime:String
   greetings: String;
+  numbers:  any[] = ["2","3"];
   constructor() {
     this.greetings = ""
     this.imagePath = "./assets/images/Dynamic%20Image%20Collection/"

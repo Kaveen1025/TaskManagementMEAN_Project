@@ -1,0 +1,51 @@
+<ng-template #content let-modal class = "mainModal">
+  <div class="modal-header mainHeader text-center">
+     <h3 class="modal-title mainTitle w-100"><b>Create New Project</b></h3>
+    <div class = "closeContainer">
+      <button type="button" class="close closeBtn" aria-label="Close" (click)="modal.close('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body mainBody">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div class="mb-3">
+            <label class="form-label labels">Project Name<font class = "required">*</font></label>
+            <input type="text" class="form-control inputFieldsTxt" placeholder = "Project Name">
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="mb-3">
+            <label class="form-label labels">Deadline (Optional)</label>
+            <input type="date" class="form-control inputFieldsTxt">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm">
+          <div class="form-group">
+            <label class = "labels">Description<font class = "required">*</font></label>
+            <textarea class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"></textarea>
+          </div>
+        </div>
+        <div class="col-sm">
+          <div class="mb-3">
+            <label class="form-label labels">Cover Image</label>
+            <input type="file" class="form-control inputFieldsTxt">
+          </div>
+          <div class="mb-3">
+            <label class="form-label labels">Main Image</label>
+            <input type="file" class="form-control inputFieldsTxt">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class = "text-center">
+      <app-crudbuttonpink text="CREATE"></app-crudbuttonpink>
+    </div>
+  </div>
+</ng-template>
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">open Modal vertically centered</button>
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal(content)">close Modal vertically centered</button>

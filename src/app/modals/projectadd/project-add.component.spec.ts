@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SharemodalComponent } from './sharemodal.component';
+import { ProjectAddComponent } from './project-add.component';
 
-describe('SharemodalComponent', () => {
-  let component: SharemodalComponent;
-  let fixture: ComponentFixture<SharemodalComponent>;
+describe('ProjectaddComponent', () => {
+  let component: ProjectAddComponent;
+  let fixture: ComponentFixture<ProjectAddComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharemodalComponent ]
+      declarations: [ ProjectAddComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SharemodalComponent);
+    fixture = TestBed.createComponent(ProjectAddComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

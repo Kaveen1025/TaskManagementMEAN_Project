@@ -1,0 +1,83 @@
+.mainHeader{
+  background: rgb(63,193,201);
+  background: linear-gradient(180deg, rgba(63,193,201,1) 31%, rgba(252,81,133,1) 85%);
+  height : 150px;
+
+}
+
+.mainTitle{
+  font-size: 40px
+}
+
+.labels{
+  color: #364F6B;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.required{
+  color: #FC5185
+}
+
+.inputFieldsTxt{
+  border: 1px solid #3FC1C9
+}
+
+.mainTitle{
+  color: #F5F5F5;
+  margin-top: 50px;
+  letter-spacing: 10px;
+}
+.closeContainer{
+  float: right;
+}
+
+@media screen and (max-width: 1000px){
+  .mainTitle{
+    color: #F5F5F5;
+    margin-top: 50px;
+    letter-spacing: 5px;
+    line-height: 35px;
+  }
+}
+
+@media screen and (max-width: 520px){
+  .mainTitle{
+    color: #F5F5F5;
+    margin-top: 50px;
+    letter-spacing: 2px;
+
+  }
+
+}
+
+@media screen and (max-width: 470px){
+  .mainTitle{
+    color: #F5F5F5;
+    margin-top: 50px;
+    letter-spacing: 2px;
+    font-size: 25px
+
+  }
+}
+
+@media screen and (max-width: 350px){
+  .mainTitle{
+    color: #F5F5F5;
+    margin-top: 50px;
+    letter-spacing: 2px;
+    font-size: 22px;
+
+  }
+}
+
+
+@media screen and (max-width: 310px){
+  .mainTitle{
+    color: #F5F5F5;
+    margin-top: 50px;
+    letter-spacing: 2px;
+    font-size: 18px;
+
+  }
+}
