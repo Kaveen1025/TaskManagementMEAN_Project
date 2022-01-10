@@ -7,6 +7,7 @@ const bcrypt = require("bcryptjs");
 
 // import getUserDetails from "./generic";
 const generic = require('./generic');
+const Workspace = require("../models/workspace");
 
 
 //Add user --> Signup Page
@@ -300,14 +301,14 @@ router.route("/addfriendReq/:userID/:friendID").put(async (req, res) => {
       {_id: UserID},
       {$push: {RequestedFriends : FriendID}}
     );
-    res.status(200).send({status: "Friend  Request Added successfully"});
+    res.status(200).send({status: "Friend  Request Sent successfully"});
   } catch (error) {
     res.status(404).json({message: error.message});
   }
 });
 
 
-//Remove Friend
+//Remove Friend Request
 //URL --> http://localhost:8070/user/removefriendReq/:userID/:friendID
 router.route("/removefriendReq/:userID/:friendID").delete(async (req, res) => {
 
@@ -400,8 +401,95 @@ router.route("/removeprojectInv/:userID/:projectID").delete(async (req, res) => 
 
 
 //Check Friends Array --> Sharing models
-//URL
+//URL --> http://localhost:8070/user/checkFriends/:userID/:friendID
 
+router.route("/checkFriends/:userid/:friendid").get((req, res) => {
+  let UserID = req.params.userid;
+  let FriendID = req.params.friendid;
+  let status = false;
+
+  User.findOne({_id:UserID}).exec((err, post) => {
+    if (err) {
+      console.log(err);
+    } else {
+      for (let i = 0; i < post.Friends.length; i++) {
+        if (FriendID === post.Friends[i]) {
+          status = true;
+          break;
+        } else {
+          status = false
+        }
+      }
+      res.send(status);
+    }
+  });
+});
+
+
+//Check Friend Requests Array --> Sharing models
+//URL --> http://localhost:8070/user/checkFriendRequests/:userID/:friendID
+
+router.route("/checkFriendRequests/:userid/:friendid").get((req, res) => {
+  let UserID = req.params.userid;
+  let FriendID = req.params.friendid;
+  let status = false;
+
+  User.findOne({_id:UserID}).exec((err, post) => {
+    if (err) {
+      console.log(err);
+    } else {
+      for (let i = 0; i < post.FriendsRequests.length; i++) {
+        if (FriendID === post.FriendsRequests[i]) {
+          status = true;
+          break;
+        } else {
+          status = false
+        }
+      }
+      res.send(status);
+    }
+  });
+});
+
+
+//Get all Members belongs to a single workspace
+router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
+  let workspaceID = req.params.workspaceID;
+  try {
+    const result = await Workspace.aggregate([
+      {
+        $match: { _id: ObjectId(workspaceID)},
+      },
+      {
+        $project: {
+          MemberIDs: {
+            $map: {
+              input: "$MemberIDs",
+              as: "memberID",
+              in: {
+                $convert: {
+                  input: "$$memberID",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "MemberIDs",
+          foreignField: "_id",
+          as: "Members"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
 
 
 

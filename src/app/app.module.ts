@@ -43,6 +43,7 @@ import { FriendcardComponent } from './cards/friendcard/friendcard.component';
 import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { CentermodalComponent } from './modals/centermodal/centermodal.component';
+import { GeneralnoificationsComponent } from './cards/generalnoifications/generalnoifications.component';
 
 registerLocaleData(en);
 
@@ -71,6 +72,7 @@ registerLocaleData(en);
     FriendspageComponent,
     FriendcardComponent,
     CentermodalComponent,
+    GeneralnoificationsComponent,
 
   ],
   imports: [
