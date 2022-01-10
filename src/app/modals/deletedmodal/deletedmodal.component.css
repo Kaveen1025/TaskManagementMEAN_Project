@@ -1,0 +1,34 @@
+.del svg{
+  font-weight: bold;
+  width: 70px;
+  height: 70px;
+  fill:#FC5185;
+  margin-top: 20px;
+}
+.del modal-body{
+  color: #364F6B;
+}
+
+.del h1{
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #364F6B;
+  font-size: 200%;
+}
+.del h3{
+  margin-bottom: 5px;
+  color: #364F6B;
+}
+
+.del #delbtn{
+  font-weight: bold;
+  background-color: #3FC1C9;
+  color: #F5F5F5;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+
+.del #delbtn:hover{
+  background-color : #FC5185;
+  color : #F5F5F5;
+}

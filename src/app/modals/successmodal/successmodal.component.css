@@ -1,0 +1,29 @@
+.success svg{
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  fill:#FC5185;
+}
+.success modal-body{
+  color: #364F6B;
+}
+
+.success h1{
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #364F6B;
+}
+.success h3{
+  margin-bottom: 5px;
+  color: #364F6B;
+}
+
+.success #okbtn{
+
+  background-color: #3FC1C9;
+  color: #F5F5F5;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+
+
