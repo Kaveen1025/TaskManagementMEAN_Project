@@ -45,6 +45,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { CentermodalComponent } from './modals/centermodal/centermodal.component';
 import { WorkspacecardComponent } from './cards/workspacecard/workspacecard.component';
 import { ProjectcardComponent } from './cards/projectcard/projectcard.component';
+import { ProjectAddComponent } from './modals/projectadd/project-add.component';
+import { CrudbuttonpinkComponent } from './buttons/crudbuttonpink/crudbuttonpink.component';
 
 registerLocaleData(en);
 
@@ -75,6 +77,8 @@ registerLocaleData(en);
     CentermodalComponent,
     WorkspacecardComponent,
     ProjectcardComponent,
+    ProjectAddComponent,
+    CrudbuttonpinkComponent,
 
   ],
   imports: [
