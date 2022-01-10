@@ -73,3 +73,21 @@
   padding-top: 18px;
 }
 
+@media only screen and (max-width: 500px) {
+  .sendfriendrequestdiv .column1 {
+    float: left;
+    width: 33.33%;
+    padding-left: 10px;
+    padding-top: 18px;
+  }
+}
+
+@media only screen and (max-width: 365px) {
+  .sendfriendrequestdiv .column1 {
+    float: left;
+    width: 33.33%;
+    padding-left: 25px;
+    padding-top: 18px;
+    ;
+  }
+}

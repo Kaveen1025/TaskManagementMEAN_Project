@@ -1,29 +1,31 @@
-<app-friendsheader></app-friendsheader>
+<div class = "friendpage">
+  <app-friendsheader></app-friendsheader>
 
-<div class = "" style = "padding-left: 40px; padding-right: 40px">
-  <div class = "row">
-    <div class = "col-md-1">
-      <a href = "bbb"><h1  style = "color: #364F6B; font-weight: bolder;">Friends</h1></a>
-
-    </div>
-    <div class = "col-md-3">
-      <a href = "aaa"><h1 style = "color: #364F6B;  font-weight: bolder;">Friend Requests</h1></a>
-    </div>
-  </div>
-  <div class = "row">
-    <div class = "col-md-7" style = "overflow-y: scroll; height: 660px">
-      <div class = "row">
-        <div class = "col-xs-6 col-md-4" *ngFor="let avatarArrays of requestArray;">
-            <app-friendrequest></app-friendrequest>
-          <br>
-        </div>
+  <div class = "" style = "padding-left: 40px; padding-right: 40px">
+    <div class = "row">
+      <div class = "col-lg-1  col-md-2 col-xs-3 col-sm-4">
+        <a href = "bbb"><h1  style = "color: #364F6B; font-weight: bolder;">Friends</h1></a>
 
       </div>
+      <div class = "col-lg-3 col-md-3 col-xs-4 col-sm-5">
+        <a href = "aaa"><h1 style = "color: #364F6B;  font-weight: bolder;">Friend Requests</h1></a>
+      </div>
     </div>
-    <div class = "col-md-1">
-    </div>
-    <div class = "col-md-4">
-      <app-sendfriendrequestcard></app-sendfriendrequestcard>
+    <div class = "row">
+      <div class = "col-lg-7  col-md-7 col-sm-12 col-xs-12" style = "overflow-y: scroll; height: 660px">
+        <div class = "row">
+          <div class = "col-lg-4 col-md-6 col-xs-6 col-sm-6 text-center" *ngFor="let avatarArrays of requestArray;">
+              <app-friendrequest></app-friendrequest>
+            <br>
+          </div>
+
+        </div>
+      </div>
+
+      <div class = "col-lg-3 col-md-5  col-sm-12 col-xs-12 " >
+        <br>  <br>
+        <app-sendfriendrequestcard class = "friendcard"></app-sendfriendrequestcard>
+      </div>
     </div>
   </div>
 </div>
