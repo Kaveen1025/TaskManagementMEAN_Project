@@ -89,3 +89,103 @@
 background-color: #FC5185;
 
 }
+
+
+@media only screen and (max-width: 600px) {
+
+  .navigation .image-text{
+
+    margin-left: 10px;
+  }
+  .navigation #companyname {
+
+    font-size: 40px;
+  }
+
+  .navigation  #overview{
+    font-size: 18px;
+  }
+  .navigation #features{
+    font-size: 18px;
+  }
+
+  .navigation #contactus{
+    font-size: 18px;
+  }
+
+.navigation #login{
+  margin-left: 100px;
+  margin-top: -58px;
+}
+.navigation .brt{
+  display: none;
+}
+
+
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation #login{
+    margin-left: 100px;
+    margin-top: -58px;
+  }
+  .navigation .brt{
+    display: none;
+  }
+
+
+}
+
+@media only screen and (min-width: 992px) {
+  .navigation  #overview{
+    font-size: 18px;
+  }
+  .navigation #features{
+    font-size: 18px;
+  }
+
+  .navigation #contactus{
+    font-size: 18px;
+  }
+
+}
+
+@media only screen and (min-width: 1200px) {
+  .navigation #login{
+    margin-left: 0px;
+    margin-top: 0px;
+  }
+
+}
+
+@media only screen and (max-width: 286px) {
+
+  .navigation .image-text{
+
+    margin-left: 2px;
+  }
+  .navigation #companyname {
+
+    font-size: 35px;
+  }
+
+  .navigation  #overview{
+    font-size: 16px;
+  }
+  .navigation #features{
+    font-size: 16px;
+  }
+
+  .navigation #contactus{
+    font-size: 16px;
+  }
+
+  .navigation #login{
+    margin-left: 100px;
+    margin-top: -58px;
+  }
+  .navigation .brt{
+    display: none;
+  }
+
+}
