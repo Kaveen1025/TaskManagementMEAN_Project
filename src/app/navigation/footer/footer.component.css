@@ -93,18 +93,24 @@
 
 .footer #facebook{
 
-  height: 45px;
-  width: 45px;
+  height: 50px;
+  width: 50px;
 
 }
 
 .footer #twitter{
 
+  height: 50px;
+  width: 50px;
+}
+
+.footer #google{
+
   height: 45px;
   width: 45px;
 }
 
-.footer #google{
+.footer #instagram{
 
   height: 45px;
   width: 45px;
