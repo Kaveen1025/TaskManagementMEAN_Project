@@ -1,0 +1,69 @@
+
+
+  <ng-template #content let-modal>
+    <div class="sharemod">
+    <app-modalheader text="Share With Your Team"></app-modalheader>
+    <div class="modal-body">
+      <app-search text="Search by username, full name or email"></app-search>
+
+      <div class="card p-3" id="card1">
+
+        <div class="row" id="row1">
+          <div class="col-sm-1 text-center">
+            <img class="crdImg" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG">
+          </div>
+          <div class="col-sm-6" id="spaan">
+            <span>Sonal Jayawardana</span><br>
+            <span id="name1">Sonal Uchiru jayawardhana</span><br>
+            <span id="name2"> Sonal@gmail.com</span>
+          </div>
+          <div class="col-md-1" id="col101"></div>
+
+          <div class="col-sm-1 text-center">
+            <button id="btn33"><img id="icnImg" src="./assets/images/images Used in Project Management UI Design/send.png"></button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    </div>
+  </ng-template>
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">open Modal vertically centered</button>
+  <button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal(content)">close Modal vertically centered</button>
+
+
+<!--  &lt;!&ndash; Button trigger modal &ndash;&gt;-->
+<!--  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+<!--    Launch demo modal-->
+<!--  </button>-->
+<!--<div class="sharemod">-->
+<!--  &lt;!&ndash; Modal &ndash;&gt;-->
+<!--  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--    <div class="modal-dialog modal-dialog-centered modal-lg" id="mod">-->
+<!--      <div class="modal-content">-->
+<!--        <app-modalheader text="Share With Your Team"></app-modalheader>-->
+<!--        <div class="modal-body">-->
+
+<!--          <div class="row" id="row1">-->
+<!--                      <div class="col-sm-1 text-center">-->
+<!--                        <img class="crdImg" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG">-->
+<!--                      </div>-->
+<!--                      <div class="col-sm-6" id="spaan">-->
+<!--                        <span>Sonal Jayawardana</span><br>-->
+<!--                        <span id="name1">Sonal Uchiru jayawardhana</span><br>-->
+<!--                        <span id="name2"> Sonal@gmail.com</span>-->
+<!--                      </div>-->
+<!--                      <div class="col-md-1" id="col101"></div>-->
+
+<!--                      <div class="col-sm-1 text-center">-->
+<!--                        <button id="btn33"><img id="icnImg" src="./assets/images/images Used in Project Management UI Design/send.png"></button>-->
+<!--                      </div>-->
+<!--          </div>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

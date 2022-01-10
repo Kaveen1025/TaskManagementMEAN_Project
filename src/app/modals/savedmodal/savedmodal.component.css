@@ -1,0 +1,29 @@
+.saved svg{
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  fill:#FC5185;
+}
+.saved modal-body{
+  color: #364F6B;
+}
+
+.saved h1{
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #364F6B;
+}
+.saved h3{
+  margin-bottom: 5px;
+  color: #364F6B;
+}
+
+.saved #okebtn{
+
+  background-color: #3FC1C9;
+  color: #F5F5F5;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+
+
