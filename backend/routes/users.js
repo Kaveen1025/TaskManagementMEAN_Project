@@ -97,30 +97,78 @@ router.route("/getbyname/:name").get(async (req,res) => {
   })
 })
 
-//Update User --> Edit Profile Page
-//URL --> http://localhost:8070/user/update/:id
-router.route('/update/:id').put(async (req,res)=> {
+//Update User --> Edit Profile Page ---> Changed
+//URL --> http://localhost:8070/user/update/:id/:status
+router.route('/update/:id/:status').put(async (req,res)=> {
 
     let userID = req.params.id;
+    let status = req.params.status;
 
-  const {FirstName, LastName, ProfileImage} = req.body;
+  const {Value} = req.body;
 
-    const updatedUser = await User.updateOne(
-      {_id: userID},
-      {
-        $set:{
-          FirstName: FirstName,
-          LastName : LastName,
-          ProfileImage: ProfileImage
+
+
+  switch(status) {
+    case 1:
+      // First Name
+      const updatedUser = await User.updateOne(
+        {_id: userID},
+        {
+          $set:{
+            FirstName: Value,
+          }
         }
-      }
-    ).then(() =>{
-      res.status(200).send({status: "User Profile Updated"});
-    }).catch((err) => {
+      ).then(() =>{
+        res.status(200).send({status: "First Name Updated"});
+      }).catch((err) => {
+        res
+          .status(500)
+          .send({status: "Error with updating data", error: err.message});
+      })
+
+      break;
+    case 2:
+      // Last Name
+      const  updatedUser2 = await User.updateOne(
+        {_id: userID},
+        {
+          $set:{
+            LastName: Value,
+          }
+        }
+      ).then(() =>{
+        res.status(200).send({status: "Last Name Updated"});
+      }).catch((err) => {
+        res
+          .status(500)
+          .send({status: "Error with updating data", error: err.message});
+      })
+      break;
+
+    case 3:
+      //Image
+      const  updatedUser3 = await User.updateOne(
+        {_id: userID},
+        {
+          $set:{
+            ProfileImage: Value,
+          }
+        }
+      ).then(() =>{
+        res.status(200).send({status: "Profile Image Updated"});
+      }).catch((err) => {
+        res
+          .status(500)
+          .send({status: "Error with updating data", error: err.message});
+      })
+      break;
+    default:
+    // code block
       res
         .status(500)
-        .send({status: "Error with updating data", error: err.message});
-    })
+        .send({status: "Invalid Update Status"});
+  }
+
 })
 
 

@@ -52,6 +52,7 @@ import { ProjecteditComponent } from './modals/projectedit/projectedit.component
 import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.component';
 import {SearchComponent} from "./reusablecomponent/search/search.component";
 import { HeaderComponent } from './navigation/header/header.component';
+import {GeneralnoificationsComponent} from "./cards/generalnoifications/generalnoifications.component";
 
 registerLocaleData(en);
 
@@ -89,6 +90,7 @@ registerLocaleData(en);
     WorkspaceeditComponent,
     SearchComponent,
     HeaderComponent,
+    GeneralnoificationsComponent
 
   ],
   imports: [
