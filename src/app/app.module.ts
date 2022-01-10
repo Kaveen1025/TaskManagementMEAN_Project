@@ -43,8 +43,35 @@ import { FriendcardComponent } from './cards/friendcard/friendcard.component';
 import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { CentermodalComponent } from './modals/centermodal/centermodal.component';
+import { ModalheaderComponent } from './modals/modalheader/modalheader.component';
+import { SharemodalComponent } from './modals/sharemodal/sharemodal.component';
+import { BasicmodalComponent } from './modals/basicmodal/basicmodal.component';
+import { ErrormodalComponent } from './modals/errormodal/errormodal.component';
+import { SuccessmodalComponent } from './modals/successmodal/successmodal.component';
+import { SavedmodalComponent } from './modals/savedmodal/savedmodal.component';
+import { DeletedmodalComponent } from './modals/deletedmodal/deletedmodal.component';
+import {SearchComponent} from "./reusablecomponent/search/search.component";
+import {ForgotpasswordComponent} from "./reusablecomponent/forgotpassword/forgotpassword.component";
+import { Forgotpassword2Component } from './reusablecomponent/forgotpassword2/forgotpassword2.component';
+import { Forgotpassword3Component } from './reusablecomponent/forgotpassword3/forgotpassword3.component';
+import { LoginComponent } from './components/login/login.component';
+
+import { RouterModule,Routes} from "@angular/router";
+import { NotificationheaderComponent } from './reusablecomponent/notificationheader/notificationheader.component';
 
 registerLocaleData(en);
+
+const appRoutes:Routes=[
+    {
+    path: 'forgotpassword', component:ForgotpasswordComponent
+    },
+    {
+      path: 'forgotpassword2', component: Forgotpassword2Component
+    },
+    {
+      path: 'forgotpassword3', component: Forgotpassword3Component
+    }
+  ]
 
 @NgModule({
   declarations: [
@@ -71,6 +98,19 @@ registerLocaleData(en);
     FriendspageComponent,
     FriendcardComponent,
     CentermodalComponent,
+    ModalheaderComponent,
+    SharemodalComponent,
+    BasicmodalComponent,
+    ErrormodalComponent,
+    SuccessmodalComponent,
+    SavedmodalComponent,
+    DeletedmodalComponent,
+    SearchComponent,
+    ForgotpasswordComponent,
+    Forgotpassword2Component,
+    Forgotpassword3Component,
+    LoginComponent,
+    NotificationheaderComponent,
 
   ],
   imports: [
@@ -90,7 +130,8 @@ registerLocaleData(en);
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    RouterModule.forRoot(appRoutes)
 
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
