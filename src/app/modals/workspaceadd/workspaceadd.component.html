@@ -1,6 +1,6 @@
 <ng-template #content let-modal class = "mainModal">
   <div class="modal-header mainHeader text-center">
-     <h3 class="modal-title mainTitle w-100"><b>Create New Project</b></h3>
+    <h3 class="modal-title mainTitle w-100"><b>Create New Workspace</b></h3>
     <div class = "closeContainer">
       <button type="button" class="close closeBtn" aria-label="Close" (click)="modal.close('Cross click')">
         <span aria-hidden="true">&times;</span>
@@ -12,14 +12,14 @@
       <div class="row">
         <div class="col-sm">
           <div class="mb-3">
-            <label class="form-label labels">Project Name<font class = "required">*</font></label>
-            <input type="text" class="form-control inputFieldsTxt" placeholder = "Project Name">
+            <label class="form-label labels">Workspace Name<font class = "required">*</font></label>
+            <input type="text" class="form-control inputFieldsTxt" placeholder="Workspace Name">
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
-            <label class="form-label labels">Deadline (Optional)</label>
-            <input type="date" class="form-control inputFieldsTxt">
+            <label class="form-label labels">Cover Image</label>
+            <input type="file" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
@@ -31,10 +31,7 @@
           </div>
         </div>
         <div class="col-sm">
-          <div class="mb-3">
-            <label class="form-label labels">Cover Image</label>
-            <input type="file" class="form-control inputFieldsTxt">
-          </div>
+
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
             <input type="file" class="form-control inputFieldsTxt">
