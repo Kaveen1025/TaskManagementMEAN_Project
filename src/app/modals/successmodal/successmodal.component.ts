@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-centermodal',
-  templateUrl: './centermodal.component.html',
-  styleUrls: ['./centermodal.component.css']
+  selector: 'app-successmodal',
+  templateUrl: './successmodal.component.html',
+  styleUrls: ['./successmodal.component.css']
 })
-export class CentermodalComponent implements OnInit {
+export class SuccessmodalComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
 
@@ -24,4 +24,5 @@ export class CentermodalComponent implements OnInit {
   saveDetails(content: any) {
     this.modalService.dismissAll(content);
   }
+
 }

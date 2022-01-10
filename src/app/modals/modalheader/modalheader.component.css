@@ -1,0 +1,23 @@
+#grd {
+  background:rgb(63,193,201);
+  background: linear-gradient(90deg, rgb(63,193,201,1) 14%, rgba(252,81,133,1) 56%, rgba(245,245,245,1) 100%);
+}
+
+#modlabel{
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  font-size: 200%;
+  margin:auto;
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, 40%);
+  height: 0%;
+}
+
+@media only screen and (max-width: 500px) {
+  #modlabel{
+    font-size: 170%;
+  }
+}

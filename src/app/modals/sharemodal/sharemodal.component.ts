@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
+
 @Component({
-  selector: 'app-centermodal',
-  templateUrl: './centermodal.component.html',
-  styleUrls: ['./centermodal.component.css']
+  selector: 'app-sharemodal',
+  templateUrl: './sharemodal.component.html',
+  styleUrls: ['./sharemodal.component.css']
 })
-export class CentermodalComponent implements OnInit {
+export class SharemodalComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
 
@@ -14,7 +15,7 @@ export class CentermodalComponent implements OnInit {
   }
 
   openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+    this.modalService.open(content, { centered: true, size: 'lg'  });
   }
 
   closeModal(content: any) {
@@ -24,4 +25,5 @@ export class CentermodalComponent implements OnInit {
   saveDetails(content: any) {
     this.modalService.dismissAll(content);
   }
+
 }

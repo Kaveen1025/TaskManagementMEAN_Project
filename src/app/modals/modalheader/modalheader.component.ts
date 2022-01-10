@@ -1,12 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-centermodal',
-  templateUrl: './centermodal.component.html',
-  styleUrls: ['./centermodal.component.css']
+  selector: 'app-modalheader',
+  templateUrl: './modalheader.component.html',
+  styleUrls: ['./modalheader.component.css']
 })
-export class CentermodalComponent implements OnInit {
+export class ModalheaderComponent implements OnInit {
+  modal: any;
+
+  @Input() text: string | undefined;
 
   constructor(private modalService: NgbModal) { }
 
