@@ -43,56 +43,40 @@ import { FriendcardComponent } from './cards/friendcard/friendcard.component';
 import { CrudbuttonComponent } from './buttons/crudbutton/crudbutton.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { CentermodalComponent } from './modals/centermodal/centermodal.component';
-import { WorkspacecardComponent } from './cards/workspacecard/workspacecard.component';
-import { ProjectcardComponent } from './cards/projectcard/projectcard.component';
-import { ProjectAddComponent } from './modals/projectadd/project-add.component';
-import { CrudbuttonpinkComponent } from './buttons/crudbuttonpink/crudbuttonpink.component';
-import { WorkspaceaddComponent } from './modals/workspaceadd/workspaceadd.component';
-import { ProjecteditComponent } from './modals/projectedit/projectedit.component';
-import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.component';
-import {SearchComponent} from "./reusablecomponent/search/search.component";
-import { HeaderComponent } from './navigation/header/header.component';
-import {GeneralnoificationsComponent} from "./cards/generalnoifications/generalnoifications.component";
+import { GeneralnoificationsComponent } from './cards/generalnoifications/generalnoifications.component';
+import {WorkspacepageComponent} from "./components/workspacepage/workspacepage.component";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FeaturespageComponent,
-    GetstartedComponent,
-    SidebarComponent,
-    AvatarGroupComponent,
-    UserprofileComponent,
-    DashboardComponent,
-    CrudbuttonComponent,
-    ContactusComponent,
-    HomepageComponent,
-    FooterComponent,
-    SignupforfreeComponent,
-    LoadinganimationComponent,
-    UserdetailsComponent,
-    ChangepasswordComponent,
-    AcceptordeclinebtnComponent,
-    ClearallComponent,
-    FriendrequestComponent,
-    FriendsheaderComponent,
-    SendfriendrequestcardComponent,
-    FriendspageComponent,
-    FriendcardComponent,
-    CentermodalComponent,
-    WorkspacecardComponent,
-    ProjectcardComponent,
-    ProjectAddComponent,
-    CrudbuttonpinkComponent,
-    WorkspaceaddComponent,
-    ProjecteditComponent,
-    WorkspaceeditComponent,
-    SearchComponent,
-    HeaderComponent,
-    GeneralnoificationsComponent
+    declarations: [
+        AppComponent,
+        FeaturespageComponent,
+        GetstartedComponent,
+        SidebarComponent,
+        AvatarGroupComponent,
+        UserprofileComponent,
+        DashboardComponent,
+        CrudbuttonComponent,
+        ContactusComponent,
+        HomepageComponent,
+        FooterComponent,
+        SignupforfreeComponent,
+        LoadinganimationComponent,
+        UserdetailsComponent,
+        ChangepasswordComponent,
+        AcceptordeclinebtnComponent,
+        ClearallComponent,
+        FriendrequestComponent,
+        FriendsheaderComponent,
+        SendfriendrequestcardComponent,
+        FriendspageComponent,
+        FriendcardComponent,
+        CentermodalComponent,
+        GeneralnoificationsComponent,
+        WorkspacepageComponent,
 
-  ],
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
