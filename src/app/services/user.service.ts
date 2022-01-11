@@ -16,7 +16,10 @@ export class UserService {
   }
 
   changeUserPassword(userID:String,newPassword:any){
-    return this.http.put(environment.apiBaseUrl + 'student/getStudents',newPassword)
+    let content = {
+      Password: newPassword,
+    }
+    return this.http.put(environment.apiBaseUrl + 'user/updatePassword/'+userID,content)
   }
 
 
