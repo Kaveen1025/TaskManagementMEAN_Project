@@ -20,9 +20,16 @@ export class ChangepasswordComponent implements OnInit {
   confirmPassword = new FormControl('');
   wrongPassword: boolean = true;
   mismatch: boolean = true;
+  typeInput1: String
+  typeInput2: String
+  typeInput3: String
   constructor(UserService:UserService) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
+    this.typeInput1 = "password"
+    this.typeInput2 = "password"
+    this.typeInput3 = "password"
+
   }
 
   ngOnInit(): void {
@@ -72,5 +79,33 @@ export class ChangepasswordComponent implements OnInit {
 
   checkCurrentPassword(currentPassword:String):boolean{
    return bcrypt.compareSync(currentPassword,this.User.Password)
+  }
+
+  toggleEye(input:Number) {
+    switch (input) {
+      case 0 :
+        if(this.typeInput1 == "text"){
+          this.typeInput1 = "password"
+        }else{
+          this.typeInput1 = "text"
+        }
+        break
+      case 1 :
+        if(this.typeInput2 == "text"){
+          this.typeInput2 = "password"
+        }else{
+          this.typeInput2 = "text"
+        }
+        break
+      case 2 :
+        if(this.typeInput3 == "text"){
+          this.typeInput3 = "password"
+        }else{
+          this.typeInput3 = "text"
+        }
+        break
+    }
+
+
   }
 }
