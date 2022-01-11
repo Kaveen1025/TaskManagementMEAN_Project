@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-userdetails',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserdetailsComponent implements OnInit {
 
+  @Output() newItemEvent = new EventEmitter<string>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  redirectToChangePasswordPage() {
+    this.newItemEvent.emit('false')
+  }
 }
