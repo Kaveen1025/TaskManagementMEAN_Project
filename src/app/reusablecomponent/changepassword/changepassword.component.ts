@@ -23,6 +23,9 @@ export class ChangepasswordComponent implements OnInit {
   typeInput1: String
   typeInput2: String
   typeInput3: String
+  eyeImageUrl1: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
+  eyeImageUrl2: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
+  eyeImageUrl3: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   constructor(UserService:UserService) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
@@ -86,22 +89,28 @@ export class ChangepasswordComponent implements OnInit {
       case 0 :
         if(this.typeInput1 == "text"){
           this.typeInput1 = "password"
+          this.eyeImageUrl1 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
         }else{
           this.typeInput1 = "text"
+          this.eyeImageUrl1 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/open.png"
         }
         break
       case 1 :
         if(this.typeInput2 == "text"){
           this.typeInput2 = "password"
+          this.eyeImageUrl2 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
         }else{
           this.typeInput2 = "text"
+          this.eyeImageUrl2 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/open.png"
         }
         break
       case 2 :
         if(this.typeInput3 == "text"){
           this.typeInput3 = "password"
+          this.eyeImageUrl3 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
         }else{
           this.typeInput3 = "text"
+          this.eyeImageUrl3 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/open.png"
         }
         break
     }
