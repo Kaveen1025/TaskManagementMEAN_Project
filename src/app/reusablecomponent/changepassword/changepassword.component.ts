@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./changepassword.component.css']
 })
 export class ChangepasswordComponent implements OnInit {
-
-  constructor() { }
+  userID:String
+  constructor() {
+    this.userID = "61d59e7999dc1f31177898ba"
+  }
 
   ngOnInit(): void {
   }
 
+  changeThePassword() {
+
+  }
 }
