@@ -74,24 +74,26 @@
   transform: translate(-50%, -50%);
 }
 
-@media only screen and (max-width: 360px) {
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
   .projectcard .profile-card-2 .profile {
-    width: 65px;
-    top: -38px;
+    width: 60px;
+    top: -32px;
     left: 15%;
-    height: 65px;
+    height: 60px;
 
   }
 
   .projectcard .profile-card-2 .card-title{
 
-    font-size: 15px;
-    margin-left: 70PX;
-    margin-top: -35px;
+    font-size: 20px;
+    margin-left: 54PX;
+    margin-top: -44px;
   }
-  .projectcard.profile-card-2 .card-text{
+  .projectcard .profile-card-2 .card-text{
 
-    font-size:13px;
+    font-size:12px;
 
   }
   .projectcard .profile-card-2 .avatar{
@@ -103,76 +105,186 @@
     transform: translate(-50%, -50%);
   }
 
+  .projectcard .profile-card-2 .deadline {
+
+    font-size: 10px;
+  }
+
+  .projectcard div.avatar{
+
+    display: none;
+  }
+
 }
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 539px) {
+
   .projectcard .profile-card-2 .profile {
-    width: 75px;
-    top: -40px;
-    left: 15%;
-    height: 75px;
+    width: 70px;
+    top: -32px;
+    left: 14%;
+    height: 70px;
 
   }
+
   .projectcard .profile-card-2 .card-title{
 
     font-size: 20px;
-    margin-left: 78PX;
-    margin-top: -40px;
+    margin-left: 80PX;
+    margin-top: -44px;
   }
-  .projectcard .profile-card-2 .card-text{
 
-    font-size:13px;
+  .projectcard div.avatar{
 
+    display: none;
   }
-  .projectcard .profile-card-2 .avatar{
 
-    margin: 0;
-    position: absolute;
-    top: 109%;
-    left:75%;
-    transform: translate(-50%, -50%);
+  .projectcard .pr{
+    display: none;
   }
 
   .projectcard .profile-card-2 .deadline{
+
+    font-size: 12px;
+  }
+  .projectcard .profile-card-2 .avatar{
+
+    top: 112%;
+    left:80%;
+
+
+  }
+
+  .projectcard div.avatar {
+
+    display: block;
+  }
+}
+
+@media only screen and (max-width:320px) {
+
+  .projectcard .profile-card-2 .profile {
+    width: 55px;
+    top: -32px;
+    left: 17%;
+    height: 55px;
+
+  }
+
+  .projectcard .profile-card-2 .card-title{
+
+    font-size: 14px;
+    margin-left: 50PX;
+    margin-top: -44px;
+  }
+
+  .projectcard .profile-card-2 .card-text{
+
+    font-size:10px;
+
+  }
+
+  .projectcard .profile-card-2 .deadline{
+
+    font-size: 10px;
+  }
+
+
+}
+
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+  .projectcard .profile-card-2 .profile {
+    width: 70px;
+    top: -32px;
+    left: 16%;
+    height: 70px;
+
+  }
+
+  .projectcard .profile-card-2 .card-title{
+
+    font-size: 22px;
+    margin-left: 75PX;
+    margin-top: -44px;
+  }
+
+  .projectcard .pr{
+    display: block;
+  }
+  .projectcard div.avatar{
+
+    display: none;
+  }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+  .projectcard .profile-card-2 .profile {
+    width: 70px;
+    top: -32px;
+    left: 12%;
+    height: 70px;
+
+  }
+
+  .projectcard .pr{
+    display: none;
+  }
+
+  .projectcard .profile-card-2 .card-text{
 
     font-size:12px;
 
   }
 
+  .projectcard .profile-card-2 .deadline{
+
+    font-size: 12px;
+  }
+
+  .projectcard .profile-card-2 .avatar{
+
+    top: 112%;
+
+  }
+
+  .projectcard div.avatar{
+
+    display: block;
+  }
 
 }
 
-@media only screen and (max-width: 320px) {
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
   .projectcard .profile-card-2 .profile {
-    width: 75px;
-    top: -40px;
-    left: 15%;
-    height: 75px;
+    width: 70px;
+    top: -32px;
+    left: 10%;
+    height: 70px;
 
   }
+
   .projectcard .profile-card-2 .card-title{
 
-    font-size: 17px;
-    margin-left: 66PX;
-    margin-top: -38px;
+    font-size: 20px;
+    margin-left: 70PX;
+    margin-top: -44px;
   }
+  .projectcard .pr{
+    display: none;
+  }
+
   .projectcard .profile-card-2 .card-text{
 
-    font-size:11px;
-
-  }
-  .projectcard .profile-card-2 .avatar{
-
-    margin: 0;
-    position: absolute;
-    top: 109%;
-    left:70%;
-    transform: translate(-50%, -50%);
-  }
-
-  .projectcard .profile-card-2 .deadline{
-
-    font-size:10px;
+    font-size:13px;
 
   }
 
@@ -182,101 +294,31 @@
 @media only screen and (max-width: 280px) {
 
   .projectcard .profile-card-2 .profile {
-    width: 65px;
-    top: -35px;
-    left: 17%;
-    height: 65px;
+    width: 50px;
+    top: -28px;
+    left: 20%;
+    height: 50px;
+
   }
+
   .projectcard .profile-card-2 .card-title{
 
-    font-size: 22px;
-    margin-left: 62PX;
-    margin-top: -38px;
+    font-size: 9px;
+    margin-left: 40PX;
+    margin-top: -44px;
   }
 
   .projectcard .profile-card-2 .card-text{
-
-    font-size:11px;
-
-  }
-
-  .projectcard .profile-card-2 .avatar{
-
-    margin: 0;
-    position: absolute;
-    top: 113%;
-    left:65%;
-    transform: translate(-50%, -50%);
-  }
-
-  .projectcard .profile-card-2 .deadline{
 
     font-size:8px;
 
   }
 
+  .projectcard .profile-card-2 .deadline{
 
+    font-size: 8px;
+  }
 
 }
-
-@media only screen and (min-width: 540px) {
-  .projectcard .profile-card-2 .profile {
-    width: 75px;
-    top: -39px;
-    left: 10%;
-    height: 75px;
-  }
-}
-@media only screen and (min-width: 760px) {
-  .projectcard .profile-card-2 .profile {
-    width: 75px;
-    top: -39px;
-    left: 15%;
-    height: 75px;
-  }
-  .projectcard .profile-card-2 .card-title{
-
-    font-size: 20px;
-    margin-left: 70PX;
-    margin-top: -38px;
-  }
-
-  .projectcard .profile-card-2 .avatar{
-
-    margin: 0;
-    position: absolute;
-    top: 110%;
-    left:75%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-@media only screen and (min-width: 996px) {
-  .projectcard .profile-card-2 .profile {
-    width: 95px;
-    top: -52px;
-    left: 12%;
-    height: 95px;
-  }
-
-  .projectcard .profile-card-2 .card-title{
-
-    font-size: 25px;
-    margin-left: 95PX;
-    margin-top: -38px;
-  }
-
-  .projectcard .profile-card-2 .avatar{
-
-    margin: 0;
-    position: absolute;
-    top: 109%;
-    left:78%;
-    transform: translate(-50%, -50%);
-  }
-
-
-}
-
 
 

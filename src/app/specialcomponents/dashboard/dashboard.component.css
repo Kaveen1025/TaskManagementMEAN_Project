@@ -110,7 +110,7 @@
   }
 
   .dashboard .greetings{
-    font-size: 50px;
+    font-size: 40px;
     letter-spacing: 5px;
     line-height:5px;
   }
@@ -130,8 +130,8 @@
   }
 
   .dashboard .greetings{
-    font-size: 45px;
-    letter-spacing: 5px;
+    font-size: 40px;
+    letter-spacing: 3px;
     line-height:5px;
   }
 
@@ -152,7 +152,7 @@
 
 }
 
-@media screen and (max-width: 505px) {
+@media screen and (max-width: 512px) {
   .dashboard .timeAndDate{
     font-size: 20px;
     letter-spacing: 2px;
