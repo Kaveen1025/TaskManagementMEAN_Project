@@ -6,8 +6,11 @@ let Project = require('../models/projects');
 
 // import getUserDetails from "./generic";
 const generic = require('./generic');
+const Workspace = require("../models/workspace");
 
-
+const {
+  ObjectId
+} = require('mongodb');
 //Add Projects --> Create Project Modal
 //URL --> http://localhost:8070/project/add
 router.route('/add').post((req,res) => {
@@ -150,6 +153,44 @@ router.route("/removemember/:projectID/:memberID").delete(async (req, res) => {
   }
 });
 
+//Get member details belong to a project
+router.route("/getMemberDetails/:projectID").get(async (req, res) => {
+  let projectID = req.params.projectID;
+  try {
+    const result = await Project.aggregate([
+      {
+        $match: { _id: ObjectId(projectID)},
+      },
+      {
+        $project: {
+          MemberIDs: {
+            $map: {
+              input: "$MemberIDs",
+              as: "memberID",
+              in: {
+                $convert: {
+                  input: "$$memberID",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "MemberIDs",
+          foreignField: "_id",
+          as: "Members"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
 
 
 

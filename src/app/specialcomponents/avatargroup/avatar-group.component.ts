@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {AvatargroupService} from "../../services/avatargroup.services";
 
 @Component({
   selector: 'app-avatar-group',
@@ -7,19 +8,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvatarGroupComponent implements OnInit {
 
-  avatarArray:any[]
+  avatarArray:Object[] = [];
   i:String
   textAvatarElement:boolean;
-  constructor() {
-    this.avatarArray = ["1","2","3","4","5","6","7","8","9","10"]
+  members: any = [{}];
+  memberObject: any = {};
+  ProfileImage: string = ""
+
+  avatarGroupService: AvatargroupService;
+
+  @Input() projectID: any;
+
+  constructor(avatarGroupService: AvatargroupService) {
+    this.avatarGroupService = avatarGroupService;
     this.i = ""
     this.textAvatarElement = true
   }
 
-  ngOnInit(): void {
-    if(this.avatarArray.length >= 5){
+  async ngOnInit(): Promise<void> {
+
+    if(this.projectID != undefined) {
+      await this.getMemberDetails();
+    }
+  }
+
+  getMemberDetails(){
+    this.avatarGroupService.getAllMembers(this.projectID).subscribe((post: any)=> {
+      this.memberObject = post;
+
+      this.members = this.memberObject[0].Members;
+      console.log("Single member")
+      console.log(this.members)
+      console.log(this.members[0].ProfileImage)
+
+      this.avatarArray = this.members
+
+
+    });
+
+    if (this.avatarArray.length >= 5) {
       this.i = '+' + String(this.avatarArray.length - 5)
-      this.avatarArray = this.avatarArray.splice(0,5)
+      this.avatarArray = this.avatarArray.splice(0, 5)
       this.textAvatarElement = false
     }
   }
