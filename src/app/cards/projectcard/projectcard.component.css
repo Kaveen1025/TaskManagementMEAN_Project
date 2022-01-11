@@ -91,7 +91,7 @@
   }
   .projectcard.profile-card-2 .card-text{
 
-    font-size:13px;
+    font-size:10px;
 
   }
   .projectcard .profile-card-2 .avatar{
@@ -105,40 +105,71 @@
 
 }
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 321px) {
   .projectcard .profile-card-2 .profile {
-    width: 75px;
-    top: -40px;
-    left: 15%;
-    height: 75px;
+    width: 50px;
+    top: -30px;
+    left: 14%;
+    height: 50px;
 
   }
+  .projectcard  .profile-card-2 .card-title{
+
+    font-size: 14px;
+    margin-left: 35PX;
+    margin-top: -46px;
+
+  }
+  .projectcard  .profile-card-2 .card-text{
+
+    font-size:10px;
+
+  }
+
+  .projectcard .profile-card-2 .deadline{
+
+    font-size:10px;
+
+  }
+  .projectcard  .profile-card-2 .avatar{
+
+    margin: 0;
+    position: absolute;
+    top: 118%;
+    left:62%;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
+@media only screen and (min-width: 400px) {
+  .projectcard .profile-card-2 .profile {
+    width: 60px;
+    top: -32px;
+    left: 15%;
+    height: 60px;
+
+  }
+
   .projectcard .profile-card-2 .card-title{
 
-    font-size: 20px;
-    margin-left: 78PX;
-    margin-top: -40px;
+    font-size: 17px;
+    margin-left: 54PX;
+    margin-top: -44px;
   }
   .projectcard .profile-card-2 .card-text{
 
-    font-size:13px;
+    font-size:12px;
 
   }
   .projectcard .profile-card-2 .avatar{
 
     margin: 0;
     position: absolute;
-    top: 109%;
-    left:75%;
+    top: 115%;
+    left:68%;
     transform: translate(-50%, -50%);
   }
-
-  .projectcard .profile-card-2 .deadline{
-
-    font-size:12px;
-
-  }
-
 
 }
 
