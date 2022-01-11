@@ -26,12 +26,14 @@ export class ChangepasswordComponent implements OnInit {
   eyeImageUrl1: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   eyeImageUrl2: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   eyeImageUrl3: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
+  loadingStatus: any;
   constructor(UserService:UserService) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.typeInput1 = "password"
     this.typeInput2 = "password"
     this.typeInput3 = "password"
+    this.loadingStatus = true
 
   }
 
@@ -42,6 +44,7 @@ export class ChangepasswordComponent implements OnInit {
   changeThePassword() {
     this.wrongPassword = true
     this.mismatch = true
+    this.loadingStatus = false
     if(this.checkCurrentPassword(this.currentPassword.value)){
       this.wrongPassword = true
       if(this.confirmPassword.value === this.newPassword.value) {
@@ -51,18 +54,22 @@ export class ChangepasswordComponent implements OnInit {
           {
             alert("password updated")
             this.getUser()
+            this.loadingStatus = true
           }
           ,
           error:error => {
             console.log(error)
+            this.loadingStatus = true
           }
         } )
       }else{
         this.mismatch = false
+        this.loadingStatus = true
       }
 
     }else{
-     this.wrongPassword = false;
+     this.wrongPassword = false
+      this.loadingStatus = true
     }
 
   }
