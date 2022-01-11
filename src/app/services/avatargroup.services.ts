@@ -12,5 +12,10 @@ export class AvatargroupService{
     return this.httpClient.get("http://localhost:8070/project/getMemberDetails/"+projectID)
   }
 
+  getWorkspaceMembers(workspaceID: string){
+    return this.httpClient.get("http://localhost:8070/workspace/getMemberDetails/"+workspaceID)
+
+  }
+
 
 }

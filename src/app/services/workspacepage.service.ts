@@ -29,5 +29,10 @@ export class WorkspaceService{
     return this.httpClient.get("http://localhost:8070/workspace/getProjectDetails/"+workspaceID)
   }
 
+  getWorkspaceData(workspaceID: string){
+    return this.httpClient.get("http://localhost:8070/workspace/getWorkspaceByID/"+workspaceID)
+
+  }
+
 
 }

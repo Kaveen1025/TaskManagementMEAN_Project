@@ -17,7 +17,8 @@ export class AvatarGroupComponent implements OnInit {
 
   avatarGroupService: AvatargroupService;
 
-  @Input() projectIDorWorkspaceID: any;
+  @Input() projectID: any;
+  @Input() workspaceID: any;
 
   constructor(avatarGroupService: AvatargroupService) {
     this.avatarGroupService = avatarGroupService;
@@ -27,19 +28,49 @@ export class AvatarGroupComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    if(this.projectIDorWorkspaceID != undefined) {
-      await this.getMemberDetails();
+    console.log("Workspace id")
+    console.log(this.workspaceID)
+    if(this.projectID != undefined) {
+      await this.getProjectMemberDetails();
+    }
+
+    if(this.workspaceID != undefined) {
+      await this.getWorkspaceMemberDetails();
     }
   }
 
-  async getMemberDetails() {
-    await this.avatarGroupService.getAllMembers(this.projectIDorWorkspaceID).subscribe((post: any) => {
+  async getProjectMemberDetails() {
+    await this.avatarGroupService.getAllMembers(this.projectID).subscribe((post: any) => {
       this.memberObject = post;
 
       this.members = this.memberObject[0].Members;
       console.log("Single member")
       console.log(this.members)
       console.log(this.members[0].ProfileImage)
+
+      this.avatarArray = this.members
+
+      if (this.avatarArray.length >= 5) {
+        this.i = '+' + String(this.avatarArray.length - 5)
+        this.avatarArray = this.avatarArray.splice(0, 5)
+        this.textAvatarElement = false
+      }
+
+    });
+
+
+  }
+
+
+  async getWorkspaceMemberDetails() {
+    await this.avatarGroupService.getWorkspaceMembers(this.workspaceID).subscribe((post: any) => {
+      this.memberObject = post;
+
+      this.members = this.memberObject[0].Members;
+      console.log("Single member")
+      // console.log(post);
+      // console.log(this.members)
+      // console.log(this.members[0].ProfileImage)
 
       this.avatarArray = this.members
 

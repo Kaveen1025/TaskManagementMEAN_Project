@@ -21,18 +21,18 @@
 
         </div>
         <div id = "leftbox">
-          <h2 class = "text-center numbertext">10</h2>
+          <h2 class = "text-center numbertext">{{noOfProjects}}</h2>
           <h2 class = "text-center titletext">Projects</h2>
 
         </div>
 
         <div id = "middlebox">
-          <h2 class = "text-center numbertext">7</h2>
+          <h2 class = "text-center numbertext">{{noOfMembers}}</h2>
           <h2 class = "text-center titletext">Members</h2>
         </div>
 
         <div id = "rightbox">
-          <h2 class = "text-center numbertext">5</h2>
+          <h2 class = "text-center numbertext">{{noOfGuests}}</h2>
           <h2 class = "text-center titletext">Guests</h2>
         </div>
         <div id = "box2">
@@ -40,7 +40,7 @@
         </div>
       </div>
       <div class = "membergroup">
-        <app-avatar-group ></app-avatar-group>
+        <app-avatar-group [workspaceID]="workspaceID"></app-avatar-group>
 
       </div>
 
@@ -73,15 +73,18 @@
         <br>
 
       </div>
-      <div class = "projectcards">
+
 
         <div class="container">
           <div class="row">
             <div class="col-sm-6" *ngFor="let ProjectDetails of projects">
               <app-projectcard [projectDetails]="ProjectDetails"></app-projectcard>
+
             </div>
           </div>
         </div>
-      </div>
+      <br><br><br>
+
+
     </div>
 </div>
