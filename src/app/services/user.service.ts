@@ -22,6 +22,11 @@ export class UserService {
     return this.http.put(environment.apiBaseUrl + 'user/updatePassword/'+userID,content)
   }
 
+  getUserWorkspaces(userID:String){
+
+    return this.http.get(environment.apiBaseUrl + 'user/getWorkspaceDetails/'+userID)
+  }
+
 
 
   // updateStudent(student:any){

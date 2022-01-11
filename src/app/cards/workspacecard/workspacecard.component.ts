@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-workspacecard',
@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkspacecardComponent implements OnInit {
 
+  @Input() workSpaceName: string | undefined;
+  @Input() description: string | undefined;
+  @Input() mainImage: string | undefined;
+  @Input() coverImage: string | undefined;
+  @Input() members: string | undefined;
   constructor() { }
 
   ngOnInit(): void {

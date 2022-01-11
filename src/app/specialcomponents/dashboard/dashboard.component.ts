@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,7 +14,7 @@ export class DashboardComponent implements OnInit {
   Date:String
   todayDataTime:String
   greetings: String;
-  numbers:  any[] = ["2","3","4","5","6","7","8","9","10"];
+  workspaces:  any;
 
 
   userID:String
@@ -48,11 +49,15 @@ export class DashboardComponent implements OnInit {
       this.greetingsChange(this.todayDataTime.substring(16,18))
       //this.now = formatDate(new Date(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530')
     }, 1);
+
+
+
   }
 
   ngOnInit(): void {
     this.imageURL = this.imagePath + "Time_4_6.png";
     this.getUser()
+    this.getWorkspaces()
   }
 
   getUser(){
@@ -70,6 +75,19 @@ export class DashboardComponent implements OnInit {
           this.isFriendsRequest = false
         }
 
+      }
+      ,
+      error:error => {
+        console.log(error)
+      }
+    } )
+  }
+  getWorkspaces(){
+    this.UserService.getUserWorkspaces(this.userID).subscribe({
+      next:value=>
+      {
+        this.workspaces = value
+        this.workspaces = this.workspaces[0].WorkspaceDetails
       }
       ,
       error:error => {
