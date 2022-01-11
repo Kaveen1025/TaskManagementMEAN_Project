@@ -12,7 +12,7 @@ export class UserService {
 
   }
   getUser(userID:String){
-    return this.http.get(environment.apiBaseUrl + 'student/getStudents')
+    return this.http.get(environment.apiBaseUrl + 'user/get/'+userID)
   }
 
   changeUserPassword(userID:String,newPassword:any){
