@@ -17,7 +17,7 @@ export class AvatarGroupComponent implements OnInit {
 
   avatarGroupService: AvatargroupService;
 
-  @Input() projectID: any;
+  @Input() projectIDorWorkspaceID: any;
 
   constructor(avatarGroupService: AvatargroupService) {
     this.avatarGroupService = avatarGroupService;
@@ -27,13 +27,13 @@ export class AvatarGroupComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    if(this.projectID != undefined) {
+    if(this.projectIDorWorkspaceID != undefined) {
       await this.getMemberDetails();
     }
   }
 
-  getMemberDetails(){
-    this.avatarGroupService.getAllMembers(this.projectID).subscribe((post: any)=> {
+  async getMemberDetails() {
+    await this.avatarGroupService.getAllMembers(this.projectIDorWorkspaceID).subscribe((post: any) => {
       this.memberObject = post;
 
       this.members = this.memberObject[0].Members;
@@ -43,14 +43,15 @@ export class AvatarGroupComponent implements OnInit {
 
       this.avatarArray = this.members
 
+      if (this.avatarArray.length >= 5) {
+        this.i = '+' + String(this.avatarArray.length - 5)
+        this.avatarArray = this.avatarArray.splice(0, 5)
+        this.textAvatarElement = false
+      }
 
     });
 
-    if (this.avatarArray.length >= 5) {
-      this.i = '+' + String(this.avatarArray.length - 5)
-      this.avatarArray = this.avatarArray.splice(0, 5)
-      this.textAvatarElement = false
-    }
+
   }
 
 }
