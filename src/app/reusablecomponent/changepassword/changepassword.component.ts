@@ -27,6 +27,10 @@ export class ChangepasswordComponent implements OnInit {
   eyeImageUrl2: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   eyeImageUrl3: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   loadingStatus: any;
+  public account = {
+    password: "ddf$hd"
+  };
+  public barLabel: string = "Password strength:";
   constructor(UserService:UserService) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
