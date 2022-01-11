@@ -7,7 +7,8 @@ const bcrypt = require("bcryptjs");
 
 // import getUserDetails from "./generic";
 const generic = require('./generic');
-const Workspace = require("../models/workspace");
+const {ObjectId} = require("mongodb");
+
 
 
 //Add user --> Signup Page
@@ -500,23 +501,24 @@ router.route("/checkFriendRequests/:userid/:friendid").get((req, res) => {
 });
 
 
-//Get all Members belongs to a single workspace
-router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
-  let workspaceID = req.params.workspaceID;
+//Get all Workspace Details belongs to a User
+//URL --> http://localhost:8070/user/getWorkspaceDetails/:userID
+router.route("/getWorkspaceDetails/:userID").get(async (req, res) => {
+  let UserID = req.params.userID;
   try {
-    const result = await Workspace.aggregate([
+    const result = await User.aggregate([
       {
-        $match: { _id: ObjectId(workspaceID)},
+        $match: { _id: ObjectId(UserID)},
       },
       {
         $project: {
-          MemberIDs: {
+          Workspaces: {
             $map: {
-              input: "$MemberIDs",
-              as: "memberID",
+              input: "$Workspaces",
+              as: "workspaceIDs",
               in: {
                 $convert: {
-                  input: "$$memberID",
+                  input: "$$workspaceIDs",
                   to: "objectId"
                 }
               }
@@ -526,14 +528,14 @@ router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
       },
       {
         $lookup: {
-          from: "users",
-          localField: "MemberIDs",
+          from: "workspaces",
+          localField: "Workspaces",
           foreignField: "_id",
-          as: "Members"
+          as: "WorkspaceDetails"
         }
       }
     ])
-    res.status(200).json(result);
+      res.status(200).json(result);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
