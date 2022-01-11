@@ -69,7 +69,7 @@
 
 
 
-@media only screen and (min-width: 320px) {
+@media only screen and (min-width: 365px) {
   .workspacecard .profile-card-2 .profile {
     width: 55px;
     top: -30px;
@@ -79,7 +79,7 @@
   }
   .workspacecard .profile-card-2 .card-title{
 
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 45PX;
     margin-top: -42px;
 
@@ -100,7 +100,7 @@
 
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 360px) {
   .workspacecard .profile-card-2 .profile {
     width: 50px;
     top: -27px;
@@ -199,11 +199,11 @@
 
 }
 
-@media only screen and (min-width: 440px) {
+@media only screen and (min-width: 437px) {
   .workspacecard .profile-card-2 .profile {
     width: 65px;
     top: -35px;
-    left: 10%;
+    left: 12%;
     height: 65px;
   }
 
@@ -217,8 +217,8 @@
 
     margin: 0;
     position: absolute;
-    top: 118%;
-    left:78%;
+    top: 116%;
+    left:72%;
     transform: translate(-50%, -50%);
   }
 
