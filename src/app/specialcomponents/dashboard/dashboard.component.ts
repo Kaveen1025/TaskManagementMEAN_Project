@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {UserService} from "../../services/user.service";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,7 +14,25 @@ export class DashboardComponent implements OnInit {
   todayDataTime:String
   greetings: String;
   numbers:  any[] = ["2","3","4","5","6","7","8","9","10"];
-  constructor() {
+
+
+  userID:String
+  User:any
+  UserService:UserService
+  notificationCount: Number
+  friendRequestCount:Number
+  isNotifications: boolean;
+  isFriendsRequest: boolean;
+
+  constructor(UserService:UserService) {
+
+    this.userID = "61d59e7999dc1f31177898ba"
+    this.UserService = UserService
+    this.notificationCount = 0
+    this.friendRequestCount = 0
+    this.isNotifications = true
+    this.isFriendsRequest = true
+
     this.greetings = ""
     this.imagePath = "./assets/images/Dynamic%20Image%20Collection/"
     this.imageURL = ""
@@ -34,8 +52,31 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.imageURL = this.imagePath + "Time_4_6.png";
+    this.getUser()
   }
 
+  getUser(){
+    this.UserService.getUser(this.userID).subscribe({
+      next:value=>
+      {
+        this.User = value
+        if(this.User.NotificationIDs.length > 0){
+          this.notificationCount = this.User.NotificationIDs.length
+          this.isNotifications = false
+        }
+
+        if(this.User.FriendsRequests.length > 0){
+          this.friendRequestCount = this.User.FriendsRequests.length
+          this.isFriendsRequest = false
+        }
+
+      }
+      ,
+      error:error => {
+        console.log(error)
+      }
+    } )
+  }
   dynamicWallpaper(timePrefix:String):void{
     if(Number(timePrefix) >= 0 && Number(timePrefix) < 4) {
       this.imageURL = this.imagePath + "Time_12_4.png"
