@@ -13,10 +13,14 @@ export class UserdetailsComponent implements OnInit {
 
   UserService:UserService
   user: any
-  editableStatus1:boolean = false;
+  editableStatus1:boolean
+  editableStatus:boolean
   constructor(UserService:UserService) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
+    this.editableStatus = false
+    this.editableStatus1 = false
+
   }
 
 
@@ -39,5 +43,16 @@ export class UserdetailsComponent implements OnInit {
 
   redirectToChangePasswordPage() {
     this.newItemEvent.emit('false')
+  }
+
+  makeEditable() {
+    this.editableStatus1 = true
+    this.editableStatus = true
+
+  }
+
+  cancel() {
+    this.editableStatus1 = false
+    this.editableStatus = false
   }
 }

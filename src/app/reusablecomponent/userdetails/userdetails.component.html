@@ -10,9 +10,9 @@
                         src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/id-card.png"
                         alt="id card">
               <span class="details">{{user.FirstName}}</span>
-              <span ><img class="img-fluid editIcon iconClickable"
-                         src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png"
-                         alt="edit pencil"></span>
+              <span ><a type = "button" (click)="makeEditable()"><img class="img-fluid editIcon iconClickable"
+                             src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png"
+                             alt="edit pencil"></a></span>
             </div>
             <div class="col" [hidden] = "!editableStatus1">
               <img class="img-fluid imageIcon"
@@ -62,7 +62,7 @@
   </div>
   <div class="text-center">
     <div class="container">
-      <div class="row">
+      <div class="row" [hidden] = "editableStatus">
         <div class="col-sm">
         </div>
         <div class="col-sm">
@@ -72,7 +72,7 @@
         <div class="col-sm">
         </div>
       </div>
-      <div class="row" hidden>
+      <div class="row" [hidden] = "!editableStatus">
         <div class="col-sm">
         </div>
                 <div class="col-sm">
@@ -81,14 +81,14 @@
                 </div>
         <div class="col-sm">
           <br>
-          <app-crudbuttonpink text="Cancel" (btnClick)="redirectToChangePasswordPage()"></app-crudbuttonpink>
+          <app-crudbuttonpink text="CANCEL" (btnClick)="cancel()"></app-crudbuttonpink>
         </div>
         <div class="col-sm">
         </div>
       </div>
       <br>
       <div class="row">
-        <app-crudbuttonpink text="DELETE MY ACCOUNT"></app-crudbuttonpink>
+        <app-crudbuttonpink text="DELETE MY ACCOUNT" ></app-crudbuttonpink>
       </div>
     </div>
 
