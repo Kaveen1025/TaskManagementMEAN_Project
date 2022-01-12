@@ -15,11 +15,14 @@
   </div>
   <br><br>
   <div>
-    <app-search text = "Search"></app-search>
+    <br>
+    <app-search text = "Search" [(ngModel)] = "searchResult" (ngModelChange)="searchWorkspace()"></app-search>
 
     <br>
 <app-crudbutton  class="text-center" text = "CREATE WORKSPACE"></app-crudbutton>
-    <br><div class="container">
+    <br>
+    <h1 class = "errorMsg" [hidden] = "errorMsgStatus">{{errorMsg}}</h1>
+    <div class="container" [hidden]="!loadingStatus">
         <div class="row">
           <div class="col-sm-6" *ngFor="let oneWorkspace of workspaces">
             <app-workspacecard
@@ -33,12 +36,13 @@
         </div>
       </div>
 
-  <br>
+  <br><br>
 <!--&lt;!&ndash;  use the loading like this&ndash;&gt;-->
-<!--  <div class="card" style = "border: none">-->
-<!--      <app-loadinganimation></app-loadinganimation>-->
-<!--  </div>-->
+  <div class="card" style = "border: none" [hidden] = "loadingStatus">
+      <app-loadinganimation></app-loadinganimation>
+  </div>
 </div>
+  <br>
 </div>
 
 

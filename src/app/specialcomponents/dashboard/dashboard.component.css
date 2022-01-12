@@ -10,6 +10,9 @@
   border-radius: 0 0 15px 15px;
 }
 
+.dashboard{
+  min-height: 1000px
+}
 
 .dashboard .t3{
   display:none !important;
@@ -264,5 +267,9 @@
 
 }
 
+.dashboard .errorMsg{
+  color: #FC5185;
+  text-align: center;
+}
 
 
