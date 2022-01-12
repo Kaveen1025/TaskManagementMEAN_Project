@@ -169,6 +169,36 @@ router.route('/update/:id/:status').put(async (req,res)=> {
 
 })
 
+
+// currently, using
+//Update User --> Edit Profile Page
+//URL --> http://localhost:8070/user/update/:id
+router.route('/updateDetails/:id').put(async (req,res)=> {
+
+  let userID = req.params.id;
+
+  const {FirstName, LastName, ProfileImage} = req.body;
+
+  const updatedUser = await User.updateOne(
+    {_id: userID},
+    {
+      $set:{
+        FirstName: FirstName,
+        LastName : LastName,
+        ProfileImage: ProfileImage
+      }
+    }
+  ).then(() =>{
+    res.status(200).send({status: "User Profile Updated"});
+  }).catch((err) => {
+    res
+      .status(500)
+      .send({status: "Error with updating data", error: err.message});
+  })
+})
+
+
+
 //Delete User -->Edit Profile Page
 //URL -->http://localhost:8070/user/delete/:id
 router.route('/delete/:id').delete(async (req, res) => {

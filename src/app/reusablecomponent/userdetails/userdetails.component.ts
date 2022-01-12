@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {FormControl} from "@angular/forms";
+
 
 @Component({
   selector: 'app-userdetails',
@@ -10,6 +12,9 @@ export class UserdetailsComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter<string>()
   @Input() userID : String | undefined
+  // firstNameField = new FormControl('');
+  firstNameField:any
+  lastNameField:any
 
   UserService:UserService
   user: any
@@ -33,6 +38,8 @@ export class UserdetailsComponent implements OnInit {
       this.UserService.getUser(this.userID).subscribe({
         next: value => {
           this.user = value
+          this.firstNameField = this.user.FirstName
+          this.lastNameField = this.user.LastName
         }
         ,
         error: error => {
@@ -64,5 +71,54 @@ export class UserdetailsComponent implements OnInit {
     this.editableStatus1 = false
     this.editableStatus2 = false
     this.editableStatus = false
+    this.getUser()
+  }
+
+  async updateUserDetails() {
+    console.log(this.firstNameField)
+    console.log(this.lastNameField)
+    let content:any
+
+    if(this.firstNameField == "" && this.lastNameField == ""){
+      content = {
+        FirstName : this.user.FirstName,
+        LastName : this.user.LastName,
+        ProfileImage : this.user.ProfileImage
+      }
+    }else
+    if(this.firstNameField == ""){
+       content = {
+        FirstName : this.user.FirstName,
+        LastName : this.lastNameField,
+        ProfileImage : this.user.ProfileImage
+      }
+    }else if(this.lastNameField == ""){
+      content = {
+        FirstName : this.firstNameField,
+        LastName : this.user.LastName,
+        ProfileImage : this.user.ProfileImage
+      }
+    }else{
+      content = {
+        FirstName : this.firstNameField,
+        LastName : this.lastNameField,
+        ProfileImage : this.user.ProfileImage
+      }
+    }
+
+
+    if (this.userID != null) {
+      await this.UserService.updateUserDetails(this.userID, content).subscribe({
+        next: value => {
+          alert("user updated")
+          this.cancel()
+        }
+        ,
+        error: error => {
+          console.log(error)
+        }
+      })
+    }
+
   }
 }

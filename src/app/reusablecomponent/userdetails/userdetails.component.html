@@ -19,7 +19,7 @@
                    src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/id-card.png"
                    alt="id card">
               <br><br>
-              <span><input class = "inputField" placeholder="Text" type="text"></span>
+              <span><input class = "inputField" placeholder="Text" type="Text" maxlength="50" onkeypress="return /[a-z]/i.test(event.key)"   [(ngModel)]="firstNameField"></span>
             </div>
             <!--          last name-->
             <div class="col" [hidden] = "editableStatus2">
@@ -36,7 +36,7 @@
                    src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/id-card.png"
                    alt="id card">
               <br><br>
-              <span><input class = "inputField" placeholder="Text" type="text"></span>
+              <span><input class = "inputField" placeholder="Text" type="text" maxlength = "50" onkeypress="return /[a-z]/i.test(event.key)" [(ngModel)]="lastNameField"></span>
             </div>
           </div>
           <div class="breakingSpaces">
@@ -84,7 +84,7 @@
         </div>
                 <div class="col-sm">
                   <br>
-                  <app-crudbutton text="EDIT PROFILE"></app-crudbutton>
+                  <app-crudbutton text="EDIT PROFILE" (btnClick) = "updateUserDetails()"></app-crudbutton>
                 </div>
         <div class="col-sm">
           <br>
