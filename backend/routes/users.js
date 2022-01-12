@@ -169,10 +169,6 @@ router.route('/update/:id/:status').put(async (req,res)=> {
 
 })
 
-
-
-
-
 //Delete User -->Edit Profile Page
 //URL -->http://localhost:8070/user/delete/:id
 router.route('/delete/:id').delete(async (req, res) => {
