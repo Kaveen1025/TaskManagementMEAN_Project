@@ -9,10 +9,10 @@
              src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG" alt="userProfile">
         <div>
           <br>
-          <h1 class="workspacename">Happy Orange Company’s Workspace</h1>
+          <h1 class="workspacename">{{workspaceTitle}}</h1>
         </div>
         <div class = "card-body description">
-          Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes.
+          {{workspaceDescription}}
         </div>
       </div>
       <div id = "boxes">
@@ -61,12 +61,15 @@
         <h1 class = "topic">Your Projects</h1>
         <br>
       </div>
-      <div class = "searchbar text-center">
-
-      </div>
-      <div class = "searchbar">
-        <app-search></app-search>
-        <br>
+      <div class = "workspacesearchbar">
+        <div class="container h-100">
+          <div class="d-flex justify-content-center h-100">
+            <div class="searchbar">
+              <input class="search_input" [(ngModel)]="searchText" (ngModelChange)="searchProjects()" type="text" name="" >
+              <a href="#" class="search_icon"><img class = "img141" src="./assets/images/images Used in Project Management UI Design\loupe.png"></a>
+            </div>
+          </div>
+        </div>
       </div>
       <div class = "creatbtn">
         <app-clearall></app-clearall>
@@ -81,6 +84,7 @@
               <app-projectcard [projectDetails]="ProjectDetails"></app-projectcard>
 
             </div>
+            <h3 class = "errortext">{{errorText}}</h3>
           </div>
         </div>
       <br><br><br>

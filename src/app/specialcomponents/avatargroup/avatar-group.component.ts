@@ -54,6 +54,8 @@ export class AvatarGroupComponent implements OnInit {
         this.textAvatarElement = false
       }
 
+    }, error => {
+      console.log(error);
     });
 
 
@@ -78,6 +80,8 @@ export class AvatarGroupComponent implements OnInit {
         this.textAvatarElement = false
       }
 
+    }, error => {
+      console.log(error);
     });
 
 
