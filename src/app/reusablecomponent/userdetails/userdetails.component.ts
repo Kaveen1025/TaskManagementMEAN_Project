@@ -15,11 +15,13 @@ export class UserdetailsComponent implements OnInit {
   user: any
   editableStatus1:boolean
   editableStatus:boolean
+  editableStatus2: boolean;
   constructor(UserService:UserService) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.editableStatus = false
     this.editableStatus1 = false
+    this.editableStatus2 = false
 
   }
 
@@ -45,14 +47,23 @@ export class UserdetailsComponent implements OnInit {
     this.newItemEvent.emit('false')
   }
 
-  makeEditable() {
-    this.editableStatus1 = true
+  makeEditable(which:number) {
     this.editableStatus = true
+    switch (which) {
+      case 0:
+        this.editableStatus1 = true
+        break
+      case 1:
+        this.editableStatus2 = true
+        break
+    }
+
 
   }
 
   cancel() {
     this.editableStatus1 = false
+    this.editableStatus2 = false
     this.editableStatus = false
   }
 }
