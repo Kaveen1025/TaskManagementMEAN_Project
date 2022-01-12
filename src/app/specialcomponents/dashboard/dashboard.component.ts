@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -32,7 +33,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(UserService:UserService) {
 
-    this.userID = "61d59e2e99dc1f31177898b6"
+    this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.notificationCount = 0
     this.friendRequestCount = 0
@@ -169,7 +170,7 @@ export class DashboardComponent implements OnInit {
 
   searchWorkspace() {
     this.workspaces = this.originalWorkspaces.filter((content: any) => {
-      let loweredSearch = content.name.toLowerCase();
+      let loweredSearch = content.WorkspaceName.toLowerCase();
       return loweredSearch.includes(this.searchResult.toLowerCase())
     })
   }

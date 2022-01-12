@@ -16,7 +16,17 @@
   <br><br>
   <div>
     <br>
-    <app-search text = "Search" [(ngModel)] = "searchResult" (ngModelChange)="searchWorkspace()"></app-search>
+<!--    <app-search text = "Search" [(ngModel)] = "searchResult" (ngModelChange)="searchWorkspace()"></app-search>-->
+    <div class="searchbaar">
+      <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+          <div class="searchbar">
+            <input class="search_input" type="text" name="" placeholder="Search" [(ngModel)] = "searchResult" (ngModelChange)="searchWorkspace()">
+            <a type = "button" class="search_icon" (click)="searchWorkspace()"><img id="img141" src="./assets/images/images Used in Project Management UI Design\loupe.png" alt = "searchIcon"></a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <br>
 <app-crudbutton  class="text-center" text = "CREATE WORKSPACE"></app-crudbutton>
