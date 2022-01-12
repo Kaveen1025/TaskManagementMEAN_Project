@@ -22,7 +22,6 @@ export class UserdetailsComponent implements OnInit {
     this.editableStatus = false
     this.editableStatus1 = false
     this.editableStatus2 = false
-
   }
 
 
