@@ -169,10 +169,18 @@ export class DashboardComponent implements OnInit {
 
 
   searchWorkspace() {
+    this.loadingStatus = false
+    this.errorMsgStatus = true
     this.workspaces = this.originalWorkspaces.filter((content: any) => {
       let loweredSearch = content.WorkspaceName.toLowerCase();
+      this.loadingStatus = true
       return loweredSearch.includes(this.searchResult.toLowerCase())
     })
+
+    if(this.workspaces.length == 0){
+      this.errorMsg = "No workspace found!"
+      this.errorMsgStatus = false
+    }
   }
 }
 
