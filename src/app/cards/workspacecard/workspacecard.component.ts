@@ -11,7 +11,7 @@ export class WorkspacecardComponent implements OnInit {
   @Input() description: string | undefined;
   @Input() mainImage: string | undefined;
   @Input() coverImage: string | undefined;
-  @Input() members: string | undefined;
+  @Input() workspaceID: string | undefined;
   constructor() { }
 
   ngOnInit(): void {
