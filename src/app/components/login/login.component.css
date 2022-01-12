@@ -1,6 +1,7 @@
 .login{
   padding: 30px 20px 0px 20px;
   color: #364F6B;
+  overflow-x: hidden;
 }
 .login h1{
   font-size: 270%;
