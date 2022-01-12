@@ -28,8 +28,6 @@ export class AvatarGroupComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    console.log("Workspace id")
-    console.log(this.workspaceID)
     if(this.projectID != undefined) {
       await this.getProjectMemberDetails();
     }
@@ -44,9 +42,9 @@ export class AvatarGroupComponent implements OnInit {
       this.memberObject = post;
 
       this.members = this.memberObject[0].Members;
-      console.log("Single member")
-      console.log(this.members)
-      console.log(this.members[0].ProfileImage)
+      // console.log("Single member")
+      // console.log(this.members)
+      // console.log(this.members[0].ProfileImage)
 
       this.avatarArray = this.members
 
@@ -67,7 +65,7 @@ export class AvatarGroupComponent implements OnInit {
       this.memberObject = post;
 
       this.members = this.memberObject[0].Members;
-      console.log("Single member")
+      // console.log("Single member")
       // console.log(post);
       // console.log(this.members)
       // console.log(this.members[0].ProfileImage)

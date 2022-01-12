@@ -1,5 +1,9 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {WorkspaceService} from "../../services/workspacepage.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+
+
+import {WorkspaceeditComponent} from "./../../modals/workspaceedit/workspaceedit.component";
 
 @Component({
   selector: 'app-workspacepage',
@@ -13,6 +17,7 @@ export class WorkspacepageComponent implements OnInit {
 
 
 
+
   projects: Object[] = [{}];
   projectObject: any = {};
   numbers:  any[] = ["2","3","4","5","6","7","8","9","10"];
@@ -20,18 +25,27 @@ export class WorkspacepageComponent implements OnInit {
   noOfProjects: string = "";
   noOfMembers: string = "";
   noOfGuests: string = "";
-
-
-
-  workspaceService : WorkspaceService;
-  constructor(workspaceService : WorkspaceService) {
-    this.workspaceService = workspaceService;
-  }
+  workspaceModal : any;
 
   async ngOnInit(): Promise<void> {
     await this.getProjectDetails();
     await this.getWorkspaceDetails()
+    this.workspaceModal = new WorkspaceeditComponent(this.modalService)
   }
+
+
+
+
+
+
+
+  workspaceService : WorkspaceService;
+
+  constructor(workspaceService : WorkspaceService, private modalService: NgbModal) {
+    this.workspaceService = workspaceService;
+  }
+
+
 
   getProjectDetails(){
     this.workspaceService.getAllProjects(this.workspaceID).subscribe((post: any)=> {
@@ -52,5 +66,10 @@ export class WorkspacepageComponent implements OnInit {
 
     });
   }
+
+  getData(){
+    this.workspaceModal.openVerticallyCentered(this.projects);
+  }
+
 
 }

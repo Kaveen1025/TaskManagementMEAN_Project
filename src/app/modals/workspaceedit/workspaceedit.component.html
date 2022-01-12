@@ -13,13 +13,13 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Workspace Name<font class = "required">*</font></label>
-            <input type="text" class="form-control inputFieldsTxt" placeholder="Workspace Name">
+            <input type="text" class="form-control inputFieldsTxt" [(ngModel)]="workspacename"  placeholder="Workspace Name">
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Cover Image</label>
-            <input type="file" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="coverimage" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
@@ -27,14 +27,14 @@
         <div class="col-sm">
           <div class="form-group">
             <label class = "labels">Description<font class = "required">*</font></label>
-            <textarea class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"></textarea>
+            <textarea class="form-control inputFieldsTxt" [(ngModel)]="description"  rows="5" placeholder = "Description"></textarea>
           </div>
         </div>
         <div class="col-sm">
 
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
-            <input type="file" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="mainimage" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
@@ -45,7 +45,7 @@
           <div class="col-sm">
           </div>
           <div class="col-sm"><br>
-            <app-crudbuttonpink text="EDIT"></app-crudbuttonpink>
+            <app-crudbuttonpink (click) = "editworkspace()" text="EDIT"></app-crudbuttonpink>
           </div>
           <div class="col-sm">
             <br>
