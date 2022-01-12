@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-userdetails',
@@ -8,12 +9,32 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class UserdetailsComponent implements OnInit {
 
   @Output() newItemEvent = new EventEmitter<string>()
-  @Input() firstName : String | undefined
-  @Input() lastName : String | undefined
-  @Input() email : String | undefined
-  constructor() { }
+  @Input() userID : String | undefined
+
+  UserService:UserService
+  user: any
+  editableStatus1:boolean = false;
+  constructor(UserService:UserService) {
+    this.userID = "61d59e7999dc1f31177898ba"
+    this.UserService = UserService
+  }
+
 
   ngOnInit(): void {
+    this.getUser()
+  }
+  getUser(){
+    if (this.userID != null) {
+      this.UserService.getUser(this.userID).subscribe({
+        next: value => {
+          this.user = value
+        }
+        ,
+        error: error => {
+          console.log(error)
+        }
+      })
+    }
   }
 
   redirectToChangePasswordPage() {

@@ -5,22 +5,29 @@
         <div class="container">
           <div class="row text-center">
             <!--        first name-->
-            <div class="col">
+            <div class="col" [hidden] = "editableStatus1">
+             <img class="img-fluid imageIcon"
+                        src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/id-card.png"
+                        alt="id card">
+              <span class="details">{{user.FirstName}}</span>
+              <span ><img class="img-fluid editIcon iconClickable"
+                         src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png"
+                         alt="edit pencil"></span>
+            </div>
+            <div class="col" [hidden] = "!editableStatus1">
               <img class="img-fluid imageIcon"
                    src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/id-card.png"
                    alt="id card">
-              <span class="details">Himadha</span>
-              <span><img class="img-fluid editIcon iconClickable"
-                         src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png"
-                         alt="edit pencil"></span>
+              <br><br>
+              <span><input class = "inputField" placeholder="Text" type="text"></span>
             </div>
             <!--          last name-->
             <div class="col">
               <img class="img-fluid imageIcon"
                    src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/id-card.png"
                    alt="id card">
-              <span class="details">Perera</span>
-              <span><img class="img-fluid editIcon"
+              <span class="details">{{user.LastName}}</span>
+              <span><img class="img-fluid editIcon iconClickable"
                          src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png"
                          alt="edit pencil"></span>
             </div>
@@ -34,7 +41,7 @@
               <img class="img-fluid imageIcon"
                    src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/email.png"
                    alt="email">
-              <span id="email" class="details">HimadhaJDias@gmail.com</span>
+              <span id="email" class="details">{{user.Email}}</span>
             </div>
           </div>
           <div class="breakingSpaces">
@@ -60,18 +67,27 @@
         </div>
         <div class="col-sm">
           <br>
-          <app-crudbutton text="EDIT PROFILE"></app-crudbutton>
+          <app-crudbutton text="CHANGE PASSWORD" (btnClick)="redirectToChangePasswordPage()"></app-crudbutton>
         </div>
         <div class="col-sm">
+        </div>
+      </div>
+      <div class="row" hidden>
+        <div class="col-sm">
+        </div>
+                <div class="col-sm">
+                  <br>
+                  <app-crudbutton text="EDIT PROFILE"></app-crudbutton>
+                </div>
+        <div class="col-sm">
           <br>
-          <app-crudbutton text="CHANGE PASSWORD" (btnClick)="redirectToChangePasswordPage()"></app-crudbutton>
+          <app-crudbuttonpink text="Cancel" (btnClick)="redirectToChangePasswordPage()"></app-crudbuttonpink>
         </div>
         <div class="col-sm">
         </div>
       </div>
       <br>
       <div class="row">
-
         <app-crudbuttonpink text="DELETE MY ACCOUNT"></app-crudbuttonpink>
       </div>
     </div>
