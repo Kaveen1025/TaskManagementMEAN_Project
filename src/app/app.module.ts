@@ -53,6 +53,8 @@ import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.com
 import {SearchComponent} from "./reusablecomponent/search/search.component";
 import { HeaderComponent } from './navigation/header/header.component';
 import {WorkspacepageComponent} from "./components/workspacepage/workspacepage.component";
+import {SignuppageComponent} from "./components/signuppage/signuppage.component";
+import {LoginComponent} from "./components/login/login.component";
 
 registerLocaleData(en);
 
@@ -91,6 +93,8 @@ registerLocaleData(en);
     SearchComponent,
     HeaderComponent,
     WorkspacepageComponent,
+    SignuppageComponent,
+    LoginComponent,
 
   ],
   imports: [
