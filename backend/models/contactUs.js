@@ -30,9 +30,9 @@ const contactUsSchema = new Schema({
   },
 
   addedDateTime: {
-    type: Date,
+    type: String,
     required: [true, "ContactUs must have a Added date"],
-    default: new Date()
+    default: new Date().toLocaleString('si-LK', {timeZone : 'Asia/Colombo'})
   },
 
   updatedDateTime: {
