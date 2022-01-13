@@ -7,7 +7,8 @@ const bcrypt = require("bcryptjs");
 
 // import getUserDetails from "./generic";
 const generic = require('./generic');
-const Workspace = require("../models/workspace");
+const {ObjectId} = require("mongodb");
+
 
 
 //Add user --> Signup Page
@@ -97,33 +98,104 @@ router.route("/getbyname/:name").get(async (req,res) => {
   })
 })
 
-//Update User --> Edit Profile Page
-//URL --> http://localhost:8070/user/update/:id
-router.route('/update/:id').put(async (req,res)=> {
+//Update User --> Edit Profile Page ---> Changed
+//URL --> http://localhost:8070/user/update/:id/:status
+router.route('/update/:id/:status').put(async (req,res)=> {
 
-    let userID = req.params.id;
+  let userID = req.params.id;
+  let status = req.params.status;
 
-  const {FirstName, LastName, ProfileImage} = req.body;
+  const {Value} = req.body;
+
+
+  if (status == 1) {
+    // First Name
 
     const updatedUser = await User.updateOne(
       {_id: userID},
       {
-        $set:{
-          FirstName: FirstName,
-          LastName : LastName,
-          ProfileImage: ProfileImage
+        $set: {
+          FirstName: Value,
         }
       }
-    ).then(() =>{
-      res.status(200).send({status: "User Profile Updated"});
+    ).then(() => {
+      res.status(200).send({status: "First Name Updated"});
     }).catch((err) => {
       res
         .status(500)
         .send({status: "Error with updating data", error: err.message});
     })
+  } else if (status == 2) {
+    // Last Name
+
+    const updatedUser2 = await User.updateOne(
+      {_id: userID},
+      {
+        $set: {
+          LastName: Value,
+        }
+      }
+    ).then(() => {
+      res.status(200).send({status: "Last Name Updated"});
+    }).catch((err) => {
+      res
+        .status(500)
+        .send({status: "Error with updating data", error: err.message});
+    })
+  } else if (status == 3) {
+    //Image
+
+    const updatedUser3 = await User.updateOne(
+      {_id: userID},
+      {
+        $set: {
+          ProfileImage: Value,
+        }
+      }
+    ).then(() => {
+      res.status(200).send({status: "Profile Image Updated"});
+    }).catch((err) => {
+      res
+        .status(500)
+        .send({status: "Error with updating data", error: err.message});
+    })
+  } else {
+    // code block
+    res
+      .status(500)
+      .send({status: "Invalid Update Status"});
+  }
+
+
 })
 
 
+// currently, using
+//Update User --> Edit Profile Page
+//URL --> http://localhost:8070/user/update/:id
+router.route('/updateDetails/:id').put(async (req,res)=> {
+
+  let userID = req.params.id;
+
+  const {FirstName, LastName, ProfileImage} = req.body;
+
+  const updatedUser = await User.updateOne(
+    {_id: userID},
+    {
+      $set:{
+        FirstName: FirstName,
+        LastName : LastName,
+        ProfileImage: ProfileImage
+      }
+    }
+  ).then(() =>{
+    res.status(200).send({status: "User Profile Updated"});
+  }).catch((err) => {
+    res
+      .status(500)
+      .send({status: "Error with updating data", error: err.message});
+  })
+})
 
 
 
@@ -452,23 +524,24 @@ router.route("/checkFriendRequests/:userid/:friendid").get((req, res) => {
 });
 
 
-//Get all Members belongs to a single workspace
-router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
-  let workspaceID = req.params.workspaceID;
+//Get all Workspace Details belongs to a User
+//URL --> http://localhost:8070/user/getWorkspaceDetails/:userID
+router.route("/getWorkspaceDetails/:userID").get(async (req, res) => {
+  let UserID = req.params.userID;
   try {
-    const result = await Workspace.aggregate([
+    const result = await User.aggregate([
       {
-        $match: { _id: ObjectId(workspaceID)},
+        $match: { _id: ObjectId(UserID)},
       },
       {
         $project: {
-          MemberIDs: {
+          Workspaces: {
             $map: {
-              input: "$MemberIDs",
-              as: "memberID",
+              input: "$Workspaces",
+              as: "workspaceIDs",
               in: {
                 $convert: {
-                  input: "$$memberID",
+                  input: "$$workspaceIDs",
                   to: "objectId"
                 }
               }
@@ -478,14 +551,14 @@ router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
       },
       {
         $lookup: {
-          from: "users",
-          localField: "MemberIDs",
+          from: "workspaces",
+          localField: "Workspaces",
           foreignField: "_id",
-          as: "Members"
+          as: "WorkspaceDetails"
         }
       }
     ])
-    res.status(200).json(result);
+      res.status(200).json(result);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

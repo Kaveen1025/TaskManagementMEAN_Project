@@ -17,7 +17,7 @@ export class CrudbuttonComponent implements OnInit {
   }
 
   onClick(){
-    console.log("Clicked")
+    this.btnClick.emit();
   }
 
 }

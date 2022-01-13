@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-projectcard',
@@ -8,8 +8,26 @@ import { Component, OnInit } from '@angular/core';
 export class ProjectcardComponent implements OnInit {
 
   constructor() { }
+  title: string = "";
+  description: string = "";
+  mainImg: string = "";
+  coverImg: string = "";
+  deadLine: string = "";
+  projectID: string = "";
+
+
+  @Input() projectDetails: any;
 
   ngOnInit(): void {
+    console.log(this.projectDetails.MemberIDs);
+    this.title = this.projectDetails.projectName;
+    this.description = this.projectDetails.Description;
+    this.mainImg = this.projectDetails.MainImage;
+    this.coverImg = this.projectDetails.CoverImage;
+    this.deadLine = this.projectDetails.Deadline;
+    this.projectID = this.projectDetails._id;
+
   }
+
 
 }

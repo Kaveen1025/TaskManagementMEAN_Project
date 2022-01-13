@@ -1,6 +1,3 @@
-.workspace{
-  overflow-x: hidden;
-}
 
 .workspace .bg-box {
   max-height:460px;
@@ -60,34 +57,34 @@
 }
 
 
-#box1 {
+.workspace #box1 {
   float:left;
   width:35%;
   height:100px;
 }
-#leftbox {
+.workspace #leftbox {
   float:left;
   width:10%;
   height:100px;
 }
-#middlebox{
+.workspace #middlebox{
   float:left;
   width:10%;
   height:100px;
 }
-#rightbox{
+.workspace #rightbox{
   float:left;
   width:10%;
   height:100px;
 }
-#box2 {
+.workspace #box2 {
   float:right;
   width:35%;
   height:100px;
 }
 
 
-.column {
+.workspace .column {
   float: left;
   max-width: 30px;
   margin-left: 15px;
@@ -100,18 +97,18 @@
   margin-top: 10px;
 }
 
-/* Clearfix (clear floats) */
+ /*Clearfix (clear floats) */
 .workspace .editrow{
   /*margin-top: 10px;*/
-  display: flex;
+
   margin: 0;
   position: absolute;
   left: 49%;
   margin-right: -50%;
-  transform: translate(-50%, +350%)
+  transform: translate(-50%, +350%);
 
 }
-.editrow::after {
+.workspace .editrow::after {
   content: "";
   clear: both;
   display: table;
@@ -180,27 +177,27 @@
 
   }
 
-  #box1 {
+  .workspace #box1 {
     float:left;
     width:20%;
     height:100px;
   }
-  #leftbox {
+  .workspace #leftbox {
     float:left;
     width:20%;
     height:100px;
   }
-  #middlebox{
+  .workspace #middlebox{
     float:left;
     width:20%;
     height:100px;
   }
-  #rightbox{
+  .workspace #rightbox{
     float:left;
     width:20%;
     height:100px;
   }
-  #box2 {
+  .workspace #box2 {
     float:right;
     width:20%;
     height:100px;
@@ -222,27 +219,27 @@
     line-height: 10.16px;
 
   }
-  #box1 {
+  .workspace #box1 {
     float:left;
     width:5%;
     height:100px;
   }
-  #leftbox {
+  .workspace #leftbox {
     float:left;
     width:30%;
     height:100px;
   }
-  #middlebox{
+  .workspace #middlebox{
     float:left;
     width:30%;
     height:100px;
   }
-  #rightbox{
+  .workspace #rightbox{
     float:left;
     width:30%;
     height:100px;
   }
-  #box2 {
+  .workspace #box2 {
     float:right;
     width:5%;
     height:100px;

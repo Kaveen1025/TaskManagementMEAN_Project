@@ -9,27 +9,53 @@
      <div> <br class="t1" ><br class="t1" ><br class="t1">  <br class="t2" ><br class="t2" ><br class="t2"><br class="t3"></div>
       <h1 class = "card-text greetings"><b>{{greetings}}</b></h1>
       <br class="t1"><br class="t1"><br class="t2"><br class="t3">
-      <h1 class = "card-text notificationsAndReq"><b>You have new 10 notifications</b></h1>
-      <h1 class = "card-text notificationsAndReq"><b>2 friend requests</b></h1>
+      <h1 class = "card-text notificationsAndReq" [hidden]="isNotifications"><b>You have new {{notificationCount}} notifications</b></h1>
+      <h1 class = "card-text notificationsAndReq" [hidden]="isFriendsRequest" ><b>{{friendRequestCount}} friend requests</b></h1>
     </div>
   </div>
   <br><br>
   <div>
-    <app-search text = "Search"></app-search>
-    <br><div class="container">
-    <div class="row">
-      <div class="col-sm-6" *ngFor="let number of numbers">
-        <app-projectcard></app-projectcard>
+    <br>
+<!--    <app-search text = "Search" [(ngModel)] = "searchResult" (ngModelChange)="searchWorkspace()"></app-search>-->
+    <div class="searchbaar">
+      <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+          <div class="searchbar">
+            <input class="search_input" type="text" name="" placeholder="Search" [(ngModel)] = "searchResult" (ngModelChange)="searchWorkspace()">
+            <a type = "button" class="search_icon" (click)="searchWorkspace()"><img id="img141" src="./assets/images/images Used in Project Management UI Design\loupe.png" alt = "searchIcon"></a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
-  <br>
+
+    <br>
+<app-crudbutton  class="text-center" text = "CREATE WORKSPACE"></app-crudbutton>
+    <br>
+    <h1 class = "errorMsg" [hidden] = "errorMsgStatus">{{errorMsg}}</h1>
+    <div class="container" [hidden]="!loadingStatus">
+        <div class="row">
+          <div class="col-sm-6" *ngFor="let oneWorkspace of workspaces">
+            <app-workspacecard
+            workSpaceName={{oneWorkspace.WorkspaceName}}
+            description={{oneWorkspace.Description}}
+            coverImage={{oneWorkspace.CoverImage}}
+            mainImage={{oneWorkspace.MainImage}}
+            workspaceID={{oneWorkspace._id}}
+            ></app-workspacecard>
+          </div>
+        </div>
+      </div>
+
+  <br><br>
 <!--&lt;!&ndash;  use the loading like this&ndash;&gt;-->
-<!--  <div class="card" style = "border: none">-->
-<!--      <app-loadinganimation></app-loadinganimation>-->
-<!--  </div>-->
+  <div class="card" style = "border: none" [hidden] = "loadingStatus">
+      <app-loadinganimation></app-loadinganimation>
+  </div>
 </div>
+  <br>
+</div>
+
+
 
 
 

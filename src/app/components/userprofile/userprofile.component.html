@@ -2,16 +2,17 @@
   <div class="card userImageCard">
     <div class="card-body text-center userCardBody">
 
-      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG" alt = "userProfile">
+      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "'./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/'+ user.ProfileImage" alt = "userProfile">
       <br><br><img class = "img-fluid pencil iconClickable" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/pencil.png" alt = "pencil">
         <div>
         <br>
-        <h1 class="username">Himadha Dias</h1>
+        <h1 class="username">{{user.Username}}</h1>
       </div>
     </div>
   </div>
   <div class="card userDetails">
-    <app-userdetails></app-userdetails>
+    <app-userdetails userID={{userID}}></app-userdetails>
+<!--<app-changepassword></app-changepassword>-->
      </div>
 </div>
 
