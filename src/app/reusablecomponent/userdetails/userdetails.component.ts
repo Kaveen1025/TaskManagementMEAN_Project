@@ -27,18 +27,25 @@ export class UserdetailsComponent implements OnInit {
 
   // accessing the template
   @ViewChild('content') private content: TemplateRef<any> | undefined;
-
+  @ViewChild('content2') private content2: TemplateRef<any> | undefined;
+  @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+  @ViewChild('content4') private content4: TemplateRef<any> | undefined;
+  timezone:any
   constructor(UserService:UserService,private modalService: NgbModal) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.editableStatus = false
     this.editableStatus1 = false
     this.editableStatus2 = false
+
+    this.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   }
 
 
   ngOnInit(): void {
     this.getUser()
+
+
   }
   getUser(){
     if (this.userID != null) {
@@ -117,12 +124,14 @@ export class UserdetailsComponent implements OnInit {
     if (this.userID != null) {
       await this.UserService.updateUserDetails(this.userID, content).subscribe({
         next: value => {
-          alert("user updated")
+         // alert("user updated")
           this.cancel()
+          this.modalService.open(this.content3, { centered: true });
         }
         ,
         error: error => {
           console.log(error)
+          this.modalService.open(this.content4, { centered: true });
         }
       })
     }
@@ -130,6 +139,9 @@ export class UserdetailsComponent implements OnInit {
   }
 
 
+openConfirmModal(){
+  this.modalService.open(this.content2, { centered: true });
+  }
 
 
   /// modal

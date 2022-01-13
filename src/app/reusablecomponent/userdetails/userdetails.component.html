@@ -60,7 +60,7 @@
               <img class="img-fluid imageIcon"
                    src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/time-zone.png"
                    alt="time zone">
-              <span class="details">(GMT+05:30) Sri Jayawardenepura</span>
+              <span class="details">{{timezone}}</span>
             </div>
           </div>
         </div>
@@ -84,7 +84,7 @@
         </div>
                 <div class="col-sm">
                   <br>
-                  <app-crudbutton text="EDIT PROFILE" (btnClick) = "updateUserDetails()"></app-crudbutton>
+                  <app-crudbutton text="EDIT PROFILE" (btnClick) = "openConfirmModal()"></app-crudbutton>
                 </div>
         <div class="col-sm">
           <br>
@@ -105,4 +105,19 @@
 <!--modal-->
 <ng-template #content let-modal>
 <app-deletedmodal (someEvent)="hello($event)"></app-deletedmodal>
+</ng-template>
+
+<!--confirm modal-->
+<ng-template #content2 let-modal>
+  <app-confirmmodal (someEvent)="updateUserDetails()"></app-confirmmodal>
+</ng-template>
+
+<!--success modal-->
+<ng-template #content3 let-modal>
+  <app-successmodal></app-successmodal>
+</ng-template>
+
+<!--error modal-->
+<ng-template #content4 let-modal>
+  <app-errormodal></app-errormodal>
 </ng-template>
