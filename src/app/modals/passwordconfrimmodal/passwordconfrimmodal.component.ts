@@ -19,6 +19,8 @@ export class PasswordconfrimmodalComponent implements OnInit {
   userID:String
   User:any
   UserService:UserService
+  errorMsgStatus:boolean  = true
+  errorMsg:any
   constructor(UserService:UserService,private modalService: NgbModal) {
     this.typeInput1 = "password"
     this.eyeImageUrl1 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
@@ -28,6 +30,7 @@ export class PasswordconfrimmodalComponent implements OnInit {
 
   ngOnInit(): void {
       this.getUser()
+    this.errorMsgStatus = true
   }
 
 
@@ -50,14 +53,27 @@ export class PasswordconfrimmodalComponent implements OnInit {
 
 
   saveDetails() {
-
-    console.log(this.currentPassword.value)
-    console.log(this.User)
-
+    this.errorMsgStatus = true
     if(bcrypt.compareSync(this.currentPassword.value,this.User.Password)){
       console.log("true")
+
+      // this.UserService.deleteUser(this.userID).subscribe({
+      //   next:value=>
+      //   {
+      //     // navigate to login page
+      //   }
+      //   ,
+      //   error:error => {
+      //     console.log(error)
+      //   }
+      // } )
+      //this.modalService.dismissAll(this.content);
+
     }else {
       console.log("false")
+
+      this.errorMsg = "Incorrect password!"
+      this.errorMsgStatus = false
     }
   }
 

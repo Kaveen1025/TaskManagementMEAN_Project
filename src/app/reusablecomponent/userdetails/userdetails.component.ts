@@ -30,6 +30,7 @@ export class UserdetailsComponent implements OnInit {
   @ViewChild('content2') private content2: TemplateRef<any> | undefined;
   @ViewChild('content3') private content3: TemplateRef<any> | undefined;
   @ViewChild('content4') private content4: TemplateRef<any> | undefined;
+  @ViewChild('content5') private content5: TemplateRef<any> | undefined;
   timezone:any
   constructor(UserService:UserService,private modalService: NgbModal) {
     this.userID = "61d59e7999dc1f31177898ba"
@@ -146,7 +147,7 @@ openConfirmModal(){
 
   /// modal
   deleteAccount() {
-    this.modalService.open(this.content, { centered: true });
+    this.modalService.open(this.content5, { centered: true });
   }
 
   hello(event: any){
