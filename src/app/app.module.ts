@@ -61,6 +61,7 @@ import {ErrormodalComponent} from "./modals/errormodal/errormodal.component";
 import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.component";
 import { ConfirmmodalComponent } from './modals/confirmmodal/confirmmodal.component';
 import {SuccessmodalComponent} from "./modals/successmodal/successmodal.component";
+import { PasswordconfrimmodalComponent } from './modals/passwordconfrimmodal/passwordconfrimmodal.component';
 
 registerLocaleData(en);
 
@@ -104,7 +105,8 @@ registerLocaleData(en);
     ErrormodalComponent,
     DeletedmodalComponent,
     ConfirmmodalComponent,
-    SuccessmodalComponent
+    SuccessmodalComponent,
+    PasswordconfrimmodalComponent
 
   ],
     imports: [
