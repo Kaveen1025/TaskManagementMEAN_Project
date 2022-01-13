@@ -9,7 +9,9 @@ const bcrypt = require("bcryptjs");
 const generic = require('./generic');
 const Workspace = require("../models/workspace");
 
-
+const {
+  ObjectId
+} = require('mongodb');
 //Add user --> Signup Page
 //URL -- >http://localhost:8070/user/add
 router.route("/add").post(async(req,res)=>{
@@ -447,7 +449,6 @@ router.route("/checkFriendRequests/:userid/:friendid").get((req, res) => {
   });
 });
 
-
 //Get all Members belongs to a single workspace
 router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
   let workspaceID = req.params.workspaceID;
@@ -478,6 +479,46 @@ router.route("/getMemberDetails/:workspaceID").get(async (req, res) => {
           localField: "MemberIDs",
           foreignField: "_id",
           as: "Members"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+
+//Get user details of the users in friend requests array
+router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
+  let userID = req.params.userID;
+  try {
+    const result = await User.aggregate([
+      {
+        $match: { _id: ObjectId(userID)},
+      },
+      {
+        $project: {
+          RequestedFriends: {
+            $map: {
+              input: "$RequestedFriends",
+              as: "friendID",
+              in: {
+                $convert: {
+                  input: "$$friendID",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "RequestedFriends",
+          foreignField: "_id",
+          as: "RequestedFriendDetails"
         }
       }
     ])

@@ -1,4 +1,4 @@
-<ng-template #content let-modal class = "mainModal">
+<ng-template #content let-modal id = "content2" class = "mainModal">
   <div class="modal-header mainHeader text-center">
     <h3 class="modal-title mainTitle w-100"><b>Edit Your Workspace</b></h3>
     <div class = "closeContainer">
@@ -60,5 +60,5 @@
     </div>
   </div>
 </ng-template>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">open Modal vertically centered</button>
+<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered()">open Modal vertically centered</button>
 <button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal(content)">close Modal vertically centered</button>

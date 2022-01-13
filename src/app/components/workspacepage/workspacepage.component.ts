@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {WorkspaceService} from "../../services/workspacepage.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
@@ -15,9 +15,7 @@ export class WorkspacepageComponent implements OnInit {
 
   @Output() setProjects = new EventEmitter();
 
-
-
-
+  userID: string = "61d458c91d0655dd1358454a";
   projects: any[] = [{}];
   projectObject: any = {};
   projectObjectConstant: any[] = [{}];
@@ -30,22 +28,21 @@ export class WorkspacepageComponent implements OnInit {
   workspaceDescription: string = "";
   workspaceCoverImage: string = "";
   workspaceMainImage: string = "";
+  adminID: string = "";
   workspaceModal : any;
   errorText: string = ""
+  memberIDs: string[] = [];
 
   searchText: string = ""
+  flagEditBtns = true;
+  flagCreateBtn = true;
+
 
   async ngOnInit(): Promise<void> {
     await this.getProjectDetails();
     await this.getWorkspaceDetails()
     this.workspaceModal = new WorkspaceeditComponent(this.modalService)
   }
-
-
-
-
-
-
 
   workspaceService : WorkspaceService;
 
@@ -78,14 +75,41 @@ export class WorkspacepageComponent implements OnInit {
       this.workspaceCoverImage = post.CoverImage;
       this.workspaceMainImage = post.MainImage;
       this.workspaceDescription = post.Description;
+      this.adminID = post.AdminID;
+      this.memberIDs = post.MemberIDs
+
+      this.checkPrivvilage()
 
     }, error => {
       console.log(error);
     });
   }
 
+  checkPrivvilage(){
+    console.log(this.adminID)
+    console.log(this.memberIDs)
+    let c = 1;
+    for(let i = 0; i < this.memberIDs.length; i++){
+      if(this.memberIDs[i]== this.userID){
+        c = 2;
+        break;
+      }
+    }
+    if(this.adminID == this.userID){
+      this.flagCreateBtn = true;
+      this.flagEditBtns = true;
+    }else if(c == 2){
+      this.flagCreateBtn = true;
+      this.flagEditBtns = false;
+    }else{
+      this.flagCreateBtn = false;
+      this.flagEditBtns = false;
+    }
+
+  }
+
   getData(){
-    this.workspaceModal.openVerticallyCentered(this.projects);
+    this.workspaceModal.openVerticallyCentered();
   }
 
   searchProjects(){

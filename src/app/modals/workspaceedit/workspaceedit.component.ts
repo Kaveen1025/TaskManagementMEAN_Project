@@ -1,5 +1,7 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+declare var $: any;
+
 
 @Component({
   selector: 'app-workspaceedit',
@@ -10,6 +12,8 @@ export class WorkspaceeditComponent implements OnInit  {
 
   constructor(private modalService: NgbModal) { }
 
+  @ViewChild('content', {static: true}) buttonTpl: TemplateRef<any> | undefined
+
 
   workspacename: string = "";
   coverimage: string = "";
@@ -18,13 +22,13 @@ export class WorkspaceeditComponent implements OnInit  {
   object1: {} = {};
 
   ngOnInit(): void {
+    console.log("asd");
+    buttonTpl:TemplateRef;
   }
-  openVerticallyCentered(content: any) {
-    alert("asd")
-
-    // var myElement = angular.element( document.querySelector( '#content' ) );
-    // console.log(data);
-    this.modalService.open(content, { centered: true, size : "lg"});
+  openVerticallyCentered() {
+    this.ngOnInit();
+    console.log(this.buttonTpl);
+    this.modalService.open(this.buttonTpl, { centered: true, size : "lg"});
   }
 
   closeModal(content: any) {
