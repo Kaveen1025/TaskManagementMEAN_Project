@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from "../../services/user.service";
+
 
 @Component({
   selector: 'app-dashboard',
@@ -13,8 +15,31 @@ export class DashboardComponent implements OnInit {
   Date:String
   todayDataTime:String
   greetings: String;
-  numbers:  any[] = ["2","3","4","5","6","7","8","9","10"];
-  constructor() {
+  workspaces:  any
+  originalWorkspaces: any
+
+
+  userID:String
+  User:any
+  UserService:UserService
+  notificationCount: Number
+  friendRequestCount:Number
+  isNotifications: boolean;
+  isFriendsRequest: boolean;
+  searchResult: any;
+  loadingStatus: boolean = false;
+  errorMsg: any;
+  errorMsgStatus: boolean = true;
+
+  constructor(UserService:UserService) {
+
+    this.userID = "61d59e7999dc1f31177898ba"
+    this.UserService = UserService
+    this.notificationCount = 0
+    this.friendRequestCount = 0
+    this.isNotifications = true
+    this.isFriendsRequest = true
+
     this.greetings = ""
     this.imagePath = "./assets/images/Dynamic%20Image%20Collection/"
     this.imageURL = ""
@@ -30,12 +55,63 @@ export class DashboardComponent implements OnInit {
       this.greetingsChange(this.todayDataTime.substring(16,18))
       //this.now = formatDate(new Date(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '+0530')
     }, 1);
+
+
+
   }
 
   ngOnInit(): void {
     this.imageURL = this.imagePath + "Time_4_6.png";
+    this.getUser()
+    this.getWorkspaces()
   }
 
+  getUser(){
+    this.UserService.getUser(this.userID).subscribe({
+      next:value=>
+      {
+        this.User = value
+        if(this.User.NotificationIDs.length > 0){
+          this.notificationCount = this.User.NotificationIDs.length
+          this.isNotifications = false
+        }
+
+        if(this.User.FriendsRequests.length > 0){
+          this.friendRequestCount = this.User.FriendsRequests.length
+          this.isFriendsRequest = false
+        }
+
+      }
+      ,
+      error:error => {
+        console.log(error)
+      }
+    } )
+  }
+  getWorkspaces(){
+    this.UserService.getUserWorkspaces(this.userID).subscribe({
+      next:value=>
+      {
+        this.workspaces = value
+        this.workspaces = this.workspaces[0].WorkspaceDetails
+        this.originalWorkspaces = this.workspaces
+        this.loadingStatus = true
+
+        if(this.originalWorkspaces.length === 0){
+          this.errorMsg = "No workspaces available..."
+          this.errorMsgStatus = false
+          this.loadingStatus = true
+        }
+      }
+      ,
+      error:error => {
+        console.log(error)
+        this.errorMsg = "Error has been occurred!"
+        this.errorMsgStatus = false
+        this.loadingStatus = true
+      }
+    } )
+  }
   dynamicWallpaper(timePrefix:String):void{
     if(Number(timePrefix) >= 0 && Number(timePrefix) < 4) {
       this.imageURL = this.imagePath + "Time_12_4.png"
@@ -91,4 +167,21 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+
+  searchWorkspace() {
+    this.loadingStatus = false
+    this.errorMsgStatus = true
+    this.workspaces = this.originalWorkspaces.filter((content: any) => {
+      let loweredSearch = content.WorkspaceName.toLowerCase();
+      this.loadingStatus = true
+      return loweredSearch.includes(this.searchResult.toLowerCase())
+    })
+
+    if(this.workspaces.length == 0){
+      this.errorMsg = "No workspace found!"
+      this.errorMsgStatus = false
+    }
+  }
 }
+
+

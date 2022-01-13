@@ -10,6 +10,9 @@
   border-radius: 0 0 15px 15px;
 }
 
+.dashboard{
+  min-height: 1000px
+}
 
 .dashboard .t3{
   display:none !important;
@@ -110,7 +113,7 @@
   }
 
   .dashboard .greetings{
-    font-size: 50px;
+    font-size: 40px;
     letter-spacing: 5px;
     line-height:5px;
   }
@@ -130,8 +133,8 @@
   }
 
   .dashboard .greetings{
-    font-size: 45px;
-    letter-spacing: 5px;
+    font-size: 40px;
+    letter-spacing: 3px;
     line-height:5px;
   }
 
@@ -152,7 +155,7 @@
 
 }
 
-@media screen and (max-width: 505px) {
+@media screen and (max-width: 512px) {
   .dashboard .timeAndDate{
     font-size: 20px;
     letter-spacing: 2px;
@@ -262,6 +265,54 @@
     line-height: 2px
   }
 
+}
+
+.dashboard .errorMsg{
+  color: #FC5185;
+  text-align: center;
+}
+
+
+
+
+.searchbaar .searchbar{
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 40px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0px 10px 0px 10px;
+  width: 100%;
+  border: 1px solid #3FC1C9;
+  box-shadow: 1px 1px  #888888;
+}
+
+.searchbaar .search_input{
+  color: #364F6B;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 80%;
+  caret-color:#FC5185;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.searchbaar .search_icon{
+  height: 40px;
+  width: 30px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color:#F5F5F5;
+  text-decoration:none;
+}
+
+.searchbaar #img141{
+  width: 50%;
+  transform: scaleX(-1);
 }
 
 

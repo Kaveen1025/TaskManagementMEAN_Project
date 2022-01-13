@@ -67,24 +67,87 @@
   transform: translate(-50%, -50%);
 }
 
+
+
+@media only screen and (min-width: 365px) {
+  .workspacecard .profile-card-2 .profile {
+    width: 55px;
+    top: -30px;
+    left: 15%;
+    height: 55px;
+
+  }
+  .workspacecard .profile-card-2 .card-title{
+
+    font-size: 14px;
+    margin-left: 45PX;
+    margin-top: -42px;
+
+  }
+  .workspacecard .profile-card-2 .card-text{
+
+    font-size:10px;
+
+  }
+  .workspacecard .profile-card-2 .avatar{
+
+    margin: 0;
+    position: absolute;
+    top: 116%;
+    left:62%;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
 @media only screen and (max-width: 360px) {
   .workspacecard .profile-card-2 .profile {
-    width: 65px;
-    top: -38px;
+    width: 50px;
+    top: -27px;
     left: 15%;
-    height: 65px;
+    height: 50px;
+
+  }
+  .workspacecard .profile-card-2 .card-title{
+
+    font-size: 14px;
+    margin-left: 40PX;
+    margin-top: -48px;
+  }
+  .workspacecard .profile-card-2 .card-text{
+
+    font-size:10px;
+
+  }
+  .workspacecard .profile-card-2 .avatar{
+
+    margin: 0;
+    position: absolute;
+    top: 114%;
+    left:55%;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
+@media only screen and (min-width: 400px) {
+  .workspacecard .profile-card-2 .profile {
+    width: 60px;
+    top: -32px;
+    left: 15%;
+    height: 60px;
 
   }
 
   .workspacecard .profile-card-2 .card-title{
 
-    font-size: 15px;
-    margin-left: 70PX;
-    margin-top: -35px;
+    font-size: 17px;
+    margin-left: 58PX;
+    margin-top: -44px;
   }
   .workspacecard .profile-card-2 .card-text{
 
-    font-size:13px;
+    font-size:12px;
 
   }
   .workspacecard .profile-card-2 .avatar{
@@ -98,84 +161,24 @@
 
 }
 
-@media only screen and (min-width: 320px) {
-  .workspacecard .profile-card-2 .profile {
-    width: 75px;
-    top: -40px;
-    left: 15%;
-    height: 75px;
-
-  }
-  .workspacecard .profile-card-2 .card-title{
-
-    font-size: 20px;
-    margin-left: 78PX;
-    margin-top: -40px;
-  }
-  .workspacecard .profile-card-2 .card-text{
-
-    font-size:13px;
-
-  }
-  .workspacecard .profile-card-2 .avatar{
-
-    margin: 0;
-    position: absolute;
-    top: 118%;
-    left:75%;
-    transform: translate(-50%, -50%);
-  }
-
-}
-
-@media only screen and (max-width: 320px) {
-  .workspacecard .profile-card-2 .profile {
-    width: 75px;
-    top: -40px;
-    left: 15%;
-    height: 75px;
-
-  }
-  .workspacecard .profile-card-2 .card-title{
-
-    font-size: 18px;
-    margin-left: 66PX;
-    margin-top: -38px;
-  }
-  .workspacecard .profile-card-2 .card-text{
-
-    font-size:12px;
-
-  }
-  .workspacecard .profile-card-2 .avatar{
-
-    margin: 0;
-    position: absolute;
-    top: 116%;
-    left:70%;
-    transform: translate(-50%, -50%);
-  }
-
-}
-
 @media only screen and (max-width: 280px) {
 
   .workspacecard .profile-card-2 .profile {
-    width: 65px;
-    top: -35px;
-    left: 17%;
-    height: 65px;
+    width: 45px;
+    top: -26px;
+    left: 18%;
+    height: 45px;
   }
   .workspacecard .profile-card-2 .card-title{
 
-    font-size: 18px;
-    margin-left: 62PX;
-    margin-top: -38px;
+    font-size: 12px;
+    margin-left: 30PX;
+    margin-top: -48px;
   }
 
   .workspacecard .profile-card-2 .card-text{
 
-    font-size:12px;
+    font-size:10px;
 
   }
 
@@ -184,22 +187,74 @@
     margin: 0;
     position: absolute;
     top: 113%;
-    left:65%;
+    left:50%;
     transform: translate(-50%, -50%);
   }
 
+  .workspacecard div.avatar{
 
-}
-
-@media only screen and (min-width: 540px) {
-  .workspacecard .profile-card-2 .profile {
-    width: 75px;
-    top: -39px;
-    left: 10%;
-    height: 75px;
+    display: none;
   }
+
+
 }
-@media only screen and (min-width: 760px) {
+
+@media only screen and (min-width: 437px) {
+  .workspacecard .profile-card-2 .profile {
+    width: 65px;
+    top: -35px;
+    left: 12%;
+    height: 65px;
+  }
+
+  .workspacecard .profile-card-2 .card-title{
+    font-size: 20px;
+    margin-left: 62PX;
+    margin-top: -38px;
+  }
+
+  .workspacecard .profile-card-2 .avatar{
+
+    margin: 0;
+    position: absolute;
+    top: 116%;
+    left:72%;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
+@media only screen and (min-width: 570px) {
+  .workspacecard .profile-card-2 .profile {
+    width: 50px;
+    top: -27px;
+    left: 15%;
+    height: 50px;
+
+  }
+  .workspacecard .profile-card-2 .card-title{
+
+    font-size: 14px;
+    margin-left: 40PX;
+    margin-top: -48px;
+  }
+  .workspacecard .profile-card-2 .card-text{
+
+    font-size:10px;
+
+  }
+  .workspacecard .profile-card-2 .avatar{
+
+    margin: 0;
+    position: absolute;
+    top: 114%;
+    left:55%;
+    transform: translate(-50%, -50%);
+  }
+
+}
+
+@media only screen and (min-width: 758px) {
   .workspacecard .profile-card-2 .profile {
     width: 75px;
     top: -39px;
@@ -212,23 +267,29 @@
     margin-left: 70PX;
     margin-top: -38px;
   }
+  .workspacecard .profile-card-2 .card-text{
+
+    font-size:13px;
+
+  }
+
 
   .workspacecard .profile-card-2 .avatar{
 
     margin: 0;
     position: absolute;
     top: 115%;
-    left:75%;
+    left:70%;
     transform: translate(-50%, -50%);
   }
 }
 
 @media only screen and (min-width: 996px) {
   .workspacecard .profile-card-2 .profile {
-    width: 95px;
-    top: -52px;
+    width: 85px;
+    top: -48px;
     left: 12%;
-    height: 95px;
+    height: 85px;
   }
 
   .workspacecard .profile-card-2 .card-title{
@@ -236,6 +297,47 @@
     font-size: 25px;
     margin-left: 95PX;
     margin-top: -38px;
+  }
+
+  .workspacecard .profile-card-2 .card-text{
+
+    font-size:12px;
+
+  }
+
+
+
+  .workspacecard .profile-card-2 .avatar{
+
+    margin: 0;
+    position: absolute;
+    top: 118%;
+    left:78%;
+    transform: translate(-50%, -50%);
+  }
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+  .workspacecard .profile-card-2 .profile {
+    width: 85px;
+    top: -48px;
+    left: 12%;
+    height: 85px;
+  }
+
+  .workspacecard .profile-card-2 .card-title{
+
+    font-size: 25px;
+    margin-left: 95PX;
+    margin-top: -38px;
+  }
+
+  .workspacecard .profile-card-2 .card-text{
+
+    font-size:14px;
+
   }
 
   .workspacecard .profile-card-2 .avatar{
@@ -249,6 +351,7 @@
 
 
 }
+
 
 
 

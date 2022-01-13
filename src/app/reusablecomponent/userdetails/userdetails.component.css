@@ -1,5 +1,6 @@
 .userDetails .imageIcon{
   max-height: 40px;
+  display: inline
 }
 
 .userDetails .editIcon{
@@ -66,8 +67,17 @@
 }
 
 /*icon shadow*/
-
 .iconClickable:hover{
   -webkit-filter: drop-shadow(5px 5px 5px #3FC1C9);
   filter: drop-shadow(5px 5px 5px #3FC1C9);
+}
+
+.inputField {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #FC5185;
+  display: inline
+}
+.inputField:focus {
+  border-color: #3FC1C9
 }
