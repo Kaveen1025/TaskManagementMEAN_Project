@@ -65,6 +65,8 @@ export class PasswordconfrimmodalComponent implements OnInit {
       //   ,
       //   error:error => {
       //     console.log(error)
+      // this.errorMsg = "Error has been occurred!"
+      // this.errorMsgStatus = false
       //   }
       // } )
       //this.modalService.dismissAll(this.content);
