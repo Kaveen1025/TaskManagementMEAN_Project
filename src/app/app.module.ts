@@ -56,6 +56,10 @@ import {WorkspacepageComponent} from "./components/workspacepage/workspacepage.c
 import {SignuppageComponent} from "./components/signuppage/signuppage.component";
 import {LoginComponent} from "./components/login/login.component";
 
+
+
+
+
 registerLocaleData(en);
 
 @NgModule({
