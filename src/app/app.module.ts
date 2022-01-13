@@ -57,6 +57,8 @@ import {MatPasswordStrengthModule} from "@angular-material-extensions/password-s
 import {
 PasswordStrengthBarComponent
 } from './specialcomponents/password-strength-bar/password-strength-bar.component';
+import {ErrormodalComponent} from "./modals/errormodal/errormodal.component";
+import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.component";
 
 registerLocaleData(en);
 
@@ -97,6 +99,8 @@ registerLocaleData(en);
     WorkspacepageComponent,
     PasswordStrengthBarComponent,
     PasswordStrengthBarComponent,
+    ErrormodalComponent,
+    DeletedmodalComponent
 
   ],
     imports: [

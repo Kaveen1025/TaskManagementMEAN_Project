@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -7,21 +7,28 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
   styleUrls: ['./deletedmodal.component.css']
 })
 export class DeletedmodalComponent implements OnInit {
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
 
-  constructor(private modalService: NgbModal) { }
+
+
+  @Output() someEvent = new EventEmitter<string>();
+
+
+  constructor(private modalService: NgbModal) {
+
+  }
 
   ngOnInit(): void {
   }
 
-  openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
+  closeModal() {
+    this.modalService.dismissAll(this.content);
+    this.callParent()
   }
 
-  closeModal(content: any) {
-    this.modalService.dismissAll(content);
+  callParent(): void {
+    // @ts-ignore
+    this.someEvent.emit({myObj: "Gg wada"});
   }
 
-  saveDetails(content: any) {
-    this.modalService.dismissAll(content);
-  }
 }

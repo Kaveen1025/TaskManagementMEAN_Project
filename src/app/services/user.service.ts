@@ -31,9 +31,9 @@ export class UserService {
     return this.http.put(environment.apiBaseUrl + 'user/updateDetails/'+userID, content);
   }
 
-  // deleteStudent(id:String){
-  //   return this.http.delete(environment.apiBaseUrl + 'student/delete/'+id);
-  // }
+  deleteUser(id:String){
+    return this.http.delete(environment.apiBaseUrl + 'user/delete/'+id);
+  }
 
 
 }

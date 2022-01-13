@@ -95,9 +95,14 @@
       </div>
       <br>
       <div class="row">
-        <app-crudbuttonpink text="DELETE MY ACCOUNT" ></app-crudbuttonpink>
+        <app-crudbuttonpink text="DELETE MY ACCOUNT" (btnClick)="deleteAccount()" ></app-crudbuttonpink>
       </div>
     </div>
 
   </div>
 </div>
+
+<!--modal-->
+<ng-template #content let-modal>
+<app-deletedmodal (someEvent)="hello($event)"></app-deletedmodal>
+</ng-template>

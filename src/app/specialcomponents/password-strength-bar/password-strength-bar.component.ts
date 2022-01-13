@@ -1,4 +1,8 @@
-import {Component, OnChanges, Input, SimpleChange} from '@angular/core';
+import {Component, OnChanges, Input, SimpleChange, Output, EventEmitter} from '@angular/core';
+
+function output() {
+
+}
 
 @Component({
   selector: 'app-password-strength-bar',
@@ -9,6 +13,7 @@ export class PasswordStrengthBarComponent implements OnChanges  {
 
   @Input() passwordToCheck: string | undefined;
   @Input() barLabel: string | undefined;
+  @Output() statusEvent = new EventEmitter();
   bar0: string = "";
   bar1: string = "";
   bar2: string = "";
@@ -66,6 +71,7 @@ export class PasswordStrengthBarComponent implements OnChanges  {
     this.setBarColors(5, '#DDD');
     if (password) {
       let c = this.getColor(PasswordStrengthBarComponent.measureStrength(password));
+      this.sendStrength(c)
       this.setBarColors(c.idx, c.col);
     }
   }
@@ -74,6 +80,11 @@ export class PasswordStrengthBarComponent implements OnChanges  {
       // @ts-ignore
       this['bar' + _n] = col;
     }
+  }
+
+
+  sendStrength(strength:any){
+    this.statusEvent.emit(strength)
   }
 
 }

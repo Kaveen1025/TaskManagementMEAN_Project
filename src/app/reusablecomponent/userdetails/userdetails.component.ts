@@ -1,7 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {UserService} from "../../services/user.service";
 import {FormControl} from "@angular/forms";
 
+import {DeletedmodalComponent} from "../../modals/deletedmodal/deletedmodal.component";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-userdetails',
@@ -21,7 +23,12 @@ export class UserdetailsComponent implements OnInit {
   editableStatus1:boolean
   editableStatus:boolean
   editableStatus2: boolean;
-  constructor(UserService:UserService) {
+
+
+  // accessing the template
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
+
+  constructor(UserService:UserService,private modalService: NgbModal) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.editableStatus = false
@@ -121,4 +128,18 @@ export class UserdetailsComponent implements OnInit {
     }
 
   }
+
+
+
+
+  /// modal
+  deleteAccount() {
+    this.modalService.open(this.content, { centered: true });
+  }
+
+  hello(event: any){
+    alert(event.myObj)
+  }
+
+
 }
