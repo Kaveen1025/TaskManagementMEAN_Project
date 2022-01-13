@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../services/user.service";
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -14,7 +15,8 @@ export class DashboardComponent implements OnInit {
   Date:String
   todayDataTime:String
   greetings: String;
-  workspaces:  any;
+  workspaces:  any
+  originalWorkspaces: any
 
 
   userID:String
@@ -24,6 +26,10 @@ export class DashboardComponent implements OnInit {
   friendRequestCount:Number
   isNotifications: boolean;
   isFriendsRequest: boolean;
+  searchResult: any;
+  loadingStatus: boolean = false;
+  errorMsg: any;
+  errorMsgStatus: boolean = true;
 
   constructor(UserService:UserService) {
 
@@ -88,10 +94,21 @@ export class DashboardComponent implements OnInit {
       {
         this.workspaces = value
         this.workspaces = this.workspaces[0].WorkspaceDetails
+        this.originalWorkspaces = this.workspaces
+        this.loadingStatus = true
+
+        if(this.originalWorkspaces.length === 0){
+          this.errorMsg = "No workspaces available..."
+          this.errorMsgStatus = false
+          this.loadingStatus = true
+        }
       }
       ,
       error:error => {
         console.log(error)
+        this.errorMsg = "Error has been occurred!"
+        this.errorMsgStatus = false
+        this.loadingStatus = true
       }
     } )
   }
@@ -150,4 +167,21 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+
+  searchWorkspace() {
+    this.loadingStatus = false
+    this.errorMsgStatus = true
+    this.workspaces = this.originalWorkspaces.filter((content: any) => {
+      let loweredSearch = content.WorkspaceName.toLowerCase();
+      this.loadingStatus = true
+      return loweredSearch.includes(this.searchResult.toLowerCase())
+    })
+
+    if(this.workspaces.length == 0){
+      this.errorMsg = "No workspace found!"
+      this.errorMsgStatus = false
+    }
+  }
 }
+
+

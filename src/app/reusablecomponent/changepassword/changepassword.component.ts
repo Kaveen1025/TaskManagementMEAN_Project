@@ -26,7 +26,11 @@ export class ChangepasswordComponent implements OnInit {
   eyeImageUrl1: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   eyeImageUrl2: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   eyeImageUrl3: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
-  loadingStatus: any;
+  loadingStatus: any
+  errorMsg:any
+
+  newPasswordStrengthStatus:boolean = false
+  confirmPasswordStrengthStatus:boolean = false
   public barLabel: string = "Password strength:";
   constructor(UserService:UserService) {
     this.userID = "61d59e7999dc1f31177898ba"
@@ -46,32 +50,43 @@ export class ChangepasswordComponent implements OnInit {
     this.wrongPassword = true
     this.mismatch = true
     this.loadingStatus = false
-    if(this.checkCurrentPassword(this.currentPassword.value)){
-      this.wrongPassword = true
-      if(this.confirmPassword.value === this.newPassword.value) {
-        this.mismatch = true
-        this.UserService.changeUserPassword(this.userID,this.newPassword.value).subscribe({
-          next:value=>
-          {
-            alert("password updated")
-            this.getUser()
-            this.loadingStatus = true
-          }
-          ,
-          error:error => {
-            console.log(error)
-            this.loadingStatus = true
-          }
-        } )
+    if(this.newPasswordStrengthStatus && this.confirmPasswordStrengthStatus){
+      if(this.checkCurrentPassword(this.currentPassword.value)){
+        this.wrongPassword = true
+        if(this.confirmPassword.value === this.newPassword.value) {
+          this.mismatch = true
+          this.UserService.changeUserPassword(this.userID,this.newPassword.value).subscribe({
+            next:value=>
+            {
+              alert("password updated")
+              this.getUser()
+              this.loadingStatus = true
+              this.currentPassword.setValue("")
+              this.newPassword.setValue("")
+              this.confirmPassword.setValue("")
+            }
+            ,
+            error:error => {
+              console.log(error)
+              this.loadingStatus = true
+            }
+          } )
+        }else{
+          this.errorMsg = "Password mismatch!"
+          this.mismatch = false
+          this.loadingStatus = true
+        }
+
       }else{
-        this.mismatch = false
+        this.wrongPassword = false
         this.loadingStatus = true
       }
-
     }else{
-     this.wrongPassword = false
+      this.errorMsg = "Password is weak!"
+      this.mismatch = false
       this.loadingStatus = true
     }
+
 
   }
 
@@ -124,5 +139,24 @@ export class ChangepasswordComponent implements OnInit {
     }
 
 
+  }
+
+
+  checkNewPasswordStrength($event:any){
+    console.log($event.idx)
+    if($event.idx >= 5){
+      this.newPasswordStrengthStatus = true
+    }
+  }
+  checkConfirmPasswordStrength($event:any){
+    console.log($event.idx)
+    if($event.idx >= 5){
+      this.confirmPasswordStrengthStatus = true
+    }
+  }
+
+  keyDownHandler(event: any) {
+    if (event.which === 32)
+      event.preventDefault();
   }
 }

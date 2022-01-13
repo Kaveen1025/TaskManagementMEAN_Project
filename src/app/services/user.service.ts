@@ -27,15 +27,13 @@ export class UserService {
     return this.http.get(environment.apiBaseUrl + 'user/getWorkspaceDetails/'+userID)
   }
 
+  updateUserDetails(userID:String,content:any){
+    return this.http.put(environment.apiBaseUrl + 'user/updateDetails/'+userID, content);
+  }
 
-
-  // updateStudent(student:any){
-  //   return this.http.put(environment.apiBaseUrl + 'student/update/'+student._id, student);
-  // }
-  //
-  // deleteStudent(id:String){
-  //   return this.http.delete(environment.apiBaseUrl + 'student/delete/'+id);
-  // }
+  deleteUser(id:String){
+    return this.http.delete(environment.apiBaseUrl + 'user/delete/'+id);
+  }
 
 
 }
