@@ -1,0 +1,24 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "signUpUsers": [
+    {
+      "id": 1,
+      "Username": "abc",
+      "Password": "abc123"
+    },
+    {
+      "id": 2,
+      "Username": "tharindu",
+      "Password": "tharindu123"
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

@@ -146,7 +146,6 @@ router.post("/loginUser", async (req, res) => {
   try {
     const { Username, Password } = req.body;
 
-
     //check with database username
 
     let customerLogin = await User.findOne({ Username: Username });
@@ -158,7 +157,6 @@ router.post("/loginUser", async (req, res) => {
         res.status(400).json({ error: "Invalid Credentials" });
       } else {
         res.json({message: "Customer Sign In Successfully"});
-
       }
     } else {
       res.status(400).json({ error: "User does not exists" });

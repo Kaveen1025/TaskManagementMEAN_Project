@@ -53,46 +53,55 @@ import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.com
 import {SearchComponent} from "./reusablecomponent/search/search.component";
 import { HeaderComponent } from './navigation/header/header.component';
 import {WorkspacepageComponent} from "./components/workspacepage/workspacepage.component";
+import {LoginComponent} from "./components/login/login.component";
+
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatButtonModule} from '@angular/material/button';
+import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.component";
+import {ForgotpasswordComponent} from "./reusablecomponent/forgotpassword/forgotpassword.component";
 
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    FeaturespageComponent,
-    GetstartedComponent,
-    SidebarComponent,
-    AvatarGroupComponent,
-    UserprofileComponent,
-    DashboardComponent,
-    CrudbuttonComponent,
-    ContactusComponent,
-    HomepageComponent,
-    FooterComponent,
-    SignupforfreeComponent,
-    LoadinganimationComponent,
-    UserdetailsComponent,
-    ChangepasswordComponent,
-    AcceptordeclinebtnComponent,
-    ClearallComponent,
-    FriendrequestComponent,
-    FriendsheaderComponent,
-    SendfriendrequestcardComponent,
-    FriendspageComponent,
-    FriendcardComponent,
-    CentermodalComponent,
-    WorkspacecardComponent,
-    ProjectcardComponent,
-    ProjectAddComponent,
-    CrudbuttonpinkComponent,
-    WorkspaceaddComponent,
-    ProjecteditComponent,
-    WorkspaceeditComponent,
-    SearchComponent,
-    HeaderComponent,
-    WorkspacepageComponent,
+    declarations: [
+        AppComponent,
+        FeaturespageComponent,
+        GetstartedComponent,
+        SidebarComponent,
+        AvatarGroupComponent,
+        UserprofileComponent,
+        DashboardComponent,
+        CrudbuttonComponent,
+        ContactusComponent,
+        HomepageComponent,
+        FooterComponent,
+        SignupforfreeComponent,
+        LoadinganimationComponent,
+        UserdetailsComponent,
+        ChangepasswordComponent,
+        AcceptordeclinebtnComponent,
+        ClearallComponent,
+        FriendrequestComponent,
+        FriendsheaderComponent,
+        SendfriendrequestcardComponent,
+        FriendspageComponent,
+        FriendcardComponent,
+        CentermodalComponent,
+        WorkspacecardComponent,
+        ProjectcardComponent,
+        ProjectAddComponent,
+        CrudbuttonpinkComponent,
+        WorkspaceaddComponent,
+        ProjecteditComponent,
+        WorkspaceeditComponent,
+        SearchComponent,
+        HeaderComponent,
+        WorkspacepageComponent,
+        LoginComponent,
+        DeletedmodalComponent,
+        ForgotpasswordComponent
 
-  ],
+    ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -110,7 +119,9 @@ registerLocaleData(en);
     ReactiveFormsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    FlexLayoutModule
 
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
