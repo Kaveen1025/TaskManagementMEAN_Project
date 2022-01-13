@@ -53,6 +53,12 @@ import { WorkspaceeditComponent } from './modals/workspaceedit/workspaceedit.com
 import {SearchComponent} from "./reusablecomponent/search/search.component";
 import { HeaderComponent } from './navigation/header/header.component';
 import {WorkspacepageComponent} from "./components/workspacepage/workspacepage.component";
+import {MatPasswordStrengthModule} from "@angular-material-extensions/password-strength";
+import {
+PasswordStrengthBarComponent
+} from './specialcomponents/password-strength-bar/password-strength-bar.component';
+import {ErrormodalComponent} from "./modals/errormodal/errormodal.component";
+import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.component";
 
 registerLocaleData(en);
 
@@ -91,28 +97,33 @@ registerLocaleData(en);
     SearchComponent,
     HeaderComponent,
     WorkspacepageComponent,
+    PasswordStrengthBarComponent,
+    PasswordStrengthBarComponent,
+    ErrormodalComponent,
+    DeletedmodalComponent
 
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NgbModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    FormsModule,
-    HttpClientModule,
-    NzAvatarModule,
-    NzDividerModule,
-    NzToolTipModule,
-    MatCardModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        NgbModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        NzAvatarModule,
+        NzDividerModule,
+        NzToolTipModule,
+        MatCardModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatPasswordStrengthModule
 
-  ],
+    ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })

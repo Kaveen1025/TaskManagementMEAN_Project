@@ -1,7 +1,7 @@
 <div class= "avatarGroup">
   <nz-avatar-group>
     <nz-avatar nzIcon="user" *ngFor="let avatarArrays of avatarArray;"
-                nzSrc="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/rowan-chestnut-m663zRzRe40-unsplash.jpg">
+                [nzSrc]="'./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/'+avatarArrays.ProfileImage">
     </nz-avatar>
     <nz-avatar [hidden]="textAvatarElement" class = "textAvatar" nzText="{{i}}"></nz-avatar>
   </nz-avatar-group>

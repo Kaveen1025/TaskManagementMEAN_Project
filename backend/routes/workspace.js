@@ -70,7 +70,7 @@ router.route("/getWorkspaceByID/:id").get(async (req, res) => {
     });
 });
 
-//Get All workspaces belongto one user
+//Get All workspaces belong to one user
 router.route("/getWorkspacesbelongToaUser/:id").get(async (req, res) => {
   let userID = req.params.id;
 
@@ -87,7 +87,7 @@ router.route("/getWorkspacesbelongToaUser/:id").get(async (req, res) => {
     });
 });
 
-//Get All workspaces belongto one user
+//Get All workspaces belong to one user
 router.route("/getWorkspaceByName/:name").get(async (req, res) => {
   let workspaceName = req.params.name;
 

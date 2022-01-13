@@ -1,7 +1,4 @@
-<ng-template #content let-modal>
-
-  <div class="del">
-<!--    <div class="modal-dialog modal-dialog-centered">-->
+ <div class="del">
     <div class="modal-body text-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -11,11 +8,9 @@
       <h1>Deleted !</h1>
       <h3>Your file has been deleted </h3>
       <br>
-      <button type="button" class="btn" id="delbtn" (click)="modal.close('Close click')">Ok Done !</button>
+      <button type="button" class="btn" id="delbtn" (click)="closeModal()">Ok Done !</button>
 
     </div>
   </div>
-<!--  </div>-->
-</ng-template>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">open Modal vertically centered</button>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal(content)">close Modal vertically centered</button>
+
+

@@ -8,7 +8,7 @@ import {AvatargroupService} from "../../services/avatargroup.services";
 })
 export class AvatarGroupComponent implements OnInit {
 
-  avatarArray:Object[] = [];
+  avatarArray:any[] = [];
   i:String
   textAvatarElement:boolean;
   members: any = [{}];
@@ -28,6 +28,8 @@ export class AvatarGroupComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
+    console.log("Workspace id")
+    console.log(this.workspaceID)
     if(this.projectID != undefined) {
       await this.getProjectMemberDetails();
     }
@@ -42,9 +44,9 @@ export class AvatarGroupComponent implements OnInit {
       this.memberObject = post;
 
       this.members = this.memberObject[0].Members;
-      // console.log("Single member")
-      // console.log(this.members)
-      // console.log(this.members[0].ProfileImage)
+      console.log("Single member")
+      console.log(this.members)
+      console.log(this.members[0].ProfileImage)
 
       this.avatarArray = this.members
 
@@ -54,8 +56,6 @@ export class AvatarGroupComponent implements OnInit {
         this.textAvatarElement = false
       }
 
-    }, error => {
-      console.log(error);
     });
 
 
@@ -66,22 +66,13 @@ export class AvatarGroupComponent implements OnInit {
     await this.avatarGroupService.getWorkspaceMembers(this.workspaceID).subscribe((post: any) => {
       this.memberObject = post;
 
-      this.members = this.memberObject[0].Members;
-      // console.log("Single member")
-      // console.log(post);
-      // console.log(this.members)
-      // console.log(this.members[0].ProfileImage)
-
-      this.avatarArray = this.members
-
+      this.avatarArray = this.memberObject[0].Members
       if (this.avatarArray.length >= 5) {
         this.i = '+' + String(this.avatarArray.length - 5)
         this.avatarArray = this.avatarArray.splice(0, 5)
         this.textAvatarElement = false
       }
 
-    }, error => {
-      console.log(error);
     });
 
 
