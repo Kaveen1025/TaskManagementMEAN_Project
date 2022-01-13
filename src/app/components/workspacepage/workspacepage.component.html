@@ -46,7 +46,7 @@
 
       <div *ngIf="flagEditBtns" class="editrow">
         <div class="column">
-          <img class = "imgBtn" (click) = "getData()" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png" alt="Snow" >
+          <img class = "imgBtn" (click) = "openVerticallyCentered()" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png" alt="Snow" >
         </div>
         <div class="column">
           <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/sharing.png" alt="Forest" >
@@ -87,7 +87,9 @@
           </div>
         </div>
       <br><br><br>
-      <app-workspaceedit  ></app-workspaceedit>
+      <ng-template #content let-modal id = "content2" class = "mainModal">
+        <app-workspaceedit (reRenderEvent) = "getWorkspaceDetails()" [workspaceDetails]="workspaceObject" ></app-workspaceedit>
+      </ng-template>
 
     </div>
 </div>

@@ -2,7 +2,6 @@ import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@
 import {WorkspaceService} from "../../services/workspacepage.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
-
 import {WorkspaceeditComponent} from "./../../modals/workspaceedit/workspaceedit.component";
 
 @Component({
@@ -11,6 +10,8 @@ import {WorkspaceeditComponent} from "./../../modals/workspaceedit/workspaceedit
   styleUrls: ['./workspacepage.component.css']
 })
 export class WorkspacepageComponent implements OnInit {
+
+  @ViewChild('content', {static: true}) modalContent: TemplateRef<any> | undefined
 
 
   @Output() setProjects = new EventEmitter();
@@ -32,6 +33,7 @@ export class WorkspacepageComponent implements OnInit {
   workspaceModal : any;
   errorText: string = ""
   memberIDs: string[] = [];
+  workspaceObject: any;
 
   searchText: string = ""
   flagEditBtns = true;
@@ -41,7 +43,6 @@ export class WorkspacepageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.getProjectDetails();
     await this.getWorkspaceDetails()
-    this.workspaceModal = new WorkspaceeditComponent(this.modalService)
   }
 
   workspaceService : WorkspaceService;
@@ -78,12 +79,14 @@ export class WorkspacepageComponent implements OnInit {
       this.adminID = post.AdminID;
       this.memberIDs = post.MemberIDs
 
+      this.workspaceObject = post;
       this.checkPrivvilage()
 
     }, error => {
       console.log(error);
     });
   }
+
 
   checkPrivvilage(){
     console.log(this.adminID)
@@ -108,9 +111,6 @@ export class WorkspacepageComponent implements OnInit {
 
   }
 
-  getData(){
-    this.workspaceModal.openVerticallyCentered();
-  }
 
   searchProjects(){
     let i: number = 0
@@ -130,7 +130,12 @@ export class WorkspacepageComponent implements OnInit {
         this.errorText = "No Projects available"
       }
 
-      }
+  }
+
+  openVerticallyCentered() {
+    // console.log(this.modalContent);
+    this.modalService.open(this.modalContent, { centered: true, size : "lg"});
+  }
 
 
 

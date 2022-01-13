@@ -34,5 +34,12 @@ export class WorkspaceService{
 
   }
 
+  updateWorkspace(workspaceID: string, details: any){
+    return this.httpClient.put("http://localhost:8070/workspace/updateWorkspace/"+workspaceID, details)
+  }
+
+  deleteWorksplace(workspaceID: string){
+    return this.httpClient.delete("http://localhost:8070/workspace/deleteWorkspace/"+workspaceID)
+  }
 
 }
