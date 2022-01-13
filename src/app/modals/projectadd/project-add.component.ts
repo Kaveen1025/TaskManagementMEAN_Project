@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ProjectsService} from "../../services/projects/projects.service";
 
 @Component({
   selector: 'app-projectadd',
@@ -8,7 +9,18 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class ProjectAddComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  //Attributes
+  projectName : String ="";
+  Description : String ="";
+  Deadline: String ="";
+  CoverImage : String ="";
+  MainImage: String ="";
+  AdminID : String ="11111";
+  workspaceID : String ="33333";
+
+
+
+  constructor(private modalService: NgbModal, private projectservices:ProjectsService) { }
 
   ngOnInit(): void {
   }
@@ -22,5 +34,25 @@ export class ProjectAddComponent implements OnInit {
 
   saveDetails(content: any) {
     this.modalService.dismissAll(content);
+  }
+
+  addProject(){
+
+    let project ={
+      projectName : this.projectName,
+      Description : this.Description,
+      Deadline: this.Deadline,
+      CoverImage : this.CoverImage,
+      MainImage: this.MainImage,
+      AdminID : this.AdminID,
+      workspaceID : this.workspaceID
+    }
+
+    console.log (project);
+
+    this.projectservices.addProject(project).subscribe((res)=>{
+      console.log(res);
+
+    })
   }
 }

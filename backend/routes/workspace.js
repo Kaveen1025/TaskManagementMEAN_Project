@@ -11,10 +11,10 @@ router.route("/create").post((req, res) => {
     Description,
     MainImage,
     CoverImage,
-    AdminID,
-    ProjectIDs,
-    MemberIDs,
-    guestIDs,
+    AdminID
+    // ProjectIDs,
+    // MemberIDs,
+    // guestIDs,
 
   } = req.body;
 
@@ -23,10 +23,10 @@ router.route("/create").post((req, res) => {
     Description,
     MainImage,
     CoverImage,
-    AdminID,
-    ProjectIDs,
-    MemberIDs,
-    guestIDs,
+    AdminID
+    // ProjectIDs,
+    // MemberIDs,
+    // guestIDs,
   });
 
   newWorkspace
