@@ -14,16 +14,12 @@ export class ErrormodalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openVerticallyCentered() {
-    this.modalService.open(this.content, { centered: true });
-  }
+
 
   closeModal() {
     this.modalService.dismissAll(this.content);
   }
 
-  saveDetails(content: any) {
-    this.modalService.dismissAll(content);
-  }
+
 
 }

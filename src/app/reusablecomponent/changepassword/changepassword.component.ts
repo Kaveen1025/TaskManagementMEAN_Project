@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {UserService} from "../../services/user.service";
 // @ts-ignore
 import * as bcrypt from 'bcryptjs';
 import {FormControl} from "@angular/forms";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -14,7 +15,9 @@ export class ChangepasswordComponent implements OnInit {
   userID:String
   User:any
   UserService:UserService
-
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
+  @ViewChild('content2') private content2: TemplateRef<any> | undefined;
+  @ViewChild('content3') private content3: TemplateRef<any> | undefined;
   currentPassword = new FormControl('');
   newPassword = new FormControl('');
   confirmPassword = new FormControl('');
@@ -32,7 +35,7 @@ export class ChangepasswordComponent implements OnInit {
   newPasswordStrengthStatus:boolean = false
   confirmPasswordStrengthStatus:boolean = false
   public barLabel: string = "Password strength:";
-  constructor(UserService:UserService) {
+  constructor(UserService:UserService,private modalService: NgbModal) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.typeInput1 = "password"
@@ -55,22 +58,8 @@ export class ChangepasswordComponent implements OnInit {
         this.wrongPassword = true
         if(this.confirmPassword.value === this.newPassword.value) {
           this.mismatch = true
-          this.UserService.changeUserPassword(this.userID,this.newPassword.value).subscribe({
-            next:value=>
-            {
-              alert("password updated")
-              this.getUser()
-              this.loadingStatus = true
-              this.currentPassword.setValue("")
-              this.newPassword.setValue("")
-              this.confirmPassword.setValue("")
-            }
-            ,
-            error:error => {
-              console.log(error)
-              this.loadingStatus = true
-            }
-          } )
+          this.openConfirmModal()
+
         }else{
           this.errorMsg = "Password mismatch!"
           this.mismatch = false
@@ -144,19 +133,42 @@ export class ChangepasswordComponent implements OnInit {
 
   checkNewPasswordStrength($event:any){
     console.log($event.idx)
-    if($event.idx >= 5){
-      this.newPasswordStrengthStatus = true
-    }
+    this.newPasswordStrengthStatus = $event.idx >= 4;
   }
   checkConfirmPasswordStrength($event:any){
     console.log($event.idx)
-    if($event.idx >= 5){
-      this.confirmPasswordStrengthStatus = true
-    }
+    this.confirmPasswordStrengthStatus = $event.idx >= 4;
   }
 
   keyDownHandler(event: any) {
     if (event.which === 32)
       event.preventDefault();
+  }
+
+  openConfirmModal() {
+    this.modalService.open(this.content, { centered: true });
+    this.loadingStatus = true
+  }
+
+  changePasswordFromDB(){
+    this.loadingStatus = false
+    this.UserService.changeUserPassword(this.userID,this.newPassword.value).subscribe({
+      next:value=>
+      {
+        //alert("password updated")
+        this.modalService.open(this.content2, { centered: true });
+        this.getUser()
+        this.loadingStatus = true
+        this.currentPassword.setValue("")
+        this.newPassword.setValue("")
+        this.confirmPassword.setValue("")
+      }
+      ,
+      error:error => {
+        console.log(error)
+        this.loadingStatus = true
+        this.modalService.open(this.content3, { centered: true });
+      }
+    } )
   }
 }
