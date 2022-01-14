@@ -59,6 +59,9 @@ PasswordStrengthBarComponent
 } from './specialcomponents/password-strength-bar/password-strength-bar.component';
 import {ErrormodalComponent} from "./modals/errormodal/errormodal.component";
 import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.component";
+import {LoginComponent} from "./components/login/login.component";
+import {ForgotpasswordComponent} from "./reusablecomponent/forgotpassword/forgotpassword.component";
+// import { EmailservicesComponent } from './services/emailservices/emailservices.component';
 
 registerLocaleData(en);
 
@@ -100,7 +103,9 @@ registerLocaleData(en);
     PasswordStrengthBarComponent,
     PasswordStrengthBarComponent,
     ErrormodalComponent,
-    DeletedmodalComponent
+    DeletedmodalComponent,
+    LoginComponent,
+    ForgotpasswordComponent,
 
   ],
     imports: [

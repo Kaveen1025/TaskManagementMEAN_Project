@@ -9,12 +9,12 @@
 
     <div class="col" id="coll2">
       <div class="container">
-      <form [formGroup]="form" id="form11" (ngSubmit)="login()">
+      <div id="form11">
         <h2>Login</h2>
         <div class="form-group input-icons">
           <div class="inner-addon left-addon mb-3">
             <i class="fas fa-user"></i>
-          <input  formControlName="Username" type="text" class="form-control" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username" required>
+          <input  [(ngModel)]="Username" type="text" class="form-control" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username" required>
 <!--            <span class="text-danger" *ngIf="form.controls['Username'].dirty && form.hasError('required','email')">-->
 <!--              *Username is Required-->
 <!--            </span>-->
@@ -24,13 +24,13 @@
 
           <div class="inner-addon left-addon mb-3">
             <i class="fas fa-unlock-alt"></i>
-          <input  formControlName="Password" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+          <input [(ngModel)]="Password" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
 <!--            <span class="text-danger" *ngIf="form.controls['Password'].dirty && form.hasError('required','password')">-->
 <!--              *Password is Required-->
 <!--            </span>-->
             </div>
         </div>
-        <button id="lgbtn" type="submit" class="btn btn-lg" >LOGIN</button>
+        <button id="lgbtn" type="submit" class="btn btn-lg" (click)="login()">LOGIN</button>
 
         <label id="fpass" routerLink="forgotpassword">Forgot Password ?</label>
 <br>
@@ -42,7 +42,7 @@
 
         <button id="googlebtn" class="btn"><img id="gicon" src="./assets/images/images Used in Project Management UI Design/google.png">Continue With Google</button>
         <span class="text-center" id="acc">Need an account ? <b> SIGN UP</b></span>
-      </form>
+      </div>
         </div>
     </div>
     <div class="col-3" id="coll3">
