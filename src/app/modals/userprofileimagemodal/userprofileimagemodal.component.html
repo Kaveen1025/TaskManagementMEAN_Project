@@ -1,0 +1,42 @@
+<!--<ng-template #content let-modal>-->
+<div class="success">
+<!--  <div class="modal-body text-center">-->
+<!--  <img  class = "img-fluid" src="http://placehold.it/">-->
+<!--    <br><br>-->
+<!--    <h1>Success !</h1>-->
+<!--    <h3>Your data have been Saved </h3>-->
+<!--    <br>-->
+<!--    <button type="button" class="btn" id="okbtn" (click)="closeModal()">Ok</button>-->
+
+<!--  </div>-->
+
+  <form [formGroup]="myForm" (ngSubmit)="submit()">
+
+<!--    <div *ngIf="filePath && filePath !== ''">-->
+<!--      <img [src]="filePath" [alt]="myForm.value.name" class = "img-fluid w-25">-->
+<!--    </div>-->
+
+    <input type="file" accept="image/*" (change)="imagePreview($event)" >
+
+<!--    <input formControlName="filename" placeholder="File name">-->
+
+    <button type="submit">Upload</button>
+  </form>
+</div>
+<!--</ng-template>-->
+
+<!--<button class="btn" (click) = "openModal()">ddd</button>-->
+<!--<input type="file" accept="image/*" (change)="imagePreview($event)" >-->
+<image-cropper
+  style = "width: 300px; height:300px"
+  [imageChangedEvent]="imageChangedEvent"
+  [maintainAspectRatio]="true"
+  [aspectRatio]="4 / 3"
+  (imageCropped)="imageCropped($event)"
+  (imageLoaded)="imageLoaded($event)"
+  (cropperReady)="cropperReady()"
+  (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+<img [src]="croppedImage"   style = "width: 300px; height:300px" alt = "placeholder">
+
+<!--format="png"-->

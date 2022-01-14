@@ -18,9 +18,13 @@ export class ChangepasswordComponent implements OnInit {
   @ViewChild('content') private content: TemplateRef<any> | undefined;
   @ViewChild('content2') private content2: TemplateRef<any> | undefined;
   @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+
+
   currentPassword = new FormControl('');
   newPassword = new FormControl('');
   confirmPassword = new FormControl('');
+
+
   wrongPassword: boolean = true;
   mismatch: boolean = true;
   typeInput1: String

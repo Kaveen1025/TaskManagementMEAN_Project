@@ -62,6 +62,8 @@ import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.componen
 import { ConfirmmodalComponent } from './modals/confirmmodal/confirmmodal.component';
 import {SuccessmodalComponent} from "./modals/successmodal/successmodal.component";
 import { PasswordconfrimmodalComponent } from './modals/passwordconfrimmodal/passwordconfrimmodal.component';
+import { UserprofileimagemodalComponent } from './modals/userprofileimagemodal/userprofileimagemodal.component';
+import {ImageCropperModule} from "ngx-image-cropper";
 
 registerLocaleData(en);
 
@@ -106,7 +108,8 @@ registerLocaleData(en);
     DeletedmodalComponent,
     ConfirmmodalComponent,
     SuccessmodalComponent,
-    PasswordconfrimmodalComponent
+    PasswordconfrimmodalComponent,
+    UserprofileimagemodalComponent
 
   ],
     imports: [
@@ -127,7 +130,8 @@ registerLocaleData(en);
         MatAutocompleteModule,
         MatFormFieldModule,
         MatInputModule,
-        MatPasswordStrengthModule
+        MatPasswordStrengthModule,
+        ImageCropperModule
 
     ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
