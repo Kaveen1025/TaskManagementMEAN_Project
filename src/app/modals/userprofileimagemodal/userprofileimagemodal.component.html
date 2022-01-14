@@ -1,7 +1,8 @@
-<ng-template #content let-modal>
+
   <div class="success">
     <div class="modal-body text-center">
       <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "userProfileImage" alt = "userProfile">
+      <button type="button text-center" class="btn btn-outline-warning">reset</button>
       <div class="wrapper">
         <div class="container card">
           <div class="upload-container card-body">
@@ -36,9 +37,8 @@
     </div>
 
   </div>
-</ng-template>
 
-<button type = "button" class="btn btn-primary" (click) = "openModal()">open modal</button>
+
 
 
 

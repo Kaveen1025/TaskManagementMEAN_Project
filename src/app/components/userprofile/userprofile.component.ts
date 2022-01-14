@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-userprofile',
@@ -11,7 +12,8 @@ export class UserprofileComponent implements OnInit {
   UserService:UserService
   user: any
   userID: String
-  constructor(UserService:UserService) {
+  @ViewChild('content99') private content99: TemplateRef<any> | undefined;
+  constructor(UserService:UserService,private modalService: NgbModal) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
   }
@@ -30,5 +32,9 @@ export class UserprofileComponent implements OnInit {
         console.log(error)
       }
     } )
+  }
+
+  openUserImageEditModal() {
+    this.modalService.open(this.content99, { centered: true });
   }
 }
