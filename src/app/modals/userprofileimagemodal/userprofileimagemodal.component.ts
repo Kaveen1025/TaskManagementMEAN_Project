@@ -14,6 +14,7 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   filePath: string;
   myForm: FormGroup;
+  userProfileImage:any = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG"
   constructor(private modalService: NgbModal,public fb: FormBuilder) {
     this.myForm = this.fb.group({
       img: [null],
@@ -21,9 +22,11 @@ export class UserprofileimagemodalComponent implements OnInit {
     })
 
     this.filePath = ""
+    this.status = true
   }
 
   ngOnInit(): void {
+
   }
 
 
@@ -42,6 +45,7 @@ export class UserprofileimagemodalComponent implements OnInit {
   imagePreview(e:any) {
 
     this.fileChangeEvent(e)
+    this.status =false
   }
 
   submit() {
@@ -50,15 +54,15 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  croppedImagess: any;
-  status: boolean = true;
+  status: boolean;
+
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
-    this.croppedImagess = this.croppedImage
+    this.userProfileImage = this.croppedImage
   }
   imageLoaded(image: LoadedImage) {
     // show cropper
@@ -70,7 +74,7 @@ export class UserprofileimagemodalComponent implements OnInit {
     // show message
   }
 
-  showCroppedImage() {
-    this.status = false
+  saveDetails() {
+
   }
 }
