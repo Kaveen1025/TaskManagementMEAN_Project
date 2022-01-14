@@ -40,21 +40,6 @@ export class UserprofileimagemodalComponent implements OnInit {
 
 
   imagePreview(e:any) {
-    // // @ts-ignore
-    // const file = (e.target as HTMLInputElement).files[0];
-    //
-    // this.myForm.patchValue({
-    //   img: file
-    // });
-    //
-    // // @ts-ignore
-    // this.myForm.get('img').updateValueAndValidity()
-    //
-    // const reader = new FileReader();
-    // reader.onload = () => {
-    //   this.filePath = reader.result as string;
-    // }
-    // reader.readAsDataURL(file)
 
     this.fileChangeEvent(e)
   }
@@ -63,16 +48,17 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   }
 
-
-
   imageChangedEvent: any = '';
   croppedImage: any = '';
+  croppedImagess: any;
+  status: boolean = true;
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
+    this.croppedImagess = this.croppedImage
   }
   imageLoaded(image: LoadedImage) {
     // show cropper
@@ -82,5 +68,9 @@ export class UserprofileimagemodalComponent implements OnInit {
   }
   loadImageFailed() {
     // show message
+  }
+
+  showCroppedImage() {
+    this.status = false
   }
 }
