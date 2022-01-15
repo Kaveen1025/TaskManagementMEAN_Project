@@ -3,4 +3,10 @@ a:hover {
   color: #FC5185;
 }
 
-
+.errortext2{
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: #FC5185;
+  text-align: center;
+}

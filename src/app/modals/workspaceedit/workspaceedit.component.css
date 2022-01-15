@@ -32,6 +32,13 @@
   float: right;
 }
 
+.errortext2{
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #FC5185;
+}
+
 @media screen and (max-width: 1000px){
   .mainTitle{
     color: #F5F5F5;
