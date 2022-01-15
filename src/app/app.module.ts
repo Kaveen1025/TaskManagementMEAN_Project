@@ -65,7 +65,17 @@ import { PasswordconfrimmodalComponent } from './modals/passwordconfrimmodal/pas
 import { UserprofileimagemodalComponent } from './modals/userprofileimagemodal/userprofileimagemodal.component';
 import {ImageCropperModule} from "ngx-image-cropper";
 
+import { environment } from '../environments/environment';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+
+
 registerLocaleData(en);
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -109,7 +119,7 @@ registerLocaleData(en);
     ConfirmmodalComponent,
     SuccessmodalComponent,
     PasswordconfrimmodalComponent,
-    UserprofileimagemodalComponent
+    UserprofileimagemodalComponent,
 
   ],
     imports: [
@@ -131,7 +141,10 @@ registerLocaleData(en);
         MatFormFieldModule,
         MatInputModule,
         MatPasswordStrengthModule,
-        ImageCropperModule
+        ImageCropperModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule
+
 
     ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
