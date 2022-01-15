@@ -6,7 +6,7 @@ import {UserService} from "../../services/user.service";
 // import {EmailService} from "../../services/emailservices";
 
 
-import Cotter from 'cotter';
+// import Cotter from 'cotter';
 
 
 @Component({
