@@ -62,8 +62,21 @@ import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.componen
 import { ConfirmmodalComponent } from './modals/confirmmodal/confirmmodal.component';
 import {SuccessmodalComponent} from "./modals/successmodal/successmodal.component";
 import { PasswordconfrimmodalComponent } from './modals/passwordconfrimmodal/passwordconfrimmodal.component';
+import { UserprofileimagemodalComponent } from './modals/userprofileimagemodal/userprofileimagemodal.component';
+import {ImageCropperModule} from "ngx-image-cropper";
+
+import { environment } from '../environments/environment';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import { ForgotpasswordComponent } from './reusablecomponent/forgotpassword/forgotpassword.component';
+
 
 registerLocaleData(en);
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -106,7 +119,9 @@ registerLocaleData(en);
     DeletedmodalComponent,
     ConfirmmodalComponent,
     SuccessmodalComponent,
-    PasswordconfrimmodalComponent
+    PasswordconfrimmodalComponent,
+    UserprofileimagemodalComponent,
+    ForgotpasswordComponent
 
   ],
     imports: [
@@ -127,7 +142,11 @@ registerLocaleData(en);
         MatAutocompleteModule,
         MatFormFieldModule,
         MatInputModule,
-        MatPasswordStrengthModule
+        MatPasswordStrengthModule,
+        ImageCropperModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule
+
 
     ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

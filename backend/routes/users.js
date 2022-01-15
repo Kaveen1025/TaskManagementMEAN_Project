@@ -177,7 +177,7 @@ router.route('/updateDetails/:id').put(async (req,res)=> {
 
   let userID = req.params.id;
 
-  const {FirstName, LastName, ProfileImage} = req.body;
+  const {FirstName, LastName} = req.body;
 
   const updatedUser = await User.updateOne(
     {_id: userID},
@@ -185,6 +185,29 @@ router.route('/updateDetails/:id').put(async (req,res)=> {
       $set:{
         FirstName: FirstName,
         LastName : LastName,
+      }
+    }
+  ).then(() =>{
+    res.status(200).send({status: "User Profile Updated"});
+  }).catch((err) => {
+    res
+      .status(500)
+      .send({status: "Error with updating data", error: err.message});
+  })
+})
+// currently, using
+//Update User --> Edit Profile image
+//URL --> http://localhost:8070/user/updateUserProfile/:id
+router.route('/updateUserProfile/:id').put(async (req,res)=> {
+
+  let userID = req.params.id;
+
+  const {ProfileImage} = req.body;
+
+  const updatedUser = await User.updateOne(
+    {_id: userID},
+    {
+      $set:{
         ProfileImage: ProfileImage
       }
     }
@@ -196,8 +219,6 @@ router.route('/updateDetails/:id').put(async (req,res)=> {
       .send({status: "Error with updating data", error: err.message});
   })
 })
-
-
 
 //Delete User -->Edit Profile Page
 //URL -->http://localhost:8070/user/delete/:id
@@ -218,7 +239,6 @@ router.post("/loginUser", async (req, res) => {
   try {
     const { Username, Password } = req.body;
 
-
     //check with database username
 
     let customerLogin = await User.findOne({ Username: Username });
@@ -230,7 +250,6 @@ router.post("/loginUser", async (req, res) => {
         res.status(400).json({ error: "Invalid Credentials" });
       } else {
         res.json({message: "Customer Sign In Successfully"});
-
       }
     } else {
       res.status(400).json({ error: "User does not exists" });
@@ -639,7 +658,44 @@ router.route("/getWorkspaceDetails/:userID").get(async (req, res) => {
   }
 });
 
-
+//Get user details of the users in friend requests array
+router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
+  let userID = req.params.userID;
+  try {
+    const result = await User.aggregate([
+      {
+        $match: { _id: ObjectId(userID)},
+      },
+      {
+        $project: {
+          RequestedFriends: {
+            $map: {
+              input: "$RequestedFriends",
+              as: "friendID",
+              in: {
+                $convert: {
+                  input: "$$friendID",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "RequestedFriends",
+          foreignField: "_id",
+          as: "RequestedFriendDetails"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
 
 
 

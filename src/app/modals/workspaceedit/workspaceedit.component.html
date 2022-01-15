@@ -1,8 +1,8 @@
-<ng-template #content let-modal class = "mainModal">
+
   <div class="modal-header mainHeader text-center">
     <h3 class="modal-title mainTitle w-100"><b>Edit Your Workspace</b></h3>
     <div class = "closeContainer">
-      <button type="button" class="close closeBtn" aria-label="Close" (click)="modal.close('Cross click')">
+      <button type="button" class="close closeBtn" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -13,13 +13,14 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Workspace Name<font class = "required">*</font></label>
-            <input type="text" class="form-control inputFieldsTxt" placeholder="Workspace Name">
+            <input type="text" class="form-control inputFieldsTxt" [(ngModel)]="workspacename"  (ngModelChange)="checkvalidity()" placeholder="Workspace Name">
+            <p *ngIf="flagName" class = "errortext2">Workspace name cannot be null</p>
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Cover Image</label>
-            <input type="file" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="coverimage" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
@@ -27,14 +28,15 @@
         <div class="col-sm">
           <div class="form-group">
             <label class = "labels">Description<font class = "required">*</font></label>
-            <textarea class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"></textarea>
+            <textarea class="form-control inputFieldsTxt" [(ngModel)]="description" (ngModelChange)="checkvalidity()"   rows="5" placeholder = "Description"></textarea>
+            <p *ngIf="flagDescription" class = "errortext2">Description cannot be null</p>
           </div>
         </div>
         <div class="col-sm">
 
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
-            <input type="file" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="mainimage" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
@@ -45,11 +47,11 @@
           <div class="col-sm">
           </div>
           <div class="col-sm"><br>
-            <app-crudbuttonpink text="EDIT"></app-crudbuttonpink>
+            <app-crudbuttonpink (click) = "editworkspace()" text="EDIT"></app-crudbuttonpink>
           </div>
           <div class="col-sm">
             <br>
-            <app-crudbuttonpink text="DELETE"></app-crudbuttonpink>
+            <app-crudbuttonpink (click) = "deleteworkspace()" text="DELETE"></app-crudbuttonpink>
           </div>
           <div class="col-sm">
           </div>
@@ -59,6 +61,4 @@
 
     </div>
   </div>
-</ng-template>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">open Modal vertically centered</button>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal(content)">close Modal vertically centered</button>
+
