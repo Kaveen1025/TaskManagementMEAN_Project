@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -8,18 +8,18 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class SuccessmodalComponent implements OnInit {
 
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
+
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
 
 
+
   closeModal() {
-    this.modalService.dismissAll();
+    this.modalService.dismissAll(this.content);
   }
 
-  saveDetails(content: any) {
-    this.modalService.dismissAll(content);
-  }
 
 }

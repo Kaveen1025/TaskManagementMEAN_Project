@@ -59,7 +59,9 @@ PasswordStrengthBarComponent
 } from './specialcomponents/password-strength-bar/password-strength-bar.component';
 import {ErrormodalComponent} from "./modals/errormodal/errormodal.component";
 import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.component";
+import { ConfirmmodalComponent } from './modals/confirmmodal/confirmmodal.component';
 import {SuccessmodalComponent} from "./modals/successmodal/successmodal.component";
+import { PasswordconfrimmodalComponent } from './modals/passwordconfrimmodal/passwordconfrimmodal.component';
 
 registerLocaleData(en);
 
@@ -102,7 +104,9 @@ registerLocaleData(en);
     PasswordStrengthBarComponent,
     ErrormodalComponent,
     DeletedmodalComponent,
-    SuccessmodalComponent
+    ConfirmmodalComponent,
+    SuccessmodalComponent,
+    PasswordconfrimmodalComponent
 
   ],
     imports: [
