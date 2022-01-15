@@ -16,6 +16,7 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   @ViewChild('content') private content: TemplateRef<any> | undefined;
 
+  userId: string
   filePath: string;
   myForm: FormGroup;
   userImagePlaceHolder: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
@@ -26,7 +27,9 @@ export class UserprofileimagemodalComponent implements OnInit {
   UserService:UserService
   tempFile:any
   temp:any
-  contentStatus1: boolean = false;
+  contentStatus1: boolean = false
+  percentageLoading:any = true
+
 
   constructor(private modalService: NgbModal,public fb: FormBuilder,FirebaseService: FirebasesService,UserService:UserService) {
     this.myForm = this.fb.group({
@@ -39,6 +42,7 @@ export class UserprofileimagemodalComponent implements OnInit {
 
     this.FirebaseService = FirebaseService
     this.UserService = UserService
+    this.userId = "61d59e7999dc1f31177898ba"
   }
 
   ngOnInit(): void {
@@ -50,7 +54,7 @@ export class UserprofileimagemodalComponent implements OnInit {
   }
 
   openModal() {
-    this.modalService.open(this.content, { centered: true });
+    this.modalService.open(this.content, { centered: true});
   }
 
 
@@ -88,7 +92,6 @@ export class UserprofileimagemodalComponent implements OnInit {
     this.temp.name = "61d59e7999dc1f31177898baUserImage.png"
       this.upload(this.temp)
     this.contentStatus1 = true
-
   }
 
   removeUserProfile() {
@@ -105,10 +108,23 @@ export class UserprofileimagemodalComponent implements OnInit {
           percentage => {
             percentage = Math.round(percentage ? percentage : 0);
             console.log('done')
-            if(percentage >= 100){
+            if(percentage >= 100 && this.percentageLoading){
               this.contentStatus1 = false
               this.closeModal()
               alert("Image uploaded")
+              this.percentageLoading = false
+              let content = {
+                ProfileImage : this.temp.name,
+              }
+              this.UserService.updateUserProfileImage(this.userId,content).subscribe({
+                next: value => {
+                       alert("db updated")
+                }
+                ,
+                error: error => {
+                  console.log(error)
+                }
+              })
             }
           },
           error => {
@@ -118,7 +134,6 @@ export class UserprofileimagemodalComponent implements OnInit {
   }
 
   // covert base64 uri for image
-
   dataURItoBlobDD(dataURI:any) {
     const binary = atob(dataURI.split(',')[1]);
     const array = [];
