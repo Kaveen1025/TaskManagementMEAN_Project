@@ -14,7 +14,9 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   filePath: string;
   myForm: FormGroup;
+  userImagePlaceHolder: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
   userProfileImage:any = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG"
+
   constructor(private modalService: NgbModal,public fb: FormBuilder) {
     this.myForm = this.fb.group({
       img: [null],
@@ -76,5 +78,10 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   saveDetails() {
 
+  }
+
+  removeUserProfile() {
+    this.userProfileImage = this.userImagePlaceHolder
+    this.status = true
   }
 }
