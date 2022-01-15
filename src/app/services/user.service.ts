@@ -11,6 +11,11 @@ export class UserService {
   constructor(private http: HttpClient) {
 
   }
+
+  createUser(data:any){
+    return this.http.post(environment.apiBaseUrl + 'user/add', data);
+  }
+
   getUser(userID:String){
     return this.http.get(environment.apiBaseUrl + 'user/get/'+userID)
   }

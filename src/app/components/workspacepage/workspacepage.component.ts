@@ -41,7 +41,6 @@ export class WorkspacepageComponent implements OnInit {
       // console.log(this.projectObject[0]);
 
     });
-
   }
   getWorkspaceDetails(){
     this.workspaceService.getWorkspaceData(this.workspaceID).subscribe((post: any)=> {
