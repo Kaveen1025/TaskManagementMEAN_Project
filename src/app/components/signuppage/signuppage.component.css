@@ -209,6 +209,16 @@
 .signup .right-addon input { padding-right: 50px; }
 
 
+.signup .inner-addon .fas {
+  position: absolute;
+  padding: 10px 30px;
+  z-index: 100;
+  cursor: pointer;
+}
+.signup .left-addon .fas  { left:  0px; }
+.signup .right-addon .fas { right: 0px; }
+
+
   @media only screen and (max-width: 600px) {
     .signup .content {
       display: none;

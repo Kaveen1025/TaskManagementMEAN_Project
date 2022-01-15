@@ -9,19 +9,49 @@ import {FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
 })
 export class SignuppageComponent implements OnInit {
 
+
   Username = new FormControl('');
   Email = new FormControl('');
   FirstName = new FormControl('');
   LastName = new FormControl('');
   Password = new FormControl('');
+  ConfirmPassword = new FormControl('');
+
+
+  // passwordType: string = 'password';
+  // passwordShown: boolean = false;
 
   constructor(private userService: UserService) { }
+
 
   ngOnInit(): void {
 
   }
 
-  addUser(contactForm: NgForm){
+  show_button: Boolean = false;
+  show_eye: Boolean = false;
+
+  showPassword() {
+    this.show_button = !this.show_button;
+    this.show_eye = !this.show_eye;
+  }
+
+  // togglePassword(){
+  //
+  //   if(this.passwordShown){
+  //     this.passwordShown = false;
+  //     this.passwordType = 'password';
+  //
+  //   }else{
+  //
+  //     this.passwordShown = true;
+  //     this.passwordType = 'password';
+  //   }
+  //
+  //
+  // }
+
+  addUser(signUpForm: NgForm){
 
     let object2 = {
 
@@ -41,6 +71,7 @@ export class SignuppageComponent implements OnInit {
       this.FirstName.setValue("");
       this.LastName.setValue("");
       this.Password.setValue("");
+      this.ConfirmPassword.setValue("");
 
 
       alert("Success");
