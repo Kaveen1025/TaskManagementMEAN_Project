@@ -31,7 +31,7 @@ export class WorkspaceaddComponent implements OnInit {
   constructor(private modalService: NgbModal, private workspaceservices:WorkspaceservicesService, private userservice:UserService) { }
 
   ngOnInit(): void {
-    localStorage.setItem("AdminID","61dd30e3dd092e9def37e4b5");
+    localStorage.setItem("AdminID","61d59e7999dc1f31177898ba");
   }
 
 
@@ -56,6 +56,7 @@ export class WorkspaceaddComponent implements OnInit {
 
     console.log(object2);
     console.log(localStorage.getItem("AdminID"));
+
     this.workspaceservices.addWorkspace(object2).subscribe((res)=>{
         console.log(res);
 
