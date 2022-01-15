@@ -658,7 +658,44 @@ router.route("/getWorkspaceDetails/:userID").get(async (req, res) => {
   }
 });
 
-
+//Get user details of the users in friend requests array
+router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
+  let userID = req.params.userID;
+  try {
+    const result = await User.aggregate([
+      {
+        $match: { _id: ObjectId(userID)},
+      },
+      {
+        $project: {
+          RequestedFriends: {
+            $map: {
+              input: "$RequestedFriends",
+              as: "friendID",
+              in: {
+                $convert: {
+                  input: "$$friendID",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "RequestedFriends",
+          foreignField: "_id",
+          as: "RequestedFriendDetails"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
 
 
 
