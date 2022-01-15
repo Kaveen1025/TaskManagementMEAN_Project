@@ -68,6 +68,7 @@ import {ImageCropperModule} from "ngx-image-cropper";
 import { environment } from '../environments/environment';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
+import { ForgotpasswordComponent } from './reusablecomponent/forgotpassword/forgotpassword.component';
 
 
 registerLocaleData(en);
@@ -120,6 +121,7 @@ registerLocaleData(en);
     SuccessmodalComponent,
     PasswordconfrimmodalComponent,
     UserprofileimagemodalComponent,
+    ForgotpasswordComponent
 
   ],
     imports: [
