@@ -51,5 +51,14 @@ export class UserService {
   getEmail(email: String){
     return this.http.get('http://localhost:8070/user/getUser/'+email);
   }
+  //Add a project to the user
+  addProject(userID:any, projectID:any){
+    return this.http.put(environment.apiBaseUrl+'user/addproject/' + userID + "/" + projectID, "")
+  }
+
+  //Add Workspace to the User
+  addWorkspace(userID:any, workspaceID:any){
+    return this.http.put(environment.apiBaseUrl+'user/addworkspace/' + userID + "/" + workspaceID, "")
+  }
 
 }

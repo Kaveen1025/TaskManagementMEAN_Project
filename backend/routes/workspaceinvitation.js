@@ -1,5 +1,6 @@
 const router = require("express").Router();
 let WorkspaceInvitaion = require("../models/workspaceInvitations");
+const generic = require('./generic');
 
 //Create new WorkspaceInvitation
 router.route("/create").post((req, res) => {
@@ -94,18 +95,30 @@ router.route("/deleteWorkspaceInvitationacco/:workspaceID/:userID").delete(async
 });
 
 //Get All WorkspaceInvitation according to a user
-router.route("/getWorkspaceInvitationsaccoUser/:userID").get((req, res) => {
+router.route("/getWorkspaceInvitationsaccoUser/:userID").get( async(req, res) => {
   let userID = req.params.userID;
 
-  WorkspaceInvitaion.find({invitedUser: userID})
-    .then((workspaceinvitation) => {
+   await WorkspaceInvitaion.find({invitedUser: userID})
+    .then( async (workspaceinvitation) => {
       res.json(workspaceinvitation);
+
+       console.log(workspaceinvitation.length);
+      await gg(workspaceinvitation);
+
+
     })
     .catch((err) => {
       console.log(err);
     });
 });
 
+async function gg(idArr) {
 
+  let Arr = await generic.makeRequests(idArr);
+  console.log("GG");
+  console.log(Arr);
+
+
+}
 
 module.exports = router;

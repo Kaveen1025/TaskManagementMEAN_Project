@@ -69,7 +69,8 @@
         <br>
       </div>
       <div class = "creatbtn">
-        <app-clearall></app-clearall>
+<!--        <app-clearall></app-clearall>-->
+        <app-crudbutton  class="text-center" text = "CREATE PROJECT" (click)="CreateProject()"></app-crudbutton>
         <br>
 
       </div>
@@ -88,3 +89,8 @@
 
     </div>
 </div>
+
+<!--modal-->
+<ng-template #content let-modal>
+  <app-projectadd (reRenderDetails) = "reload()" [WorkSpaceID]=" workspaceID" ></app-projectadd>
+</ng-template>

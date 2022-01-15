@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import {UserService} from "../../services/user.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -8,6 +9,10 @@ import {UserService} from "../../services/user.service";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+
+  @Output() newItemEvent = new EventEmitter<string>()
+  // @Input() userID : String | undefined
+
   imagePath: String
   imageURL: String
   public now: Date =  new Date()
@@ -31,7 +36,10 @@ export class DashboardComponent implements OnInit {
   errorMsg: any;
   errorMsgStatus: boolean = true;
 
-  constructor(UserService:UserService) {
+  // accessing the template
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
+
+  constructor(UserService:UserService, private modalService: NgbModal) {
 
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
@@ -181,6 +189,15 @@ export class DashboardComponent implements OnInit {
       this.errorMsg = "No workspace found!"
       this.errorMsgStatus = false
     }
+  }
+
+  /// modal
+  CreateWorkspace() {
+    this.modalService.open(this.content, { centered: true, size:"lg" }, );
+  }
+
+  hello(event: any){
+    alert(event.myObj)
   }
 }
 

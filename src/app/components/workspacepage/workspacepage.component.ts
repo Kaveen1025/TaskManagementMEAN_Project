@@ -1,5 +1,6 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {WorkspaceService} from "../../services/workspacepage.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-workspacepage',
@@ -20,11 +21,12 @@ export class WorkspacepageComponent implements OnInit {
   noOfProjects: string = "";
   noOfMembers: string = "";
   noOfGuests: string = "";
-
-
-
   workspaceService : WorkspaceService;
-  constructor(workspaceService : WorkspaceService) {
+
+  // accessing the template
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
+
+  constructor(workspaceService : WorkspaceService,private modalService: NgbModal) {
     this.workspaceService = workspaceService;
   }
 
@@ -36,6 +38,7 @@ export class WorkspacepageComponent implements OnInit {
   getProjectDetails(){
     this.workspaceService.getAllProjects(this.workspaceID).subscribe((post: any)=> {
       this.projectObject = post;
+      console.log(post);
       this.projects = this.projectObject[0].Projects;
       // console.log("Project Details")
       // console.log(this.projectObject[0]);
@@ -51,5 +54,17 @@ export class WorkspacepageComponent implements OnInit {
 
     });
   }
+
+  reload(){
+    this.getProjectDetails();
+    this.getWorkspaceDetails();
+  }
+
+  /// modal
+  workspaceObject: any;
+   CreateProject() {
+     this.modalService.open(this.content, { centered: true, size:"lg" }, );
+  }
+
 
 }
