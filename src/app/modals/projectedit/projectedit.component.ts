@@ -65,6 +65,10 @@ export class ProjecteditComponent implements OnInit {
       workspaceID : this.workspaceID
     }
 
+    this.projectservices.editProject(this.projectID,project).subscribe((res)=>{
+      console.log(res);
+    })
+
     console.log(project);
 
 

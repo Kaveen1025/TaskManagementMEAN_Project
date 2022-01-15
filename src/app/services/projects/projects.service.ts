@@ -20,6 +20,10 @@ export class ProjectsService {
   editProject(id:String , data:any){
     return this.http.put(environment.apiBaseUrl+"project/edit/" + id, data);
   }
+
+  deleteProject(id:String){
+    return this.http.delete(environment.apiBaseUrl + "project/deleteproject" + id);
+  }
 }
 
 

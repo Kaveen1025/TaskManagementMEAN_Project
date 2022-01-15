@@ -13,12 +13,9 @@ export class SuccessmodalComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true });
-  }
 
-  closeModal(content: any) {
-    this.modalService.dismissAll(content);
+  closeModal() {
+    this.modalService.dismissAll();
   }
 
   saveDetails(content: any) {
