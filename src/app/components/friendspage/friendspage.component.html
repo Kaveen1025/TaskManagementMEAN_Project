@@ -13,13 +13,14 @@
     </div>
     <div class = "row">
       <div class = "col-lg-7  col-md-7 col-sm-12 col-xs-12" style = "overflow-y: scroll; height: 660px">
-        <div class = "row">
+        <div *ngIf="flagContent"  class = "row">
           <div class = "col-lg-4 col-md-6 col-xs-6 col-sm-6 text-center" *ngFor="let requestDetails of friendRequest;">
               <app-friendrequest [requestDetails]="requestDetails" (setEvent) = "getAllUserRequests()"></app-friendrequest>
             <br>
           </div>
-
         </div>
+        <p *ngIf="errorvalue" class = "errortext2">No friend Requests</p>
+
       </div>
 
       <div class = "col-lg-3 col-md-5  col-sm-12 col-xs-12 " >

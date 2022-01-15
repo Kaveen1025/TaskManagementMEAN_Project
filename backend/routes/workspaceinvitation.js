@@ -1,5 +1,7 @@
 const router = require("express").Router();
 let WorkspaceInvitaion = require("../models/workspaceInvitations");
+const Workspace = require("../models/workspace");
+const {ObjectId} = require("mongodb");
 
 //Create new WorkspaceInvitation
 router.route("/create").post((req, res) => {
@@ -92,20 +94,6 @@ router.route("/deleteWorkspaceInvitationacco/:workspaceID/:userID").delete(async
       res.status(500).send({status: "Error while deleting workspace Invitation", error: err.message});
     });
 });
-
-//Get All WorkspaceInvitation according to a user
-router.route("/getWorkspaceInvitationsaccoUser/:userID").get((req, res) => {
-  let userID = req.params.userID;
-
-  WorkspaceInvitaion.find({invitedUser: userID})
-    .then((workspaceinvitation) => {
-      res.json(workspaceinvitation);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
-
 
 
 module.exports = router;

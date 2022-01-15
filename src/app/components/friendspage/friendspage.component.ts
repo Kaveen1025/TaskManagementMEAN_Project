@@ -14,6 +14,8 @@ export class FriendspageComponent implements OnInit {
   friendRequest: any[] = [{}];
   friendRequestObject: any = {};
   friendRequestObjectConstant: any[] = [{}];
+  errorvalue = false;
+  flagContent = false
 
   friendspageService : FriendspageService;
   constructor(friendspageService : FriendspageService) {
@@ -31,8 +33,20 @@ export class FriendspageComponent implements OnInit {
     this.friendspageService.getAllUsers(this.userID).subscribe((post: any)=> {
       this.friendRequestObject = post;
       this.friendRequestObjectConstant = post;
-      this.friendRequest = this.friendRequestObject[0].RequestedFriendDetails
-      console.log(this.friendRequest)
+
+      if(this.friendRequestObject[0].RequestedFriendDetails.length < 1){
+        this.errorvalue = true;
+        this.flagContent = false
+
+      }else {
+        // this.errorvalue = true;
+        this.errorvalue = false;
+        this.flagContent = true
+        this.friendRequest = this.friendRequestObject[0].RequestedFriendDetails
+      }
+      console.log(this.friendRequestObjectConstant)
+      console.log(this.friendRequest.length)
+
       // this.projectObject = post;
       // this.projectObjectConstant = this.projectObject[0].Projects;
       // this.projects = this.projectObject[0].Projects;

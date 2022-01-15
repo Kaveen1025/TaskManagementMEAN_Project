@@ -57,9 +57,14 @@ export class WorkspacepageComponent implements OnInit {
     this.workspaceService.getAllProjects(this.workspaceID).subscribe((post: any)=> {
       this.projectObject = post;
       this.projectObjectConstant = this.projectObject[0].Projects;
-      this.projects = this.projectObject[0].Projects;
       // console.log("Project Details")
       // console.log(this.projectObject[0]);
+      if(this.projectObjectConstant.length < 0){
+        this.projects = [];
+        this.errorText = "No Projects available"
+      }else{
+        this.projects = this.projectObject[0].Projects;
+      }
 
     }, error => {
       console.log(error);
