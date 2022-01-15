@@ -35,6 +35,6 @@ export class UserprofileComponent implements OnInit {
   }
 
   openUserImageEditModal() {
-    this.modalService.open(this.content99, { centered: true });
+    this.modalService.open(this.content99, { centered: true,backdrop:'static' });
   }
 }

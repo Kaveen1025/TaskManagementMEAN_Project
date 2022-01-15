@@ -55,6 +55,8 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   openModal() {
     this.modalService.open(this.content, { centered: true});
+
+
   }
 
 
@@ -92,6 +94,8 @@ export class UserprofileimagemodalComponent implements OnInit {
     this.temp.name = "61d59e7999dc1f31177898baUserImage.png"
       this.upload(this.temp)
     this.contentStatus1 = true
+
+    //this.FirebaseService.getUrl("/UserProfileImages/61d59e7999dc1f31177898baUserImage.png")
   }
 
   removeUserProfile() {
