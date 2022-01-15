@@ -1,6 +1,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
+.contact{
+  overflow-x: hidden;
+}
 .contact #col2{
   color:#364F6B;
 }
@@ -73,6 +76,7 @@
   padding: 20px;
 }
 
+
 .contact input{
   border-color: #364F6B ;
 }
@@ -88,3 +92,12 @@
 .contact p{
   color: #364F6B ;
 }
+
+.contact input.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
+
+.contact input.ng-touched.ng-valid{
+  border: 2px solid #32CD32;
+}
+

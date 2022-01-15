@@ -28,7 +28,7 @@ router.route("/add").post((req, res) => {
 
 
   newContactUS.save().then(() => {
-    res.json("Contact Ud Added Successfully");
+    res.json("Contact Us Added Successfully");
   })
     .catch((err) => {
       console.log(err);
