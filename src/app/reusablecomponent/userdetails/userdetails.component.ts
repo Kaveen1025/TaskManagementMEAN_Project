@@ -90,34 +90,30 @@ export class UserdetailsComponent implements OnInit {
   }
 
   async updateUserDetails() {
-    console.log(this.firstNameField)
-    console.log(this.lastNameField)
+    //console.log(this.firstNameField)
+   // console.log(this.lastNameField)
     let content:any
 
     if(this.firstNameField == "" && this.lastNameField == ""){
       content = {
         FirstName : this.user.FirstName,
         LastName : this.user.LastName,
-        ProfileImage : this.user.ProfileImage
       }
     }else
     if(this.firstNameField == ""){
        content = {
         FirstName : this.user.FirstName,
         LastName : this.lastNameField,
-        ProfileImage : this.user.ProfileImage
       }
     }else if(this.lastNameField == ""){
       content = {
         FirstName : this.firstNameField,
         LastName : this.user.LastName,
-        ProfileImage : this.user.ProfileImage
       }
     }else{
       content = {
         FirstName : this.firstNameField,
         LastName : this.lastNameField,
-        ProfileImage : this.user.ProfileImage
       }
     }
 

@@ -35,5 +35,9 @@ export class UserService {
     return this.http.delete(environment.apiBaseUrl + 'user/delete/'+id);
   }
 
+  updateUserProfileImage(userID:String,content:any){
+    return this.http.put(environment.apiBaseUrl + 'user/updateUserProfile/'+userID, content);
+  }
+
 
 }
