@@ -35,5 +35,14 @@ export class UserService {
     return this.http.delete(environment.apiBaseUrl + 'user/delete/'+id);
   }
 
+  //Add a project to the user
+  addProject(userID:any, projectID:any){
+    return this.http.put(environment.apiBaseUrl+'user/addproject/' + userID + "/" + projectID, "")
+  }
+
+  //Add Workspace to the User
+  addWorkspace(userID:any, workspaceID:any){
+    return this.http.put(environment.apiBaseUrl+'user/addworkspace/' + userID + "/" + workspaceID, "")
+  }
 
 }

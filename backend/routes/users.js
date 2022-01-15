@@ -400,7 +400,7 @@ router.route("/removefriendReq/:userID/:friendID").delete(async (req, res) => {
 
 
 //Add a project to the user
-//URL -->http://localhost:8070/user/addproject/:userID/:friendID
+//URL -->http://localhost:8070/user/addproject/:userID/:projectID
 router.route("/addproject/:userID/:projectID").put(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -418,7 +418,7 @@ router.route("/addproject/:userID/:projectID").put(async (req, res) => {
 
 
 //Remove a project to the user
-//URL -->http://localhost:8070/user/removeproject/:userID/:friendID
+//URL -->http://localhost:8070/user/removeproject/:userID/:projectID
 router.route("/removeproject/:userID/:projectID").delete(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -437,7 +437,7 @@ router.route("/removeproject/:userID/:projectID").delete(async (req, res) => {
 
 
 //Add a project Invitation to the user
-//URL -->http://localhost:8070/user/addprojectInv/:userID/:friendID
+//URL -->http://localhost:8070/user/addprojectInv/:userID/:projectID
 router.route("/addprojectInv/:userID/:projectID").put(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -454,8 +454,8 @@ router.route("/addprojectInv/:userID/:projectID").put(async (req, res) => {
 });
 
 
-//Remove a project to the user
-//URL -->http://localhost:8070/user/removeprojectInv/:userID/:friendID
+//Remove a project Invitation to the user
+//URL -->http://localhost:8070/user/removeprojectInv/:userID/:projectID
 router.route("/removeprojectInv/:userID/:projectID").delete(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -470,6 +470,81 @@ router.route("/removeprojectInv/:userID/:projectID").delete(async (req, res) => 
     res.status(404).json({message: error.message});
   }
 });
+
+
+//Workspaces
+//Add a workspace to the user
+//URL -->http://localhost:8070/user/addworkspace/:userID/:workspaceID
+router.route("/addworkspace/:userID/:workspaceID").put(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$push: {  Workspaces :WorkspaceID}}
+    );
+    res.status(200).send({status: "Workspace Added successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
+
+//Remove a workspace to the user
+//URL -->http://localhost:8070/user/removeworkspace/:userID/:workspaceID
+router.route("/removeworkspace/:userID/:workspaceID").delete(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$pull: { Workspaces :WorkspaceID}}
+    );
+    res.status(200).send({status: "Workspace Removed successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
+
+
+//Add a workspace Invitation to the user
+//URL -->http://localhost:8070/user/addworkspaceInv/:userID/:workspaceID
+router.route("/addworkspaceInv/:userID/:workspaceID").put(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$push: { WorkSpaceInvitationIDs : WorkspaceID }}
+    );
+    res.status(200).send({status: "Workspace Invitation Added successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
+
+//Remove a Workspace Invitation to the user
+//URL -->http://localhost:8070/user/removeworkspaceInv/:userID/:workspaceID
+router.route("/removeworkspaceInv/:userID/:workspaceID").delete(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$pull: { WorkSpaceInvitationIDs : WorkspaceID}}
+    );
+    res.status(200).send({status: "Workspace Invitation Removed successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
 
 
 //Check Friends Array --> Sharing models

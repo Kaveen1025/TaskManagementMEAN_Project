@@ -1,7 +1,8 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild, Output,  EventEmitter} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 import {WorkspaceservicesService} from "../../services/workspaces/workspaceservices.service";
+import {UserService} from "../../services/user.service";
 
 
 @Component({
@@ -16,15 +17,21 @@ export class WorkspaceaddComponent implements OnInit {
   MainImage: string = "";
   CoverImage: string = "";
   Description: string = "";
-  AdminID: string = "11111"
+  AdminID: any = localStorage.getItem("AdminID");
+  WorkspaceID : any = "";
+  data:any;
 
 
   // accessing the template
   @ViewChild('content') private content: TemplateRef<any> | undefined;
 
-  constructor(private modalService: NgbModal, private workspaceservices:WorkspaceservicesService) { }
+  @Output() reRenderDetails = new EventEmitter<string>();
+
+
+  constructor(private modalService: NgbModal, private workspaceservices:WorkspaceservicesService, private userservice:UserService) { }
 
   ngOnInit(): void {
+    localStorage.setItem("AdminID","61dd30e3dd092e9def37e4b5");
   }
 
 
@@ -48,10 +55,25 @@ export class WorkspaceaddComponent implements OnInit {
     }
 
     console.log(object2);
+    console.log(localStorage.getItem("AdminID"));
     this.workspaceservices.addWorkspace(object2).subscribe((res)=>{
         console.log(res);
+
+    this.workspaceservices.getByName(this.WorkspaceName).subscribe((res)=>{
+      this.data = res;
+      this.WorkspaceID = this.data._id;
+
+      this.userservice.addWorkspace(this.AdminID,this.WorkspaceID).subscribe((res)=>{
+
+        console.log(res);
         this.closeModal();
-      this.modalService.open(this.content, { centered: true }, );
+        this.reRenderDetails.emit();
+        this.modalService.open(this.content, { centered: true }, );
+      })
+
+    })
+
+
     })
 
   }

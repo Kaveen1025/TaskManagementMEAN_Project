@@ -38,6 +38,7 @@ export class WorkspacepageComponent implements OnInit {
   getProjectDetails(){
     this.workspaceService.getAllProjects(this.workspaceID).subscribe((post: any)=> {
       this.projectObject = post;
+      console.log(post);
       this.projects = this.projectObject[0].Projects;
       // console.log("Project Details")
       // console.log(this.projectObject[0]);
@@ -55,10 +56,15 @@ export class WorkspacepageComponent implements OnInit {
     });
   }
 
+  reload(){
+    this.getProjectDetails();
+    this.getWorkspaceDetails();
+  }
 
   /// modal
+  workspaceObject: any;
    CreateProject() {
-    this.modalService.open(this.content, { centered: true });
+     this.modalService.open(this.content, { centered: true, size:"lg" }, );
   }
 
 

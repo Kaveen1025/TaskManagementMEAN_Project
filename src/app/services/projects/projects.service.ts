@@ -22,7 +22,11 @@ export class ProjectsService {
   }
 
   deleteProject(id:String){
-    return this.http.delete(environment.apiBaseUrl + "project/deleteproject" + id);
+    return this.http.delete(environment.apiBaseUrl + "project/deleteproject/" + id);
+  }
+
+  fetchProjectbyName(name:String){
+    return this.http.get(environment.apiBaseUrl+"project/getbyname/"+ name);
   }
 }
 

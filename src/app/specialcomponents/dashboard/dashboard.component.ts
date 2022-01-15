@@ -192,7 +192,7 @@ export class DashboardComponent implements OnInit {
   }
 
   /// modal
-  CreateProject() {
+  CreateWorkspace() {
     this.modalService.open(this.content, { centered: true, size:"lg" }, );
   }
 

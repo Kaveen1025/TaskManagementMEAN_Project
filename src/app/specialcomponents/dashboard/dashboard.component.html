@@ -29,7 +29,7 @@
     </div>
 
     <br>
-<app-crudbutton  class="text-center" text = "CREATE WORKSPACE" (click)="CreateProject()"></app-crudbutton>
+<app-crudbutton  class="text-center" text = "CREATE WORKSPACE" (click)="CreateWorkspace()"></app-crudbutton>
     <br>
     <h1 class = "errorMsg" [hidden] = "errorMsgStatus">{{errorMsg}}</h1>
     <div class="container" [hidden]="!loadingStatus">
@@ -57,7 +57,7 @@
 
 <!--modal-->
 <ng-template #content let-modal>
-  <app-workspaceadd></app-workspaceadd>
+  <app-workspaceadd (reRenderDetails) = "getWorkspaces()"></app-workspaceadd>
 </ng-template>
 
 

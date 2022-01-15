@@ -104,6 +104,26 @@ router.route("/getWorkspaceByName/:name").get(async (req, res) => {
     });
 });
 
+
+//Get workspace by name
+//URL -->http://localhost:8070/workspace/getbyname/:name
+router.route("/getbyname/:name").get(async (req,res)=>{
+
+  const name = req.params.name;
+
+  Workspace.findOne({WorkspaceName : name}).then((workspace) => {
+    res.json(workspace);
+  }).catch((err)=>{
+    res.status(404).json({message: err.message});
+  })
+})
+
+
+
+
+
+
+
 //Delete Workspace
 router.route("/deleteWorkspace/:id").delete(async (req, res) => {
   let workspceID = req.params.id;

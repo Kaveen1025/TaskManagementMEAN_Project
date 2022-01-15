@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild, Output,Input, EventEmitter} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ProjectsService} from "../../services/projects/projects.service";
+import {WorkspaceservicesService} from "../../services/workspaces/workspaceservices.service";
+import {UserService} from "../../services/user.service";
 
 @Component({
   selector: 'app-projectadd',
@@ -10,26 +12,32 @@ import {ProjectsService} from "../../services/projects/projects.service";
 export class ProjectAddComponent implements OnInit {
 
   //Attributes
+  projectID : String = "";
   projectName : String ="";
   Description : String ="";
   Deadline: String ="";
   CoverImage : String ="";
   MainImage: String ="";
-  AdminID : String ="11111";
-  workspaceID : String ="33333";
+  AdminID: any = localStorage.getItem("AdminID");
+  data:any;
 
 
+  // accessing the template
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
 
-  constructor(private modalService: NgbModal, private projectservices:ProjectsService) { }
+  @Output() reRenderDetails = new EventEmitter<string>();
+
+  @Input() WorkSpaceID: any;
+
+  constructor(private modalService: NgbModal, private projectservices:ProjectsService, private userservice:UserService, private workspaceservice:WorkspaceservicesService) { }
 
   ngOnInit(): void {
-  }
-  openVerticallyCentered(content: any) {
-    this.modalService.open(content, { centered: true, size : "lg"});
+    localStorage.setItem("AdminID","61dd30e3dd092e9def37e4b5");
   }
 
-  closeModal(content: any) {
-    this.modalService.dismissAll(content);
+
+  closeModal() {
+    this.modalService.dismissAll();
   }
 
   saveDetails(content: any) {
@@ -45,14 +53,44 @@ export class ProjectAddComponent implements OnInit {
       CoverImage : this.CoverImage,
       MainImage: this.MainImage,
       AdminID : this.AdminID,
-      workspaceID : this.workspaceID
+      workspaceID : this.WorkSpaceID
     }
 
     console.log (project);
 
+    //Add Project to Projects
     this.projectservices.addProject(project).subscribe((res)=>{
       console.log(res);
+      console.log(this.projectName);
+
+      //Get Project ID by passing project name
+      this.projectservices.fetchProjectbyName(this.projectName).subscribe((res) =>{
+        console.log(res);
+       this.data = res;
+       this.projectID = this.data._id;
+       console.log("Project ID" + this.projectID);
+
+       //Add project to Workspace
+       this.workspaceservice.addProject(this.WorkSpaceID, this.projectID).subscribe((res) => {
+         console.log(res);
+
+         //Add project to User
+         this.userservice.addProject(this.AdminID, this.projectID).subscribe((res) => {
+           console.log(res);
+
+           this.closeModal();
+           this.reRenderDetails.emit();
+           this.modalService.open(this.content, { centered: true }, );
+
+
+         })
+       })
+
+      })
+
 
     })
+
+
   }
 }
