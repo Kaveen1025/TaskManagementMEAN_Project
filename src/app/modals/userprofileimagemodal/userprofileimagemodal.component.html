@@ -3,6 +3,7 @@
     <div class="modal-body text-center">
       <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "userProfileImage" alt = "userProfile">
      <br><br>
+      <div [hidden] = "contentStatus1">
       <button class = "btn removeBtn" (click)="removeUserProfile()"><img  class= "img-fluid removeBtnIcon" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt ="remove"></button>
       <div class="wrapper">
         <div class="container card">
@@ -32,11 +33,20 @@
         </div>
       </div>
     </div>
-    <div class = "d-flex justify-content-center">
-      <button type="button" class="btn" id="okbtn" (click)="saveDetails()">Save</button>
-      <button type="button" class="btn" id="canclbtn" (click)="closeModal()">Don't save</button>
+      <br>
+      <div  [hidden] = "contentStatus1">
+        <div class = "d-flex justify-content-center">
+          <button type="button" class="btn" id="okbtn" (click)="saveDetails()">Save</button>
+          <button type="button" class="btn" id="canclbtn" (click)="closeModal()">Don't save</button>
+        </div>
+      </div>
+      <div class="card" style = "border: none" [hidden] = "!contentStatus1">
+        <app-loadinganimation></app-loadinganimation>
+      </div>
+      <div [hidden] = "!contentStatus1">
+        <br><br><br><br>
+      </div>
     </div>
-
   </div>
 
 
