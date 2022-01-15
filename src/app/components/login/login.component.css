@@ -96,31 +96,31 @@
 }
 
 .login #or{
-  text-align: center;
-  color: #364F6B;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 2rem;
-  margin-top: 10px;
-  border: 1px solid #364F6B;
-  border-radius: 5px;
-  margin-top: -30px;
-  word-wrap: normal;
 
+  border: 1px solid #C0C0C0 ;
+  width: 40px;
+  border-radius: 10px;
+  margin: 0;
+  position: absolute;
+  left:50%;
+  transform: translate(-50%, -90%);
+  background-color: 	#DCDCDC;
+
+  margin-top: 13px;
+}
+.login p{
+  padding-top: 5px;
+  margin-top: 2px;
+  color: #808080;
+  font-weight: bold;
 }
 
-/*.login #line{*/
-/*  width: 10rem;*/
-/*  margin-top: 10px;*/
-/*  border: 0.1px solid #364F6B;*/
-/*}*/
-
 .login hr{
-  margin-top: 0px;
-  color: #364F6B;
-  width: 95%;
-  /*width: 123%;*/
+
+  margin: auto;
+  width: 80%;
+  border: 1px solid #364F6B;
+  margin-top: 10px;
 }
 
 .login #googlebtn{
@@ -183,6 +183,15 @@
     left: 50%;
     transform: translate(-50%, 5%);
   }
+  .login .inner-addon {
+    position: relative;
+    font-size: 15px;
+
+  }
+  .login .inner-addon .fas {
+    padding-top: 8px;
+    padding-left: 35px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
@@ -196,7 +205,7 @@
   .login input{
     height: 100%;
     margin-top: 30px;
-    font-size: 100%;
+    font-size: 80%;
   }
   .login #lgbtn{
     font-size: 100%;
@@ -212,5 +221,34 @@
   .login #fpass{
      font-size: 90%;
    }
+  .login .inner-addon {
+    position: relative;
+    font-size: 10px;
+  }
+  .login .inner-addon .fas {
+    padding-top: 5px;
+    padding-left: 30px;
+  }
+}
 
+/* align icon */
+.login .left-addon .fas { left:  0px;}
+.login .right-addon .fas { right: 0px;}
+
+/* add padding  */
+.login .left-addon input  { padding-left:  50px; }
+.login .right-addon input { padding-right: 50px; }
+
+/* enable absolute positioning */
+.login .inner-addon {
+  position: relative;
+  font-size: 20px;
+}
+
+/* style icon */
+.login .inner-addon .fas {
+  position: absolute;
+  padding-left: 40px;
+  padding-top: 12px;
+  pointer-events: none;
 }

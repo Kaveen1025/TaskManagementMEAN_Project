@@ -39,5 +39,12 @@ export class UserService {
     return this.http.put(environment.apiBaseUrl + 'user/updateUserProfile/'+userID, content);
   }
 
+  login(detailsObject:any){
+    return this.http.post('http://localhost:8070/user/loginUser',detailsObject);
+  }
+
+  getEmail(email: String){
+    return this.http.get('http://localhost:8070/user/getUser/'+email);
+  }
 
 }
