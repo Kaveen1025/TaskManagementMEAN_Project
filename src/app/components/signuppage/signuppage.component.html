@@ -63,16 +63,22 @@
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
-        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/view.png" [class]="show_eye" class="user2 inner-addon right-addon" (click)="showPassword()">
-        <input type="password" [type]="show_button ? 'text' : 'password'" [formControl]="Password" class="form-control" placeholder="Password" required>
+        <input [type]="password1"  [formControl]="Password" class="form-control" placeholder="Password" required>
+        <span class="p-viewer">
+          <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="!show1" (click)="onClick()"></i>
+        <i class="fa fa-eye " aria-hidden="true" *ngIf="show1" (click)="onClick()"></i>
+        </span>
       </div>
       </div>
 
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
-        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/view.png" class="user2 inner-addon right-addon" name="eye">
-        <input type="password" class="form-control" placeholder="Re-enter Password" required>
+        <input [type]="password2"  class="form-control" placeholder="Re-enter Password" required>
+        <span class="p-viewer">
+          <i class="fa fa-eye-slash " aria-hidden="true" *ngIf="!show2" (click)="onClickk()"> </i>
+        <i class="fa fa-eye " aria-hidden="true" *ngIf="show2" (click)="onClickk()"></i>
+        </span>
       </div>
       </div>
 

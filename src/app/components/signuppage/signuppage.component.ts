@@ -9,6 +9,8 @@ import {FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
 })
 export class SignuppageComponent implements OnInit {
 
+password1 : string = '';
+  password2 : string = '';
 
   Username = new FormControl('');
   Email = new FormControl('');
@@ -18,38 +20,44 @@ export class SignuppageComponent implements OnInit {
   ConfirmPassword = new FormControl('');
 
 
-  // passwordType: string = 'password';
-  // passwordShown: boolean = false;
+  show1 = false;
+  show2 = false;
+
 
   constructor(private userService: UserService) { }
 
 
   ngOnInit(): void {
 
+    this.password1 = 'password';
+    this.password2 = 'password';
+
+
   }
 
-  show_button: Boolean = false;
-  show_eye: Boolean = false;
+  onClick() {
 
-  showPassword() {
-    this.show_button = !this.show_button;
-    this.show_eye = !this.show_eye;
+    if (this.password1 === 'password') {
+      this.password1 = 'text';
+      this.show1 = true;
+    } else {
+      this.password1 = 'password';
+      this.show1 = false;
+    }
   }
 
-  // togglePassword(){
-  //
-  //   if(this.passwordShown){
-  //     this.passwordShown = false;
-  //     this.passwordType = 'password';
-  //
-  //   }else{
-  //
-  //     this.passwordShown = true;
-  //     this.passwordType = 'password';
-  //   }
-  //
-  //
-  // }
+  onClickk() {
+
+    if (this.password2 === 'password') {
+      this.password2 = 'text';
+      this.show2 = true;
+    } else {
+      this.password2 = 'password';
+      this.show2 = false;
+    }
+  }
+
+
 
   addUser(signUpForm: NgForm){
 
