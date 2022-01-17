@@ -26,6 +26,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   userID : any
   errorMsg:any
+  errMsg:any
 
   newPassword = new FormControl('');
   confirmPassword = new FormControl('');
@@ -43,6 +44,7 @@ export class ForgotpasswordComponent implements OnInit {
   confirmPasswordStrengthStatus:boolean = false
 
   mismatch: boolean = true;
+  invalid: boolean = true;
 
   public barLabel: string = "Password strength:";
 
@@ -56,7 +58,7 @@ export class ForgotpasswordComponent implements OnInit {
   payloadString = null;
   verifycode: any;
 
-  flag=0
+  // flag=0
 
 
   constructor(private http : HttpClient,public fb: FormBuilder, UserService:UserService) {
@@ -88,24 +90,23 @@ export class ForgotpasswordComponent implements OnInit {
       console.log(post)
       console.log(this.email)
 
-      let [i] = post
+      // let [i] = post
       let a= post[0]
       console.log(a.Email)
+      console.log(post.length)
 
       this.userID=a._id
 
-      if (a.length !== 0) {
+      if (post.length !== 0) {
           console.log('User Available')
         this.display1=false
         this.display2=true
-        this.flag=1
+        // this.flag=1
 
         }
       else {
           alert('Invalid Email')
         }
-
-
       // this._emailService.sendEmail({
       //   from: 'Mailgun Sandbox <postmaster@tharindudeshan50@gmail.com>',
       //   to: email,
@@ -125,11 +126,8 @@ export class ForgotpasswordComponent implements OnInit {
     //         // console.log(err.text);
     //       });
     //   // }
-
-
     });
   }
-
 
   verifyCode() {
     if(this.verifycode === this.code){
@@ -139,7 +137,13 @@ export class ForgotpasswordComponent implements OnInit {
       this.display3=true
     }
     else{
-      alert('invalid code')
+      // alert('invalid code')
+      this.errMsg = "Invalid Code"
+      this.loadingStatus = true
+      this.invalid = false
+      // this.display2=false
+      // this.display1=true;
+      // this.display3=false
     }
   }
 
