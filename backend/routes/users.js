@@ -20,7 +20,8 @@ router.route("/add").post(async(req,res)=>{
     Email,
     FirstName,
     LastName,
-    Password
+    Password,
+    GoogleSignIn
   }= req.body;
 
   try{
@@ -42,7 +43,8 @@ router.route("/add").post(async(req,res)=>{
       Email,
       FirstName,
       LastName,
-      Password
+      Password,
+      GoogleSignIn
     })
 
     await newUser.save();
@@ -696,6 +698,39 @@ router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
     res.status(404).json({ message: error.message });
   }
 });
+
+//Check User by Username --> Sonal
+//URL -->http://localhost:8070/user/getUserbyUN/:userName
+router.route("/getUserbyUN/:userName").get(async (req, res) => {
+  let username = req.params.userName;
+
+  const USER = await User.findOne({ Username: username })
+    .then((user) => {
+
+
+
+      if(user){
+       res.json(true);
+      }
+      else{
+        res.json(false);
+      }
+
+      }
+    )
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({ status: "Error with retrieving  user", error: err.message });
+    });
+
+
+
+
+
+});
+
 
 
 
