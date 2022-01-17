@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FriendspageService} from "../../services/friendspage.service";
 
+
 @Component({
   selector: 'app-friendspage',
   templateUrl: './friendspage.component.html',
@@ -33,8 +34,8 @@ export class FriendspageComponent implements OnInit {
     this.friendspageService.getAllUsers(this.userID).subscribe((post: any)=> {
       this.friendRequestObject = post;
       this.friendRequestObjectConstant = post;
-
-      if(this.friendRequestObject[0].RequestedFriendDetails.length < 1){
+      // console.log(this.friendRequestObject)
+      if(this.friendRequestObject[0].FriendRequestDetails.length < 1){
         this.errorvalue = true;
         this.flagContent = false
 
@@ -42,10 +43,8 @@ export class FriendspageComponent implements OnInit {
         // this.errorvalue = true;
         this.errorvalue = false;
         this.flagContent = true
-        this.friendRequest = this.friendRequestObject[0].RequestedFriendDetails
+        this.friendRequest = this.friendRequestObject[0].FriendRequestDetails
       }
-      console.log(this.friendRequestObjectConstant)
-      console.log(this.friendRequest.length)
 
       // this.projectObject = post;
       // this.projectObjectConstant = this.projectObject[0].Projects;
@@ -56,6 +55,32 @@ export class FriendspageComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+
+  }
+
+  searchRequests(searchtext: string){
+    // alert(searchtext);
+    console.log("aaa")
+
+    console.log(this.friendRequestObjectConstant[0].FriendRequestDetails)
+
+
+    let searchResult = this.friendRequestObjectConstant[0].FriendRequestDetails.filter(
+      (post: { FirstName: any; }) =>
+        post.FirstName.toLowerCase().includes(searchtext.toLowerCase())
+    );
+
+    if(searchResult.length >0){
+      // console.log("Return array")
+      // console.log(searchResult)
+      this.friendRequest = searchResult;
+      this.errorvalue = false;
+      this.flagContent = true
+    }else{
+      this.friendRequest = [];
+      this.errorvalue = true;
+      this.flagContent = false
+    }
 
   }
 
