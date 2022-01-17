@@ -16,12 +16,14 @@ export class GooglesignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
+    console.log(String(new Date().valueOf()).substring(0,3))
   }
 
   loginWithGoogle(): void {
     this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(user =>{
       console.log(user)
-      console.log(new Date().valueOf())
+
     });
 
   }
