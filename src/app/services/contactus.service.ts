@@ -11,7 +11,7 @@ export class ContactusService {
   constructor(private http: HttpClient) { }
 
   contact(data:any){
-    return this.http.post(environment.apiBaseUrl + 'user/add', data);
+    return this.http.post(environment.apiBaseUrl + 'contactus/add', data);
   }
 
 }

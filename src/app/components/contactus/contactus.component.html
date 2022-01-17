@@ -25,7 +25,7 @@
 
       <!--    <app-form></app-form>-->
       <div class="container" id="form1">
-        <form class="add-form" #contactForm="ngForm" (ngSubmit)="saveMessage(contactForm)" ngNativeValidate>
+        <form class="add-form" #contactForm="ngForm" (ngSubmit)="contactForm.form.valid && saveMessage(contactForm.value)" ngNativeValidate>
           <br>
           <div class="row">
             <div class="col-sm">
@@ -47,19 +47,19 @@
 
           <div class="form-group">
             <label for="exampleInputEmail1">Email <span>*</span></label>
-            <input type="email" [formControl]="email"   class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="" required ngModel>
-            <small class="text-danger" *ngIf="email.touched && !email.valid"> Email is required</small>
+            <input type="email" [formControl]="email"   class="form-control" id="exampleInputEmail1" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" placeholder="" ngModel required>
+            <small class="text-danger" *ngIf="email.touched && !email.valid"> Email is not valid</small>
           </div>
 
           <div class="form-group">
             <label for="exampleInputNumber1">Phone Number <span>*</span></label>
-            <input type="number" [formControl]="phoneNumber" class="form-control" id="exampleInputNumber1" aria-describedby="numberHelp" placeholder="" required  ngModel>
-            <small class="text-danger" *ngIf="phoneNumber.touched && !phoneNumber.valid"> Phone Number is required (10 numbers are only allowed)</small>
-          </div>
+            <input type="number" [formControl]="phoneNumber"  class="form-control" pattern = "[0-9]{10}$" onKeyPress="if(this.value.length==10) return false;" id="exampleInputNumber1" placeholder="" required  ngModel>
+            <small class="text-danger" *ngIf="phoneNumber.touched && phoneNumber.invalid"> Phone number is required (Phone Number should be 10 digit)</small>
+            </div>
 
           <div class="form-group">
             <label for="exampleInputMore1">How can our team help you? <span>*</span></label>
-            <textarea type="text" [formControl]="message" class="form-control" id="exampleInputMore1" aria-describedby="Help" name="msg" placeholder="Tell us more about your team and what work you’d like to manage with Tâche" required ngModel></textarea>
+            <textarea type="text" [formControl]="message" class="form-control" id="exampleInputMore1" maxlength="35" aria-describedby="Help" name="msg" placeholder="Tell us more about your team and what work you’d like to manage with Tâche" required ngModel></textarea>
             <small class="text-danger" *ngIf="message.touched && !message.valid"> Message is required</small>
           </div>
 

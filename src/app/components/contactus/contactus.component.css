@@ -97,7 +97,16 @@
   border: 2px solid red;
 }
 
-.contact input.ng-touched.ng-valid{
+.contact input.ng-valid{
   border: 2px solid #32CD32;
 }
+
+.contact textarea.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
+
+.contact textarea.ng-valid{
+  border: 2px solid #32CD32;
+}
+
 
