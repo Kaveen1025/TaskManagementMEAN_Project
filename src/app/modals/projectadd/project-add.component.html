@@ -13,8 +13,8 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Project Name<font class = "required">*</font></label>
-            <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name">
-
+            <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name" onkeypress="return /[a-z]/i.test(event.key)">
+            <p *ngIf="flagName" class = "errortext2">Project Name Required</p>
 
 
           </div>
@@ -24,6 +24,7 @@
           <div class="mb-3">
             <label class="form-label labels">Deadline (Optional)</label>
             <input type="date" [(ngModel)]="Deadline"  min="{{min}}" id="deadline" class="form-control inputFieldsTxt">
+
           </div>
         </div>
       </div>
@@ -31,7 +32,8 @@
         <div class="col-sm">
           <div class="form-group">
             <label class = "labels">Description<font class = "required">*</font></label>
-            <textarea  [(ngModel)]="Description" class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"></textarea>
+            <textarea  [(ngModel)]="Description" class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"  ></textarea>
+            <p *ngIf="flagDescription" class = "errortext2">Description Required</p>
           </div>
         </div>
         <div class="col-sm">

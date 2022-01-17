@@ -1,0 +1,32 @@
+.clock-icon{
+  max-width: 15px;
+}
+
+.vl {
+  border-left: 6px solid #FC5185;
+  height: auto;
+
+}
+
+.profile {
+  border-radius: 50%;
+  /*position: absolute;*/
+  /*top: -52px;*/
+  width: 75px;
+  height: 75px;
+
+  /*-webkit-transform: translate(-50%, 0%);*/
+  /*transform: translate(-50%, 0%);*/
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.invCard .t2{
+  font-family: Rambla, sans-serif;
+  color:#364F6B ;
+}
+
+.invCard .t1{
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+  color: #364F6B;
+}
