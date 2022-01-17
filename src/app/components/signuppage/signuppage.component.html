@@ -63,30 +63,37 @@
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
-        <input [type]="password1"  [formControl]="Password" class="form-control" placeholder="Password" required>
+        <input [type]="password1"  [formControl]="Password" class="form-control" placeholder="Password"  (keydown)="keyDownHandler($event)" required>
         <span class="p-viewer">
           <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="!show1" (click)="onClick()"></i>
         <i class="fa fa-eye " aria-hidden="true" *ngIf="show1" (click)="onClick()"></i>
         </span>
       </div>
+        <app-password-strength-bar [passwordToCheck]="Password.value" [barLabel]="barLabel" (statusEvent)="checkPasswordStrength($event)"></app-password-strength-bar>
+
       </div>
 
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
-        <input [type]="password2"  class="form-control" placeholder="Re-enter Password" required>
+        <input [type]="password2"  class="form-control" placeholder="Re-enter Password" [formControl]="ConfirmPassword"  (keydown)="keyDownHandler($event)" required>
         <span class="p-viewer">
           <i class="fa fa-eye-slash " aria-hidden="true" *ngIf="!show2" (click)="onClickk()"> </i>
         <i class="fa fa-eye " aria-hidden="true" *ngIf="show2" (click)="onClickk()"></i>
         </span>
       </div>
+        <app-password-strength-bar [passwordToCheck]="ConfirmPassword.value"  [barLabel]="barLabel" (statusEvent)="checkConfirmPasswordStrength($event)"></app-password-strength-bar>
+        <h4 class="errorTxt" [hidden] = "mismatch">{{errorMsg}}</h4>
       </div>
 
-
+      <div class="form-group">
+        <label for="exampleFormControlFile1" class="profileI"><b>Profile Image</b></label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div>
 
       <div class="form-group">
       <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [formControl] = "checkbox" required>
         <label id="Agree" class="form-check-label" for="exampleCheck1">Agree to terms and conditions !</label> <a>Click Here</a>
       </div>
       </div>

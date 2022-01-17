@@ -12,7 +12,9 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  margin-bottom: 20px;
 }
+
 
 .homePage .bg-box {
   position: absolute;
@@ -20,6 +22,7 @@
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -1;
 }
 
 .homePage .bg-box img {
@@ -36,6 +39,7 @@
   font-weight: bold;
   font-size: 45px;
   margin-top: 50px;
+
 }
 .homePage .mainTitle2{
 

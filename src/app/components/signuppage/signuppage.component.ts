@@ -18,11 +18,16 @@ password1 : string = '';
   LastName = new FormControl('');
   Password = new FormControl('');
   ConfirmPassword = new FormControl('');
+  checkbox = new FormControl('');
 
 
   show1 = false;
   show2 = false;
-
+  PasswordStrengthStatus:boolean = false
+  ConfirmPasswordStrengthStatus:boolean = false
+  public barLabel: string = "Password strength:";
+  errorMsg:any;
+  mismatch: boolean = true;
 
   constructor(private userService: UserService) { }
 
@@ -57,38 +62,80 @@ password1 : string = '';
     }
   }
 
+  keyDownHandler(event: any) {
+    if (event.which === 32)
+      event.preventDefault();
+  }
+
+  checkPasswordStrength($event:any){
+    console.log($event.idx)
+    this.PasswordStrengthStatus = $event.idx >= 4;
+  }
+
+  checkConfirmPasswordStrength($event:any){
+    console.log($event.idx)
+    this.ConfirmPasswordStrengthStatus = $event.idx >= 4;
+  }
+
+
+
+
+
+
 
 
   addUser(signUpForm: NgForm){
 
-    let object2 = {
+    this.mismatch = true
 
-      Username: this.Username.value,
-      Email: this.Email.value,
-      FirstName: this.FirstName.value,
-      LastName: this.LastName.value,
-      Password: this.Password.value
+    if(this.PasswordStrengthStatus && this.ConfirmPasswordStrengthStatus){
+      if(this.ConfirmPassword.value === this.Password.value) {
+
+        this.mismatch = true
+
+        let object2 = {
+
+          Username: this.Username.value,
+          Email: this.Email.value,
+          FirstName: this.FirstName.value,
+          LastName: this.LastName.value,
+          Password: this.Password.value
+
+        }
+
+        console.log(object2)
+        this.userService.createUser(object2).subscribe((post: any)=> {
+
+          this.Username.setValue("");
+          this.Email.setValue("");
+          this.FirstName.setValue("");
+          this.LastName.setValue("");
+          this.Password.setValue("");
+          this.ConfirmPassword.setValue("");
+          this.checkbox.setValue("");
+
+
+
+          alert("Success");
+          // location.reload();
+          console.log("Success");
+          // console.log(this.projectObject[0]);
+        }, error => {
+          console.log(error);
+        });
+
+      }else{
+        this.errorMsg = "Password mismatch!"
+        this.mismatch = false
+
+      }
+
+    }else {
+
+      this.errorMsg = "Password is weak!"
+      this.mismatch = false
 
     }
-
-    console.log(object2)
-    this.userService.createUser(object2).subscribe((post: any)=> {
-
-      this.Username.setValue("");
-      this.Email.setValue("");
-      this.FirstName.setValue("");
-      this.LastName.setValue("");
-      this.Password.setValue("");
-      this.ConfirmPassword.setValue("");
-
-
-      alert("Success");
-      // location.reload();
-      console.log("Success");
-      // console.log(this.projectObject[0]);
-    }, error => {
-      console.log(error);
-    });
 
 
   }

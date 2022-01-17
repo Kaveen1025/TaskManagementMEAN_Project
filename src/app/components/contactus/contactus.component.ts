@@ -47,12 +47,6 @@ export class ContactusComponent implements OnInit {
 
     console.log(object2)
     this.contactusService.contact(object2).subscribe((post: any)=> {
-      // this.firstName.setValue("");
-      // this.lastName.setValue("");
-      // this.email.setValue("");
-      // this.phoneNumber.setValue("");
-      // this.message.setValue("");
-
       alert("Success");
       location.reload();
       console.log("Success");
