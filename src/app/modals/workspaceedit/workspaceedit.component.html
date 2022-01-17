@@ -15,6 +15,8 @@
             <label class="form-label labels">Workspace Name<font class = "required">*</font></label>
             <input type="text" class="form-control inputFieldsTxt" [(ngModel)]="workspacename"   placeholder="Workspace Name">
             <p *ngIf="flagName" class = "errortext2">Workspace name cannot be null</p>
+            <input type="text" class="form-control inputFieldsTxt" [(ngModel)]="workspacename"  (ngModelChange)="checkvalidity()" placeholder="Workspace Name">
+            <p *ngIf="flagName" class = "errortext2">Workspace name is required</p>
           </div>
         </div>
         <div class="col-sm">
@@ -30,6 +32,8 @@
             <label class = "labels">Description<font class = "required">*</font></label>
             <textarea class="form-control inputFieldsTxt" [(ngModel)]="description"  rows="5" placeholder = "Description"></textarea>
             <p *ngIf="flagDescription" class = "errortext2">Description cannot be null</p>
+            <textarea class="form-control inputFieldsTxt" [(ngModel)]="description" (ngModelChange)="checkvalidity()"   rows="5" placeholder = "Description"></textarea>
+            <p *ngIf="flagDescription" class = "errortext2">Description is required</p>
           </div>
         </div>
         <div class="col-sm">

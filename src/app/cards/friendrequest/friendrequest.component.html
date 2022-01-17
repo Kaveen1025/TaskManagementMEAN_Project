@@ -1,11 +1,12 @@
 <div class = "friendrequestdiv">
   <div class="card body">
     <br>
-    <img class="crdImg" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG" alt="Card image cap">
+    <img class="crdImg" [src]="profileImage" alt="Card image cap">
 
     <div class="card-body crdbody">
       <h3 class ="classhead">{{name}}</h3>
-      <p class="card-text cardtext">{{noofGroups}} Groups in common</p>
+      <br>
+      <p class="claspara">{{noofGroups}} Groups in common</p>
       <div class = "row " >
         <div class = "text-center">
           <img class = "imgBtn" (click)="requestAccept()"  src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/check.png">

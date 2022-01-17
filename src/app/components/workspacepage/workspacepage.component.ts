@@ -1,7 +1,8 @@
 import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {WorkspaceService} from "../../services/workspacepage.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-
+import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {WorkspaceeditComponent} from "./../../modals/workspaceedit/workspaceedit.component";
 
 @Component({
@@ -17,11 +18,11 @@ export class WorkspacepageComponent implements OnInit {
   @Output() setProjects = new EventEmitter();
 
   userID: string = "61d458c91d0655dd1358454a";
+  workspaceID = "61d448976fc2f6cc55b25ca5";
   projects: any[] = [{}];
   projectObject: any = {};
   projectObjectConstant: any[] = [{}];
   numbers:  any[] = ["2","3","4","5","6","7","8","9","10"];
-  workspaceID = "61d448976fc2f6cc55b25ca5";
   noOfProjects: string = "";
   noOfMembers: string = "";
   noOfGuests: string = "";
@@ -35,9 +36,12 @@ export class WorkspacepageComponent implements OnInit {
   memberIDs: string[] = [];
   workspaceObject: any;
 
+  workspaceMainPlaceHolder: string = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
+
   searchText: string = ""
   flagEditBtns = true;
   flagCreateBtn = true;
+  loadingStatus = false;
 
 
   async ngOnInit(): Promise<void> {
@@ -47,10 +51,7 @@ export class WorkspacepageComponent implements OnInit {
 
   workspaceService : WorkspaceService;
 
-  // accessing the template
-  @ViewChild('content2') private content2: TemplateRef<any> | undefined;
-
-  constructor(workspaceService : WorkspaceService, private modalService: NgbModal) {
+  constructor(workspaceService : WorkspaceService, private modalService: NgbModal, private db: AngularFireDatabase, private storage: AngularFireStorage) {
     this.workspaceService = workspaceService;
   }
 
@@ -68,6 +69,7 @@ export class WorkspacepageComponent implements OnInit {
       }else{
         this.projects = this.projectObject[0].Projects;
       }
+      this.loadingStatus = true;
 
     }, error => {
       console.log(error);
@@ -76,7 +78,7 @@ export class WorkspacepageComponent implements OnInit {
   }
   getWorkspaceDetails(){
     this.workspaceService.getWorkspaceData(this.workspaceID).subscribe((post: any)=> {
-      console.log("Project Details")
+      // console.log("Project Details")
       this.noOfMembers = post.MemberIDs.length
       this.noOfProjects = post.ProjectIDs.length
       this.noOfGuests = post.guestIDs.length
@@ -88,7 +90,9 @@ export class WorkspacepageComponent implements OnInit {
       this.memberIDs = post.MemberIDs
 
       this.workspaceObject = post;
-      this.checkPrivvilage()
+      this.checkPrivvilage();
+
+      this.getworkspaceMainImage(this.workspaceMainImage);
 
     }, error => {
       console.log(error);
@@ -97,8 +101,8 @@ export class WorkspacepageComponent implements OnInit {
 
 
   checkPrivvilage(){
-    console.log(this.adminID)
-    console.log(this.memberIDs)
+    // console.log(this.adminID)
+    // console.log(this.memberIDs)
     let c = 1;
     for(let i = 0; i < this.memberIDs.length; i++){
       if(this.memberIDs[i]== this.userID){
@@ -119,10 +123,9 @@ export class WorkspacepageComponent implements OnInit {
 
   }
 
-
   searchProjects(){
     let i: number = 0
-
+      console.log(this.projectObjectConstant)
       let searchResult = this.projectObjectConstant.filter(
         (post) =>
           post.projectName.toLowerCase().includes(this.searchText.toLowerCase())
@@ -145,15 +148,17 @@ export class WorkspacepageComponent implements OnInit {
     this.modalService.open(this.modalContent, { centered: true, size : "lg"});
   }
 
+  getworkspaceMainImage(url:any){
+    // alert("asd")
+    this.workspaceMainImage = this.workspaceMainPlaceHolder
+    const storageRef = this.storage.ref(url);
+    storageRef.getDownloadURL().subscribe(downloadURL => {
+      this.workspaceMainImage = this.workspaceMainPlaceHolder
+      this.workspaceMainImage = downloadURL
+      console.log("work")
+      console.log(this.workspaceMainImage)
 
-  CreateProject() {
-    this.modalService.open(this.content2, { centered: true, size:"lg" }, );
-  }
-
-  reload(){
-    console.log("Reloading....");
-    this.getProjectDetails();
-    this.getWorkspaceDetails();
+    })
   }
 
 
