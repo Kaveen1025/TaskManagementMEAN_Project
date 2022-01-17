@@ -103,6 +103,7 @@ export class UserprofileimagemodalComponent implements OnInit {
       this.contentStatus1 = true
     }
 
+    // e.target.file[0].name
 
 
   }

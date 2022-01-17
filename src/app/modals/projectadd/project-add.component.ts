@@ -141,4 +141,8 @@ export class ProjectAddComponent implements OnInit {
     console.log(this.min);
   }
 
+  test(event: any) {
+    console.log(event.target.files)
+
+  }
 }

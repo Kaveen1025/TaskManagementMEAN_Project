@@ -44,6 +44,9 @@ export class UserprofileComponent implements OnInit {
     this.modalService.open(this.content99, { centered: true,backdrop:'static' });
   }
 
+
+  // retrieve image from firebase
+
  getUserProfileImage(url:any){
     this.userProfileImage = this.userImagePlaceHolder
       const storageRef = this.storage.ref(url);
