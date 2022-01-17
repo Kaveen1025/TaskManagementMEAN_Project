@@ -162,4 +162,9 @@ export class WorkspacepageComponent implements OnInit {
   }
 
 
+  CreateProject() {
+  }
+
+  reload(){
+  }
 }
