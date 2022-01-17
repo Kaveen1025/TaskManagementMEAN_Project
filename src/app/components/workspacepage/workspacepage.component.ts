@@ -47,6 +47,9 @@ export class WorkspacepageComponent implements OnInit {
 
   workspaceService : WorkspaceService;
 
+  // accessing the template
+  @ViewChild('content2') private content2: TemplateRef<any> | undefined;
+
   constructor(workspaceService : WorkspaceService, private modalService: NgbModal) {
     this.workspaceService = workspaceService;
   }
@@ -143,7 +146,15 @@ export class WorkspacepageComponent implements OnInit {
   }
 
 
+  CreateProject() {
+    this.modalService.open(this.content2, { centered: true, size:"lg" }, );
+  }
 
+  reload(){
+    console.log("Reloading....");
+    this.getProjectDetails();
+    this.getWorkspaceDetails();
+  }
 
 
 }

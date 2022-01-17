@@ -72,7 +72,7 @@
         </div>
       </div>
       <div *ngIf="flagCreateBtn" class = "creatbtn">
-        <app-crudbutton text = "CREATE WORKSPACE"></app-crudbutton>
+        <app-crudbutton  class="text-center" text = "CREATE PROJECT" (click)="CreateProject()"></app-crudbutton>
         <br>
 
       </div>
@@ -87,9 +87,18 @@
           </div>
         </div>
       <br><br><br>
-      <ng-template #content let-modal id = "content2" class = "mainModal">
+      <ng-template #content let-modal  class = "mainModal">
         <app-workspaceedit (reRenderEvent) = "getWorkspaceDetails()" [workspaceDetails]="workspaceObject" ></app-workspaceedit>
       </ng-template>
 
     </div>
 </div>
+
+
+<!--modal-->
+<ng-template #content2 let-modal  id = "content2">
+  <app-projectadd (reRenderDetails) = "reload()" [WorkSpaceID]=" workspaceID" ></app-projectadd>
+</ng-template>
+
+
+

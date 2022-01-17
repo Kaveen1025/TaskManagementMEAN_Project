@@ -16,13 +16,14 @@
             <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name">
 
 
+
           </div>
 
         </div>
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Deadline (Optional)</label>
-            <input type="date" [(ngModel)]="Deadline"  class="form-control inputFieldsTxt">
+            <input type="date" [(ngModel)]="Deadline"  min="{{min}}" id="deadline" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
@@ -36,11 +37,11 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Cover Image</label>
-            <input type="file" [(ngModel)]="CoverImage" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="CoverImage" class="form-control inputFieldsTxt"  accept="image/*">
           </div>
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
-            <input type="file"  [(ngModel)]="MainImage" class="form-control inputFieldsTxt">
+            <input type="file"  [(ngModel)]="MainImage" class="form-control inputFieldsTxt"  accept="image/*">
           </div>
         </div>
       </div>
@@ -50,7 +51,29 @@
     </div>
   </div>
 
+
+<!--  <script>-->
+<!--    $(function () {-->
+<!--      var date = new Date();-->
+<!--      date.setDate(date.getDate()-1);-->
+<!--      $('#deadline').datetimepicker({-->
+<!--        startDate: date-->
+<!--      });-->
+<!--    });-->
+<!--  </script>-->
+
   <!--modal-->
   <ng-template #content let-modal>
     <app-successmodal></app-successmodal>
+  </ng-template>
+
+
+  <ng-template #content3 let-modal  id = "content3">
+    <app-loadinganimation></app-loadinganimation>
+  </ng-template>
+
+
+
+  <ng-template #content4 let-modal  id = "content4">
+    <app-errormodal></app-errormodal>
   </ng-template>

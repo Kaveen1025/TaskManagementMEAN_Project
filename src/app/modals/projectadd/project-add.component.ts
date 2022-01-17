@@ -4,6 +4,7 @@ import {ProjectsService} from "../../services/projects/projects.service";
 import {WorkspaceservicesService} from "../../services/workspaces/workspaceservices.service";
 import {UserService} from "../../services/user.service";
 
+
 @Component({
   selector: 'app-projectadd',
   templateUrl: './project-add.component.html',
@@ -20,10 +21,14 @@ export class ProjectAddComponent implements OnInit {
   MainImage: String ="";
   AdminID: any = localStorage.getItem("AdminID");
   data:any;
-
+  min:any = "2022-01-16";
 
   // accessing the template
   @ViewChild('content') private content: TemplateRef<any> | undefined;
+
+  @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+
+  @ViewChild('content4') private content4: TemplateRef<any> | undefined;
 
   @Output() reRenderDetails = new EventEmitter<string>();
 
@@ -33,6 +38,7 @@ export class ProjectAddComponent implements OnInit {
 
   ngOnInit(): void {
     localStorage.setItem("AdminID","61dd30e3dd092e9def37e4b5");
+    this.getDate();
   }
 
 
@@ -44,53 +50,95 @@ export class ProjectAddComponent implements OnInit {
     this.modalService.dismissAll(content);
   }
 
+  closeAnimation(){
+    this.modalService.dismissAll(this.content3);
+  }
+
   addProject(){
 
-    let project ={
-      projectName : this.projectName,
-      Description : this.Description,
-      Deadline: this.Deadline,
-      CoverImage : this.CoverImage,
-      MainImage: this.MainImage,
-      AdminID : this.AdminID,
-      workspaceID : this.WorkSpaceID
-    }
+    try{
 
-    console.log (project);
 
-    //Add Project to Projects
-    this.projectservices.addProject(project).subscribe((res)=>{
-      console.log(res);
-      console.log(this.projectName);
+      this.closeModal();
+      this.modalService.open(this.content3, { centered: true }, );
 
-      //Get Project ID by passing project name
-      this.projectservices.fetchProjectbyName(this.projectName).subscribe((res) =>{
+
+      let project ={
+        projectName : this.projectName,
+        Description : this.Description,
+        Deadline: this.Deadline,
+        CoverImage : this.CoverImage,
+        MainImage: this.MainImage,
+        AdminID : this.AdminID,
+        workspaceID : this.WorkSpaceID
+      }
+
+      console.log (project);
+
+      //Add Project to Projects
+      this.projectservices.addProject(project).subscribe((res)=>{
         console.log(res);
-       this.data = res;
-       this.projectID = this.data._id;
-       console.log("Project ID" + this.projectID);
+        console.log(this.projectName);
 
-       //Add project to Workspace
-       this.workspaceservice.addProject(this.WorkSpaceID, this.projectID).subscribe((res) => {
-         console.log(res);
+        //Get Project ID by passing project name
+        this.projectservices.fetchProjectbyName(this.projectName).subscribe((res) =>{
+          console.log(res);
+          this.data = res;
+          this.projectID = this.data._id;
+          console.log("Project ID" + this.projectID);
 
-         //Add project to User
-         this.userservice.addProject(this.AdminID, this.projectID).subscribe((res) => {
-           console.log(res);
+          //Add project to Workspace
+          this.workspaceservice.addProject(this.WorkSpaceID, this.projectID).subscribe((res) => {
+            console.log(res);
 
-           this.closeModal();
-           this.reRenderDetails.emit();
-           this.modalService.open(this.content, { centered: true }, );
+            //Add project to User
+            this.userservice.addProject(this.AdminID, this.projectID).subscribe((res) => {
+              console.log(res);
+
+              this.closeAnimation();
+
+              this.reRenderDetails.emit();
+              this.modalService.open(this.content, { centered: true }, );
 
 
-         })
-       })
+
+            })
+          })
+
+        })
+
 
       })
 
 
-    })
+
+    }catch (error){
+      console.log(error);
+      this.modalService.open(this.content4, { centered: true }, );
+
+    }
+
 
 
   }
+
+
+  getDate(){
+    let date:any = new Date();
+    let toDate:any = date.getDate();
+    let month:any = date.getMonth() + 1;
+    let year = date.getFullYear();
+
+    if (toDate < 10){
+      toDate = '0' + toDate;
+    }
+    if (month < 10){
+      month = '0' + month;
+    }
+
+    this.min = year + "-" + month + "-" + toDate;
+
+    console.log(this.min);
+  }
+
 }
