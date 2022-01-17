@@ -2,7 +2,7 @@
   <div class="card userImageCard">
     <div class="card-body text-center userCardBody">
 
-      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "'./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/'+ user.ProfileImage" alt = "userProfile">
+      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "userProfileImage" alt = "userProfile">
       <br><br><a type = "button" (click)="openUserImageEditModal()"><img class = "img-fluid pencil iconClickable" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/pencil.png" alt = "pencil"></a>
         <div>
         <br>
@@ -17,6 +17,6 @@
 </div>
 
 <ng-template #content99 let-modal>
-  <app-userprofileimagemodal></app-userprofileimagemodal>
+  <app-userprofileimagemodal (someEvent)="getUser()" userProfileImage = {{userProfileImage}}></app-userprofileimagemodal>
 </ng-template>
 

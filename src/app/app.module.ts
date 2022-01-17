@@ -69,8 +69,11 @@ import { environment } from '../environments/environment';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import { ForgotpasswordComponent } from './reusablecomponent/forgotpassword/forgotpassword.component';
+import {LoginComponent} from "./components/login/login.component";
 
-
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { GooglesignupComponent } from './buttons/googlesignup/googlesignup.component';
 registerLocaleData(en);
 
 
@@ -121,7 +124,9 @@ registerLocaleData(en);
     SuccessmodalComponent,
     PasswordconfrimmodalComponent,
     UserprofileimagemodalComponent,
-    ForgotpasswordComponent
+    ForgotpasswordComponent,
+    LoginComponent,
+    GooglesignupComponent
 
   ],
     imports: [
@@ -145,11 +150,25 @@ registerLocaleData(en);
         MatPasswordStrengthModule,
         ImageCropperModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireStorageModule
+        AngularFireStorageModule,
+      SocialLoginModule
 
 
     ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US },  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '288132798361-sea33rgpr7oj5juj0q603k5sapuhhjus.apps.googleusercontent.com'
+          )
+        }
+      ]
+    } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

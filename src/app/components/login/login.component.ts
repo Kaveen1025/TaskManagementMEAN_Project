@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   constructor( private http : HttpClient,public fb: FormBuilder, UserService:UserService) {
     this.UserService = UserService
 
-
   }
 
 
@@ -91,5 +90,8 @@ export class LoginComponent implements OnInit {
   //
   //     })
   // }
+
+
+
 
 }
