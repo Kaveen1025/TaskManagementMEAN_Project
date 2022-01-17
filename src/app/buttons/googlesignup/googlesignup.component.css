@@ -20,3 +20,10 @@
     font-size: 90%;
   }
 }
+
+
+/*remove border from modal*/
+
+::ng-deep .modal-content {
+  border: none;
+}

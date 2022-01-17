@@ -21,7 +21,8 @@ router.route("/add").post(async(req,res)=>{
     FirstName,
     LastName,
     Password,
-    GoogleSignIn
+    GoogleSignIn,
+    ProfileImage
   }= req.body;
 
   try{
@@ -44,7 +45,8 @@ router.route("/add").post(async(req,res)=>{
       FirstName,
       LastName,
       Password,
-      GoogleSignIn
+      GoogleSignIn,
+      ProfileImage
     })
 
     await newUser.save();

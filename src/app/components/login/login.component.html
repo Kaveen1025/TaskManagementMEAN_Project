@@ -11,6 +11,7 @@
       <div class="container">
       <form id="form11">
         <h2>Login</h2>
+        <h3 class = "errorMsg" [hidden] = "ErrorMessageStatus">{{ErrorMessage}}</h3>
         <div class="form-group ">
 <!--          <i class="fa fa-user icon"></i>-->
           <div class="inner-addon left-addon mb-3">
@@ -31,7 +32,7 @@
         <div class="box">
           <p>OR</p>
         </div>
-          <app-googlesignup></app-googlesignup>
+          <app-googlesignup (event)="triggerErrorMessage('Email Already Exists!')" ></app-googlesignup>
         <span class="text-center" id="acc">Need an account ? <b> SIGN UP</b></span>
       </form>
         </div>

@@ -255,3 +255,9 @@
   }
 
 }
+
+.login .errorMsg{
+  text-align :center;;
+  color: #FC5185;
+  font-weight: bold;
+}
