@@ -23,7 +23,7 @@ export class GooglesignupComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.generateUsername()
   }
 
   loginWithGoogle(): void {
@@ -74,25 +74,12 @@ export class GooglesignupComponent implements OnInit {
     } )
   }
 
-  generateUsername(){
-    let tempUsername = this.User.name.replace(/\s/g, '') + String(new Date().valueOf()).substring(0,3)
-    this.UserService.checkUsername(tempUsername).subscribe({
-      next:value=>
-      {
-        if(value){
-          this.generateUsername()
-        }else{
-          this.newUsername = tempUsername
-        }
-      }
-      ,
-      error:error => {
-        console.log(error)
-      }
-    } )
+   generateUsername(){
+     this.newUsername = this.User.email.replace("@gmail.com", String(new Date().valueOf()).substring(0,3))
   }
 
   createAccount(){
+
     let NewUser = {
       Username : this.newUsername,
       Email : this.User.email,
@@ -102,7 +89,7 @@ export class GooglesignupComponent implements OnInit {
       GoogleSignIn : true,
       ProfileImage : this.User.photoUrl
     }
-    //console.log(User)
+
     this.UserService.createUser(NewUser).subscribe({
       next:value=>
       {
