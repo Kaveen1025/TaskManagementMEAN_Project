@@ -33,6 +33,10 @@ export class LoginComponent implements OnInit {
 
   errorr=true
 
+  flagName1 = false;
+  flagName2 = false;
+  confirm = true;
+
   // detailsObject : any
 
 
@@ -64,35 +68,53 @@ export class LoginComponent implements OnInit {
   //   });
   // }
 
-  login(){
-    let detailsObject = {
-      Username: this.Username,
-      Password: this.Password,
+  checkvalidity(){
+    if(this.Username.length < 1 && this.Password.length<1){
+      this.flagName1 = true
+      this.flagName2 = true
+    }else if(this.Username.length < 1 ){
+      this.flagName1 = true
+    }else if(this.Password.length < 1 ){
+      this.flagName2 = true
+    } else{
+      this.flagName1 = false
+      this.flagName2 = false
+      this.confirm = false
     }
-    this.UserService.login(detailsObject).subscribe((post: any)=> {
-      console.log(post)
-      console.log(detailsObject)
+  }
 
-        if(post=="Customer Sign In Successfully"){
+  login(){
+    if(this.flagName1 == true || this.flagName2 == true ){
+      // this.checkvalidity()
+    }
+    else {
+      let detailsObject = {
+        Username: this.Username,
+        Password: this.Password,
+      }
+      this.checkvalidity()
+
+      this.UserService.login(detailsObject).subscribe((post: any) => {
+        console.log(post)
+        console.log(detailsObject)
+
+        if (post == "Customer Sign In Successfully") {
           alert("Success")
-        }
-        else if(post="Invalid Credentials"){
+        } else if (post == "Invalid Credentials") {
           // alert(post)
           // this.errorr = false
-          this.err1=false
+          this.err1 = false
           this.openVerticallyCentered()
-        }
-
-        else {
-          this.err2=false
-          this.err1=true
+        } else {
+          this.err2 = false
+          this.err1 = true
           this.openVerticallyCentered2()
         }
-    }, error => {
-      console.log(error);
-    });
+      }, error => {
+        console.log(error);
+      });
 
-
+    }
 
 
   }
@@ -125,6 +147,7 @@ export class LoginComponent implements OnInit {
   //
   //     })
   // }
+
 
 
   triggerErrorMessage(msg:any){
