@@ -17,12 +17,13 @@ export class WorkspacepageComponent implements OnInit {
 
   @Output() setProjects = new EventEmitter();
 
+  percentageLoading:any = false
+
   userID: string = "61d458c91d0655dd1358454a";
   workspaceID = "61d448976fc2f6cc55b25ca5";
-  projects: any[] = [{}];
+  projects: any[] = [];
   projectObject: any = {};
   projectObjectConstant: any[] = [{}];
-  numbers:  any[] = ["2","3","4","5","6","7","8","9","10"];
   noOfProjects: string = "";
   noOfMembers: string = "";
   noOfGuests: string = "";
@@ -35,7 +36,6 @@ export class WorkspacepageComponent implements OnInit {
   errorText: string = ""
   memberIDs: string[] = [];
   workspaceObject: any;
-
 
   workspaceMainPlaceHolder: string = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
 
@@ -73,13 +73,18 @@ export class WorkspacepageComponent implements OnInit {
       this.loadingStatus = true;
 
     }, error => {
+      alert("asd")
       console.log(error);
     });
 
   }
   getWorkspaceDetails(){
     this.workspaceService.getWorkspaceData(this.workspaceID).subscribe((post: any)=> {
-      // console.log("Project Details")
+
+      alert("aaa")
+      console.log("Project Details")
+        console.log(post)
+
       this.noOfMembers = post.MemberIDs.length
       this.noOfProjects = post.ProjectIDs.length
       this.noOfGuests = post.guestIDs.length
@@ -96,7 +101,8 @@ export class WorkspacepageComponent implements OnInit {
       this.getworkspaceMainImage(this.workspaceMainImage);
       this.getworkspaceCoverImage(this.workspaceCoverImage);
 
-    }, error => {
+      }, error => {
+      alert("asd")
       console.log(error);
     });
   }
@@ -147,7 +153,7 @@ export class WorkspacepageComponent implements OnInit {
 
   openVerticallyCentered() {
     // console.log(this.modalContent);
-    this.modalService.open(this.modalContent, { centered: true, size : "lg"});
+    this.modalService.open(this.modalContent, { centered: true, size : "lg", backdrop: "static"});
   }
 
   getworkspaceMainImage(url:any){
@@ -178,7 +184,20 @@ export class WorkspacepageComponent implements OnInit {
 
 
   CreateProject() {
-    this.modalService.open(this.content2, { centered: true, size:"lg" }, );
+    this.modalService.open(this.content2, { centered: true, size:"lg", backdrop: "static" }, );
+  }
+
+  displayModal(value: string){
+    // alert("bbbb" )
+    if(value == "1"){
+      alert("1")
+      this.percentageLoading = true;
+    }else{
+      alert("2")
+      this.percentageLoading = false;
+
+    }
+
   }
 
   reload(){

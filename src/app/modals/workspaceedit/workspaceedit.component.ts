@@ -13,10 +13,13 @@ declare var $: any;
 })
 export class WorkspaceeditComponent implements OnInit  {
 
+  @ViewChild('content2', {static: true}) modalContent: TemplateRef<any> | undefined
   workspaceService : WorkspaceService;
   @ViewChild('content') private content: TemplateRef<any> | undefined;
 
   @Output() reRenderEvent = new EventEmitter<string>();
+  @Output() modalEvent = new EventEmitter<string>();
+
   @Input() workspaceDetails: any;
 
 
@@ -46,7 +49,7 @@ export class WorkspaceeditComponent implements OnInit  {
   nametext = "";
   destext = "";
 
-  percentageLoading:any = false
+
 
   object1: {} = {};
 
@@ -98,16 +101,14 @@ export class WorkspaceeditComponent implements OnInit  {
     let currentMainUpload = this.mainImageFile;
     let currentCoverUpload = this.coverImageFile;
 
-    if(this.workspacename == this.nametext && this.description == this.destext){
-      this.flagName = true;
-      this.flagDescription = true
-    }else{
       if(this.flagName == true || this.flagDescription == true){
 
       }else {
 
         let a = 1
-        this.percentageLoading = true
+        // this.closeModal()
+        this.modalEvent.emit("1")
+
         let percentage;
         if(this.mainImageFile.file != undefined && this.coverImageFile.file != undefined){
           // alert("both undefined")
@@ -116,7 +117,7 @@ export class WorkspaceeditComponent implements OnInit  {
               percentage = Math.round(percentage ? percentage : 0);
               console.log('done')
 
-              if(percentage >= 100 && this.percentageLoading){
+              if(percentage >= 100){
                 let detailsObject = {
                   WorkspaceName: this.workspacename,
                   Description: this.description,
@@ -127,13 +128,13 @@ export class WorkspaceeditComponent implements OnInit  {
                   percentage => {
                     percentage = Math.round(percentage ? percentage : 0);
                     console.log('done')
-                    if(percentage >= 100 && this.percentageLoading){
-                      this.percentageLoading = false
+                    if(percentage >= 100){
                       this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-                        this.closeModal();
                         alert("Successfully Updated")
-                        this.percentageLoading = false;
                         this.reRenderEvent.emit();
+                        this.modalEvent.emit("2");
+                        this.closeModal();
+
 
 
                       }, error => {
@@ -166,8 +167,7 @@ export class WorkspaceeditComponent implements OnInit  {
               percentage = Math.round(percentage ? percentage : 0);
               console.log('done')
 
-              if(percentage >= 100 && this.percentageLoading){
-                this.percentageLoading = false
+              if(percentage >= 100){
                 let detailsObject = {
                   WorkspaceName: this.workspacename,
                   Description: this.description,
@@ -175,10 +175,12 @@ export class WorkspaceeditComponent implements OnInit  {
                   CoverImage: this.coverimage,
                 }
                 this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-                  this.closeModal();
-                  alert("Successfully Updated")
-                  this.percentageLoading = false;
+                  alert("Successfully Updated cover undifined")
+
                   this.reRenderEvent.emit();
+                  this.modalEvent.emit("2");
+                  this.closeModal();
+
 
 
                 }, error => {
@@ -198,13 +200,12 @@ export class WorkspaceeditComponent implements OnInit  {
             }
           );
         }else if(this.mainImageFile.file == undefined && this.coverImageFile.file != undefined){
-          this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
+          this.FirebaseService.pushToWorkSpaceStorage(currentCoverUpload).subscribe(
             percentage => {
               percentage = Math.round(percentage ? percentage : 0);
               console.log('done')
 
-              if(percentage >= 100 && this.percentageLoading){
-                this.percentageLoading = false
+              if(percentage >= 100){
                 let detailsObject = {
                   WorkspaceName: this.workspacename,
                   Description: this.description,
@@ -212,10 +213,10 @@ export class WorkspaceeditComponent implements OnInit  {
                   CoverImage: this.coverimage,
                 }
                 this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-                  this.closeModal();
-                  alert("Successfully Updated")
-                  this.percentageLoading = false;
+                  alert("Successfully Updated main yndefined")
+                  this.modalEvent.emit("2");
                   this.reRenderEvent.emit();
+                  this.closeModal();
 
 
                 }, error => {
@@ -244,10 +245,12 @@ export class WorkspaceeditComponent implements OnInit  {
           }
 
           this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-            alert("Successfully Updated")
-            this.percentageLoading = false;
-            this.closeModal();
+            alert("Successfully Updated both undefined")
+            this.modalEvent.emit("2");
             this.reRenderEvent.emit();
+            this.closeModal();
+
+
 
 
           }, error => {
@@ -259,7 +262,8 @@ export class WorkspaceeditComponent implements OnInit  {
         // aa
       }
 
-    }
+
+
 
   }
 
@@ -307,6 +311,12 @@ export class WorkspaceeditComponent implements OnInit  {
       this.coverImageFile = this.emptyFile
     }
   }
+
+  confirmEdit(){
+    // alert("asd")
+    this.modalService.open(this.modalContent, { centered: true, size : "lg", backdrop: "static"});
+  }
+
 
   deleteworkspace(){
     // Delete part completed......Just delete all projects belongs to this workplace and redirect to another page

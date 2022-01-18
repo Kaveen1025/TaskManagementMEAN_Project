@@ -1,65 +1,67 @@
 
-  <div class="modal-header mainHeader text-center">
-    <h3 class="modal-title mainTitle w-100"><b>Edit Your Workspace</b></h3>
-    <div class = "closeContainer">
-      <button type="button" class="close closeBtn" aria-label="Close" (click)="closeModal()">
-        <span aria-hidden="true">&times;</span>
-      </button>
+<div class="modal-header mainHeader text-center">
+  <h3 class="modal-title mainTitle w-100"><b>Edit Your Workspace</b></h3>
+  <div class = "closeContainer">
+    <button type="button" class="close closeBtn" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+</div>
+<div class="modal-body mainBody">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="mb-3">
+          <label class="form-label labels">Workspace Name<font class = "required">*</font></label>
+          <input type="text" class="form-control inputFieldsTxt" [(ngModel)]="workspacename"   placeholder="Workspace Name">
+          <p *ngIf="flagName" class = "errortext2">Workspace name cannot be null</p>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="mb-3">
+          <label class="form-label labels">Cover Image</label>
+          <input type="file" [(ngModel)]="coverimage" (change)="onCoverSelected($event)" class="form-control inputFieldsTxt">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm">
+        <div class="form-group">
+          <label class = "labels">Description<font class = "required">*</font></label>
+          <textarea class="form-control inputFieldsTxt" [(ngModel)]="description"  rows="5" placeholder = "Description"></textarea>
+          <p *ngIf="flagDescription" class = "errortext2">Description cannot be null</p>
+        </div>
+      </div>
+      <div class="col-sm">
+
+        <div class="mb-3">
+          <label class="form-label labels">Main Image</label>
+          <input type="file" [(ngModel)]="mainimage" (change)="onMainSelected($event)" class="form-control inputFieldsTxt">
+        </div>
+      </div>
     </div>
   </div>
-  <div class="modal-body mainBody">
-    <div class="container">
+  <div class = "text-center">
+    <div class="container d-flex justify-content-center">
       <div class="row">
-        <div class="col-sm">
-          <div class="mb-3">
-            <label class="form-label labels">Workspace Name<font class = "required">*</font></label>
-            <input type="text" class="form-control inputFieldsTxt" [(ngModel)]="workspacename"   placeholder="Workspace Name">
-            <p *ngIf="flagName" class = "errortext2">Workspace name cannot be null</p>
-          </div>
-        </div>
-        <div class="col-sm">
-          <div class="mb-3">
-            <label class="form-label labels">Cover Image</label>
-            <input type="file" [(ngModel)]="coverimage" (change)="onCoverSelected($event)" class="form-control inputFieldsTxt">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm">
-          <div class="form-group">
-            <label class = "labels">Description<font class = "required">*</font></label>
-            <textarea class="form-control inputFieldsTxt" [(ngModel)]="description"  rows="5" placeholder = "Description"></textarea>
-            <p *ngIf="flagDescription" class = "errortext2">Description cannot be null</p>
-          </div>
-        </div>
-        <div class="col-sm">
 
-          <div class="mb-3">
-            <label class="form-label labels">Main Image</label>
-            <input type="file" [(ngModel)]="mainimage" (change)="onMainSelected($event)" class="form-control inputFieldsTxt">
-          </div>
+        <div class="col-sm"><br>
+          <app-crudbuttonpink (click) = "confirmEdit()" text="EDIT"></app-crudbuttonpink>
         </div>
-      </div>
-    </div>
-    <div class = "text-center">
-      <div class="container d-flex justify-content-center">
-        <div class="row">
-
-          <div class="col-sm"><br>
-            <app-crudbuttonpink (click) = "editworkspace()" text="EDIT"></app-crudbuttonpink>
-          </div>
-          <div class="col-sm">
-            <br>
-            <app-crudbuttonpink (click) = "deleteworkspace()" text="DELETE"></app-crudbuttonpink>
-          </div>
-
+        <div class="col-sm">
+          <br>
+          <app-crudbuttonpink (click) = "deleteworkspace()" text="DELETE"></app-crudbuttonpink>
         </div>
 
       </div>
 
     </div>
-    <div class="card" style = "border: none" *ngIf="percentageLoading">
-      <app-loadinganimation></app-loadinganimation>
-    </div>
+
   </div>
 
+</div>
+<ng-template #content2 let-modal  id = "content2">
+  <app-confirmmodal></app-confirmmodal>
+  <button type="button" class="btn" id="okbtn" (click)="editworkspace()">Save</button>
+  <button type="button" class="btn" id="canclbtn" (click)="closeModal()">Don't save</button>
+</ng-template>

@@ -43,13 +43,13 @@ router.route("/create").post((req, res) => {
 
 //Get All Workspaces
 router.route("/getWorkspaces").get((req, res) => {
-
   Workspace.find()
     .then((workspace) => {
       res.json(workspace);
     })
     .catch((err) => {
       console.log(err);
+      res.json(err)
     });
 });
 

@@ -8,7 +8,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 })
 export class ConfirmmodalComponent implements OnInit {
 
-  @ViewChild('content') private content: TemplateRef<any> | undefined;
+  // @ViewChild('content2') private content: TemplateRef<any> | undefined;
   @Output() someEvent = new EventEmitter<string>();
   constructor(private modalService: NgbModal) { }
 
@@ -17,7 +17,7 @@ export class ConfirmmodalComponent implements OnInit {
 
 
   closeModal() {
-    this.modalService.dismissAll(this.content);
+    this.modalService.dismissAll();
   }
 
 
