@@ -32,6 +32,23 @@ export class FirebasesService {
     return uploadTask.percentageChanges();
   }
 
+  pushToWorkSpaceStorage(fileUpload: FileUpload): Observable<number | undefined> {
+    const filePath = `${fileUpload.name}`;
+    alert(filePath)
+    const storageRef = this.storage.ref(filePath);
+    const uploadTask = this.storage.upload(filePath, fileUpload.file);
+
+    uploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        storageRef.getDownloadURL().subscribe(downloadURL => {
+          fileUpload.url = downloadURL;
+          fileUpload.name = fileUpload.file.name;
+        });
+      })
+    ).subscribe();
+
+    return uploadTask.percentageChanges();
+  }
 
   //method to retrieve download url
   // single image
