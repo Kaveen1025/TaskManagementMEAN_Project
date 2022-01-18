@@ -128,6 +128,8 @@ export class SignuppageComponent implements OnInit {
 
             // alert("Success");
             // location.reload();
+            this.errormsg = "";
+
             this.Username.setValue("");
             this.Email.setValue("");
             this.FirstName.setValue("");

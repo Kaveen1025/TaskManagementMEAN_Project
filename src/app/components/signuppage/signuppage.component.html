@@ -42,7 +42,7 @@
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/email1.png" class="user1">
-        <input type="email" [formControl]= "Email" class="form-control" placeholder="Email" required>
+        <input type="email" [formControl]= "Email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Invalid email address"  placeholder="Email" required>
       </div>
       </div>
 
