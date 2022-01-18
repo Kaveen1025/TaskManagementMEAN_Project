@@ -20,7 +20,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   display1 = true
   display2 = false
-  display3 = false
+  display3 = true
 
   code : String ="1234"
 
@@ -95,7 +95,7 @@ export class ForgotpasswordComponent implements OnInit {
       console.log(a.Email)
       console.log(post.length)
 
-      this.userID=a._id
+      this.userID = a._id
 
       if (post.length !== 0) {
           console.log('User Available')
@@ -107,25 +107,7 @@ export class ForgotpasswordComponent implements OnInit {
       else {
           alert('Invalid Email')
         }
-      // this._emailService.sendEmail({
-      //   from: 'Mailgun Sandbox <postmaster@tharindudeshan50@gmail.com>',
-      //   to: email,
-      //   // text: comment,
-      // })
-      //   .subscribe(
-      //     () => {},
-      //       (err: any) => console.log(err)
-      //   );
 
-      // // public sendEmail(e: Event) {
-    // //     e.preventDefault();
-    //     emailjs.sendForm('tharindudeshan50@gmail.com', this.email, e.target as HTMLFormElement, 'YOUR_USER_ID')
-    //       .then((result: EmailJSResponseStatus) => {
-    //         console.log(result.text);
-    //       }, err=> {
-    //         // console.log(err.text);
-    //       });
-    //   // }
     });
   }
 
@@ -234,6 +216,11 @@ export class ForgotpasswordComponent implements OnInit {
     }
   }
 
+
+  keyDownHandler(event: any) {
+    if (event.which === 32)
+      event.preventDefault();
+  }
 }
 
 
