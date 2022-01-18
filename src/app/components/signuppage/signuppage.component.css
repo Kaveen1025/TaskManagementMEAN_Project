@@ -3,6 +3,11 @@
   font-family: Rambla, sans-serif;
 }
 
+.signup .errorMsg{
+  color: red;
+  font-weight: bold;
+}
+
 .signup .card{
 
   margin-top: 30px;

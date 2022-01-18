@@ -30,28 +30,34 @@ router.route("/add").post(async(req,res)=>{
     const emailExist = await User.findOne({ Email: Email });
 
     if (emailExist) {
-      return res.status(422).json({ error: "Email Already Exist" });
+
+       res.json("Email Already Exist");
+
 
     }
 
     const usernameExist = await User.findOne({ Username: Username });
 
     if (usernameExist) {
-      return res.status(422).json({ error: "Username Already Exist" });
+
+      res.json("Username Already Exist");
     }
 
-    const newUser = new User({
-      Username,
-      Email,
-      FirstName,
-      LastName,
-      Password,
-      GoogleSignIn,
-      ProfileImage
-    })
+    else if(!emailExist && !usernameExist){
 
-    await newUser.save();
-    res.status(201).json({ message: "User Added Successfully!" });
+      const newUser = new User({
+        Username,
+        Email,
+        FirstName,
+        LastName,
+        Password,
+        GoogleSignIn,
+        ProfileImage
+      })
+
+      await newUser.save();
+      res.json("User Added Successfully!");
+    }
 
   }catch (err){
 
@@ -59,6 +65,7 @@ router.route("/add").post(async(req,res)=>{
 
   }
 })
+
 
 //Get All Users
 //URL -- >http://localhost:8070/user/getAll
