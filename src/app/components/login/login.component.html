@@ -15,15 +15,23 @@
         <div class="form-group ">
 <!--          <i class="fa fa-user icon"></i>-->
           <div class="inner-addon left-addon mb-3">
-            <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/user2.png" class="user1">
-          <input type="text" class="form-control input-field" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username">
-        </div>
+            <i class="fas fa-user"></i>
+          <input  [(ngModel)]="Username" type="text" class="form-control" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username" required>
+            <h3 [hidden]="uname">Username is Required</h3>
+            <!--            <span class="text-danger" *ngIf="form.controls['Username'].dirty && form.hasError('required','email')">-->
+<!--              *Username is Required-->
+<!--            </span>-->
+          </div>
         </div>
         <div class="form-group">
           <div class="inner-addon left-addon mb-3">
-          <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
+            <i class="fas fa-unlock-alt"></i>
+          <input [(ngModel)]="Password" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            <h3 [hidden]="pass">Password is Required</h3>
+<!--            <span class="text-danger" *ngIf="form.controls['Password'].dirty && form.hasError('required','password')">-->
+<!--              *Password is Required-->
+<!--            </span>-->
+            </div>
         </div>
         <button id="lgbtn" type="submit" class="btn btn-lg">LOGIN</button>
         <label id="fpass" routerLink="forgotpassword">Forgot Password ?</label>
@@ -42,5 +50,6 @@
     </div>
 
   </div>
+<!--  <app-errormodal></app-errormodal>-->
 
 </div>

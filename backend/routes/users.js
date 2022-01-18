@@ -252,12 +252,12 @@ router.post("/loginUser", async (req, res) => {
       const isMatch = await bcrypt.compare(Password, customerLogin.Password);
 
       if (!isMatch) {
-        res.status(400).json({ error: "Invalid Credentials" });
+        res.json("Invalid Credentials");
       } else {
-        res.json({message: "Customer Sign In Successfully"});
+        res.json("Customer Sign In Successfully");
       }
     } else {
-      res.status(400).json({ error: "User does not exists" });
+      res.json("User Does not exist");
     }
   } catch (err) {
     console.log(err);

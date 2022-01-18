@@ -17,6 +17,10 @@ export class LoginComponent implements OnInit {
   Password : String =""
   ErrorMessage: any
   ErrorMessageStatus:boolean
+
+  uname = true
+  pass = true
+
   // detailsObject : any
 
 
@@ -53,17 +57,25 @@ export class LoginComponent implements OnInit {
       Password: this.Password,
     }
 
+    // if(this.Username==null){
+    //   this.uname=false
+    // }
+    //
+    // if(this.Password==null){
+    //   this.pass=false
+    // }
+
+
     this.UserService.login(detailsObject).subscribe((post: any)=> {
       console.log(post)
       console.log(detailsObject)
 
 
-        if(post.length!==null){
-          alert('login Successful')
-
+        if(post=="Customer Sign In Successfully"){
+          alert("Success")
         }
         else{
-          console.log('unavailable')
+          alert(post)
         }
 
     }, error => {
@@ -98,6 +110,7 @@ triggerErrorMessage(msg:any){
     this.ErrorMessage = msg
     this.ErrorMessageStatus = false
 }
+
 
 
 }
