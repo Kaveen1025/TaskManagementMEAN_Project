@@ -101,7 +101,7 @@ export class SignuppageComponent implements OnInit {
   addUser(signUpForm: NgForm){
 
 
-    this.modalService.open(this.content3, {centered: true},);
+    this.modalService.open(this.content3, {centered: true});
 
     this.mismatch = true
 

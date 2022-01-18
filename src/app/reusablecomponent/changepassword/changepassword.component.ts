@@ -57,29 +57,30 @@ export class ChangepasswordComponent implements OnInit {
     this.wrongPassword = true
     this.mismatch = true
     this.loadingStatus = false
-    if(this.newPasswordStrengthStatus && this.confirmPasswordStrengthStatus){
-      if(this.checkCurrentPassword(this.currentPassword.value)){
-        this.wrongPassword = true
-        if(this.confirmPassword.value === this.newPassword.value) {
-          this.mismatch = true
-          this.openConfirmModal()
+
+
+      if(this.newPasswordStrengthStatus){
+        if(this.checkCurrentPassword(this.currentPassword.value)){
+          this.wrongPassword = true
+          if(this.confirmPassword.value === this.newPassword.value) {
+            this.mismatch = true
+            this.openConfirmModal()
+
+          }else{
+            this.errorMsg = "Password mismatch!"
+            this.mismatch = false
+            this.loadingStatus = true
+          }
 
         }else{
-          this.errorMsg = "Password mismatch!"
-          this.mismatch = false
+          this.wrongPassword = false
           this.loadingStatus = true
         }
-
       }else{
-        this.wrongPassword = false
+        this.errorMsg = "Password is weak!"
+        this.mismatch = false
         this.loadingStatus = true
       }
-    }else{
-      this.errorMsg = "Password is weak!"
-      this.mismatch = false
-      this.loadingStatus = true
-    }
-
 
   }
 
