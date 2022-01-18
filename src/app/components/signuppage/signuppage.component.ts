@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import { UserService} from "../../services/user.service";
 import {FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-signuppage',
@@ -9,8 +10,11 @@ import {FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
 })
 export class SignuppageComponent implements OnInit {
 
-password1 : string = '';
+  password1 : string = '';
   password2 : string = '';
+  ErrorMessage: any;
+  ErrorMessageStatus: boolean = true;
+  errormsg: any;
 
   Username = new FormControl('');
   Email = new FormControl('');
@@ -21,6 +25,7 @@ password1 : string = '';
   checkbox = new FormControl('');
 
 
+
   show1 = false;
   show2 = false;
   PasswordStrengthStatus:boolean = false
@@ -29,14 +34,18 @@ password1 : string = '';
   errorMsg:any;
   mismatch: boolean = true;
 
-  constructor(private userService: UserService) { }
+  // accessing the template
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
+
+  @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+
+  constructor(private modalService: NgbModal, private userService: UserService) { }
 
 
   ngOnInit(): void {
 
     this.password1 = 'password';
     this.password2 = 'password';
-
 
   }
 
@@ -77,14 +86,22 @@ password1 : string = '';
     this.ConfirmPasswordStrengthStatus = $event.idx >= 4;
   }
 
+  triggerErrorMessage(msg:any){
+    this.ErrorMessage = msg
+    this.ErrorMessageStatus = false
+  }
 
-
-
+  closeAnimation(){
+    this.modalService.dismissAll(this.content3);
+  }
 
 
 
 
   addUser(signUpForm: NgForm){
+
+
+    this.modalService.open(this.content3, {centered: true},);
 
     this.mismatch = true
 
@@ -99,29 +116,42 @@ password1 : string = '';
           Email: this.Email.value,
           FirstName: this.FirstName.value,
           LastName: this.LastName.value,
-          Password: this.Password.value
+          Password: this.Password.value,
+          GoogleSignIn: false
 
         }
 
         console.log(object2)
         this.userService.createUser(object2).subscribe((post: any)=> {
 
-          this.Username.setValue("");
-          this.Email.setValue("");
-          this.FirstName.setValue("");
-          this.LastName.setValue("");
-          this.Password.setValue("");
-          this.ConfirmPassword.setValue("");
-          this.checkbox.setValue("");
+          if(post == "User Added Successfully!") {
 
+            // alert("Success");
+            // location.reload();
+            this.Username.setValue("");
+            this.Email.setValue("");
+            this.FirstName.setValue("");
+            this.LastName.setValue("");
+            this.Password.setValue("");
+            this.ConfirmPassword.setValue("");
+            this.checkbox.setValue("");
 
+            this.closeAnimation();
 
-          alert("Success");
-          // location.reload();
-          console.log("Success");
+            console.log("Success");
+
+            this.modalService.open(this.content, {centered: true},);
+          }
+
+          else{
+            // alert(post);
+            this.errormsg = post;
+            this.closeAnimation();
+          }
           // console.log(this.projectObject[0]);
         }, error => {
           console.log(error);
+
         });
 
       }else{

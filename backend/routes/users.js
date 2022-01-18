@@ -30,13 +30,13 @@ router.route("/add").post(async(req,res)=>{
     const emailExist = await User.findOne({ Email: Email });
 
     if (emailExist) {
-      return res.status(422).json({ error: "Email Already Exist" });
+       res.json("Email Already Exist");
     }
 
     const usernameExist = await User.findOne({ Username: Username });
 
     if (usernameExist) {
-      return res.status(422).json({ error: "Username Already Exist" });
+      res.json("Username Already Exist");
     }
 
     const newUser = new User({
@@ -50,7 +50,7 @@ router.route("/add").post(async(req,res)=>{
     })
 
     await newUser.save();
-    res.status(201).json({ message: "User Added Successfully!" });
+    res.json("User Added Successfully!");
 
   }catch (err){
 

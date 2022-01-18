@@ -26,7 +26,8 @@
     <div class="card">
       <div class="card-body" id="card1">
       <h2 class="create">Create an Account</h2>
-
+        <h3 class = "errorMsg" [hidden] = "ErrorMessageStatus">{{ErrorMessage}}</h3>
+        <h3 class = "errorMsg" >{{errormsg}}</h3>
         <div class="container">
 
     <form class="fbody"  #signUpForm="ngForm" (ngSubmit)="addUser(signUpForm)" ngNativeValidate>
@@ -104,8 +105,8 @@
       <div class="box">
         <p>OR</p>
       </div>
-      <button class="btn2"><img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/search.png" id="gicn"> Continue with Google</button>
-
+<!--      <button class="btn2"><img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/search.png" id="gicn"> Continue with Google</button>-->
+      <app-googlesignup (event)="triggerErrorMessage('Email Already Exists!')"></app-googlesignup>
 <br/><br/>
 
       <p class="Already">Already have an account ? <a>SIGN IN </a></p>
@@ -125,4 +126,14 @@
     </div>
 </div>
 </div>
+
+<!--modal-->
+<ng-template #content let-modal>
+  <app-successmodal></app-successmodal>
+</ng-template>
+
+
+<ng-template #content3 let-modal  id = "content3">
+  <app-loadinganimation></app-loadinganimation>
+</ng-template>
 
