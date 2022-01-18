@@ -72,8 +72,12 @@ const userSchema = new Schema({
   WorkSpaceInvitationIDs : [{
     type : String,
     required : false
-  }]
+  }],
 
+  GoogleSignIn: {
+    type: Boolean,
+    required: true
+  }
 
 
 });

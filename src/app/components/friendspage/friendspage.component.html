@@ -1,5 +1,6 @@
 <div class = "friendpage">
-  <app-friendsheader></app-friendsheader>
+  <app-friendsheader (searchContext) = "searchRequests($event)"></app-friendsheader>
+<!--  <app-notificationheader (searchContext) = "searchRequests($event)"></app-notificationheader>-->
 
   <div class = "" style = "padding-left: 40px; padding-right: 40px">
     <div class = "row">
@@ -12,9 +13,9 @@
       </div>
     </div>
     <div class = "row">
-      <div class = "col-lg-7  col-md-7 col-sm-12 col-xs-12" style = "overflow-y: scroll; height: 660px">
+      <div class = "col-lg-7  col-md-12 col-sm-12 col-xs-12" style = "overflow-y: scroll; height: 660px; ">
         <div *ngIf="flagContent"  class = "row">
-          <div class = "col-lg-4 col-md-6 col-xs-6 col-sm-6 text-center" *ngFor="let requestDetails of friendRequest;">
+          <div class = "col-lg-4 col-md-4 col-xs-6 col-sm-6 text-center" *ngFor="let requestDetails of friendRequest;">
               <app-friendrequest [requestDetails]="requestDetails" (setEvent) = "getAllUserRequests()"></app-friendrequest>
             <br>
           </div>
@@ -23,8 +24,9 @@
 
       </div>
 
-      <div class = "col-lg-3 col-md-5  col-sm-12 col-xs-12 " >
-        <br>  <br>
+
+      <div class = "col-lg-5 col-md-12  col-sm-12 col-xs-12 " >
+        <br><br>
         <app-sendfriendrequestcard  class = "friendcard"></app-sendfriendrequestcard>
       </div>
     </div>

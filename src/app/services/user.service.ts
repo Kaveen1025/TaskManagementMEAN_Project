@@ -61,4 +61,10 @@ export class UserService {
     return this.http.put(environment.apiBaseUrl+'user/addworkspace/' + userID + "/" + workspaceID, "")
   }
 
+  // check whether username is already exist or not
+  checkUsername(userName:String){
+    return this.http.get(environment.apiBaseUrl + 'user/getUserbyUN/'+userName);
+  }
+
+
 }

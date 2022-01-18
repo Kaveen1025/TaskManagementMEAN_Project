@@ -20,7 +20,9 @@ router.route("/add").post(async(req,res)=>{
     Email,
     FirstName,
     LastName,
-    Password
+    Password,
+    GoogleSignIn,
+    ProfileImage
   }= req.body;
 
   try{
@@ -42,7 +44,9 @@ router.route("/add").post(async(req,res)=>{
       Email,
       FirstName,
       LastName,
-      Password
+      Password,
+      GoogleSignIn,
+      ProfileImage
     })
 
     await newUser.save();
@@ -399,7 +403,7 @@ router.route("/addfriendReq/:userID/:friendID").put(async (req, res) => {
 });
 
 
-//Remove Friend Request
+//Remove Requested Friend
 //URL --> http://localhost:8070/user/removefriendReq/:userID/:friendID
 router.route("/removefriendReq/:userID/:friendID").delete(async (req, res) => {
 
@@ -668,9 +672,9 @@ router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
       },
       {
         $project: {
-          RequestedFriends: {
+          FriendsRequests: {
             $map: {
-              input: "$RequestedFriends",
+              input: "$FriendsRequests",
               as: "friendID",
               in: {
                 $convert: {
@@ -685,9 +689,9 @@ router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
       {
         $lookup: {
           from: "users",
-          localField: "RequestedFriends",
+          localField: "FriendsRequests",
           foreignField: "_id",
-          as: "RequestedFriendDetails"
+          as: "FriendRequestDetails"
         }
       }
     ])
@@ -697,6 +701,55 @@ router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
   }
 });
 
+//Check User by Username --> Sonal
+//URL -->http://localhost:8070/user/getUserbyUN/:userName
+router.route("/getUserbyUN/:userName").get(async (req, res) => {
+  let username = req.params.userName;
 
+  const USER = await User.findOne({ Username: username })
+    .then((user) => {
+
+
+
+      if(user){
+       res.json(true);
+      }
+      else{
+        res.json(false);
+      }
+
+      }
+    )
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({ status: "Error with retrieving  user", error: err.message });
+    });
+
+
+
+
+
+});
+
+
+
+//Remove  Friend Requested
+//URL --> http://localhost:8070/user/removefriendReq/:userID/:friendID
+router.route("/removefriendReqsts/:userID/:friendID").delete(async (req, res) => {
+
+  let UserID = req.params.userID;
+  let FriendID = req.params.friendID;
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$pull: {FriendsRequests: FriendID}}
+    );
+    res.status(200).send({status: "Friend Request Deleted Successful!"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
 
 module.exports = router;

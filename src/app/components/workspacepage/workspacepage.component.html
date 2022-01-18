@@ -5,8 +5,8 @@
     </div>
     <div class = "content">
       <div class="card-body text-center">
-        <img class="img-thumbnail rounded-circle workspaceImg shadow img-fluid"
-             src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG" alt="userProfile">
+        <img class = "rounded-circle workspaceImg shadow img-fluid"
+             [src] = "workspaceMainImage" alt="userProfile">
         <div>
           <br>
           <h1 class="workspacename">{{workspaceTitle}}</h1>
@@ -72,7 +72,7 @@
         </div>
       </div>
       <div *ngIf="flagCreateBtn" class = "creatbtn">
-        <app-crudbutton text = "CREATE WORKSPACE"></app-crudbutton>
+        <app-crudbutton  class="text-center" text = "CREATE PROJECT" (click)="CreateProject()"></app-crudbutton>
         <br>
 
       </div>
@@ -84,12 +84,24 @@
               <app-projectcard [projectDetails]="ProjectDetails"></app-projectcard>
             </div>
             <h3 class = "errortext">{{errorText}}</h3>
+            <div class="card" style = "border: none" [hidden] = "loadingStatus">
+              <app-loadinganimation></app-loadinganimation>
+            </div>
           </div>
         </div>
       <br><br><br>
-      <ng-template #content let-modal id = "content2" class = "mainModal">
+      <ng-template #content let-modal  class = "mainModal">
         <app-workspaceedit (reRenderEvent) = "getWorkspaceDetails()" [workspaceDetails]="workspaceObject" ></app-workspaceedit>
       </ng-template>
 
     </div>
 </div>
+
+
+<!--modal-->
+<ng-template #content2 let-modal  id = "content2">
+  <app-projectadd (reRenderDetails) = "reload()" [WorkSpaceID]=" workspaceID" ></app-projectadd>
+</ng-template>
+
+
+

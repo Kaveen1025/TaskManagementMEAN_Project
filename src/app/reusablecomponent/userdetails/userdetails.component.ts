@@ -4,6 +4,8 @@ import {FormControl} from "@angular/forms";
 
 import {DeletedmodalComponent} from "../../modals/deletedmodal/deletedmodal.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-userdetails',
@@ -149,6 +151,7 @@ openConfirmModal(){
   hello(event: any){
     alert(event.myObj)
   }
+
 
 
 }

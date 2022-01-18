@@ -39,7 +39,7 @@
             <div class="col-sm">
               <div class="form-group">
                 <label for="InputLastName">Last Name <span>*</span></label>
-                <input type="text" [formControl]="lastName" class="form-control" id="InputLastName" aria-describedby="firstnameHelp" name="lname" placeholder="" onkeypress="return /[a-z]/i.test(event.key)" required ngModel>
+                <input type="text" [formControl]="lastName" class="form-control" id="InputLastName" aria-describedby="firstnameHelp" name="lname" placeholder=""  required ngModel>
                 <small class="text-danger" *ngIf="lastName.touched && !lastName.valid"> Last Name is required</small>
               </div>
             </div>

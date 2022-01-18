@@ -15,13 +15,14 @@ export class LoginComponent implements OnInit {
   UserService: UserService
   Username : String =""
   Password : String =""
-
+  ErrorMessage: any
+  ErrorMessageStatus:boolean
   // detailsObject : any
 
 
   constructor( private http : HttpClient,public fb: FormBuilder, UserService:UserService) {
     this.UserService = UserService
-
+    this.ErrorMessageStatus = true
 
   }
 
@@ -91,5 +92,12 @@ export class LoginComponent implements OnInit {
   //
   //     })
   // }
+
+
+triggerErrorMessage(msg:any){
+    this.ErrorMessage = msg
+    this.ErrorMessageStatus = false
+}
+
 
 }

@@ -1,20 +1,33 @@
 const router = require("express").Router();
 let WorkspaceInvitaion = require("../models/workspaceInvitations");
+let User = require("../models/user");
+let Workspace = require("../models/workspace");
 const generic = require('./generic');
+const res = require("express");
 
 //Create new WorkspaceInvitation
+//URL --> http://localhost:8070/workspaceinvitation/create
 router.route("/create").post((req, res) => {
   const {
     workspaceID,
     invitedUser,
     sendersID,
+    WorkspaceName,
+    SenderName,
+    Image
 
   } = req.body;
+
+
 
   const newWorkspaceInvitation = new WorkspaceInvitaion({
     workspaceID,
     invitedUser,
     sendersID,
+    WorkspaceName,
+    SenderName,
+    Image
+
   });
 
   newWorkspaceInvitation
@@ -95,16 +108,13 @@ router.route("/deleteWorkspaceInvitationacco/:workspaceID/:userID").delete(async
 });
 
 //Get All WorkspaceInvitation according to a user
+//URL --> http://localhost:8070/workspaceinvitation/getWorkspaceInvitationsaccoUser/61d458c91d0655dd1358454a
 router.route("/getWorkspaceInvitationsaccoUser/:userID").get( async(req, res) => {
   let userID = req.params.userID;
 
    await WorkspaceInvitaion.find({invitedUser: userID})
-    .then( async (workspaceinvitation) => {
+    .then(  (workspaceinvitation) => {
       res.json(workspaceinvitation);
-
-       console.log(workspaceinvitation.length);
-      await gg(workspaceinvitation);
-
 
     })
     .catch((err) => {
@@ -112,13 +122,15 @@ router.route("/getWorkspaceInvitationsaccoUser/:userID").get( async(req, res) =>
     });
 });
 
-async function gg(idArr) {
-
-  let Arr = await generic.makeRequests(idArr);
-  console.log("GG");
-  console.log(Arr);
 
 
-}
+
+
+
+
+
+
+
+
 
 module.exports = router;

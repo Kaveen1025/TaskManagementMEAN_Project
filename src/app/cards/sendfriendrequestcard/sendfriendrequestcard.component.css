@@ -68,18 +68,29 @@
 
 .sendfriendrequestdiv .column1 {
   float: left;
-  width: 33.33%;
+  width: 60%;
   padding-left: 5px;
   padding-top: 18px;
 }
 
-@media only screen and (max-width: 500px) {
-  .sendfriendrequestdiv .column1 {
-    float: left;
-    width: 33.33%;
-    padding-left: 10px;
-    padding-top: 18px;
-  }
+
+.sendfriendrequestdiv .image-text {
+  display: flex;
+  align-items: center;
+  font-family: Rambla, sans-serif;
+  margin-top: 0px;
+}
+
+.sendfriendrequestdiv .image-text__image {
+  flex: 0 0 auto;
+  padding: 1em;
+}
+.sendfriendrequestdiv .image2 img {
+  display: block;
+  height:30px;
+  width:30px;
+  margin-left: 100px;
+  margin-top: -20px;
 }
 
 @media only screen and (max-width: 365px) {
@@ -91,3 +102,83 @@
     ;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .sendfriendrequestdiv .column1 {
+    float: left;
+    width: 33.33%;
+    padding-left: 10px;
+    padding-top: 18px;
+  }
+}
+
+@media only screen and (max-width: 635px) {
+  .sendfriendrequestdiv .column1 {
+    float: left;
+    width: 33.33%;
+    padding-left: 25px;
+    padding-top: 18px;
+  ;
+  }
+
+  .sendfriendrequestdiv .image2 img {
+      margin-left: 70px;
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .sendfriendrequestdiv .column {
+    display: none;
+  }
+  .sendfriendrequestdiv .column1 {
+    float: left;
+    width: 100%;
+    padding-left: 15px;
+    padding-top: 18px;
+  ;
+  }
+
+  .sendfriendrequestdiv .image2 img {
+    margin-left: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 350px) {
+
+  .sendfriendrequestdiv .body{
+    box-shadow: 2px 4px 4px 2px rgba(54, 79, 107, 0.25);
+    border: 1px solid #364F6B;
+    box-sizing: border-box;
+    font-family: Rambla, Roboto, normal, serif;
+    height: 650px;
+    border-radius: 10px;
+  }
+
+  .sendfriendrequestdiv .column {
+    display: none;
+  }
+  .sendfriendrequestdiv .column1 {
+    float: left;
+    width: 100%;
+    padding-top: 18px;
+  ;
+  }
+
+  .sendfriendrequestdiv .image2 img {
+    margin-left: 50%;
+  }
+
+  .sendfriendrequestdiv .titlecard  {
+    font-size: 15px;
+    float: left;
+  }
+
+  .sendfriendrequestdiv .hrdisplay  {
+    display: none;
+  }
+
+}
+
+

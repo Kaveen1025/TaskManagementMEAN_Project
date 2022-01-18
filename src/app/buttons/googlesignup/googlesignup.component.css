@@ -1,0 +1,29 @@
+#googlebtn{
+  background-color: white;
+  box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.1);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+#gicon{
+  width: 7%;
+  margin-right: 10px;
+}
+
+@media (min-width: 500px){
+  .login #googlebtn{
+    width: 80%;
+    font-size: 90%;
+  }
+}
+
+
+/*remove border from modal*/
+
+::ng-deep .modal-content {
+  border: none;
+}

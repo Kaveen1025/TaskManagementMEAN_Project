@@ -30,6 +30,10 @@ export class FriendspageService{
   }
 
   deleteFriendRequest(userID: string, friendID: string){
+    return this.httpClient.delete("http://localhost:8070/user/removefriendReqsts/"+userID+ "/"+friendID)
+  }
+
+  deleteRequestedFriend(userID: string, friendID: string){
     return this.httpClient.delete("http://localhost:8070/user/removefriendReq/"+userID+ "/"+friendID)
   }
 
