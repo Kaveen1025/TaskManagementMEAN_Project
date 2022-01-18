@@ -34,7 +34,6 @@ export class FirebasesService {
 
   pushToWorkSpaceStorage(fileUpload: FileUpload): Observable<number | undefined> {
     const filePath = `${fileUpload.name}`;
-    alert(filePath)
     const storageRef = this.storage.ref(filePath);
     const uploadTask = this.storage.upload(filePath, fileUpload.file);
 
