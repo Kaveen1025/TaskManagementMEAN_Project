@@ -73,6 +73,8 @@ import {GeneralnoificationsComponent} from "./cards/generalnoifications/generaln
 import { InvitationscardComponent } from './cards/invitationscard/invitationscard.component';
 import { NotificationspageComponent } from './components/notificationspage/notificationspage.component';
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
+import { ProjectpageComponent } from './components/projectpage/projectpage.component';
+import { ConfirmdeletemodalComponent } from './modals/confirmdeletemodal/confirmdeletemodal.component';
 
 
 registerLocaleData(en);
@@ -129,7 +131,9 @@ registerLocaleData(en);
         GeneralnoificationsComponent,
         InvitationscardComponent,
         NotificationspageComponent,
-        NotificationheaderComponent
+        NotificationheaderComponent,
+        ProjectpageComponent,
+        ConfirmdeletemodalComponent
 
     ],
     imports: [

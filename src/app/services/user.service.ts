@@ -61,4 +61,8 @@ export class UserService {
     return this.http.put(environment.apiBaseUrl+'user/addworkspace/' + userID + "/" + workspaceID, "")
   }
 
+  //Remove Project from user
+  removeProject(userID:any, projectID:any){
+    return this.http.delete(environment.apiBaseUrl + 'user/removeproject/'+ userID + "/" + projectID);
+  }
 }

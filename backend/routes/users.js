@@ -30,6 +30,7 @@ router.route("/add").post(async(req,res)=>{
 
     if (emailExist) {
       return res.status(422).json({ error: "Email Already Exist" });
+
     }
 
     const usernameExist = await User.findOne({ Username: Username });

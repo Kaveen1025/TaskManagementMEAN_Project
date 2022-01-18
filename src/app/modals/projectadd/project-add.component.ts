@@ -33,6 +33,8 @@ export class ProjectAddComponent implements OnInit {
 
   @ViewChild('content4') private content4: TemplateRef<any> | undefined;
 
+
+
   @Output() reRenderDetails = new EventEmitter<string>();
 
   @Input() WorkSpaceID: any;
@@ -76,8 +78,7 @@ export class ProjectAddComponent implements OnInit {
   addProject(){
 
     this.checkvalidity();
-    // console.log(this.flagName);
-    // console.log(this.flagDescription);
+
     console.log(this.valid);
 
     if(this.valid == false){
@@ -85,9 +86,7 @@ export class ProjectAddComponent implements OnInit {
     }else {
 
       try {
-
-
-        this.closeModal();
+        //Open Loading Modal
         this.modalService.open(this.content3, {centered: true},);
 
 
@@ -123,10 +122,15 @@ export class ProjectAddComponent implements OnInit {
               this.userservice.addProject(this.AdminID, this.projectID).subscribe((res) => {
                 console.log(res);
 
+                //Close Loading Modal
                 this.closeAnimation();
 
                 this.reRenderDetails.emit();
-                // this.modalService.open(this.content, {centered: true},);
+
+                this.closeModal();
+
+                //Open Success Modal
+                this.modalService.open(this.content, {centered: true},);
 
 
               })
@@ -145,8 +149,10 @@ export class ProjectAddComponent implements OnInit {
       }
 
 
+
     }
   }
+
 
 
   getDate(){

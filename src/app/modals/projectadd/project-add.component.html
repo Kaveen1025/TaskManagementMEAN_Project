@@ -14,7 +14,7 @@
           <div class="mb-3">
             <label class="form-label labels">Project Name<font class = "required">*</font></label>
             <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name" onkeypress="return /[a-z]/i.test(event.key)">
-            <p *ngIf="flagName" class = "errortext2">Project Name Required</p>
+            <p *ngIf="flagName" class = "errortext2">Project Name is Required</p>
 
 
           </div>
@@ -54,15 +54,6 @@
   </div>
 
 
-<!--  <script>-->
-<!--    $(function () {-->
-<!--      var date = new Date();-->
-<!--      date.setDate(date.getDate()-1);-->
-<!--      $('#deadline').datetimepicker({-->
-<!--        startDate: date-->
-<!--      });-->
-<!--    });-->
-<!--  </script>-->
 
   <!--modal-->
   <ng-template #content let-modal>
