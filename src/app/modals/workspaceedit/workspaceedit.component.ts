@@ -1,6 +1,8 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {WorkspaceService} from "../../services/workspacepage.service";
+import {FileUpload} from "../../module/file-upload";
+import {FirebasesService} from "../../services/firebases.service";
 declare var $: any;
 
 
@@ -18,14 +20,19 @@ export class WorkspaceeditComponent implements OnInit  {
   @Input() workspaceDetails: any;
 
 
-  constructor(private modalService: NgbModal, workspaceService : WorkspaceService,) {
+  constructor(private modalService: NgbModal, workspaceService : WorkspaceService, FirebaseService: FirebasesService) {
     this.workspaceService = workspaceService;
+    this.FirebaseService = FirebaseService
   }
 
-
+  FirebaseService:FirebasesService
   workspacename: string = "";
   coverimage: string = "";
   mainimage: string = "";
+  // @ts-ignore
+  mainImageFile = new FileUpload();
+  // @ts-ignore
+  coverImageFile = new FileUpload();
   description: string = "";
   workspaceID: string = "";
   constcoverimage: string = "";
@@ -33,6 +40,7 @@ export class WorkspaceeditComponent implements OnInit  {
   flagName = false;
   flagDescription = false;
 
+  percentageLoading:any = false
 
   object1: {} = {};
 
@@ -78,26 +86,131 @@ export class WorkspaceeditComponent implements OnInit  {
   }
 
   editworkspace(){
+    let currentMainUpload = this.mainImageFile;
+    let currentCoverUpload = this.coverImageFile;
+
 
     if(this.flagName == true || this.flagDescription == true){
 
     }else {
-      let detailsObject = {
-        WorkspaceName: this.workspacename,
-        Description: this.description,
-        MainImage: this.mainimage,
-        CoverImage: this.coverimage,
+
+      let a = 1
+      this.percentageLoading = true
+      let percentage;
+      if(a === 1){
+        this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
+          percentage => {
+            percentage = Math.round(percentage ? percentage : 0);
+            console.log('done')
+
+            if(percentage >= 100 && this.percentageLoading){
+              let detailsObject = {
+                WorkspaceName: this.workspacename,
+                Description: this.description,
+                MainImage: this.mainimage,
+                CoverImage: this.coverimage,
+              }
+              this.FirebaseService.pushToWorkSpaceStorage(currentCoverUpload).subscribe(
+                percentage => {
+                  percentage = Math.round(percentage ? percentage : 0);
+                  console.log('done')
+                  if(percentage >= 100 && this.percentageLoading){
+                    this.percentageLoading = false
+                    this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+                      alert("Successfully Updated")
+                      this.percentageLoading = false;
+                      this.closeModal();
+                      this.reRenderEvent.emit();
+
+
+                    }, error => {
+                      console.log(error);
+
+                    });
+
+                  }
+                },
+                error => {
+                  console.log(error);
+                  this.closeModal()
+                }
+              );
+            }
+
+          },
+          error => {
+            console.log(error);
+            alert("bbb")
+
+            // this.contentStatus1 = false
+            this.closeModal()
+          }
+        );
+      }else{
+        let detailsObject = {
+          WorkspaceName: this.workspacename,
+          Description: this.description,
+          MainImage: this.mainimage,
+          CoverImage: this.coverimage,
+        }
+
+        this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+          alert("Successfully Updated")
+          this.percentageLoading = false;
+          this.closeModal();
+          this.reRenderEvent.emit();
+
+
+        }, error => {
+          console.log(error);
+
+        });
       }
 
-      this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-        alert("Successfully Updated")
-        this.closeModal();
-        this.reRenderEvent.emit();
+      // aa
+    }
+  }
+
+  onMainSelected(event: any){
+    if(event.target.files.length > 0)
+    {
+      // console.log(event.target.files[0].name);
+      this.mainimage = event.target.files[0].name;
+      let URL = this.workspaceID + this.mainimage
+      // this.mainImageFile = event.target.files[0];
+      this.mainimage = "WoskspaceMainImages/" + this.workspaceID + this.mainimage
+
+      this.mainImageFile.setValues(this.mainimage,URL,event.target.files[0])
+
+      // this.mainImageFile.file = event.target.files[0];
+      // this.mainImageFile.name = this.mainimage;
+      // this.mainImageFile.url = this.mainimage;
+
+      //
+      // console.log("aaaa")
+      // console.log(this.mainImageFile)
+      // console.log(event.target.files[0])
 
 
-      }, error => {
-        console.log(error);
-      });
+    }
+  }
+
+  onCoverSelected(event: any){
+    if(event.target.files.length > 0)
+    {
+      // console.log(event.target.files[0].name);
+      this.coverimage = event.target.files[0].name;
+      let URL = this.workspaceID + this.coverimage
+
+      this.coverimage = "WoskspaceCoverImages/" + this.workspaceID + this.coverimage
+
+      this.coverImageFile.setValues(this.coverimage,URL,event.target.files[0])
+
+      console.log(this.coverImageFile)
+
+      // this.coverImageFile.name = event.target.files[0].name;
+
+
     }
   }
 

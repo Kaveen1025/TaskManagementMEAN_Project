@@ -36,6 +36,7 @@ export class WorkspacepageComponent implements OnInit {
   memberIDs: string[] = [];
   workspaceObject: any;
 
+
   workspaceMainPlaceHolder: string = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
 
   searchText: string = ""
@@ -93,6 +94,7 @@ export class WorkspacepageComponent implements OnInit {
       this.checkPrivvilage();
 
       this.getworkspaceMainImage(this.workspaceMainImage);
+      this.getworkspaceCoverImage(this.workspaceCoverImage);
 
     }, error => {
       console.log(error);
@@ -157,6 +159,19 @@ export class WorkspacepageComponent implements OnInit {
       this.workspaceMainImage = downloadURL
       console.log("work")
       console.log(this.workspaceMainImage)
+
+    })
+  }
+
+  getworkspaceCoverImage(url:any){
+    // alert("asd")
+    this.workspaceCoverImage = this.workspaceMainPlaceHolder
+    const storageRef = this.storage.ref(url);
+    storageRef.getDownloadURL().subscribe(downloadURL => {
+      this.workspaceCoverImage = this.workspaceMainPlaceHolder
+      this.workspaceCoverImage = downloadURL
+      console.log("work")
+      console.log(this.workspaceCoverImage)
 
     })
   }
