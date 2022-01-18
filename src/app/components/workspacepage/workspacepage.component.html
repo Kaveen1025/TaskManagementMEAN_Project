@@ -1,12 +1,12 @@
 <div class = "workspace">
 
     <div class="bg-box">
-      <img  src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/cover-image.png" class="card-img dynamicImage" alt="Responsive image">
+      <img  [src]="workspaceCoverImage" class="card-img dynamicImage" alt="Responsive image">
     </div>
     <div class = "content">
       <div class="card-body text-center">
-        <img class="img-thumbnail rounded-circle workspaceImg shadow img-fluid"
-             src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG" alt="userProfile">
+        <img class = "rounded-circle workspaceImg shadow img-fluid"
+             [src] = "workspaceMainImage" alt="userProfile">
         <div>
           <br>
           <h1 class="workspacename">{{workspaceTitle}}</h1>
@@ -84,6 +84,9 @@
               <app-projectcard [projectDetails]="ProjectDetails"></app-projectcard>
             </div>
             <h3 class = "errortext">{{errorText}}</h3>
+            <div class="card" style = "border: none" [hidden] = "loadingStatus">
+              <app-loadinganimation></app-loadinganimation>
+            </div>
           </div>
         </div>
       <br><br><br>

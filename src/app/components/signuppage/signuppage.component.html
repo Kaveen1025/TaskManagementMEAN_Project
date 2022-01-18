@@ -26,7 +26,8 @@
     <div class="card">
       <div class="card-body" id="card1">
       <h2 class="create">Create an Account</h2>
-
+        <h3 class = "errorMsg" [hidden] = "ErrorMessageStatus">{{ErrorMessage}}</h3>
+        <h3 class = "errorMsg" >{{errormsg}}</h3>
         <div class="container">
 
     <form class="fbody"  #signUpForm="ngForm" (ngSubmit)="addUser(signUpForm)" ngNativeValidate>
@@ -41,7 +42,7 @@
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/email1.png" class="user1">
-        <input type="email" [formControl]= "Email" class="form-control" placeholder="Email" required>
+        <input type="email" [formControl]= "Email" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Invalid email address"  placeholder="Email" required>
       </div>
       </div>
 
@@ -63,24 +64,37 @@
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
-        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/view.png" [class]="show_eye" class="user2 inner-addon right-addon" (click)="showPassword()">
-        <input type="password" [type]="show_button ? 'text' : 'password'" [formControl]="Password" class="form-control" placeholder="Password" required>
+        <input [type]="password1"  [formControl]="Password" class="form-control" placeholder="Password"  (keydown)="keyDownHandler($event)" required>
+        <span class="p-viewer">
+          <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="!show1" (click)="onClick()"></i>
+        <i class="fa fa-eye " aria-hidden="true" *ngIf="show1" (click)="onClick()"></i>
+        </span>
       </div>
+        <app-password-strength-bar [passwordToCheck]="Password.value" [barLabel]="barLabel" (statusEvent)="checkPasswordStrength($event)"></app-password-strength-bar>
+
       </div>
 
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
-        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/view.png" class="user2 inner-addon right-addon" name="eye">
-        <input type="password" class="form-control" placeholder="Re-enter Password" required>
+        <input [type]="password2"  class="form-control" placeholder="Re-enter Password" [formControl]="ConfirmPassword"  (keydown)="keyDownHandler($event)" required>
+        <span class="p-viewer">
+          <i class="fa fa-eye-slash " aria-hidden="true" *ngIf="!show2" (click)="onClickk()"> </i>
+        <i class="fa fa-eye " aria-hidden="true" *ngIf="show2" (click)="onClickk()"></i>
+        </span>
       </div>
+        <app-password-strength-bar [passwordToCheck]="ConfirmPassword.value"  [barLabel]="barLabel" (statusEvent)="checkConfirmPasswordStrength($event)"></app-password-strength-bar>
+        <h4 class="errorTxt" [hidden] = "mismatch">{{errorMsg}}</h4>
       </div>
 
-
+      <div class="form-group">
+        <label for="exampleFormControlFile1" class="profileI"><b>Profile Image</b></label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+      </div>
 
       <div class="form-group">
       <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [formControl] = "checkbox" required>
         <label id="Agree" class="form-check-label" for="exampleCheck1">Agree to terms and conditions !</label> <a>Click Here</a>
       </div>
       </div>
@@ -91,8 +105,8 @@
       <div class="box">
         <p>OR</p>
       </div>
-      <button class="btn2"><img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/search.png" id="gicn"> Continue with Google</button>
-
+<!--      <button class="btn2"><img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/search.png" id="gicn"> Continue with Google</button>-->
+      <app-googlesignup (event)="triggerErrorMessage('Email Already Exists!')"></app-googlesignup>
 <br/><br/>
 
       <p class="Already">Already have an account ? <a>SIGN IN </a></p>
@@ -112,4 +126,14 @@
     </div>
 </div>
 </div>
+
+<!--modal-->
+<ng-template #content let-modal>
+  <app-successmodal></app-successmodal>
+</ng-template>
+
+
+<ng-template #content3 let-modal  id = "content3">
+  <app-loadinganimation></app-loadinganimation>
+</ng-template>
 

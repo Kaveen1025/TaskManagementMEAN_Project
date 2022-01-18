@@ -15,13 +15,18 @@ export class LoginComponent implements OnInit {
   UserService: UserService
   Username : String =""
   Password : String =""
+  ErrorMessage: any
+  ErrorMessageStatus:boolean
+
+  uname = true
+  pass = true
 
   // detailsObject : any
 
 
   constructor( private http : HttpClient,public fb: FormBuilder, UserService:UserService) {
     this.UserService = UserService
-
+    this.ErrorMessageStatus = true
 
   }
 
@@ -52,17 +57,25 @@ export class LoginComponent implements OnInit {
       Password: this.Password,
     }
 
+    // if(this.Username==null){
+    //   this.uname=false
+    // }
+    //
+    // if(this.Password==null){
+    //   this.pass=false
+    // }
+
+
     this.UserService.login(detailsObject).subscribe((post: any)=> {
       console.log(post)
       console.log(detailsObject)
 
 
-        if(post.length!==null){
-          alert('login Successful')
-
+        if(post=="Customer Sign In Successfully"){
+          alert("Success")
         }
         else{
-          console.log('unavailable')
+          alert(post)
         }
 
     }, error => {
@@ -91,5 +104,13 @@ export class LoginComponent implements OnInit {
   //
   //     })
   // }
+
+
+triggerErrorMessage(msg:any){
+    this.ErrorMessage = msg
+    this.ErrorMessageStatus = false
+}
+
+
 
 }

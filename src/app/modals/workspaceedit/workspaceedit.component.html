@@ -20,7 +20,7 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Cover Image</label>
-            <input type="file" [(ngModel)]="coverimage" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="coverimage" (change)="onCoverSelected($event)" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
@@ -36,16 +36,15 @@
 
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
-            <input type="file" [(ngModel)]="mainimage" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="mainimage" (change)="onMainSelected($event)" class="form-control inputFieldsTxt">
           </div>
         </div>
       </div>
     </div>
     <div class = "text-center">
-      <div class="container">
+      <div class="container d-flex justify-content-center">
         <div class="row">
-          <div class="col-sm">
-          </div>
+
           <div class="col-sm"><br>
             <app-crudbuttonpink (click) = "editworkspace()" text="EDIT"></app-crudbuttonpink>
           </div>
@@ -53,12 +52,14 @@
             <br>
             <app-crudbuttonpink (click) = "deleteworkspace()" text="DELETE"></app-crudbuttonpink>
           </div>
-          <div class="col-sm">
-          </div>
+
         </div>
 
       </div>
 
+    </div>
+    <div class="card" style = "border: none" *ngIf="percentageLoading">
+      <app-loadinganimation></app-loadinganimation>
     </div>
   </div>
 

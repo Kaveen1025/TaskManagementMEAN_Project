@@ -69,14 +69,15 @@ import { environment } from '../environments/environment';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
 import { ForgotpasswordComponent } from './reusablecomponent/forgotpassword/forgotpassword.component';
-import {GeneralnoificationsComponent} from "./cards/generalnoifications/generalnoifications.component";
-import { InvitationscardComponent } from './cards/invitationscard/invitationscard.component';
+import {LoginComponent} from "./components/login/login.component";
+
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { GooglesignupComponent } from './buttons/googlesignup/googlesignup.component';
 import { NotificationspageComponent } from './components/notificationspage/notificationspage.component';
+import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.component";
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
-import { ProjectpageComponent } from './components/projectpage/projectpage.component';
-import { ConfirmdeletemodalComponent } from './modals/confirmdeletemodal/confirmdeletemodal.component';
-
-
+import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmdeletemodal.component";
 registerLocaleData(en);
 
 
@@ -85,57 +86,57 @@ registerLocaleData(en);
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        FeaturespageComponent,
-        GetstartedComponent,
-        SidebarComponent,
-        AvatarGroupComponent,
-        UserprofileComponent,
-        DashboardComponent,
-        CrudbuttonComponent,
-        ContactusComponent,
-        HomepageComponent,
-        FooterComponent,
-        SignupforfreeComponent,
-        LoadinganimationComponent,
-        UserdetailsComponent,
-        ChangepasswordComponent,
-        AcceptordeclinebtnComponent,
-        ClearallComponent,
-        FriendrequestComponent,
-        FriendsheaderComponent,
-        SendfriendrequestcardComponent,
-        FriendspageComponent,
-        FriendcardComponent,
-        CentermodalComponent,
-        WorkspacecardComponent,
-        ProjectcardComponent,
-        ProjectAddComponent,
-        CrudbuttonpinkComponent,
-        WorkspaceaddComponent,
-        ProjecteditComponent,
-        WorkspaceeditComponent,
-        SearchComponent,
-        HeaderComponent,
-        WorkspacepageComponent,
-        PasswordStrengthBarComponent,
-        PasswordStrengthBarComponent,
-        ErrormodalComponent,
-        DeletedmodalComponent,
-        ConfirmmodalComponent,
-        SuccessmodalComponent,
-        PasswordconfrimmodalComponent,
-        UserprofileimagemodalComponent,
-        ForgotpasswordComponent,
-        GeneralnoificationsComponent,
-        InvitationscardComponent,
-        NotificationspageComponent,
-        NotificationheaderComponent,
-        ProjectpageComponent,
-        ConfirmdeletemodalComponent
+  declarations: [
+    AppComponent,
+    FeaturespageComponent,
+    GetstartedComponent,
+    SidebarComponent,
+    AvatarGroupComponent,
+    UserprofileComponent,
+    DashboardComponent,
+    CrudbuttonComponent,
+    ContactusComponent,
+    HomepageComponent,
+    FooterComponent,
+    SignupforfreeComponent,
+    LoadinganimationComponent,
+    UserdetailsComponent,
+    ChangepasswordComponent,
+    AcceptordeclinebtnComponent,
+    ClearallComponent,
+    FriendrequestComponent,
+    FriendsheaderComponent,
+    SendfriendrequestcardComponent,
+    FriendspageComponent,
+    FriendcardComponent,
+    CentermodalComponent,
+    WorkspacecardComponent,
+    ProjectcardComponent,
+    ProjectAddComponent,
+    CrudbuttonpinkComponent,
+    WorkspaceaddComponent,
+    ProjecteditComponent,
+    WorkspaceeditComponent,
+    SearchComponent,
+    HeaderComponent,
+    WorkspacepageComponent,
+    PasswordStrengthBarComponent,
+    PasswordStrengthBarComponent,
+    ErrormodalComponent,
+    DeletedmodalComponent,
+    ConfirmmodalComponent,
+    SuccessmodalComponent,
+    PasswordconfrimmodalComponent,
+    UserprofileimagemodalComponent,
+    ForgotpasswordComponent,
+    LoginComponent,
+    GooglesignupComponent,
+    NotificationspageComponent,
+    InvitationscardComponent,
+    NotificationheaderComponent,
+    ConfirmdeletemodalComponent
 
-    ],
+  ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -157,11 +158,25 @@ registerLocaleData(en);
         MatPasswordStrengthModule,
         ImageCropperModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireStorageModule
+        AngularFireStorageModule,
+      SocialLoginModule
 
 
     ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US },  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '288132798361-sea33rgpr7oj5juj0q603k5sapuhhjus.apps.googleusercontent.com'
+          )
+        }
+      ]
+    } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

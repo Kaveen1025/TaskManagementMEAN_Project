@@ -21,7 +21,8 @@ router.route("/add").post(async(req,res)=>{
     FirstName,
     LastName,
     Password,
-    GoogleSignIn
+    GoogleSignIn,
+    ProfileImage
   }= req.body;
 
   try{
@@ -29,27 +30,34 @@ router.route("/add").post(async(req,res)=>{
     const emailExist = await User.findOne({ Email: Email });
 
     if (emailExist) {
-      return res.status(422).json({ error: "Email Already Exist" });
+
+       res.json("Email Already Exist");
+
 
     }
 
     const usernameExist = await User.findOne({ Username: Username });
 
     if (usernameExist) {
-      return res.status(422).json({ error: "Username Already Exist" });
+
+      res.json("Username Already Exist");
     }
 
-    const newUser = new User({
-      Username,
-      Email,
-      FirstName,
-      LastName,
-      Password,
-      GoogleSignIn
-    })
+    else if(!emailExist && !usernameExist){
 
-    await newUser.save();
-    res.status(201).json({ message: "User Added Successfully!" });
+      const newUser = new User({
+        Username,
+        Email,
+        FirstName,
+        LastName,
+        Password,
+        GoogleSignIn,
+        ProfileImage
+      })
+
+      await newUser.save();
+      res.json("User Added Successfully!");
+    }
 
   }catch (err){
 
@@ -57,6 +65,7 @@ router.route("/add").post(async(req,res)=>{
 
   }
 })
+
 
 //Get All Users
 //URL -- >http://localhost:8070/user/getAll
@@ -250,12 +259,12 @@ router.post("/loginUser", async (req, res) => {
       const isMatch = await bcrypt.compare(Password, customerLogin.Password);
 
       if (!isMatch) {
-        res.status(400).json({ error: "Invalid Credentials" });
+        res.json("Invalid Credentials");
       } else {
-        res.json({message: "Customer Sign In Successfully"});
+        res.json("Customer Sign In Successfully");
       }
     } else {
-      res.status(400).json({ error: "User does not exists" });
+      res.json("User Does not exist");
     }
   } catch (err) {
     console.log(err);
@@ -402,7 +411,7 @@ router.route("/addfriendReq/:userID/:friendID").put(async (req, res) => {
 });
 
 
-//Remove Friend Request
+//Remove Requested Friend
 //URL --> http://localhost:8070/user/removefriendReq/:userID/:friendID
 router.route("/removefriendReq/:userID/:friendID").delete(async (req, res) => {
 
@@ -671,9 +680,9 @@ router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
       },
       {
         $project: {
-          RequestedFriends: {
+          FriendsRequests: {
             $map: {
-              input: "$RequestedFriends",
+              input: "$FriendsRequests",
               as: "friendID",
               in: {
                 $convert: {
@@ -688,9 +697,9 @@ router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
       {
         $lookup: {
           from: "users",
-          localField: "RequestedFriends",
+          localField: "FriendsRequests",
           foreignField: "_id",
-          as: "RequestedFriendDetails"
+          as: "FriendRequestDetails"
         }
       }
     ])
@@ -734,5 +743,21 @@ router.route("/getUserbyUN/:userName").get(async (req, res) => {
 
 
 
+//Remove  Friend Requested
+//URL --> http://localhost:8070/user/removefriendReq/:userID/:friendID
+router.route("/removefriendReqsts/:userID/:friendID").delete(async (req, res) => {
+
+  let UserID = req.params.userID;
+  let FriendID = req.params.friendID;
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$pull: {FriendsRequests: FriendID}}
+    );
+    res.status(200).send({status: "Friend Request Deleted Successful!"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
 
 module.exports = router;

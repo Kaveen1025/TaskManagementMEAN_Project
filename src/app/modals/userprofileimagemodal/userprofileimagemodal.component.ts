@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ImageCroppedEvent, LoadedImage} from "ngx-image-cropper";
@@ -6,6 +6,8 @@ import {FileUpload} from "../../module/file-upload";
 import {FirebasesService} from "../../services/firebases.service";
 import {Observable, Observer} from "rxjs";
 import {UserService} from "../../services/user.service";
+import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-userprofileimagemodal',
@@ -15,12 +17,13 @@ import {UserService} from "../../services/user.service";
 export class UserprofileimagemodalComponent implements OnInit {
 
   @ViewChild('content') private content: TemplateRef<any> | undefined;
+  @ViewChild('content100') private content100: TemplateRef<any> | undefined;
 
   userId: string
   filePath: string;
   myForm: FormGroup;
   userImagePlaceHolder: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
-  userProfileImage:any = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/IMG_6407.JPG"
+  @Input() userProfileImage:any
 
 
   FirebaseService:FirebasesService
@@ -29,20 +32,19 @@ export class UserprofileimagemodalComponent implements OnInit {
   temp:any
   contentStatus1: boolean = false
   percentageLoading:any = true
-
-
+  @Output() someEvent = new EventEmitter()
+  @Output() successEvent = new EventEmitter()
   constructor(private modalService: NgbModal,public fb: FormBuilder,FirebaseService: FirebasesService,UserService:UserService) {
     this.myForm = this.fb.group({
       img: [null],
       filename: ['']
     })
-
     this.filePath = ""
     this.status = true
-
     this.FirebaseService = FirebaseService
     this.UserService = UserService
     this.userId = "61d59e7999dc1f31177898ba"
+
   }
 
   ngOnInit(): void {
@@ -55,8 +57,6 @@ export class UserprofileimagemodalComponent implements OnInit {
 
   openModal() {
     this.modalService.open(this.content, { centered: true});
-
-
   }
 
 
@@ -68,6 +68,7 @@ export class UserprofileimagemodalComponent implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: any = '';
   status: boolean;
+
 
 
   fileChangeEvent(event: any): void {
@@ -89,13 +90,22 @@ export class UserprofileimagemodalComponent implements OnInit {
     // show message
   }
 
-  saveDetails() {
+  async saveDetails() {
     // append file name to the user profile
-    this.temp.name = "61d59e7999dc1f31177898baUserImage.png"
-      this.upload(this.temp)
-    this.contentStatus1 = true
 
-    //this.FirebaseService.getUrl("/UserProfileImages/61d59e7999dc1f31177898baUserImage.png")
+    if(this.userProfileImage == this.userImagePlaceHolder){
+      this.updateUserProfileInBackend()
+      this.contentStatus1 = true
+    }else{
+      this.temp.name = "UserProfileImages/"+this.userId+"UserImage.png"
+      //console.log(this.temp.name)
+      this.upload(this.temp)
+      this.contentStatus1 = true
+    }
+
+    // e.target.file[0].name
+
+
   }
 
   removeUserProfile() {
@@ -113,26 +123,32 @@ export class UserprofileimagemodalComponent implements OnInit {
             percentage = Math.round(percentage ? percentage : 0);
             console.log('done')
             if(percentage >= 100 && this.percentageLoading){
-              this.contentStatus1 = false
-              this.closeModal()
-              alert("Image uploaded")
               this.percentageLoading = false
               let content = {
-                ProfileImage : this.temp.name,
+                ProfileImage: this.temp.name,
               }
+
               this.UserService.updateUserProfileImage(this.userId,content).subscribe({
                 next: value => {
-                       alert("db updated")
+                  // alert("db updated")
+
+                  this.contentStatus1 = false
+                  this.closeModal()
+                  this.someEvent.emit()
                 }
                 ,
                 error: error => {
                   console.log(error)
+                  this.contentStatus1 = false
+                  this.closeModal()
                 }
               })
             }
           },
           error => {
             console.log(error);
+            this.contentStatus1 = false
+            this.closeModal()
           }
         );
   }
@@ -150,5 +166,26 @@ export class UserprofileimagemodalComponent implements OnInit {
     });
   }
 
+  updateUserProfileInBackend(){
+    let content2 = {
+      ProfileImage : this.userImagePlaceHolder,
+    }
+    this.UserService.updateUserProfileImage(this.userId,content2).subscribe({
+      next: value => {
+        // alert("db updated")
+
+        this.contentStatus1 = false
+        this.closeModal()
+        this.someEvent.emit()
+
+      }
+      ,
+      error: error => {
+        console.log(error)
+        this.contentStatus1 = false
+        this.closeModal()
+      }
+    })
+  }
 
 }

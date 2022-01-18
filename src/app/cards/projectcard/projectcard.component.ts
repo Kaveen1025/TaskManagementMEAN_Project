@@ -1,4 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-projectcard',
@@ -7,19 +9,22 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ProjectcardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) { }
   title: string = "";
   description: string = "";
   mainImg: string = "";
   coverImg: string = "";
   deadLine: string = "";
   projectID: string = "";
+  projectMainImage: string = "";
+  projectMainPlaceHolder: string = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
+
 
 
   @Input() projectDetails: any;
 
   ngOnInit(): void {
-    console.log(this.projectDetails.MemberIDs);
+    // console.log(this.projectDetails.MemberIDs);
     this.title = this.projectDetails.projectName;
     this.description = this.projectDetails.Description;
     this.mainImg = this.projectDetails.MainImage;
@@ -27,7 +32,21 @@ export class ProjectcardComponent implements OnInit {
     this.deadLine = this.projectDetails.Deadline;
     this.projectID = this.projectDetails._id;
 
+    this.getProjectMainImage(this.projectDetails.MainImage)
+
   }
 
+  getProjectMainImage(url:any){
+    // alert("asd")
+    this.projectMainImage = this.projectMainPlaceHolder
+    const storageRef = this.storage.ref(url);
+    storageRef.getDownloadURL().subscribe(downloadURL => {
+      this.projectMainImage = this.projectMainPlaceHolder
+      this.projectMainImage = downloadURL
+      console.log("work")
+      console.log(this.projectMainImage)
+
+    })
+  }
 
 }
