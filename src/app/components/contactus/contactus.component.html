@@ -25,7 +25,7 @@
 
       <!--    <app-form></app-form>-->
       <div class="container" id="form1">
-        <form class="add-form" #contactForm="ngForm" (ngSubmit)="contactForm.form.valid && saveMessage(contactForm.value)" ngNativeValidate>
+        <form class="add-form" #contactForm="ngForm" (ngSubmit)="contactForm.form.valid && saveMessage(contactForm.value)"  ngNativeValidate>
           <br>
           <div class="row">
             <div class="col-sm">
@@ -39,7 +39,7 @@
             <div class="col-sm">
               <div class="form-group">
                 <label for="InputLastName">Last Name <span>*</span></label>
-                <input type="text" [formControl]="lastName" class="form-control" id="InputLastName" aria-describedby="firstnameHelp" name="lname" placeholder=""  required ngModel>
+                <input type="text" [formControl]="lastName" class="form-control" id="InputLastName" aria-describedby="firstnameHelp" name="lname" placeholder="" onkeypress="return /[a-z]/i.test(event.key)" required ngModel>
                 <small class="text-danger" *ngIf="lastName.touched && !lastName.valid"> Last Name is required</small>
               </div>
             </div>
@@ -81,3 +81,14 @@
 
   </div>
 </div>
+
+
+<!--modal-->
+<ng-template #content let-modal>
+  <app-successmodal></app-successmodal>
+</ng-template>
+
+
+<ng-template #content3 let-modal  id = "content3">
+  <app-loadinganimation></app-loadinganimation>
+</ng-template>
