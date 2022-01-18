@@ -4,6 +4,8 @@ import {FormControl} from "@angular/forms";
 
 import {DeletedmodalComponent} from "../../modals/deletedmodal/deletedmodal.component";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {AngularFireDatabase} from "@angular/fire/compat/database";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-userdetails',
@@ -27,18 +29,26 @@ export class UserdetailsComponent implements OnInit {
 
   // accessing the template
   @ViewChild('content') private content: TemplateRef<any> | undefined;
-
+  @ViewChild('content2') private content2: TemplateRef<any> | undefined;
+  @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+  @ViewChild('content4') private content4: TemplateRef<any> | undefined;
+  @ViewChild('content5') private content5: TemplateRef<any> | undefined;
+  timezone:any
   constructor(UserService:UserService,private modalService: NgbModal) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.editableStatus = false
     this.editableStatus1 = false
     this.editableStatus2 = false
+
+    this.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   }
 
 
   ngOnInit(): void {
     this.getUser()
+
+
   }
   getUser(){
     if (this.userID != null) {
@@ -82,34 +92,30 @@ export class UserdetailsComponent implements OnInit {
   }
 
   async updateUserDetails() {
-    console.log(this.firstNameField)
-    console.log(this.lastNameField)
+    //console.log(this.firstNameField)
+   // console.log(this.lastNameField)
     let content:any
 
     if(this.firstNameField == "" && this.lastNameField == ""){
       content = {
         FirstName : this.user.FirstName,
         LastName : this.user.LastName,
-        ProfileImage : this.user.ProfileImage
       }
     }else
     if(this.firstNameField == ""){
        content = {
         FirstName : this.user.FirstName,
         LastName : this.lastNameField,
-        ProfileImage : this.user.ProfileImage
       }
     }else if(this.lastNameField == ""){
       content = {
         FirstName : this.firstNameField,
         LastName : this.user.LastName,
-        ProfileImage : this.user.ProfileImage
       }
     }else{
       content = {
         FirstName : this.firstNameField,
         LastName : this.lastNameField,
-        ProfileImage : this.user.ProfileImage
       }
     }
 
@@ -117,12 +123,14 @@ export class UserdetailsComponent implements OnInit {
     if (this.userID != null) {
       await this.UserService.updateUserDetails(this.userID, content).subscribe({
         next: value => {
-          alert("user updated")
+         // alert("user updated")
           this.cancel()
+          this.modalService.open(this.content3, { centered: true });
         }
         ,
         error: error => {
           console.log(error)
+          this.modalService.open(this.content4, { centered: true });
         }
       })
     }
@@ -130,16 +138,20 @@ export class UserdetailsComponent implements OnInit {
   }
 
 
+openConfirmModal(){
+  this.modalService.open(this.content2, { centered: true });
+  }
 
 
   /// modal
   deleteAccount() {
-    this.modalService.open(this.content, { centered: true });
+    this.modalService.open(this.content5, { centered: true });
   }
 
   hello(event: any){
     alert(event.myObj)
   }
+
 
 
 }

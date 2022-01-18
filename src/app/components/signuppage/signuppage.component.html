@@ -23,55 +23,82 @@
 
   <div class="col">
 
-    <div class="card" id="card1">
-      <div class="card-body">
+    <div class="card">
+      <div class="card-body" id="card1">
       <h2 class="create">Create an Account</h2>
 
         <div class="container">
 
-    <form class="fbody">
+    <form class="fbody"  #signUpForm="ngForm" (ngSubmit)="addUser(signUpForm)" ngNativeValidate>
 
+      <div class="form-group">
       <div class="inner-addon left-addon mb-3">
-        <i class="fas fa-user"></i>
-        <input type="text" class="form-control" placeholder="Username">
+        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/user2.png" class="user1">
+        <input type="text" [formControl]="Username" class="form-control" placeholder="Username" required>
+      </div>
+      </div>
+
+      <div class="form-group">
+      <div class="inner-addon left-addon mb-3">
+        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/email1.png" class="user1">
+        <input type="email" [formControl]= "Email" class="form-control" placeholder="Email" required>
+      </div>
+      </div>
+
+      <div class="form-group">
+      <div class="inner-addon left-addon mb-3">
+        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/user2.png" class="user1">
+        <input type="text" [formControl]="FirstName" class="form-control" placeholder="First Name" required onkeypress="return /[a-z]/i.test(event.key)">
+
+      </div>
+      </div>
+
+        <div class="form-group">
+      <div class="inner-addon left-addon mb-3">
+        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/user2.png" class="user1">
+        <input type="text" [formControl]="LastName" class="form-control" placeholder="Last Name" required onkeypress="return /[a-z]/i.test(event.key)">
+      </div>
+      </div>
+
+      <div class="form-group">
+      <div class="inner-addon left-addon mb-3">
+        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
+        <input [type]="password1"  [formControl]="Password" class="form-control" placeholder="Password"  (keydown)="keyDownHandler($event)" required>
+        <span class="p-viewer">
+          <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="!show1" (click)="onClick()"></i>
+        <i class="fa fa-eye " aria-hidden="true" *ngIf="show1" (click)="onClick()"></i>
+        </span>
+      </div>
+        <app-password-strength-bar [passwordToCheck]="Password.value" [barLabel]="barLabel" (statusEvent)="checkPasswordStrength($event)"></app-password-strength-bar>
 
       </div>
 
+      <div class="form-group">
       <div class="inner-addon left-addon mb-3">
-        <i class="fas fa-envelope"></i>
-        <input type="email" class="form-control" placeholder="Email" >
+        <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">
+        <input [type]="password2"  class="form-control" placeholder="Re-enter Password" [formControl]="ConfirmPassword"  (keydown)="keyDownHandler($event)" required>
+        <span class="p-viewer">
+          <i class="fa fa-eye-slash " aria-hidden="true" *ngIf="!show2" (click)="onClickk()"> </i>
+        <i class="fa fa-eye " aria-hidden="true" *ngIf="show2" (click)="onClickk()"></i>
+        </span>
+      </div>
+        <app-password-strength-bar [passwordToCheck]="ConfirmPassword.value"  [barLabel]="barLabel" (statusEvent)="checkConfirmPasswordStrength($event)"></app-password-strength-bar>
+        <h4 class="errorTxt" [hidden] = "mismatch">{{errorMsg}}</h4>
       </div>
 
-      <div class="inner-addon left-addon mb-3">
-        <i class="fas fa-user"></i>
-        <input type="text" class="form-control" placeholder="First Name">
-
+      <div class="form-group">
+        <label for="exampleFormControlFile1" class="profileI"><b>Profile Image</b></label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1">
       </div>
 
-      <div class="inner-addon left-addon mb-3">
-        <i class="fas fa-user"></i>
-        <input type="text" class="form-control" placeholder="Last Name">
-
-      </div>
-
-      <div class="inner-addon left-addon mb-3">
-        <i class="fas fa-unlock-alt"></i>
-        <input type="password" class="form-control" placeholder="Password" >
-
-      </div>
-
-      <div class="inner-addon left-addon mb-3">
-        <i class="fas fa-unlock-alt"></i>
-        <input type="password" class="form-control" placeholder="Re-enter Password">
-
-      </div>
-
+      <div class="form-group">
       <div class="mb-3 form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1" [formControl] = "checkbox" required>
         <label id="Agree" class="form-check-label" for="exampleCheck1">Agree to terms and conditions !</label> <a>Click Here</a>
       </div>
+      </div>
 
-      <button type="submit" class="btn btn-primary" id="sign">Submit</button>
+      <button type="submit" class="btn btn-primary" id="sign">Sign Up</button>
 <br/><br/><br/>
       <hr class="hrr">
       <div class="box">

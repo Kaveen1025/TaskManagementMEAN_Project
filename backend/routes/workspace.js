@@ -11,10 +11,10 @@ router.route("/create").post((req, res) => {
     Description,
     MainImage,
     CoverImage,
-    AdminID,
-    ProjectIDs,
-    MemberIDs,
-    guestIDs,
+    AdminID
+    // ProjectIDs,
+    // MemberIDs,
+    // guestIDs,
 
   } = req.body;
 
@@ -23,10 +23,10 @@ router.route("/create").post((req, res) => {
     Description,
     MainImage,
     CoverImage,
-    AdminID,
-    ProjectIDs,
-    MemberIDs,
-    guestIDs,
+    AdminID
+    // ProjectIDs,
+    // MemberIDs,
+    // guestIDs,
   });
 
   newWorkspace
@@ -103,6 +103,26 @@ router.route("/getWorkspaceByName/:name").get(async (req, res) => {
         .send({status: "Error while getting workspaces", error: err.message});
     });
 });
+
+
+//Get workspace by name
+//URL -->http://localhost:8070/workspace/getbyname/:name
+router.route("/getbyname/:name").get(async (req,res)=>{
+
+  const name = req.params.name;
+
+  Workspace.findOne({WorkspaceName : name}).then((workspace) => {
+    res.json(workspace);
+  }).catch((err)=>{
+    res.status(404).json({message: err.message});
+  })
+})
+
+
+
+
+
+
 
 //Delete Workspace
 router.route("/deleteWorkspace/:id").delete(async (req, res) => {

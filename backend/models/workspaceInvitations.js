@@ -30,6 +30,20 @@ const workspaceInvitationSchema = new Schema({
     required: false
   },
 
+  WorkspaceName: {
+    type: String,
+    required: true,
+  },
+
+  SenderName: {
+    type: String,
+    required: true
+  },
+
+  Image : {
+    type: String,
+    required: true
+  }
 
 });
 

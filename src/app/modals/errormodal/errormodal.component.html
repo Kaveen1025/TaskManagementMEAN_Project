@@ -1,5 +1,5 @@
 
-<ng-template #content let-modal>
+
 
   <div class="err">
     <div class="modal-body text-center">
@@ -11,10 +11,9 @@
       <h1>Oops!</h1>
       <h3>Something Went Wrong !</h3>
       <br>
-      <button type="button" class="btn" id="okaybtn" (click)="modal.close('Close click')">Try Again !</button>
+      <button type="button" class="btn" id="okaybtn" (click)="closeModal()">Try Again !</button>
     </div>
   </div>
-</ng-template>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered()">open Modal vertically centered</button>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal()">close Modal vertically centered</button>
+
+
 

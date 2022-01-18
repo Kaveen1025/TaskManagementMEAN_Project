@@ -20,7 +20,9 @@ router.route("/add").post(async(req,res)=>{
     Email,
     FirstName,
     LastName,
-    Password
+    Password,
+    GoogleSignIn,
+    ProfileImage
   }= req.body;
 
   try{
@@ -42,7 +44,9 @@ router.route("/add").post(async(req,res)=>{
       Email,
       FirstName,
       LastName,
-      Password
+      Password,
+      GoogleSignIn,
+      ProfileImage
     })
 
     await newUser.save();
@@ -177,7 +181,7 @@ router.route('/updateDetails/:id').put(async (req,res)=> {
 
   let userID = req.params.id;
 
-  const {FirstName, LastName, ProfileImage} = req.body;
+  const {FirstName, LastName} = req.body;
 
   const updatedUser = await User.updateOne(
     {_id: userID},
@@ -185,6 +189,29 @@ router.route('/updateDetails/:id').put(async (req,res)=> {
       $set:{
         FirstName: FirstName,
         LastName : LastName,
+      }
+    }
+  ).then(() =>{
+    res.status(200).send({status: "User Profile Updated"});
+  }).catch((err) => {
+    res
+      .status(500)
+      .send({status: "Error with updating data", error: err.message});
+  })
+})
+// currently, using
+//Update User --> Edit Profile image
+//URL --> http://localhost:8070/user/updateUserProfile/:id
+router.route('/updateUserProfile/:id').put(async (req,res)=> {
+
+  let userID = req.params.id;
+
+  const {ProfileImage} = req.body;
+
+  const updatedUser = await User.updateOne(
+    {_id: userID},
+    {
+      $set:{
         ProfileImage: ProfileImage
       }
     }
@@ -196,8 +223,6 @@ router.route('/updateDetails/:id').put(async (req,res)=> {
       .send({status: "Error with updating data", error: err.message});
   })
 })
-
-
 
 //Delete User -->Edit Profile Page
 //URL -->http://localhost:8070/user/delete/:id
@@ -378,7 +403,7 @@ router.route("/addfriendReq/:userID/:friendID").put(async (req, res) => {
 });
 
 
-//Remove Friend Request
+//Remove Requested Friend
 //URL --> http://localhost:8070/user/removefriendReq/:userID/:friendID
 router.route("/removefriendReq/:userID/:friendID").delete(async (req, res) => {
 
@@ -398,7 +423,7 @@ router.route("/removefriendReq/:userID/:friendID").delete(async (req, res) => {
 
 
 //Add a project to the user
-//URL -->http://localhost:8070/user/addproject/:userID/:friendID
+//URL -->http://localhost:8070/user/addproject/:userID/:projectID
 router.route("/addproject/:userID/:projectID").put(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -416,7 +441,7 @@ router.route("/addproject/:userID/:projectID").put(async (req, res) => {
 
 
 //Remove a project to the user
-//URL -->http://localhost:8070/user/removeproject/:userID/:friendID
+//URL -->http://localhost:8070/user/removeproject/:userID/:projectID
 router.route("/removeproject/:userID/:projectID").delete(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -435,7 +460,7 @@ router.route("/removeproject/:userID/:projectID").delete(async (req, res) => {
 
 
 //Add a project Invitation to the user
-//URL -->http://localhost:8070/user/addprojectInv/:userID/:friendID
+//URL -->http://localhost:8070/user/addprojectInv/:userID/:projectID
 router.route("/addprojectInv/:userID/:projectID").put(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -452,8 +477,8 @@ router.route("/addprojectInv/:userID/:projectID").put(async (req, res) => {
 });
 
 
-//Remove a project to the user
-//URL -->http://localhost:8070/user/removeprojectInv/:userID/:friendID
+//Remove a project Invitation to the user
+//URL -->http://localhost:8070/user/removeprojectInv/:userID/:projectID
 router.route("/removeprojectInv/:userID/:projectID").delete(async (req, res) => {
   let UserID = req.params.userID;
   let ProjectID = req.params.projectID;
@@ -468,6 +493,81 @@ router.route("/removeprojectInv/:userID/:projectID").delete(async (req, res) => 
     res.status(404).json({message: error.message});
   }
 });
+
+
+//Workspaces
+//Add a workspace to the user
+//URL -->http://localhost:8070/user/addworkspace/:userID/:workspaceID
+router.route("/addworkspace/:userID/:workspaceID").put(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$push: {  Workspaces :WorkspaceID}}
+    );
+    res.status(200).send({status: "Workspace Added successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
+
+//Remove a workspace to the user
+//URL -->http://localhost:8070/user/removeworkspace/:userID/:workspaceID
+router.route("/removeworkspace/:userID/:workspaceID").delete(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$pull: { Workspaces :WorkspaceID}}
+    );
+    res.status(200).send({status: "Workspace Removed successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
+
+
+//Add a workspace Invitation to the user
+//URL -->http://localhost:8070/user/addworkspaceInv/:userID/:workspaceID
+router.route("/addworkspaceInv/:userID/:workspaceID").put(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$push: { WorkSpaceInvitationIDs : WorkspaceID }}
+    );
+    res.status(200).send({status: "Workspace Invitation Added successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
+
+//Remove a Workspace Invitation to the user
+//URL -->http://localhost:8070/user/removeworkspaceInv/:userID/:workspaceID
+router.route("/removeworkspaceInv/:userID/:workspaceID").delete(async (req, res) => {
+  let UserID = req.params.userID;
+  let WorkspaceID = req.params.workspaceID;
+
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$pull: { WorkSpaceInvitationIDs : WorkspaceID}}
+    );
+    res.status(200).send({status: "Workspace Invitation Removed successfully"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
+
 
 
 //Check Friends Array --> Sharing models
@@ -562,8 +662,94 @@ router.route("/getWorkspaceDetails/:userID").get(async (req, res) => {
   }
 });
 
+//Get user details of the users in friend requests array
+router.route("/getFriendRequestDetails/:userID").get(async (req, res) => {
+  let userID = req.params.userID;
+  try {
+    const result = await User.aggregate([
+      {
+        $match: { _id: ObjectId(userID)},
+      },
+      {
+        $project: {
+          FriendsRequests: {
+            $map: {
+              input: "$FriendsRequests",
+              as: "friendID",
+              in: {
+                $convert: {
+                  input: "$$friendID",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "FriendsRequests",
+          foreignField: "_id",
+          as: "FriendRequestDetails"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+//Check User by Username --> Sonal
+//URL -->http://localhost:8070/user/getUserbyUN/:userName
+router.route("/getUserbyUN/:userName").get(async (req, res) => {
+  let username = req.params.userName;
+
+  const USER = await User.findOne({ Username: username })
+    .then((user) => {
 
 
 
+      if(user){
+       res.json(true);
+      }
+      else{
+        res.json(false);
+      }
+
+      }
+    )
+    .catch((err) => {
+      console.log(err.message);
+      res
+        .status(500)
+        .send({ status: "Error with retrieving  user", error: err.message });
+    });
+
+
+
+
+
+});
+
+
+
+//Remove  Friend Requested
+//URL --> http://localhost:8070/user/removefriendReq/:userID/:friendID
+router.route("/removefriendReqsts/:userID/:friendID").delete(async (req, res) => {
+
+  let UserID = req.params.userID;
+  let FriendID = req.params.friendID;
+  try {
+    const result = await User.findOneAndUpdate(
+      {_id: UserID},
+      {$pull: {FriendsRequests: FriendID}}
+    );
+    res.status(200).send({status: "Friend Request Deleted Successful!"});
+  } catch (error) {
+    res.status(404).json({message: error.message});
+  }
+});
 
 module.exports = router;

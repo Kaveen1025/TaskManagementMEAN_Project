@@ -59,11 +59,30 @@ PasswordStrengthBarComponent
 } from './specialcomponents/password-strength-bar/password-strength-bar.component';
 import {ErrormodalComponent} from "./modals/errormodal/errormodal.component";
 import {DeletedmodalComponent} from "./modals/deletedmodal/deletedmodal.component";
-import {LoginComponent} from "./components/login/login.component";
-import {ForgotpasswordComponent} from "./reusablecomponent/forgotpassword/forgotpassword.component";
-// import { EmailservicesComponent } from './services/emailservices/emailservices.component';
+import { ConfirmmodalComponent } from './modals/confirmmodal/confirmmodal.component';
+import {SuccessmodalComponent} from "./modals/successmodal/successmodal.component";
+import { PasswordconfrimmodalComponent } from './modals/passwordconfrimmodal/passwordconfrimmodal.component';
+import { UserprofileimagemodalComponent } from './modals/userprofileimagemodal/userprofileimagemodal.component';
+import {ImageCropperModule} from "ngx-image-cropper";
 
+import { environment } from '../environments/environment';
+import {AngularFireStorageModule} from "@angular/fire/compat/storage";
+import {AngularFireModule} from "@angular/fire/compat";
+import { ForgotpasswordComponent } from './reusablecomponent/forgotpassword/forgotpassword.component';
+import {LoginComponent} from "./components/login/login.component";
+
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider } from 'angularx-social-login';
+import { GooglesignupComponent } from './buttons/googlesignup/googlesignup.component';
+import { NotificationspageComponent } from './components/notificationspage/notificationspage.component';
+import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.component";
+import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
 registerLocaleData(en);
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -104,8 +123,16 @@ registerLocaleData(en);
     PasswordStrengthBarComponent,
     ErrormodalComponent,
     DeletedmodalComponent,
-    LoginComponent,
+    ConfirmmodalComponent,
+    SuccessmodalComponent,
+    PasswordconfrimmodalComponent,
+    UserprofileimagemodalComponent,
     ForgotpasswordComponent,
+    LoginComponent,
+    GooglesignupComponent,
+    NotificationspageComponent,
+    InvitationscardComponent,
+    NotificationheaderComponent
 
   ],
     imports: [
@@ -126,10 +153,28 @@ registerLocaleData(en);
         MatAutocompleteModule,
         MatFormFieldModule,
         MatInputModule,
-        MatPasswordStrengthModule
+        MatPasswordStrengthModule,
+        ImageCropperModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+      SocialLoginModule
+
 
     ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: NZ_I18N, useValue: en_US },  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '288132798361-sea33rgpr7oj5juj0q603k5sapuhhjus.apps.googleusercontent.com'
+          )
+        }
+      ]
+    } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

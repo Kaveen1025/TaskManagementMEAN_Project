@@ -3,7 +3,7 @@
   font-family: Rambla, sans-serif;
 }
 
-.signup #card1{
+.signup .card{
 
   margin-top: 30px;
   text-align: center;
@@ -11,7 +11,11 @@
   box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   background-color:#F5F5F5;
   margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+
 }
+
 .signup .create{
 
   font-weight: bold;
@@ -45,6 +49,8 @@
   border-radius: 25px;
   background-color: #FC5185;
   border: none;
+  font-size: 22px;
+  font-weight: bold;
 
 }
 
@@ -137,7 +143,7 @@
 .signup #image1{
 
   width: 450px;
-  height: 350px;
+  height: 450px;
 }
 
 .signup .image2{
@@ -148,41 +154,182 @@
 .signup #image2{
 
   width: 450px;
-  height: 350px;
+  height: 450px;
 }
 
 /* enable absolute positioning */
 .signup .inner-addon {
   position: relative;
-  font-size: 24px;
+
 }
 
 /* style icon */
-.signup .inner-addon .fas {
+.signup .inner-addon .user1 {
   position: absolute;
  padding-left: 16px;
-  padding-top: 10px;
+  padding-top: 8px;
   pointer-events: none;
 
 }
 
+
+.signup .user1{
+  height: 36px;
+  width: 36px;
+}
+
 /* align icon */
-.signup .left-addon .fas { left:  0px;}
-.signup .right-addon .fas { right: 0px;}
+.signup .left-addon .user1 { left:  0px;}
+.signup .right-addon .user1 { right: 0px;}
 
 /* add padding  */
 .signup .left-addon input  { padding-left:  50px; }
 .signup .right-addon input { padding-right: 50px; }
 
-@media only screen and (max-width: 600px) {
-  .signup .content{
-   display: none;
+
+
+.signup .p-viewer {
+  z-index: 9999;
+  position: absolute;
+  top: 30%;
+  right: 10px;
+}
+
+.signup .fa{
+  color: #C0C0C0;
+  font-size: 18px;
+}
+
+.signup .errorTxt{
+  color: #FC5185;
+  font-weight: bold;
+}
+
+.signup .profileI{
+  text-align: left;
+}
+
+  @media only screen and (max-width: 1000px) {
+    .signup .col-4{
+      display: none;
+    }
+
+    .signup .col-3 {
+      display: none;
+    }
+
+    .signup #sign{
+      width:200px;
+      font-size: 22px;
+    }
+
   }
 
+@media only screen and (min-width: 600px){
 
-
-  .signup .image2{
+  .signup .col-4{
     display: none;
   }
 
+  .signup .col-3 {
+    display: none;
+  }
+
+
+  .signup #sign{
+    width:550px;
+    font-size: 22px;
+  }
+
+
 }
+
+
+@media only screen and (max-width: 280px) {
+  .signup .col-4 {
+    display: none;
+  }
+
+  .signup .col-3 {
+    display: none;
+  }
+
+
+  .signup #sign{
+    width:130px;
+    font-size: 16px;
+  }
+
+  .signup .form-control{
+
+    font-size: 11px;
+  }
+
+  .signup .user1 {
+    height: 30px;
+    width: 30px;
+  }
+
+
+
+
+  .signup .inner-addon .user1{
+
+    padding-top: 10px;
+    padding-left: 18px;
+
+  }
+
+  .signup #sign{
+    width:120px;
+    font-size: 16px;
+  }
+
+  .signup .fa{
+
+    font-size: 12px;
+  }
+
+
+}
+
+@media only screen and (min-width: 1024px)  {
+
+  .signup .col-4{
+
+    display: block;
+  }
+
+  .signup .col-3{
+    display: block;
+  }
+
+  .signup #sign{
+    width:430px;
+    font-size: 20px;
+  }
+  .signup #image2{
+
+    width: 400px;
+    height: 450px;
+  }
+
+  .signup #image1{
+
+    width: 350px;
+    height: 450px;
+  }
+
+  .signup .welcome{
+    font-size: 50px;
+  }
+
+}
+
+
+
+
+
+
+
+

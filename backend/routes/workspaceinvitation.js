@@ -1,19 +1,33 @@
 const router = require("express").Router();
 let WorkspaceInvitaion = require("../models/workspaceInvitations");
+let User = require("../models/user");
+let Workspace = require("../models/workspace");
+const generic = require('./generic');
+const res = require("express");
 
 //Create new WorkspaceInvitation
+//URL --> http://localhost:8070/workspaceinvitation/create
 router.route("/create").post((req, res) => {
   const {
     workspaceID,
     invitedUser,
     sendersID,
+    WorkspaceName,
+    SenderName,
+    Image
 
   } = req.body;
+
+
 
   const newWorkspaceInvitation = new WorkspaceInvitaion({
     workspaceID,
     invitedUser,
     sendersID,
+    WorkspaceName,
+    SenderName,
+    Image
+
   });
 
   newWorkspaceInvitation
@@ -94,17 +108,28 @@ router.route("/deleteWorkspaceInvitationacco/:workspaceID/:userID").delete(async
 });
 
 //Get All WorkspaceInvitation according to a user
-router.route("/getWorkspaceInvitationsaccoUser/:userID").get((req, res) => {
+//URL --> http://localhost:8070/workspaceinvitation/getWorkspaceInvitationsaccoUser/61d458c91d0655dd1358454a
+router.route("/getWorkspaceInvitationsaccoUser/:userID").get( async(req, res) => {
   let userID = req.params.userID;
 
-  WorkspaceInvitaion.find({invitedUser: userID})
-    .then((workspaceinvitation) => {
+   await WorkspaceInvitaion.find({invitedUser: userID})
+    .then(  (workspaceinvitation) => {
       res.json(workspaceinvitation);
+
     })
     .catch((err) => {
       console.log(err);
     });
 });
+
+
+
+
+
+
+
+
+
 
 
 

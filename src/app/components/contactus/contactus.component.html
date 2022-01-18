@@ -1,80 +1,83 @@
 <div class="contact">
-<header>
-  <div class="container">
-    <h1>Get in Touch With Us</h1>
+  <header>
+    <div class="container">
+      <h1>Get in Touch With Us</h1>
 
-    <p>Tâche is here to help you at any stage of your project management journey</p>
-  </div>
-</header>
-<br>
-<div class="row">
-  <div class="col-2" id="col1">
-  </div>
-  <!--  -->
-  <div class="col-3" id="col2">
-    <h1>Ready to see Tâche for yourself ?</h1>
-    <br>
-    <p>We’d love to show you how Tâche can help your team do more of their best work. Fill out the form and we’ll be in touch within 24 hours.</p>
-<img class="w-100" src="./assets/images/images(Task Management)\rebrand-hero-illustration_use-case_enterprise-page_1x.png">
-  </div>
-
-  <div class="col-1" id="col3">
-  </div>
-
-  <div class="col" id="col5">
-
-<!--    <app-form></app-form>-->
-    <div class="container" id="form1">
-      <form class="add-form">
-        <br>
-        <div class="row">
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="InputFirstName">First Name <span>*</span></label>
-              <input type="text" class="form-control" id="InputFirstName" aria-describedby="firstnameHelp" placeholder="">
-            </div>
-          </div>
-
-          <div class="col-sm">
-            <div class="form-group">
-              <label for="InputLastName">Last Name <span>*</span></label>
-              <input type="text" class="form-control" id="InputLastName" aria-describedby="firstnameHelp" placeholder="">
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email <span>*</span></label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputNumber1">Phone Number <span>*</span></label>
-          <input type="number" class="form-control" id="exampleInputNumber1" aria-describedby="numberHelp" placeholder="">
-        </div>
-
-        <div class="form-group">
-          <label for="exampleInputMore1">How can our team help you? <span>*</span></label>
-          <textarea type="text" class="form-control" id="exampleInputMore1" aria-describedby="Help" placeholder="Tell us more about your team and what work you’d like to manage with Tâche"></textarea>
-        </div>
-
-        <div id="btn1">
-          <app-crudbutton color="#3FC1C9" text="GET IN TOUCH"></app-crudbutton>
-        </div>
-
-      </form>
-
-
-
-      <span>Fields marked with an asterisk(*) are required</span>
-      <br><br>
+      <p>Tâche is here to help you at any stage of your project management journey</p>
+    </div>
+  </header>
+  <br>
+  <div class="row">
+    <div class="col-2" id="col1">
+    </div>
+    <!--  -->
+    <div class="col-3" id="col2">
+      <h1>Ready to see Tâche for yourself ?</h1>
       <br>
+      <p>We’d love to show you how Tâche can help your team do more of their best work. Fill out the form and we’ll be in touch within 24 hours.</p>
+      <img class="w-100" src="./assets/images/images(Task Management)\rebrand-hero-illustration_use-case_enterprise-page_1x.png">
+    </div>
+
+    <div class="col-1" id="col3">
+    </div>
+
+    <div class="col" id="col5">
+
+      <!--    <app-form></app-form>-->
+      <div class="container" id="form1">
+        <form class="add-form" #contactForm="ngForm" (ngSubmit)="contactForm.form.valid && saveMessage(contactForm.value)" ngNativeValidate>
+          <br>
+          <div class="row">
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="InputFirstName">First Name <span>*</span></label>
+                <input type="text" [formControl]="firstName" class="form-control" id="InputFirstName" aria-describedby="firstnameHelp" placeholder="" name="fname" onkeypress="return /[a-z]/i.test(event.key)" required ngModel>
+             <small class="text-danger" *ngIf="firstName.touched && !firstName.valid"> First Name is required</small>
+              </div>
+            </div>
+
+            <div class="col-sm">
+              <div class="form-group">
+                <label for="InputLastName">Last Name <span>*</span></label>
+                <input type="text" [formControl]="lastName" class="form-control" id="InputLastName" aria-describedby="firstnameHelp" name="lname" placeholder=""  required ngModel>
+                <small class="text-danger" *ngIf="lastName.touched && !lastName.valid"> Last Name is required</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email <span>*</span></label>
+            <input type="email" [formControl]="email"   class="form-control" id="exampleInputEmail1" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" placeholder="" ngModel required>
+            <small class="text-danger" *ngIf="email.touched && !email.valid"> Email is not valid</small>
+          </div>
+
+          <div class="form-group">
+            <label for="exampleInputNumber1">Phone Number <span>*</span></label>
+            <input type="number" [formControl]="phoneNumber"  class="form-control" pattern = "[0-9]{10}$" onKeyPress="if(this.value.length==10) return false;" id="exampleInputNumber1" placeholder="" required  ngModel>
+            <small class="text-danger" *ngIf="phoneNumber.touched && phoneNumber.invalid"> Phone number is required (Phone Number should be 10 digit)</small>
+            </div>
+
+          <div class="form-group">
+            <label for="exampleInputMore1">How can our team help you? <span>*</span></label>
+            <textarea type="text" [formControl]="message" class="form-control" id="exampleInputMore1" maxlength="35" aria-describedby="Help" name="msg" placeholder="Tell us more about your team and what work you’d like to manage with Tâche" required ngModel></textarea>
+            <small class="text-danger" *ngIf="message.touched && !message.valid"> Message is required</small>
+          </div>
+
+          <div id="btn1" >
+            <app-crudbutton  color="#3FC1C9" text="GET IN TOUCH"  ></app-crudbutton>
+          </div>
+
+        </form>
+
+        <span>Fields marked with an asterisk(*) are required</span>
+        <br><br>
+        <br>
+      </div>
+
+    </div>
+    <div class="col-1" id="col4">
+
     </div>
 
   </div>
-  <div class="col-1" id="col4">
-
-  </div>
-
-</div>
 </div>

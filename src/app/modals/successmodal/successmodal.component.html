@@ -1,4 +1,3 @@
-<ng-template #content let-modal>
 
   <div class="success">
     <div class="modal-body text-center">
@@ -10,10 +9,9 @@
       <h1>Success !</h1>
       <h3>Your data have been Saved </h3>
       <br>
-      <button type="button" class="btn" id="okbtn" (click)="modal.close('Close click')">Ok</button>
+      <button type="button" class="btn" id="okbtn" (click)="closeModal()">Ok</button>
 
     </div>
   </div>
-</ng-template>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">open Modal vertically centered</button>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal(content)">close Modal vertically centered</button>
+
+

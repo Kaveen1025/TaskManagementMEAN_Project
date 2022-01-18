@@ -1,8 +1,8 @@
-<ng-template #content let-modal class = "mainModal">
+
   <div class="modal-header mainHeader text-center">
      <h3 class="modal-title mainTitle w-100"><b>Create New Project</b></h3>
     <div class = "closeContainer">
-      <button type="button" class="close closeBtn" aria-label="Close" (click)="modal.close('Cross click')">
+      <button type="button" class="close closeBtn" aria-label="Close" (click)="closeModal()">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -13,13 +13,20 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Project Name<font class = "required">*</font></label>
-            <input type="text" class="form-control inputFieldsTxt" placeholder = "Project Name">
+            <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name" onkeypress="return /[a-z]/i.test(event.key)">
+            <p *ngIf="flagName" class = "errortext2">Project Name Required</p>
+            <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name" >
+
+
+
           </div>
+
         </div>
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Deadline (Optional)</label>
-            <input type="date" class="form-control inputFieldsTxt">
+            <input type="date" [(ngModel)]="Deadline"  min="{{min}}" id="deadline" class="form-control inputFieldsTxt">
+
           </div>
         </div>
       </div>
@@ -27,25 +34,50 @@
         <div class="col-sm">
           <div class="form-group">
             <label class = "labels">Description<font class = "required">*</font></label>
-            <textarea class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"></textarea>
+            <textarea  [(ngModel)]="Description" class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"  ></textarea>
+            <p *ngIf="flagDescription" class = "errortext2">Description Required</p>
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Cover Image</label>
-            <input type="file" class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="CoverImage" class="form-control inputFieldsTxt"  accept="image/*" (change) = "test($event)">
           </div>
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
-            <input type="file" class="form-control inputFieldsTxt">
+            <input type="file"  [(ngModel)]="MainImage" class="form-control inputFieldsTxt"  accept="image/*">
           </div>
         </div>
       </div>
     </div>
     <div class = "text-center">
-      <app-crudbuttonpink text="CREATE"></app-crudbuttonpink>
+      <app-crudbuttonpink text="CREATE"  (click)="addProject()" ></app-crudbuttonpink>
     </div>
   </div>
-</ng-template>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">open Modal vertically centered</button>
-<button class="btn btn-outline-primary mb-2 mr-2" (click)="closeModal(content)">close Modal vertically centered</button>
+
+
+<!--  <script>-->
+<!--    $(function () {-->
+<!--      var date = new Date();-->
+<!--      date.setDate(date.getDate()-1);-->
+<!--      $('#deadline').datetimepicker({-->
+<!--        startDate: date-->
+<!--      });-->
+<!--    });-->
+<!--  </script>-->
+
+  <!--modal-->
+  <ng-template #content let-modal>
+    <app-successmodal></app-successmodal>
+  </ng-template>
+
+
+  <ng-template #content3 let-modal  id = "content3">
+    <app-loadinganimation></app-loadinganimation>
+  </ng-template>
+
+
+
+  <ng-template #content4 let-modal  id = "content4">
+    <app-errormodal></app-errormodal>
+  </ng-template>

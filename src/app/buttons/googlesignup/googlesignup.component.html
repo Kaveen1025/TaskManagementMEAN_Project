@@ -1,0 +1,16 @@
+<button id="googlebtn" class="btn" (click)="loginWithGoogle()">
+  <img id="gicon" src="./assets/images/images Used in Project Management UI Design/google.png" alt = "googleIcon">
+  Continue With Google
+</button>
+
+<ng-template #content let-modal>
+  <div  class="modal-content" >
+    <app-loadinganimation></app-loadinganimation>
+  </div>
+</ng-template>
+
+
+<ng-template #content2 let-modal>
+  <app-errormodal></app-errormodal>
+</ng-template>
+
