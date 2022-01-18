@@ -66,10 +66,10 @@ export class WorkspaceaddComponent implements OnInit {
 
       this.userservice.addWorkspace(this.AdminID,this.WorkspaceID).subscribe((res)=>{
 
-        console.log(res);
+       // console.log(res);
         this.closeModal();
         this.reRenderDetails.emit();
-        this.modalService.open(this.content, { centered: true }, );
+        this.modalService.open(this.content, { centered: true });
       })
 
     })
