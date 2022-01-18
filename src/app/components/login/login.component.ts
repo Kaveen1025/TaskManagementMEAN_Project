@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../services/user.service";
+import {WorkspaceService} from "../../services/workspacepage.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -11,20 +13,33 @@ import {UserService} from "../../services/user.service";
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('content', {static: true}) modalContent: TemplateRef<any> | undefined
+  @ViewChild('content2', {static: true}) modalContent2: TemplateRef<any> | undefined
+
   // public form! : FormGroup
   UserService: UserService
   Username : String =""
   Password : String =""
 
+  err1:boolean = true
+  err2:boolean = true
+
   uname = true
   pass = true
+  // logbtn = true
+
+  ErrorMessage: any
+  ErrorMessageStatus:boolean
+
+  errorr=true
 
   // detailsObject : any
 
 
-  constructor( private http : HttpClient,public fb: FormBuilder, UserService:UserService) {
-    this.UserService = UserService
 
+  constructor( private http : HttpClient,public fb: FormBuilder, UserService:UserService,private modalService: NgbModal) {
+    this.UserService = UserService
+    this.ErrorMessageStatus = true
 
   }
 
@@ -54,32 +69,40 @@ export class LoginComponent implements OnInit {
       Username: this.Username,
       Password: this.Password,
     }
-
-    // if(this.Username==null){
-    //   this.uname=false
-    // }
-    //
-    // if(this.Password==null){
-    //   this.pass=false
-    // }
-
-
     this.UserService.login(detailsObject).subscribe((post: any)=> {
       console.log(post)
       console.log(detailsObject)
 
-
         if(post=="Customer Sign In Successfully"){
           alert("Success")
         }
-        else{
-          alert(post)
+        else if(post="Invalid Credentials"){
+          // alert(post)
+          // this.errorr = false
+          this.err1=false
+          this.openVerticallyCentered()
         }
 
+        else {
+          this.err2=false
+          this.err1=true
+          this.openVerticallyCentered2()
+        }
     }, error => {
       console.log(error);
     });
 
+
+
+
+  }
+  openVerticallyCentered() {
+    // console.log(this.modalContent);
+    this.modalService.open(this.modalContent, { centered: true});
+  }
+  openVerticallyCentered2() {
+    // console.log(this.modalContent);
+    this.modalService.open(this.modalContent2, { centered: true});
   }
 
   // login() {
@@ -103,5 +126,10 @@ export class LoginComponent implements OnInit {
   //     })
   // }
 
+
+  triggerErrorMessage(msg:any){
+    this.ErrorMessage = msg
+    this.ErrorMessageStatus = false
+  }
 
 }

@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../services/user.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 // import {EmailService} from "../../services/emailservices";
 
@@ -16,21 +17,25 @@ import {UserService} from "../../services/user.service";
 })
 export class ForgotpasswordComponent implements OnInit {
 
+
+  @ViewChild('content') private content: TemplateRef<any> | undefined;
+  @ViewChild('content2') private content2: TemplateRef<any> | undefined;
+  @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+
   email : String =""
+  User:any
 
   display1 = true
   display2 = false
-  display3 = true
+  display3 = false
 
   code : String ="1234"
-
-  userID : any
+  userID : String =""
   errorMsg:any
   errMsg:any
 
   newPassword = new FormControl('');
   confirmPassword = new FormControl('');
-
   loadingStatus: any
 
   typeInput1: String
@@ -50,18 +55,13 @@ export class ForgotpasswordComponent implements OnInit {
 
   UserService:UserService
   user: any
-  // userID: String
-  // title = 'My Cotter App';
-
   success = false;
   payload = null;
   payloadString = null;
   verifycode: any;
 
-  // flag=0
 
-
-  constructor(private http : HttpClient,public fb: FormBuilder, UserService:UserService) {
+  constructor(private http : HttpClient,public fb: FormBuilder, UserService:UserService,private modalService: NgbModal) {
     this.UserService = UserService
     this.typeInput1 = "password"
     this.typeInput2 = "password"
@@ -84,11 +84,12 @@ export class ForgotpasswordComponent implements OnInit {
     //   .catch((err: any) => console.log(err));
   }
 
-
   getEmail(){
     this.UserService.getEmail(this.email).subscribe((post: any)=> {
       console.log(post)
       console.log(this.email)
+
+
 
       // let [i] = post
       let a= post[0]
@@ -96,8 +97,11 @@ export class ForgotpasswordComponent implements OnInit {
       console.log(post.length)
 
       this.userID = a._id
+      console.log(this.userID)
 
-      if (post.length !== 0) {
+      this.getUser()
+
+      if (post[0].length !== 0) {
           console.log('User Available')
         this.display1=false
         this.display2=true
@@ -157,15 +161,17 @@ export class ForgotpasswordComponent implements OnInit {
           this.loadingStatus = true
         }
 
-
     }else{
       this.errorMsg = "Password is weak!"
       this.mismatch = false
       this.loadingStatus = true
     }
-
-
   }
+
+  // openConfirmModal() {
+  //   this.modalService.open(this.content, { centered: true });
+  //   this.loadingStatus = true
+  // }
 
 
     toggleEye(input:Number) {
@@ -201,50 +207,54 @@ export class ForgotpasswordComponent implements OnInit {
 
   }
 
-  checkNewPasswordStrength($event: any) {
-      console.log($event.idx)
-      if($event.idx >= 5){
-        this.newPasswordStrengthStatus = true
+  getUser(){
+    this.UserService.getUser(this.userID).subscribe({
+      next:value=>
+      {
+        this.User = value
       }
-
+      ,
+      error:error => {
+        console.log(error)
+      }
+    } )
   }
 
+  checkNewPasswordStrength($event:any){
+    console.log($event.idx)
+    this.newPasswordStrengthStatus = $event.idx >= 4;
+  }
   checkConfirmPasswordStrength($event:any){
     console.log($event.idx)
-    if($event.idx >= 5){
-      this.confirmPasswordStrengthStatus = true
-    }
+    this.confirmPasswordStrengthStatus = $event.idx >= 4;
   }
-
 
   keyDownHandler(event: any) {
     if (event.which === 32)
       event.preventDefault();
   }
+
+  changePasswordFromDB(){
+    this.loadingStatus = false
+    this.UserService.changeUserPassword(this.userID,this.newPassword.value).subscribe({
+      next:value=>
+      {
+        alert("password updated")
+        this.modalService.open(this.content2, { centered: true });
+        this.getUser()
+        this.loadingStatus = true
+        this.newPassword.setValue("")
+        this.confirmPassword.setValue("")
+      }
+      ,
+      error:error => {
+        console.log(error)
+        this.loadingStatus = true
+        this.modalService.open(this.content3, { centered: true });
+      }
+    } )
+  }
 }
 
-
-
-
-// this.form = this.fb.group({
-//   Email:['',Validators.required]
-// })
-
-//   this.http.get<any>("http://localhost:8070/user/getUser/:email")
-//     .subscribe(res=>{
-//       const user = res.find((a:any)=>{
-//         return a.Email === this.form.value.Email
-//
-//       });
-//       if(user){
-//         alert('email valid');
-//         this.form.reset();
-//       }
-//       else {
-//         alert('invalid email')
-//       }
-//     },err=>{
-//       alert('something went wrong!')
-//     })
 
 
