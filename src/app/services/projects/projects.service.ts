@@ -28,6 +28,11 @@ export class ProjectsService {
   fetchProjectbyName(name:String){
     return this.http.get(environment.apiBaseUrl+"project/getbyname/"+ name);
   }
+
+  //Remove Project
+  removeProject(projectID: any){
+    return this.http.delete(environment.apiBaseUrl+"project/deleteproject/"+ projectID);
+  }
 }
 
 

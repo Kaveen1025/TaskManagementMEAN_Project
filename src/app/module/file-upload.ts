@@ -7,4 +7,10 @@ export class FileUpload {
   constructor(file: File) {
     this.file = file;
   }
+
+  setValues(name: string, url: string, file: File){
+    this.file = file;
+    this.name = name;
+    this.url = url;
+  }
 }

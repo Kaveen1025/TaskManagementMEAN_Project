@@ -23,6 +23,8 @@ export class LoginComponent implements OnInit {
 
   err1:boolean = true
   err2:boolean = true
+  ErrorMessage: any
+  ErrorMessageStatus:boolean
 
   uname = true
   pass = true

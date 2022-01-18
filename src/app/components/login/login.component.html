@@ -1,114 +1,3 @@
-<!--<div class="login">-->
-<!--  <div class="row">-->
-<!--    <div class="col-3" id="coll1">-->
-<!--      <h1 id="name1">Welcome To</h1>-->
-<!--      <h1> Tâche</h1>-->
-<!--      <img id="logo1" src="./assets/images/images Used in Project Management UI Design/AppLogo.png">-->
-<!--      <img id="task1" src="./assets/images/featurePageIcons/tasking.jpg">-->
-<!--    </div>-->
-
-<!--    <div class="col" id="coll2">-->
-<!--      <div class="container">-->
-<!--      <div id="form11">-->
-<!--        <h2>Login</h2>-->
-<!--        <h3 class = "errorMsg" [hidden] = "ErrorMessageStatus">{{ErrorMessage}}</h3>-->
-<!--        <div class="form-group ">-->
-<!--&lt;!&ndash;          <i class="fa fa-user icon"></i>&ndash;&gt;-->
-<!--          <div class="inner-addon left-addon mb-3">-->
-<!--            <i class="fas fa-user"></i>-->
-<!--          <input  [(ngModel)]="Username" type="text" class="form-control" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username" required>-->
-<!--            <h3 [hidden]="uname">Username is Required</h3>-->
-<!--            &lt;!&ndash;            <span class="text-danger" *ngIf="form.controls['Username'].dirty && form.hasError('required','email')">&ndash;&gt;-->
-<!--&lt;!&ndash;              *Username is Required&ndash;&gt;-->
-<!--&lt;!&ndash;            </span>&ndash;&gt;-->
-<!--          </div>-->
-<!--            <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/user2.png" class="user1">-->
-<!--&lt;!&ndash;          <input type="text" class="form-control input-field" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username">&ndash;&gt;-->
-<!--        </div>-->
-<!--        </div>-->
-<!--        <div class="form-group">-->
-<!--          <div class="inner-addon left-addon mb-3">-->
-<!--            <i class="fas fa-unlock-alt"></i>-->
-<!--          <input [(ngModel)]="Password" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" required>-->
-<!--            <h3 [hidden]="pass">Password is Required</h3>-->
-<!--&lt;!&ndash;            <span class="text-danger" *ngIf="form.controls['Password'].dirty && form.hasError('required','password')">&ndash;&gt;-->
-<!--&lt;!&ndash;              *Password is Required&ndash;&gt;-->
-<!--&lt;!&ndash;            </span>&ndash;&gt;-->
-<!--            </div>-->
-<!--          <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">-->
-<!--&lt;!&ndash;          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">&ndash;&gt;-->
-<!--        </div>-->
-<!--        </div>-->
-<!--        <button id="lgbtn" type="submit" class="btn btn-lg">LOGIN</button>-->
-<!--        <label id="fpass" routerLink="forgotpassword">Forgot Password ?</label>-->
-<!--<br>-->
-<!--        <hr>-->
-<!--        <div class="box">-->
-<!--          <p>OR</p>-->
-<!--        </div>-->
-<!--          <app-googlesignup (event)="triggerErrorMessage('Email Already Exists!')" ></app-googlesignup>-->
-<!--        <span class="text-center" id="acc">Need an account ? <b> SIGN UP</b></span>-->
-<!--      </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col-3" id="coll3">-->
-<!--      <img id="task2" src="./assets/images/featurePageIcons/management2.jpg" alt = "icons">-->
-<!--    </div>-->
-
-<!--&lt;!&ndash;  </div>&ndash;&gt;-->
-<!--  <app-errormodal></app-errormodal>-->
-
-<!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-
-<!--<div class="login">-->
-<!--  <div class="row">-->
-<!--    <div class="col-3" id="coll1">-->
-<!--      <h1 id="name1">Welcome To</h1>-->
-<!--      <h1> Tâche</h1>-->
-<!--      <img id="logo1" src="./assets/images/images Used in Project Management UI Design/AppLogo.png">-->
-<!--      <img id="task1" src="./assets/images/featurePageIcons/tasking.jpg">-->
-<!--    </div>-->
-
-<!--    <div class="col" id="coll2">-->
-<!--      <div class="container">-->
-<!--        <form id="form11">-->
-<!--          <h2>Login</h2>-->
-<!--          <h3 class = "errorMsg" [hidden] = "ErrorMessageStatus">{{ErrorMessage}}</h3>-->
-<!--          <div class="form-group ">-->
-<!--            &lt;!&ndash;          <i class="fa fa-user icon"></i>&ndash;&gt;-->
-<!--            <div class="inner-addon left-addon mb-3">-->
-<!--              <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/user2.png" class="user1">-->
-<!--              <input type="text" class="form-control input-field" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <div class="form-group">-->
-<!--            <div class="inner-addon left-addon mb-3">-->
-<!--              <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/padlock1.png" class="user1">-->
-<!--              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          <button id="lgbtn" type="submit" class="btn btn-lg">LOGIN</button>-->
-<!--          <label id="fpass" routerLink="forgotpassword">Forgot Password ?</label>-->
-<!--          <br>-->
-<!--          <hr>-->
-<!--          <div class="box">-->
-<!--            <p>OR</p>-->
-<!--          </div>-->
-<!--          <app-googlesignup (event)="triggerErrorMessage('Email Already Exists!')" ></app-googlesignup>-->
-<!--          <span class="text-center" id="acc">Need an account ? <b> SIGN UP</b></span>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-3" id="coll3">-->
-<!--      <img id="task2" src="./assets/images/featurePageIcons/management2.jpg" alt = "icons">-->
-<!--    </div>-->
-
-<!--  </div>-->
-
-<!--</div>-->
-
-
 <div class="login">
   <div class="row">
     <div class="col-3" id="coll1">
@@ -120,56 +9,47 @@
 
     <div class="col" id="coll2">
       <div class="container">
-        <div id="form11" ngNativeValidate >
-          <h2>Login</h2>
-          <div class="form-group input-icons">
-            <div class="inner-addon left-addon mb-3">
-              <i class="fas fa-user"></i>
-              <input [(ngModel)]="Username" type="text" class="form-control" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username" required>
-              <h3 *ngIf="flagName1">Username is Required</h3>
-              <!--            <span class="text-danger" *ngIf="form.controls['Username'].dirty && form.hasError('required','email')">-->
-              <!--              *Username is Required-->
-              <!--            </span>-->
-            </div>
+      <form id="form11">
+        <h2>Login</h2>
+        <h3 class = "errorMsg" [hidden] = "ErrorMessageStatus">{{ErrorMessage}}</h3>
+        <div class="form-group ">
+<!--          <i class="fa fa-user icon"></i>-->
+          <div class="inner-addon left-addon mb-3">
+            <i class="fas fa-user"></i>
+          <input  [(ngModel)]="Username" type="text" class="form-control" id="exampleInputName1" aria-describedby="textHelp" placeholder="Username" required>
+            <h3 [hidden]="uname">Username is Required</h3>
+            <!--            <span class="text-danger" *ngIf="form.controls['Username'].dirty && form.hasError('required','email')">-->
+<!--              *Username is Required-->
+<!--            </span>-->
           </div>
-          <div class="form-group">
-
-            <div class="inner-addon left-addon mb-3">
-              <i class="fas fa-unlock-alt"></i>
-              <input [(ngModel)]="Password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
-              <h3 *ngIf="flagName2">Password is Required</h3>
-              <!--            <span class="text-danger" *ngIf="form.controls['Password'].dirty && form.hasError('required','password')">-->
-              <!--              *Password is Required-->
-              <!--            </span>-->
-            </div>
-          </div>
-          <button id="lgbtn" type="submit" class="btn btn-lg" (click)="login()">LOGIN</button>
-
-          <label id="fpass" routerLink="forgotpassword">Forgot Password ?</label>
-          <br>
-          <br>
-          <hr>
-          <div class="text-center" id="or">
-            <p>OR</p>
-          </div>
-
-          <button id="googlebtn" class="btn"><img id="gicon" src="./assets/images/images Used in Project Management UI Design/google.png">Continue With Google</button>
-          <span class="text-center" id="acc">Need an account ? <b> SIGN UP</b></span>
         </div>
-      </div>
+        <div class="form-group">
+          <div class="inner-addon left-addon mb-3">
+            <i class="fas fa-unlock-alt"></i>
+          <input [(ngModel)]="Password" type="text" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            <h3 [hidden]="pass">Password is Required</h3>
+<!--            <span class="text-danger" *ngIf="form.controls['Password'].dirty && form.hasError('required','password')">-->
+<!--              *Password is Required-->
+<!--            </span>-->
+            </div>
+        </div>
+        <button id="lgbtn" type="submit" class="btn btn-lg">LOGIN</button>
+        <label id="fpass" routerLink="forgotpassword">Forgot Password ?</label>
+<br>
+        <hr>
+        <div class="box">
+          <p>OR</p>
+        </div>
+          <app-googlesignup (event)="triggerErrorMessage('Email Already Exists!')" ></app-googlesignup>
+        <span class="text-center" id="acc">Need an account ? <b> SIGN UP</b></span>
+      </form>
+        </div>
     </div>
     <div class="col-3" id="coll3">
-      <img id="task2" src="./assets/images/featurePageIcons/management2.jpg">
+      <img id="task2" src="./assets/images/featurePageIcons/management2.jpg" alt = "icons">
     </div>
 
   </div>
-  <ng-template #content let-modal  class = "mainModal">
-    <app-loginerr [hidden]="err1" text1="Invalid Credentials">
-    </app-loginerr>
-  </ng-template>
-  <ng-template #content2 let-modal  class = "mainModal">
-    <app-loginerr [hidden]="err2"  text1="User not found">
-    </app-loginerr>
-  </ng-template>
+<!--  <app-errormodal></app-errormodal>-->
 
 </div>
