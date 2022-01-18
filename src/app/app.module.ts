@@ -74,6 +74,7 @@ import {LoginComponent} from "./components/login/login.component";
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider } from 'angularx-social-login';
 import { GooglesignupComponent } from './buttons/googlesignup/googlesignup.component';
+import { NotificationspageComponent } from './components/notificationspage/notificationspage.component';
 registerLocaleData(en);
 
 
@@ -126,7 +127,8 @@ registerLocaleData(en);
     UserprofileimagemodalComponent,
     ForgotpasswordComponent,
     LoginComponent,
-    GooglesignupComponent
+    GooglesignupComponent,
+    NotificationspageComponent
 
   ],
     imports: [

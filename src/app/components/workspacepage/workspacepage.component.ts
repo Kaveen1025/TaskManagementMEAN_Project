@@ -13,7 +13,7 @@ import {WorkspaceeditComponent} from "./../../modals/workspaceedit/workspaceedit
 export class WorkspacepageComponent implements OnInit {
 
   @ViewChild('content', {static: true}) modalContent: TemplateRef<any> | undefined
-
+  @ViewChild('content2', {static: true}) content2: TemplateRef<any> | undefined
 
   @Output() setProjects = new EventEmitter();
 
@@ -163,8 +163,12 @@ export class WorkspacepageComponent implements OnInit {
 
 
   CreateProject() {
+    this.modalService.open(this.content2, { centered: true, size:"lg" }, );
   }
 
   reload(){
+    // console.log("Reloading....");
+    this.getProjectDetails();
+    this.getWorkspaceDetails();
   }
 }
