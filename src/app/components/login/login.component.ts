@@ -16,10 +16,12 @@ export class LoginComponent implements OnInit {
   @ViewChild('content', {static: true}) modalContent: TemplateRef<any> | undefined
   @ViewChild('content2', {static: true}) modalContent2: TemplateRef<any> | undefined
 
-  // public form! : FormGroup
+  typeInput2: String
+  eyeImageUrl2: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
+
   UserService: UserService
-  Username : String =""
-  Password : String =""
+  Username : any = new FormControl('')
+  Password : any = new FormControl('')
 
   err1:boolean = true
   err2:boolean = true
@@ -28,73 +30,43 @@ export class LoginComponent implements OnInit {
 
   uname = true
   pass = true
-  // logbtn = true
-
-  ErrorMessage: any
-  ErrorMessageStatus:boolean
-
   errorr=true
 
-  flagName1 = false;
-  flagName2 = false;
+  flagName1 = true;
+  flagName2 = true;
   confirm = true;
-
-  // detailsObject : any
-
-
 
   constructor( private http : HttpClient,public fb: FormBuilder, UserService:UserService,private modalService: NgbModal) {
     this.UserService = UserService
     this.ErrorMessageStatus = true
-
+    this.typeInput2 = "password"
   }
-
 
   ngOnInit(): void {
 
-    // this.form = this.fb.group({
-    //   Username:['',Validators.required],
-    //   Password:['',Validators.required],
-    // })
   }
 
-  // login(){
-  //   let detailsObject = {
-  //     Username: this.Username,
-  //     Password: this.Password,
+  // checkvalidity(){
+  //   if(this.Username.length < 1 && this.Password.length<1){
+  //     this.flagName1 = false
+  //     this.flagName2 = false
+  //   }else if(this.Username.length < 1 ){
+  //     this.flagName1 = false
+  //   }else if(this.Password.length < 1 ){
+  //     this.flagName2 = false
+  //   } else{
+  //     this.flagName1 = true
+  //     this.flagName2 = true
   //   }
-  //
-  //   this.UserService.login(this.detailsObject).subscribe((post: any)=> {
-  //     console.log(post)
-  //     console.log(this.detailsObject)
-  //   });
   // }
 
-  checkvalidity(){
-    if(this.Username.length < 1 && this.Password.length<1){
-      this.flagName1 = true
-      this.flagName2 = true
-    }else if(this.Username.length < 1 ){
-      this.flagName1 = true
-    }else if(this.Password.length < 1 ){
-      this.flagName2 = true
-    } else{
-      this.flagName1 = false
-      this.flagName2 = false
-      this.confirm = false
-    }
-  }
-
   login(){
-    if(this.flagName1 == true || this.flagName2 == true ){
-      // this.checkvalidity()
-    }
-    else {
+
       let detailsObject = {
-        Username: this.Username,
-        Password: this.Password,
+        Username: this.Username.value,
+        Password: this.Password.value,
       }
-      this.checkvalidity()
+      // this.checkvalidity()
 
       this.UserService.login(detailsObject).subscribe((post: any) => {
         console.log(post)
@@ -103,8 +75,6 @@ export class LoginComponent implements OnInit {
         if (post == "Customer Sign In Successfully") {
           alert("Success")
         } else if (post == "Invalid Credentials") {
-          // alert(post)
-          // this.errorr = false
           this.err1 = false
           this.openVerticallyCentered()
         } else {
@@ -115,46 +85,28 @@ export class LoginComponent implements OnInit {
       }, error => {
         console.log(error);
       });
-
-    }
-
-
+    // }
   }
+
   openVerticallyCentered() {
-    // console.log(this.modalContent);
     this.modalService.open(this.modalContent, { centered: true});
   }
   openVerticallyCentered2() {
-    // console.log(this.modalContent);
     this.modalService.open(this.modalContent2, { centered: true});
   }
-
-  // login() {
-  //   this.http.post("http://localhost:8070/user/loginUser",this.form.value)
-  //     .subscribe(res=>{
-  //       alert("login success")
-  //       this.form.reset();
-  //       // const user= res.find((a:any)=>{
-  //       //   return a.Username === this.loginForm.value.username && a.Password === this.loginForm.value.password
-  //       // });
-  //       // if(user){
-  //       //   alert("login success")
-  //       //   this.loginForm.reset();
-  //       // }else{
-  //       //   alert('user not found')
-  //       // }
-  //
-  //     },err=>{
-  //       alert('something went wrong!')
-  //
-  //     })
-  // }
-
-
 
   triggerErrorMessage(msg:any){
     this.ErrorMessage = msg
     this.ErrorMessageStatus = false
   }
 
+  toggleEye(input:Number) {
+    if(this.typeInput2 == "text"){
+      this.typeInput2 = "password"
+      this.eyeImageUrl2 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
+    }else{
+      this.typeInput2 = "text"
+      this.eyeImageUrl2 = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/open.png"
+    }
+  }
 }

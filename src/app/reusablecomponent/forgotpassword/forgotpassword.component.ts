@@ -89,8 +89,6 @@ export class ForgotpasswordComponent implements OnInit {
       console.log(post)
       console.log(this.email)
 
-
-
       // let [i] = post
       let a= post[0]
       console.log(a.Email)
@@ -106,7 +104,6 @@ export class ForgotpasswordComponent implements OnInit {
         this.display1=false
         this.display2=true
         // this.flag=1
-
         }
       else {
           alert('Invalid Email')
@@ -161,6 +158,7 @@ export class ForgotpasswordComponent implements OnInit {
           this.loadingStatus = true
         }
 
+
     }else{
       this.errorMsg = "Password is weak!"
       this.mismatch = false
@@ -168,10 +166,7 @@ export class ForgotpasswordComponent implements OnInit {
     }
   }
 
-  // openConfirmModal() {
-  //   this.modalService.open(this.content, { centered: true });
-  //   this.loadingStatus = true
-  // }
+
 
 
     toggleEye(input:Number) {
