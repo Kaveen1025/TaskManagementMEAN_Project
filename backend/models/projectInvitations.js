@@ -30,6 +30,21 @@ const projectInvitaionSchema = new Schema({
     required: false
   },
 
+  ProjectName: {
+    type: String,
+    required: true,
+  },
+
+  SenderName: {
+    type: String,
+    required: true
+  },
+
+  Image : {
+    type: String,
+    required: true
+  }
+
 
 
 });

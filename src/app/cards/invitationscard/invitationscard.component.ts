@@ -12,6 +12,8 @@ export class InvitationscardComponent implements OnInit {
   @Input() Sender: any;
   @Input() Workspace: any;
   @Input() Image: any;
+  @Input() Time: any;
+  @Input() Type: any;
 
   constructor(private workspaceinvService: WorkspaceinvService) { }
 

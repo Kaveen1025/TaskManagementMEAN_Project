@@ -20,9 +20,9 @@ const workspaceInvitationSchema = new Schema({
   },
 
   addedDateTime: {
-    type: Date,
+    type: String,
     required: [true, "Workspace Invitation must have a Added date"],
-    default: new Date()
+    default: new Date().toLocaleString('si-LK', {timeZone : 'Asia/Colombo'}),
   },
 
   updatedDateTime: {

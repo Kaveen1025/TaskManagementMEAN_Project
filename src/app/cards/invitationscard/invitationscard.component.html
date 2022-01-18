@@ -10,11 +10,11 @@
             <img src="./assets/images/images Used in Project Management UI Design/{{Image}}" class="profile" alt = "mainImage">
           </div>
           <div class="media-body">
-            <h4 class="t1">{{Sender}} has invited you to join the {{Workspace}}workspace </h4>
+            <h4 class="t1">{{Sender}} has invited you to join the {{Workspace}} {{Type}} </h4>
             <span class="t2">You’re invited! </span>
           </div>
           <div class="align-self-center">
-            <h6 class = "date"><span><img class = "img-fluid clock-icon" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/three-o-clock-clock.png" alt = "clock"></span>29 December 2021 at 10.30 p.m.</h6>
+            <h6 class = "date"><span><img class = "img-fluid clock-icon" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/three-o-clock-clock.png" alt = "clock"></span> {{Time.split(" ")[0]}} at {{Time.split(" ")[1].substring(0,5)}} </h6>
             <div class="row d-flex show-inline-block">
               <app-acceptordeclinebtn text = "Accept"></app-acceptordeclinebtn>
               <app-acceptordeclinebtn text = "Decline"></app-acceptordeclinebtn>

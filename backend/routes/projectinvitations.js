@@ -13,6 +13,10 @@ router.route("/add").post((req, res) => {
     projectID,
     invitedUser,
     sendersID,
+    ProjectName,
+    SenderName,
+    Image
+
 
   } = req.body;
 
@@ -20,6 +24,10 @@ router.route("/add").post((req, res) => {
     projectID,
     invitedUser,
     sendersID,
+    ProjectName,
+    SenderName,
+    Image
+
   });
 
   newProjectInvitation
@@ -34,7 +42,7 @@ router.route("/add").post((req, res) => {
 });
 
 
-//Fetch Project data according to user ID and Project ID
+//Fetch Project Invitation data according to user ID
 //URL -->http://localhost:8070/projectinv/get/:userID
 router.route('/get/:userID').get(async (req, res) => {
   let UserID = req.params.userID;

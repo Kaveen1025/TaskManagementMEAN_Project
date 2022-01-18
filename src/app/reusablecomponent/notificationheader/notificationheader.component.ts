@@ -7,12 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NotificationheaderComponent implements OnInit {
 
-  @Input() headertext1: string | undefined;
-  @Input() headertext2: string | undefined;
+  @Input() headertext1: any | undefined;
+  @Input() headertext2: any | undefined
+  @Input() headertext3: any | undefined
+
+  msg: string ="";
+  getMsgFromBaby($event: any) {this.msg = $event;
+
+    console.log(this.msg);
+  }
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }
