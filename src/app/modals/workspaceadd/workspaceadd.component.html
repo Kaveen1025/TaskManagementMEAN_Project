@@ -13,13 +13,14 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Workspace Name<font class = "required">*</font></label>
-            <input type="text" [(ngModel)]="WorkspaceName" class="form-control inputFieldsTxt" placeholder="Workspace Name">
+            <input type="text" [(ngModel)]="WorkspaceName" class="form-control inputFieldsTxt" placeholder="Workspace Name" onkeypress="return /[a-z]/i.test(event.key)">
+            <p *ngIf="flagName" class = "errortext2">Workspace Name is Required</p>
           </div>
         </div>
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Cover Image</label>
-            <input type="file" [(ngModel)]="CoverImage"  class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="CoverImage"  class="form-control inputFieldsTxt" accept="image/*" >
           </div>
         </div>
       </div>
@@ -28,13 +29,14 @@
           <div class="form-group">
             <label class = "labels">Description<font class = "required">*</font></label>
             <textarea [(ngModel)]="Description" class="form-control inputFieldsTxt"  rows="5" placeholder = "Description"></textarea>
+            <p *ngIf="flagDescription" class = "errortext2">Description is Required</p>
           </div>
         </div>
         <div class="col-sm">
 
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
-            <input type="file" [(ngModel)]="MainImage"  class="form-control inputFieldsTxt">
+            <input type="file" [(ngModel)]="MainImage"  class="form-control inputFieldsTxt" accept="image/*">
           </div>
         </div>
       </div>
@@ -44,8 +46,18 @@
     </div>
   </div>
 
-
 <!--modal-->
 <ng-template #content let-modal>
-<app-successmodal></app-successmodal>
+  <app-successmodal></app-successmodal>
+</ng-template>
+
+
+<ng-template #content3 let-modal  id = "content3">
+  <app-loadinganimation></app-loadinganimation>
+</ng-template>
+
+
+
+<ng-template #content4 let-modal  id = "content4">
+  <app-errormodal></app-errormodal>
 </ng-template>
