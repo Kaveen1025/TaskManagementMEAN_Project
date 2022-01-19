@@ -22,7 +22,6 @@ export class WorkspaceeditComponent implements OnInit  {
 
   @Input() workspaceDetails: any;
 
-
   constructor(private modalService: NgbModal, workspaceService : WorkspaceService, FirebaseService: FirebasesService) {
     this.workspaceService = workspaceService;
     this.FirebaseService = FirebaseService
@@ -32,6 +31,7 @@ export class WorkspaceeditComponent implements OnInit  {
   workspacename: string = "";
   coverimage: string = "";
   mainimage: string = "";
+
   // @ts-ignore
   mainImageFile = new FileUpload();
   // @ts-ignore
@@ -167,7 +167,7 @@ export class WorkspaceeditComponent implements OnInit  {
           }
         );
       }else if(this.mainImageFile.file != undefined && this.coverImageFile.file == undefined){
-        alert("coverimage undefined")
+        // alert("coverimage undefined")
         this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
           percentage => {
             percentage = Math.round(percentage ? percentage : 0);
@@ -279,7 +279,7 @@ export class WorkspaceeditComponent implements OnInit  {
   onMainSelected(event: any){
     if(event.target.files.length > 0)
     {
-      // console.log(event.target.files[0].name);
+      console.log(event.target.files[0]);
       this.mainimage = event.target.files[0].name;
       let URL = this.workspaceID + this.mainimage
       // this.mainImageFile = event.target.files[0];

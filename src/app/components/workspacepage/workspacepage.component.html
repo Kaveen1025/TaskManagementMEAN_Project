@@ -5,7 +5,9 @@
   </div>
   <div class = "content">
     <div class="card-body text-center">
-      <img class = "rounded-circle workspaceImg shadow img-fluid"
+      <img *ngIf="ImageStaus" class = "rounded-circle workspaceImg shadow img-fluid"
+           [src] = "workspaceMainImage" alt="userProfile">
+      <img *ngIf="placeholderMainStatus" class = "workspaceImg"
            [src] = "workspaceMainImage" alt="userProfile">
       <div>
         <br>

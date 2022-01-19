@@ -23,6 +23,11 @@ export class WorkspacepageComponent implements OnInit {
 
   percentageLoading:any = false
 
+
+  placeholderMainStatus = false
+  ImageStaus = false;
+
+
   userID: string = "61d458c91d0655dd1358454a";
   workspaceID = "61d448976fc2f6cc55b25ca5";
   projects: any[] = [];
@@ -41,7 +46,32 @@ export class WorkspacepageComponent implements OnInit {
   memberIDs: string[] = [];
   workspaceObject: any;
 
-  workspaceMainPlaceHolder: string = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
+  images = [
+    {
+      main : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20cover%20images/bananas.png",
+      cover : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20main%20images/8sz44m1xhr961.png"
+    },
+    {
+      main : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20cover%20images/lemon.png",
+      cover : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20main%20images/among-trees.jpeg"
+    },
+    {
+      main : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20cover%20images/orange-juice.png",
+      cover : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20main%20images/minimalist-landscape-to-1600x900.jpeg"
+    },
+    {
+      main : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20cover%20images/strawberry.png",
+      cover : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20main%20images/wallpapersden.com_76272-1920x1080.jpg"
+    },
+  ]
+
+  min = Math.ceil(0);
+  max = Math.floor(4);
+  number = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+
+  workspaceMainPlaceHolder: string = this.images[this.number].main
+  workspaceCoverPlaceHolder: string =  this.images[this.number].cover
+
 
   searchText: string = ""
   flagEditBtns = true;
@@ -64,6 +94,7 @@ export class WorkspacepageComponent implements OnInit {
 
 
   getProjectDetails(){
+    // alert(this.numbber)
     this.workspaceService.getAllProjects(this.workspaceID).subscribe((post: any)=> {
       this.projectObject = post;
       this.projectObjectConstant = this.projectObject[0].Projects;
@@ -164,23 +195,28 @@ export class WorkspacepageComponent implements OnInit {
   getworkspaceMainImage(url:any){
     // alert("asd")
     this.workspaceMainImage = this.workspaceMainPlaceHolder
+    this.ImageStaus = false
+    this.placeholderMainStatus = true
     const storageRef = this.storage.ref(url);
     storageRef.getDownloadURL().subscribe(downloadURL => {
-      this.workspaceMainImage = this.workspaceMainPlaceHolder
+      // this.workspaceMainImage = this.workspaceMainPlaceHolder
       this.workspaceMainImage = downloadURL
+
       console.log("work")
       console.log(this.workspaceMainImage)
-
+      this.placeholderMainStatus = false
+      this.ImageStaus = true
     })
   }
 
   getworkspaceCoverImage(url:any){
     // alert("asd")
-    this.workspaceCoverImage = this.workspaceMainPlaceHolder
+    this.workspaceCoverImage = this.workspaceCoverPlaceHolder
     const storageRef = this.storage.ref(url);
     storageRef.getDownloadURL().subscribe(downloadURL => {
-      this.workspaceCoverImage = this.workspaceMainPlaceHolder
+      this.workspaceCoverImage = this.workspaceCoverPlaceHolder
       this.workspaceCoverImage = downloadURL
+
       console.log("work")
       console.log(this.workspaceCoverImage)
 

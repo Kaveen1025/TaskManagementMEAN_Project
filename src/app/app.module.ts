@@ -79,6 +79,8 @@ import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
 import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmdeletemodal.component";
 import {SignuppageComponent} from "./components/signuppage/signuppage.component";
+import {Confirmmodal2Component} from "./modals/confirmmodal2/confirmmodal2.component";
+import {LoginerrComponent} from "./modals/loginerr/loginerr.component";
 registerLocaleData(en);
 
 
@@ -136,7 +138,9 @@ registerLocaleData(en);
     InvitationscardComponent,
     NotificationheaderComponent,
     ConfirmdeletemodalComponent,
-    SignuppageComponent
+    SignuppageComponent,
+    Confirmmodal2Component,
+    LoginerrComponent
 
   ],
     imports: [
