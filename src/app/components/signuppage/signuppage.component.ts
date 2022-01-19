@@ -33,11 +33,17 @@ export class SignuppageComponent implements OnInit {
   public barLabel: string = "Password strength:";
   errorMsg:any;
   mismatch: boolean = true;
+  userProfileImage:any;
+  userImagePlaceHolder: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
 
   // accessing the template
   @ViewChild('content') private content: TemplateRef<any> | undefined;
 
   @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+
+  @ViewChild('content4') private content4: TemplateRef<any> | undefined;
+
+  @ViewChild('content99') private content99: TemplateRef<any> | undefined;
 
   constructor(private modalService: NgbModal, private userService: UserService) { }
 
@@ -46,8 +52,14 @@ export class SignuppageComponent implements OnInit {
 
     this.password1 = 'password';
     this.password2 = 'password';
+    this.userProfileImage = this.userImagePlaceHolder
 
   }
+
+  openUserImageEditModal() {
+    this.modalService.open(this.content99, { centered: true,backdrop:'static' });
+  }
+
 
   onClick() {
 
@@ -105,72 +117,79 @@ export class SignuppageComponent implements OnInit {
 
     this.mismatch = true
 
-    if(this.PasswordStrengthStatus && this.ConfirmPasswordStrengthStatus){
-      if(this.ConfirmPassword.value === this.Password.value) {
 
-        this.mismatch = true
+      if (this.PasswordStrengthStatus && !this.ConfirmPasswordStrengthStatus) {
+        if (this.ConfirmPassword.value === this.Password.value) {
 
-        let object2 = {
+          this.mismatch = true
 
-          Username: this.Username.value,
-          Email: this.Email.value,
-          FirstName: this.FirstName.value,
-          LastName: this.LastName.value,
-          Password: this.Password.value,
-          GoogleSignIn: false
+          let object2 = {
+
+            Username: this.Username.value,
+            Email: this.Email.value,
+            FirstName: this.FirstName.value,
+            LastName: this.LastName.value,
+            Password: this.Password.value,
+            GoogleSignIn: false
+
+          }
+
+          console.log(object2)
+
+          this.userService.createUser(object2).subscribe((post: any) => {
+
+            if (post == "User Added Successfully!") {
+
+              // alert("Success");
+              // location.reload();
+              this.errormsg = "";
+
+              this.Username.setValue("");
+              this.Email.setValue("");
+              this.FirstName.setValue("");
+              this.LastName.setValue("");
+              this.Password.setValue("");
+              this.ConfirmPassword.setValue("");
+              this.checkbox.setValue("");
+
+              this.closeAnimation();
+
+              console.log("Success");
+
+              this.modalService.open(this.content, {centered: true},);
+
+            } else {
+              // alert(post);
+              this.errormsg = post;
+              this.closeAnimation();
+            }
+            // console.log(this.projectObject[0]);
+          }, error => {
+
+            console.log(error);
+            // this.closeAnimation();
+            // this.modalService.open(this.content4, {centered: true},);
+
+          });
+
+
+        } else {
+
+          this.errorMsg = "Password mismatch!"
+          this.mismatch = false
+          this.closeAnimation();
 
         }
 
-        console.log(object2)
-        this.userService.createUser(object2).subscribe((post: any)=> {
-
-          if(post == "User Added Successfully!") {
-
-            // alert("Success");
-            // location.reload();
-            this.errormsg = "";
-
-            this.Username.setValue("");
-            this.Email.setValue("");
-            this.FirstName.setValue("");
-            this.LastName.setValue("");
-            this.Password.setValue("");
-            this.ConfirmPassword.setValue("");
-            this.checkbox.setValue("");
-
-            this.closeAnimation();
-
-            console.log("Success");
-
-            this.modalService.open(this.content, {centered: true},);
-          }
-
-          else{
-            // alert(post);
-            this.errormsg = post;
-            this.closeAnimation();
-          }
-          // console.log(this.projectObject[0]);
-        }, error => {
-          console.log(error);
-
-        });
-
-      }else{
-        this.errorMsg = "Password mismatch!"
+      } else {
+        this.errorMsg = "Password is weak!"
         this.mismatch = false
+        this.closeAnimation();
 
       }
-
-    }else {
-
-      this.errorMsg = "Password is weak!"
-      this.mismatch = false
-
     }
 
 
-  }
 
 
 }
