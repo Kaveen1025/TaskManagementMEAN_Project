@@ -1,100 +1,100 @@
 <div class = "workspace">
 
-    <div class="bg-box">
-      <img  [src]="workspaceCoverImage" class="card-img dynamicImage" alt="Responsive image">
+  <div class="bg-box">
+    <img  [src]="workspaceCoverImage" class="card-img dynamicImage" alt="Responsive image">
+  </div>
+  <div class = "content">
+    <div class="card-body text-center">
+      <img class = "rounded-circle workspaceImg shadow img-fluid"
+           [src] = "workspaceMainImage" alt="userProfile">
+      <div>
+        <br>
+        <h1 class="workspacename">{{workspaceTitle}}</h1>
+      </div>
+      <div class = "card-body description">
+        {{workspaceDescription}}
+      </div>
     </div>
-    <div class = "content">
-      <div class="card-body text-center">
-        <img class = "rounded-circle workspaceImg shadow img-fluid"
-             [src] = "workspaceMainImage" alt="userProfile">
-        <div>
-          <br>
-          <h1 class="workspacename">{{workspaceTitle}}</h1>
-        </div>
-        <div class = "card-body description">
-          {{workspaceDescription}}
-        </div>
+    <div id = "boxes">
+
+      <div id = "box1">
+
       </div>
-      <div id = "boxes">
-
-        <div id = "box1">
-
-        </div>
-        <div id = "leftbox">
-          <h2 class = "text-center numbertext">{{noOfProjects}}</h2>
-          <h2 class = "text-center titletext">Projects</h2>
-
-        </div>
-
-        <div id = "middlebox">
-          <h2 class = "text-center numbertext">{{noOfMembers}}</h2>
-          <h2 class = "text-center titletext">Members</h2>
-        </div>
-
-        <div id = "rightbox">
-          <h2 class = "text-center numbertext">{{noOfGuests}}</h2>
-          <h2 class = "text-center titletext">Guests</h2>
-        </div>
-        <div id = "box2">
-
-        </div>
-      </div>
-      <div class = "membergroup">
-        <app-avatar-group [workspaceID]="workspaceID"></app-avatar-group>
+      <div id = "leftbox">
+        <h2 class = "text-center numbertext">{{noOfProjects}}</h2>
+        <h2 class = "text-center titletext">Projects</h2>
 
       </div>
 
-      <div *ngIf="flagEditBtns" class="editrow">
-        <div class="column">
-          <img class = "imgBtn" (click) = "openVerticallyCentered()" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png" alt="Snow" >
-        </div>
-        <div class="column">
-          <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/sharing.png" alt="Forest" >
-        </div>
-        <div class="column">
-          <img class = "imgBtn"src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt="Mountains" >
-        </div>
+      <div id = "middlebox">
+        <h2 class = "text-center numbertext">{{noOfMembers}}</h2>
+        <h2 class = "text-center titletext">Members</h2>
       </div>
 
-      <div class = "text-center">
-        <br>
-        <h1 class = "topic">Your Projects</h1>
-        <br>
+      <div id = "rightbox">
+        <h2 class = "text-center numbertext">{{noOfGuests}}</h2>
+        <h2 class = "text-center titletext">Guests</h2>
       </div>
-      <div class = "workspacesearchbar">
-        <div class="container h-100">
-          <div class="d-flex justify-content-center h-100">
-            <div class="searchbar">
-              <input class="search_input" [(ngModel)]="searchText" (ngModelChange)="searchProjects()" type="text" name="" placeholder="Search Projects">
-              <a href="#" class="search_icon"><img class = "img141" src="./assets/images/images Used in Project Management UI Design\loupe.png"></a>
-            </div>
+      <div id = "box2">
+
+      </div>
+    </div>
+    <div class = "membergroup">
+      <app-avatar-group [workspaceID]="workspaceID"></app-avatar-group>
+
+    </div>
+
+    <div *ngIf="flagEditBtns" class="editrow">
+      <div class="column">
+        <img class = "imgBtn" (click) = "openVerticallyCentered()" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png" alt="Snow" >
+      </div>
+      <div class="column">
+        <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/sharing.png" alt="Forest" >
+      </div>
+      <div class="column">
+        <img class = "imgBtn"src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt="Mountains" >
+      </div>
+    </div>
+
+    <div class = "text-center">
+      <br>
+      <h1 class = "topic">Your Projects</h1>
+      <br>
+    </div>
+    <div class = "workspacesearchbar">
+      <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+          <div class="searchbar">
+            <input class="search_input" [(ngModel)]="searchText" (ngModelChange)="searchProjects()" type="text" name="" placeholder="Search Projects">
+            <a href="#" class="search_icon"><img class = "img141" src="./assets/images/images Used in Project Management UI Design\loupe.png"></a>
           </div>
         </div>
       </div>
-      <div *ngIf="flagCreateBtn" class = "creatbtn">
-        <app-crudbutton  class="text-center" text = "CREATE PROJECT" (click)="CreateProject()"></app-crudbutton>
-        <br>
-
-      </div>
-
-
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6" *ngFor="let ProjectDetails of projects">
-              <app-projectcard [projectDetails]="ProjectDetails"></app-projectcard>
-            </div>
-            <h3 class = "errortext">{{errorText}}</h3>
-            <div class="card" style = "border: none" [hidden] = "loadingStatus">
-              <app-loadinganimation></app-loadinganimation>
-            </div>
-          </div>
-        </div>
-      <br><br><br>
-      <ng-template #content let-modal  class = "mainModal">
-        <app-workspaceedit  (modalEvent) = "displayModal($event)" (reRenderEvent) = "getWorkspaceDetails()" [workspaceDetails]="workspaceObject" ></app-workspaceedit>
-      </ng-template>
+    </div>
+    <div *ngIf="flagCreateBtn" class = "creatbtn">
+      <app-crudbutton  class="text-center" text = "CREATE PROJECT" (click)="CreateProject()"></app-crudbutton>
+      <br>
 
     </div>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6" *ngFor="let ProjectDetails of projects">
+          <app-projectcard [projectDetails]="ProjectDetails"></app-projectcard>
+        </div>
+        <h3 class = "errortext">{{errorText}}</h3>
+        <div class="card" style = "border: none" [hidden] = "loadingStatus">
+          <app-loadinganimation></app-loadinganimation>
+        </div>
+      </div>
+    </div>
+    <br><br><br>
+    <ng-template #content let-modal  class = "mainModal">
+      <app-workspaceedit  (modalEvent) = "displayModal($event)" (reRenderEvent) = "getWorkspaceDetails()" [workspaceDetails]="workspaceObject" ></app-workspaceedit>
+    </ng-template>
+
+  </div>
 </div>
 
 
@@ -103,9 +103,9 @@
   <app-projectadd (reRenderDetails) = "reload()" [WorkSpaceID]=" workspaceID" ></app-projectadd>
 </ng-template>
 
-<div class="card" style = "border: none" *ngIf="percentageLoading">
-  <app-loadinganimation></app-loadinganimation>
-</div>
+<!--<div class="card" style = "border: none" *ngIf="percentageLoading">-->
+<!--  <app-loadinganimation></app-loadinganimation>-->
+<!--</div>-->
 
 <ng-template #content3 id = "content3" let-modal>
   <div  class="modal-content" >
@@ -113,3 +113,6 @@
   </div>
 </ng-template>
 
+<ng-template #content4 id = "content4" let-modal>
+  <app-successmodal></app-successmodal>
+</ng-template>

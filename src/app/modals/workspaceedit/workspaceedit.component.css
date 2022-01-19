@@ -39,6 +39,22 @@
   color: #FC5185;
 }
 
+.btnsave{
+
+  background-color: #3FC1C9;
+  color: #F5F5F5;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
+
+.btnclose{
+  background-color: #364F6B;
+  color: #F5F5F5;
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
+
 @media screen and (max-width: 1000px){
   .mainTitle{
     color: #F5F5F5;
@@ -88,3 +104,9 @@
 
   }
 }
+
+
+::ng-deep .modal-content {
+  border: none;
+}
+

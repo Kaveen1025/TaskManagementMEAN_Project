@@ -2,13 +2,13 @@ import {Component, EventEmitter, OnInit, Output, TemplateRef, ViewChild} from '@
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: 'app-confirmmodal',
-  templateUrl: './confirmmodal.component.html',
-  styleUrls: ['./confirmmodal.component.css']
+  selector: 'app-confirmmodal2',
+  templateUrl: './confirmmodal2.component.html',
+  styleUrls: ['./confirmmodal2.component.css']
 })
-export class ConfirmmodalComponent implements OnInit {
+export class Confirmmodal2Component implements OnInit {
 
-  @ViewChild('content') private content: TemplateRef<any> | undefined;
+  @ViewChild('content2') private content: TemplateRef<any> | undefined;
   @Output() someEvent = new EventEmitter<string>();
   constructor(private modalService: NgbModal) { }
 

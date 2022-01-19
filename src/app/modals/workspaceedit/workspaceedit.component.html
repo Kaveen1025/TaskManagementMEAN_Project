@@ -61,7 +61,9 @@
 
 </div>
 <ng-template #content2 let-modal  id = "content2">
-  <app-confirmmodal></app-confirmmodal>
-  <button type="button" class="btn" id="okbtn" (click)="editworkspace()">Save</button>
-  <button type="button" class="btn" id="canclbtn" (click)="closeModal()">Don't save</button>
+  <app-confirmmodal2></app-confirmmodal2>
+  <div class="modal-body text-center">
+  <button type="button" class="btn btnsave" id="okbtn" (click)="editworkspace()">Save</button>
+  <button type="button" class="btn btnclose" id="canclbtn" (click)="closeModal()">Don't save</button>
+  </div>
 </ng-template>

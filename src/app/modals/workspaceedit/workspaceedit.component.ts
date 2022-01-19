@@ -39,6 +39,8 @@ export class WorkspaceeditComponent implements OnInit  {
   // @ts-ignore
   emptyFile = new FileUpload();
 
+  loadingStatus = false;
+
   description: string = "";
   workspaceID: string = "";
   constcoverimage: string = "";
@@ -55,7 +57,7 @@ export class WorkspaceeditComponent implements OnInit  {
 
 
   ngOnInit(): void {
-    console.log("asd");
+
     console.log(this.workspaceDetails)
     this.workspacename = this.workspaceDetails.WorkspaceName;
     this.coverimage = this.workspaceDetails.CoverImage;
@@ -101,167 +103,173 @@ export class WorkspaceeditComponent implements OnInit  {
     let currentMainUpload = this.mainImageFile;
     let currentCoverUpload = this.coverImageFile;
 
-      if(this.flagName == true || this.flagDescription == true){
 
-      }else {
+    if(this.flagName == true || this.flagDescription == true){
 
-        let status = 1
-        // this.closeModal()
-        this.modalEvent.emit("1")
+    }else {
 
-        let percentage;
-        if(this.mainImageFile.file != undefined && this.coverImageFile.file != undefined){
-          // alert("both undefined")
-          this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
-            percentage => {
-              percentage = Math.round(percentage ? percentage : 0);
-              console.log('done')
+      let status = 1
+      this.loadingStatus = true;
+      // this.closeModal()
+      this.modalEvent.emit("1")
 
-              if(percentage >= 100 && status == 1){
-                let detailsObject = {
-                  WorkspaceName: this.workspacename,
-                  Description: this.description,
-                  MainImage: this.mainimage,
-                  CoverImage: this.coverimage,
-                }
-                this.FirebaseService.pushToWorkSpaceStorage(currentCoverUpload).subscribe(
-                  percentage => {
-                    percentage = Math.round(percentage ? percentage : 0);
-                    console.log('done')
-                    if(percentage >= 100){
-                      this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-                        alert("Successfully Updated BOTH")
-                        this.reRenderEvent.emit();
-                        status = 2
-                        this.modalEvent.emit("2");
-                        this.closeModal();
+      let percentage;
+      if(this.mainImageFile.file != undefined && this.coverImageFile.file != undefined){
+        // alert("both undefined")
+        this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
+          percentage => {
+            percentage = Math.round(percentage ? percentage : 0);
+            console.log('done')
+
+            if(percentage >= 100 && this.loadingStatus == true){
+              let detailsObject = {
+                WorkspaceName: this.workspacename,
+                Description: this.description,
+                MainImage: this.mainimage,
+                CoverImage: this.coverimage,
+              }
+              this.FirebaseService.pushToWorkSpaceStorage(currentCoverUpload).subscribe(
+                percentage => {
+                  percentage = Math.round(percentage ? percentage : 0);
+                  console.log('done')
+                  if(percentage >= 100){
+                    this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+                      this.loadingStatus = false
+                      // alert("Successfully Updated BOTH")
+                      this.reRenderEvent.emit();
+                      status = 2
+                      this.modalEvent.emit("2");
+                      // this.closeModal();
 
 
 
-                      }, error => {
-                        console.log(error);
+                    }, error => {
+                      console.log(error);
 
-                      });
+                    });
 
-                    }
-                  },
-                  error => {
-                    console.log(error);
-                    this.closeModal()
                   }
-                );
-              }
-
-            },
-            error => {
-              console.log(error);
-              alert("bbb")
-
-              // this.contentStatus1 = false
-              this.closeModal()
-            }
-          );
-        }else if(this.mainImageFile.file != undefined && this.coverImageFile.file == undefined){
-          alert("coverimage undefined")
-          this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
-            percentage => {
-              percentage = Math.round(percentage ? percentage : 0);
-              console.log('done')
-
-              if(percentage >= 100){
-                let detailsObject = {
-                  WorkspaceName: this.workspacename,
-                  Description: this.description,
-                  MainImage: this.mainimage,
-                  CoverImage: this.coverimage,
-                }
-                this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-                  alert("Successfully Updated cover undifined")
-
-                  this.reRenderEvent.emit();
-                  this.modalEvent.emit("2");
-                  this.closeModal();
-
-
-
-                }, error => {
+                },
+                error => {
                   console.log(error);
-
-                });
-
-              }
-
-            },
-            error => {
-              console.log(error);
-              alert("bbb")
-
-              // this.contentStatus1 = false
-              this.closeModal()
-            }
-          );
-        }else if(this.mainImageFile.file == undefined && this.coverImageFile.file != undefined){
-          this.FirebaseService.pushToWorkSpaceStorage(currentCoverUpload).subscribe(
-            percentage => {
-              percentage = Math.round(percentage ? percentage : 0);
-              console.log('done')
-
-              if(percentage >= 100){
-                let detailsObject = {
-                  WorkspaceName: this.workspacename,
-                  Description: this.description,
-                  MainImage: this.mainimage,
-                  CoverImage: this.coverimage,
+                  this.closeModal()
                 }
-                this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-                  alert("Successfully Updated main yndefined")
-                  this.modalEvent.emit("2");
-                  this.reRenderEvent.emit();
-                  this.closeModal();
-
-
-                }, error => {
-                  console.log(error);
-
-                });
-
-              }
-
-            },
-            error => {
-              console.log(error);
-              alert("bbb")
-
-              // this.contentStatus1 = false
-              this.closeModal()
+              );
             }
-          );
 
-        }else{
-          let detailsObject = {
-            WorkspaceName: this.workspacename,
-            Description: this.description,
-            MainImage: this.mainimage,
-            CoverImage: this.coverimage,
-          }
-
-          this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-            alert("Successfully Updated both undefined")
-            this.modalEvent.emit("2");
-            this.reRenderEvent.emit();
-            this.closeModal();
-
-
-
-
-          }, error => {
+          },
+          error => {
             console.log(error);
+            // alert("bbb")
 
-          });
+            // this.contentStatus1 = false
+            this.closeModal()
+          }
+        );
+      }else if(this.mainImageFile.file != undefined && this.coverImageFile.file == undefined){
+        alert("coverimage undefined")
+        this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
+          percentage => {
+            percentage = Math.round(percentage ? percentage : 0);
+            console.log('done')
+
+            if(percentage >= 100 && this.loadingStatus == true){
+              let detailsObject = {
+                WorkspaceName: this.workspacename,
+                Description: this.description,
+                MainImage: this.mainimage,
+                CoverImage: this.coverimage,
+              }
+              this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+                this.loadingStatus = false;
+                // alert("Successfully Updated cover undifined")
+
+                this.reRenderEvent.emit();
+                this.modalEvent.emit("2");
+                // this.closeModal();
+
+
+
+              }, error => {
+                console.log(error);
+
+              });
+
+            }
+
+          },
+          error => {
+            console.log(error);
+            // alert("bbb")
+
+            // this.contentStatus1 = false
+            this.closeModal()
+          }
+        );
+      }else if(this.mainImageFile.file == undefined && this.coverImageFile.file != undefined){
+        this.FirebaseService.pushToWorkSpaceStorage(currentCoverUpload).subscribe(
+          percentage => {
+            percentage = Math.round(percentage ? percentage : 0);
+            // console.log('done')
+
+            if(percentage >= 100 && this.loadingStatus == true){
+              let detailsObject = {
+                WorkspaceName: this.workspacename,
+                Description: this.description,
+                MainImage: this.mainimage,
+                CoverImage: this.coverimage,
+              }
+              this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+                this.loadingStatus = false
+                // alert("Successfully Updated main yndefined")
+                this.modalEvent.emit("2");
+                this.reRenderEvent.emit();
+                // this.closeModal();
+
+
+              }, error => {
+                console.log(error);
+
+              });
+
+            }
+
+          },
+          error => {
+            console.log(error);
+            alert("bbb")
+
+            // this.contentStatus1 = false
+            // this.closeModal()
+          }
+        );
+
+      }else{
+        let detailsObject = {
+          WorkspaceName: this.workspacename,
+          Description: this.description,
+          MainImage: this.mainimage,
+          CoverImage: this.coverimage,
         }
 
-        // aa
+        this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+          this.loadingStatus = false;
+          // alert("Successfully Updated both undefined")
+          this.modalEvent.emit("2");
+          this.reRenderEvent.emit();
+          // this.closeModal();
+
+
+
+
+        }, error => {
+          console.log(error);
+
+        });
       }
+
+      // aa
+    }
 
 
 

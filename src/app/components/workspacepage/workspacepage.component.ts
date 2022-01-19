@@ -15,6 +15,8 @@ export class WorkspacepageComponent implements OnInit {
   @ViewChild('content', {static: true}) modalContent: TemplateRef<any> | undefined
   @ViewChild('content2', {static: true}) content2: TemplateRef<any> | undefined
   @ViewChild('content3', {static: true}) content3: TemplateRef<any> | undefined
+  @ViewChild('content4', {static: true}) content4: TemplateRef<any> | undefined
+
 
 
   @Output() setProjects = new EventEmitter();
@@ -50,6 +52,7 @@ export class WorkspacepageComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await this.getProjectDetails();
     await this.getWorkspaceDetails()
+    // this.openSuccessModal()
   }
 
   workspaceService : WorkspaceService;
@@ -83,9 +86,8 @@ export class WorkspacepageComponent implements OnInit {
   getWorkspaceDetails(){
     this.workspaceService.getWorkspaceData(this.workspaceID).subscribe((post: any)=> {
 
-      alert("aaa")
       console.log("Project Details")
-        console.log(post)
+      console.log(post)
 
       this.noOfMembers = post.MemberIDs.length
       this.noOfProjects = post.ProjectIDs.length
@@ -103,7 +105,7 @@ export class WorkspacepageComponent implements OnInit {
       this.getworkspaceMainImage(this.workspaceMainImage);
       this.getworkspaceCoverImage(this.workspaceCoverImage);
 
-      }, error => {
+    }, error => {
       alert("asd")
       console.log(error);
     });
@@ -135,33 +137,24 @@ export class WorkspacepageComponent implements OnInit {
 
   searchProjects(){
     let i: number = 0
-      console.log(this.projectObjectConstant)
-      let searchResult = this.projectObjectConstant.filter(
-        (post) =>
-          post.projectName.toLowerCase().includes(this.searchText.toLowerCase())
-      );
+    console.log(this.projectObjectConstant)
+    let searchResult = this.projectObjectConstant.filter(
+      (post) =>
+        post.projectName.toLowerCase().includes(this.searchText.toLowerCase())
+    );
 
-      if(searchResult.length >0){
-        console.log("Return array")
-        console.log(searchResult)
-        this.projects = searchResult;
-        this.errorText = ""
-      }else{
-        this.projects = [];
-        this.errorText = "No Projects available"
-      }
+    if(searchResult.length >0){
+      console.log("Return array")
+      console.log(searchResult)
+      this.projects = searchResult;
+      this.errorText = ""
+    }else{
+      this.projects = [];
+      this.errorText = "No Projects available"
+    }
 
   }
 
-  openVerticallyCentered() {
-    // console.log(this.modalContent);
-    this.modalService.open(this.modalContent, { centered: true, size : "lg", backdrop: "static"});
-  }
-
-  openWaitingModal() {
-    // console.log(this.modalContent);
-    this.modalService.open(this.content3, { centered: true, size : "lg", backdrop: "static"});
-  }
 
   closeModal() {
     this.modalService.dismissAll(this.content3);
@@ -202,15 +195,31 @@ export class WorkspacepageComponent implements OnInit {
   displayModal(value: string){
     // alert("bbbb" )
     if(value == "1"){
-      alert("1")
       this.openWaitingModal()
     }else{
-      alert("2")
       this.closeModal()
+      this.openSuccessModal()
 
     }
 
   }
+
+  openVerticallyCentered() {
+    // console.log(this.modalContent);
+    this.modalService.open(this.modalContent, { centered: true, size : "lg", backdrop: "static"});
+  }
+
+  openWaitingModal() {
+    // console.log(this.modalContent);
+    this.modalService.open(this.content3, { centered: true, size : "lg", backdrop: "static"});
+  }
+
+  openSuccessModal() {
+    // console.log(this.modalContent);
+    // alert("Open")
+    this.modalService.open(this.content4, { centered: true, size : "lg", backdrop: "static"});
+  }
+
 
   reload(){
     // console.log("Reloading....");

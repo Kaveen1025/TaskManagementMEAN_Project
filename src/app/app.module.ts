@@ -77,6 +77,7 @@ import { GooglesignupComponent } from './buttons/googlesignup/googlesignup.compo
 import { NotificationspageComponent } from './components/notificationspage/notificationspage.component';
 import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.component";
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
+import { Confirmmodal2Component } from './modals/confirmmodal2/confirmmodal2.component';
 registerLocaleData(en);
 
 
@@ -132,7 +133,8 @@ registerLocaleData(en);
     GooglesignupComponent,
     NotificationspageComponent,
     InvitationscardComponent,
-    NotificationheaderComponent
+    NotificationheaderComponent,
+    Confirmmodal2Component
 
   ],
     imports: [
