@@ -14,6 +14,8 @@ export class WorkspacepageComponent implements OnInit {
 
   @ViewChild('content', {static: true}) modalContent: TemplateRef<any> | undefined
   @ViewChild('content2', {static: true}) content2: TemplateRef<any> | undefined
+  @ViewChild('content3', {static: true}) content3: TemplateRef<any> | undefined
+
 
   @Output() setProjects = new EventEmitter();
 
@@ -156,6 +158,16 @@ export class WorkspacepageComponent implements OnInit {
     this.modalService.open(this.modalContent, { centered: true, size : "lg", backdrop: "static"});
   }
 
+  openWaitingModal() {
+    // console.log(this.modalContent);
+    this.modalService.open(this.content3, { centered: true, size : "lg", backdrop: "static"});
+  }
+
+  closeModal() {
+    this.modalService.dismissAll(this.content3);
+    // this.callParent()
+  }
+
   getworkspaceMainImage(url:any){
     // alert("asd")
     this.workspaceMainImage = this.workspaceMainPlaceHolder
@@ -191,10 +203,10 @@ export class WorkspacepageComponent implements OnInit {
     // alert("bbbb" )
     if(value == "1"){
       alert("1")
-      this.percentageLoading = true;
+      this.openWaitingModal()
     }else{
       alert("2")
-      this.percentageLoading = false;
+      this.closeModal()
 
     }
 

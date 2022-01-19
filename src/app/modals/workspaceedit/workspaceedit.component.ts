@@ -105,7 +105,7 @@ export class WorkspaceeditComponent implements OnInit  {
 
       }else {
 
-        let a = 1
+        let status = 1
         // this.closeModal()
         this.modalEvent.emit("1")
 
@@ -117,7 +117,7 @@ export class WorkspaceeditComponent implements OnInit  {
               percentage = Math.round(percentage ? percentage : 0);
               console.log('done')
 
-              if(percentage >= 100){
+              if(percentage >= 100 && status == 1){
                 let detailsObject = {
                   WorkspaceName: this.workspacename,
                   Description: this.description,
@@ -130,8 +130,9 @@ export class WorkspaceeditComponent implements OnInit  {
                     console.log('done')
                     if(percentage >= 100){
                       this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
-                        alert("Successfully Updated")
+                        alert("Successfully Updated BOTH")
                         this.reRenderEvent.emit();
+                        status = 2
                         this.modalEvent.emit("2");
                         this.closeModal();
 
