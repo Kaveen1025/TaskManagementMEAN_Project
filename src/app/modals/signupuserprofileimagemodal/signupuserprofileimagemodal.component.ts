@@ -1,20 +1,19 @@
 import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
-import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {FirebasesService} from "../../services/firebases.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ImageCroppedEvent, LoadedImage} from "ngx-image-cropper";
 import {FileUpload} from "../../module/file-upload";
-import {FirebasesService} from "../../services/firebases.service";
-import {Observable, Observer} from "rxjs";
 import {UserService} from "../../services/user.service";
-import {AngularFireDatabase} from "@angular/fire/compat/database";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+
 
 @Component({
-  selector: 'app-userprofileimagemodal',
-  templateUrl: './userprofileimagemodal.component.html',
-  styleUrls: ['./userprofileimagemodal.component.css']
+  selector: 'app-signupuserprofileimagemodal',
+  templateUrl: './signupuserprofileimagemodal.component.html',
+  styleUrls: ['./signupuserprofileimagemodal.component.css']
 })
-export class UserprofileimagemodalComponent implements OnInit {
+export class SignupuserprofileimagemodalComponent implements OnInit {
+
 
   @ViewChild('content') private content: TemplateRef<any> | undefined;
   @ViewChild('content100') private content100: TemplateRef<any> | undefined;
@@ -45,14 +44,12 @@ export class UserprofileimagemodalComponent implements OnInit {
     this.FirebaseService = FirebaseService
     this.UserService = UserService
     this.userId = "61d59e7999dc1f31177898ba"
-    this.userProfileImage = this.userImagePlaceHolder
 
   }
 
   ngOnInit(): void {
 
   }
-
   closeModal() {
     this.modalService.dismissAll(this.content);
   }
@@ -92,30 +89,19 @@ export class UserprofileimagemodalComponent implements OnInit {
     // show message
   }
 
-
- generateCode(length:any) {
-    let result = "";
-    let characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let charactersLength = characters.length;
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  }
   async saveDetails() {
     // append file name to the user profile
 
-    if(this.userProfileImage == this.userImagePlaceHolder){
-      this.updateUserProfileInBackend()
-      this.contentStatus1 = true
-    }else{
-     this.temp.name = "UserProfileImages/"+this.userId+this.generateCode(8)+"UserImage.png"
-     //  this.temp.name = "UserProfileImages/kfasfklsadfsdsklfUserImage.png"
-      //console.log(this.temp.name)
-      this.upload(this.temp)
-      this.contentStatus1 = true
-    }
+    // if(this.userProfileImage == this.userImagePlaceHolder){
+    //   this.updateUserProfileInBackend()
+    //   this.contentStatus1 = true
+    // }else{
+    //   this.temp.name = "UserProfileImages/"+this.userId+"UserImage.png"
+    //   //  this.temp.name = "UserProfileImages/kfasfklsadfsdsklfUserImage.png"
+    //   //console.log(this.temp.name)
+    //   this.upload(this.temp)
+    //   this.contentStatus1 = true
+    // }
 
     // e.target.file[0].name
 
@@ -131,40 +117,40 @@ export class UserprofileimagemodalComponent implements OnInit {
 // upload image
   upload(selectedFile:any): void {
     let percentage
-        let currentFileUpload = new FileUpload(selectedFile);
-        this.FirebaseService.pushFileToStorage(currentFileUpload).subscribe(
-          percentage => {
-            percentage = Math.round(percentage ? percentage : 0);
-            console.log('done')
-            if(percentage >= 100 && this.percentageLoading){
-              this.percentageLoading = false
-              let content = {
-                ProfileImage: this.temp.name,
-              }
-
-              this.UserService.updateUserProfileImage(this.userId,content).subscribe({
-                next: value => {
-                  // alert("db updated")
-
-                  this.contentStatus1 = false
-                  this.closeModal()
-                  this.someEvent.emit()
-                }
-                ,
-                error: error => {
-                  console.log(error)
-                  this.contentStatus1 = false
-                  this.closeModal()
-                }
-              })
-            }
-          },
-          error => {
-            console.log(error);
-            this.contentStatus1 = false
-            this.closeModal()
+    let currentFileUpload = new FileUpload(selectedFile);
+    this.FirebaseService.pushFileToStorage(currentFileUpload).subscribe(
+      percentage => {
+        percentage = Math.round(percentage ? percentage : 0);
+        console.log('done')
+        if(percentage >= 100 && this.percentageLoading){
+          this.percentageLoading = false
+          let content = {
+            ProfileImage: this.temp.name,
           }
-        );
+
+          this.UserService.updateUserProfileImage(this.userId,content).subscribe({
+            next: value => {
+              // alert("db updated")
+
+              this.contentStatus1 = false
+              this.closeModal()
+              this.someEvent.emit()
+            }
+            ,
+            error: error => {
+              console.log(error)
+              this.contentStatus1 = false
+              this.closeModal()
+            }
+          })
+        }
+      },
+      error => {
+        console.log(error);
+        this.contentStatus1 = false
+        this.closeModal()
+      }
+    );
   }
 
   // covert base64 uri for image
@@ -201,5 +187,4 @@ export class UserprofileimagemodalComponent implements OnInit {
       }
     })
   }
-
 }

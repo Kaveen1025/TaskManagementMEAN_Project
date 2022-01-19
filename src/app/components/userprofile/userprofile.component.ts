@@ -29,8 +29,8 @@ export class UserprofileComponent implements OnInit {
   ngOnInit(): void {
     this.getUser()
   }
-  getUser(){
-    this.UserService.getUser(this.userID).subscribe({
+  async  getUser(){
+   await this.UserService.getUser(this.userID).subscribe({
       next:value=>
       {
         this.user = value
@@ -52,6 +52,7 @@ export class UserprofileComponent implements OnInit {
 
 
   // retrieve image from firebase
+  panelOpenState:any
 
 
  getUserProfileImage(){
@@ -69,11 +70,17 @@ export class UserprofileComponent implements OnInit {
 
   updateUserProfileImage(){
     this.userProfileImage = this.userImagePlaceHolder
-    const storageRef = this.storage.ref(this.user.ProfileImage);
-    storageRef.getDownloadURL().subscribe(downloadURL => {
-      this.userProfileImage = downloadURL
-      //this.userProfileImage = "https://cdn-icons-png.flaticon.com/512/149/149071.png"
-    })
+    console.log(this.user.ProfileImage)
+    // this.getUser().then(r => {
+    //     const storageRef = this.storage.ref(this.user.ProfileImage);
+    //     storageRef.getDownloadURL().subscribe(downloadURL => {
+    //       this.userProfileImage = downloadURL
+    //       //this.userProfileImage = "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+    //     })
+    // }
+
+    // )
+
   }
 
 

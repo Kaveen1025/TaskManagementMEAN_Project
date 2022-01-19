@@ -79,6 +79,9 @@ import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
 import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmdeletemodal.component";
 import {SignuppageComponent} from "./components/signuppage/signuppage.component";
+import {LoginerrComponent} from "./modals/loginerr/loginerr.component";
+import { SignupuserprofileimagemodalComponent } from './modals/signupuserprofileimagemodal/signupuserprofileimagemodal.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 registerLocaleData(en);
 
 
@@ -136,7 +139,9 @@ registerLocaleData(en);
     InvitationscardComponent,
     NotificationheaderComponent,
     ConfirmdeletemodalComponent,
-    SignuppageComponent
+    SignuppageComponent,
+    LoginerrComponent,
+    SignupuserprofileimagemodalComponent
 
   ],
     imports: [
@@ -161,7 +166,8 @@ registerLocaleData(en);
         ImageCropperModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
-        SocialLoginModule
+        SocialLoginModule,
+        MatExpansionModule
 
 
     ],
