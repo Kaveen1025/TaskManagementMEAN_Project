@@ -19,8 +19,8 @@ export class UserprofileComponent implements OnInit {
   @ViewChild('content99') private content99: TemplateRef<any> | undefined;
   googleUserStatus: boolean;
   constructor(UserService:UserService, private modalService: NgbModal, private db: AngularFireDatabase, private storage: AngularFireStorage) {
-    // this.userID = "61d59e7999dc1f31177898ba"
-    this.userID = "61e6c3cc40db72a82a8256cd"
+    this.userID = "61d59e7999dc1f31177898ba"
+    // this.userID = "61e6c3cc40db72a82a8256cd"
     this.UserService = UserService
     this.userProfileImage = this.userImagePlaceHolder
     this.googleUserStatus = false

@@ -12,7 +12,8 @@
 }
 
 .userDetails .innerCard{
-  border: none
+  border: none;
+  width:600px;
 }
 
 .userDetails .details{
