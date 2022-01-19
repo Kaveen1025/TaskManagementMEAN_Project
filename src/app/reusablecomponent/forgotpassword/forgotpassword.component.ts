@@ -30,7 +30,7 @@ export class ForgotpasswordComponent implements OnInit {
   display2 = false
   display3 = false
 
-  code : String ="1234"
+  code : any
   userID : String =""
   errorMsg:any
   errMsg:any
@@ -77,18 +77,6 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // var cotter = new Cotter(API_KEY_ID);
-    // cotter
-    //   .signInWithLink()
-    //   .showEmailForm()
-    //   .then((payload: object) => {
-    //     this.success = true;
-    //     // @ts-ignore
-    //     this.payload = payload;
-    //     // @ts-ignore
-    //     this.payloadString = JSON.stringify(payload, null, 4);
-    //   })
-    //   .catch((err: any) => console.log(err));
   }
 
   makeid(length:any) {
@@ -100,92 +88,40 @@ export class ForgotpasswordComponent implements OnInit {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
+
   }
 
   getEmail(e:Event){
     this.UserService.getEmail(this.email).subscribe((post: any)=> {
-
-
-      console.log(post)
-
       if(post!=""){
-        alert("abc")
+
+        this.code=this.makeid(5)
 
         let a= post[0]
-
         this.userID = a._id
-        console.log(this.userID)
 
         this.getUser()
           this.display1=false
           this.display2=true
 
           var codeMail = {
-            email: "tharindudeshan50@gmail.com",
-            message: "1234"
+            email: "tharindudeshan50@gmail.com", // this.email,
+            message: this.code
           }
           console.log(codeMail)
 
-        // public sendEmail(e: Event) {
-        //     e.preventDefault();
-            // @ts-ignore
-          emailjs.sendForm('service_9hfbzyd', 'template_bwhg6jb', codeMail, 'user_4ruC7f7ekFCVHV5AxCzHw')
+          // @ts-ignore
+        emailjs.sendForm('service_9hfbzyd', 'template_bwhg6jb', codeMail, 'user_4ruC7f7ekFCVHV5AxCzHw')
               .then((result: EmailJSResponseStatus) => {
                 console.log(result.text);
               }, (error) => {
                 console.log(error.text);
               });
-          // }
-
-
       }
       else{
-        // alert('dfg')
         this.err1 = false
         this.openVerticallyCentered4()
       }
-
-      // console.log(this.email)
-      // console.log(post[0].Email)
-      //
-      // // let [i] = post
-      // let a= post[0]
-      // console.log(a.Email)
-      // console.log(post.length)
-      //
-      // this.userID = a._id
-      // console.log(this.userID)
-      //
-      // this.getUser()
-
-      // if (post[0].length !== null) {
-      //   console.log('Success')
-      //   this.display1=false
-      //   this.display2=true
-      //
-      //   var codeMail = {
-      //     email: "tharindudeshan50@gmail.com",
-      //     message: "1234"
-      //   }
-      //   console.log(codeMail)
-      //
-      // // public sendEmail(e: Event) {
-      // //     e.preventDefault();
-      //     // @ts-ignore
-      //   emailjs.sendForm('service_9hfbzyd', 'template_bwhg6jb', codeMail, 'user_4ruC7f7ekFCVHV5AxCzHw')
-      //       .then((result: EmailJSResponseStatus) => {
-      //         console.log(result.text);
-      //       }, (error) => {
-      //         console.log(error.text);
-      //       });
-      //   // }
-
-      //   }
-      // else {
-      //     alert('Invalid Email')
-      //   this.err1 = false
-      //   }
-
     },err=>{
       console.log(err)
     });
@@ -201,13 +137,9 @@ export class ForgotpasswordComponent implements OnInit {
       this.display3=true
     }
     else{
-      // alert('invalid code')
       this.errMsg = "Invalid Code"
       this.loadingStatus = true
       this.invalid = false
-      // this.display2=false
-      // this.display1=true;
-      // this.display3=false
     }
   }
 
