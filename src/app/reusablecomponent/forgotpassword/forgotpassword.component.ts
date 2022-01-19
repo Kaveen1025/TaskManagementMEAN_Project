@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../services/user.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
-// import {EmailService} from "../../services/emailservices";
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 
 // import Cotter from 'cotter';
@@ -21,6 +21,7 @@ export class ForgotpasswordComponent implements OnInit {
   @ViewChild('content') private content: TemplateRef<any> | undefined;
   @ViewChild('content2') private content2: TemplateRef<any> | undefined;
   @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+  @ViewChild('content4', {static: true}) modalContent4: TemplateRef<any> | undefined
 
   email : String =""
   User:any
@@ -29,7 +30,7 @@ export class ForgotpasswordComponent implements OnInit {
   display2 = false
   display3 = false
 
-  code : String ="1234"
+  code : any
   userID : String =""
   errorMsg:any
   errMsg:any
@@ -51,6 +52,8 @@ export class ForgotpasswordComponent implements OnInit {
   mismatch: boolean = true;
   invalid: boolean = true;
 
+  err1:boolean = true
+
   public barLabel: string = "Password strength:";
 
   UserService:UserService
@@ -59,6 +62,10 @@ export class ForgotpasswordComponent implements OnInit {
   payload = null;
   payloadString = null;
   verifycode: any;
+
+  // emailText : String = "Here's the confirmation code to reset your password"
+
+
 
 
   constructor(private http : HttpClient,public fb: FormBuilder, UserService:UserService,private modalService: NgbModal) {
@@ -70,47 +77,57 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // var cotter = new Cotter(API_KEY_ID);
-    // cotter
-    //   .signInWithLink()
-    //   .showEmailForm()
-    //   .then((payload: object) => {
-    //     this.success = true;
-    //     // @ts-ignore
-    //     this.payload = payload;
-    //     // @ts-ignore
-    //     this.payloadString = JSON.stringify(payload, null, 4);
-    //   })
-    //   .catch((err: any) => console.log(err));
   }
 
-  getEmail(){
+  makeid(length:any) {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+
+  }
+
+  getEmail(e:Event){
     this.UserService.getEmail(this.email).subscribe((post: any)=> {
-      console.log(post)
-      console.log(this.email)
+      if(post!=""){
 
-      // let [i] = post
-      let a= post[0]
-      console.log(a.Email)
-      console.log(post.length)
+        this.code=this.makeid(5)
 
-      this.userID = a._id
-      console.log(this.userID)
+        let a= post[0]
+        this.userID = a._id
 
-      this.getUser()
+        this.getUser()
+          this.display1=false
+          this.display2=true
 
-      if (post[0].length !== 0) {
-          console.log('User Available')
-        this.display1=false
-        this.display2=true
-        // this.flag=1
-        }
-      else {
-          alert('Invalid Email')
-        }
+          var codeMail = {
+            email: "tharindudeshan50@gmail.com", // this.email,
+            message: this.code
+          }
+          console.log(codeMail)
 
+          // @ts-ignore
+        emailjs.sendForm('service_9hfbzyd', 'template_bwhg6jb', codeMail, 'user_4ruC7f7ekFCVHV5AxCzHw')
+              .then((result: EmailJSResponseStatus) => {
+                console.log(result.text);
+              }, (error) => {
+                console.log(error.text);
+              });
+      }
+      else{
+        this.err1 = false
+        this.openVerticallyCentered4()
+      }
+    },err=>{
+      console.log(err)
     });
   }
+
+
 
   verifyCode() {
     if(this.verifycode === this.code){
@@ -120,14 +137,14 @@ export class ForgotpasswordComponent implements OnInit {
       this.display3=true
     }
     else{
-      // alert('invalid code')
       this.errMsg = "Invalid Code"
       this.loadingStatus = true
       this.invalid = false
-      // this.display2=false
-      // this.display1=true;
-      // this.display3=false
     }
+  }
+
+  openVerticallyCentered4() {
+    this.modalService.open(this.modalContent4, { centered: true});
   }
 
   changeThePassword() {
