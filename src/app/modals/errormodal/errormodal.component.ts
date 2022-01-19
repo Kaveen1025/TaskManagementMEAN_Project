@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import { TemplateRef, ViewChild } from '@angular/core';
 @Component({
@@ -7,6 +7,9 @@ import { TemplateRef, ViewChild } from '@angular/core';
   styleUrls: ['./errormodal.component.css']
 })
 export class ErrormodalComponent implements OnInit {
+
+
+
   // can access the template using following code
   @ViewChild('content') private content: TemplateRef<any> | undefined;
   constructor(private modalService: NgbModal) { }

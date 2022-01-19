@@ -24,5 +24,9 @@ export class WorkspaceservicesService {
     return this.http.get(environment.apiBaseUrl + "workspace/getbyname/" + name);
   }
 
+  //Remove Project from Workspace;
+  removeProject(workspaceid:any, projectid:any){
+    return this.http.delete(environment.apiBaseUrl + "workspace/removeProject/" + workspaceid + "/" + projectid);
+  }
 
 }

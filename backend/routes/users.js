@@ -30,27 +30,34 @@ router.route("/add").post(async(req,res)=>{
     const emailExist = await User.findOne({ Email: Email });
 
     if (emailExist) {
-      return res.status(422).json({ error: "Email Already Exist" });
+
+       res.json("Email Already Exist");
+
+
     }
 
     const usernameExist = await User.findOne({ Username: Username });
 
     if (usernameExist) {
-      return res.status(422).json({ error: "Username Already Exist" });
+
+      res.json("Username Already Exist");
     }
 
-    const newUser = new User({
-      Username,
-      Email,
-      FirstName,
-      LastName,
-      Password,
-      GoogleSignIn,
-      ProfileImage
-    })
+    else if(!emailExist && !usernameExist){
 
-    await newUser.save();
-    res.status(201).json({ message: "User Added Successfully!" });
+      const newUser = new User({
+        Username,
+        Email,
+        FirstName,
+        LastName,
+        Password,
+        GoogleSignIn,
+        ProfileImage
+      })
+
+      await newUser.save();
+      res.json("User Added Successfully!");
+    }
 
   }catch (err){
 
@@ -58,6 +65,7 @@ router.route("/add").post(async(req,res)=>{
 
   }
 })
+
 
 //Get All Users
 //URL -- >http://localhost:8070/user/getAll
@@ -251,12 +259,12 @@ router.post("/loginUser", async (req, res) => {
       const isMatch = await bcrypt.compare(Password, customerLogin.Password);
 
       if (!isMatch) {
-        res.status(400).json({ error: "Invalid Credentials" });
+        res.json("Invalid Credentials");
       } else {
-        res.json({message: "Customer Sign In Successfully"});
+        res.json("Customer Sign In Successfully");
       }
     } else {
-      res.status(400).json({ error: "User does not exists" });
+      res.json("User Does not exist");
     }
   } catch (err) {
     console.log(err);

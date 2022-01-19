@@ -35,7 +35,6 @@ export class ChangepasswordComponent implements OnInit {
   eyeImageUrl3: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   loadingStatus: any
   errorMsg:any
-
   newPasswordStrengthStatus:boolean = false
   confirmPasswordStrengthStatus:boolean = false
   public barLabel: string = "Password strength:";
@@ -51,35 +50,37 @@ export class ChangepasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser()
+
   }
 
   changeThePassword() {
     this.wrongPassword = true
     this.mismatch = true
     this.loadingStatus = false
-    if(this.newPasswordStrengthStatus && this.confirmPasswordStrengthStatus){
-      if(this.checkCurrentPassword(this.currentPassword.value)){
-        this.wrongPassword = true
-        if(this.confirmPassword.value === this.newPassword.value) {
-          this.mismatch = true
-          this.openConfirmModal()
+
+
+      if(this.newPasswordStrengthStatus){
+        if(this.checkCurrentPassword(this.currentPassword.value)){
+          this.wrongPassword = true
+          if(this.confirmPassword.value === this.newPassword.value) {
+            this.mismatch = true
+            this.openConfirmModal()
+
+          }else{
+            this.errorMsg = "Password mismatch!"
+            this.mismatch = false
+            this.loadingStatus = true
+          }
 
         }else{
-          this.errorMsg = "Password mismatch!"
-          this.mismatch = false
+          this.wrongPassword = false
           this.loadingStatus = true
         }
-
       }else{
-        this.wrongPassword = false
+        this.errorMsg = "Password is weak!"
+        this.mismatch = false
         this.loadingStatus = true
       }
-    }else{
-      this.errorMsg = "Password is weak!"
-      this.mismatch = false
-      this.loadingStatus = true
-    }
-
 
   }
 

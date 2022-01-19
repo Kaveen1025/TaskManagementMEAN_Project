@@ -77,7 +77,8 @@ import { GooglesignupComponent } from './buttons/googlesignup/googlesignup.compo
 import { NotificationspageComponent } from './components/notificationspage/notificationspage.component';
 import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.component";
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
-import { Confirmmodal2Component } from './modals/confirmmodal2/confirmmodal2.component';
+import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmdeletemodal.component";
+import {SignuppageComponent} from "./components/signuppage/signuppage.component";
 registerLocaleData(en);
 
 
@@ -134,7 +135,8 @@ registerLocaleData(en);
     NotificationspageComponent,
     InvitationscardComponent,
     NotificationheaderComponent,
-    Confirmmodal2Component
+    ConfirmdeletemodalComponent,
+    SignuppageComponent
 
   ],
     imports: [
@@ -159,7 +161,7 @@ registerLocaleData(en);
         ImageCropperModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
-      SocialLoginModule
+        SocialLoginModule
 
 
     ],

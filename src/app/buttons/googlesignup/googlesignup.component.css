@@ -27,3 +27,7 @@
 ::ng-deep .modal-content {
   border: none;
 }
+
+#googlebtn:hover{
+  box-shadow: 5px 5px #FC5185;
+}

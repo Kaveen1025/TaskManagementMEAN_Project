@@ -33,13 +33,17 @@ export class UserdetailsComponent implements OnInit {
   @ViewChild('content3') private content3: TemplateRef<any> | undefined;
   @ViewChild('content4') private content4: TemplateRef<any> | undefined;
   @ViewChild('content5') private content5: TemplateRef<any> | undefined;
+  @ViewChild('content6') private content6: TemplateRef<any> | undefined;
   timezone:any
+
+  googleUserStatus:boolean
   constructor(UserService:UserService,private modalService: NgbModal) {
     this.userID = "61d59e7999dc1f31177898ba"
     this.UserService = UserService
     this.editableStatus = false
     this.editableStatus1 = false
     this.editableStatus2 = false
+    this.googleUserStatus = false
 
     this.timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
   }
@@ -55,6 +59,9 @@ export class UserdetailsComponent implements OnInit {
       this.UserService.getUser(this.userID).subscribe({
         next: value => {
           this.user = value
+          if(this.user.GoogleSignIn){
+            this.googleUserStatus = true
+          }
           this.firstNameField = this.user.FirstName
           this.lastNameField = this.user.LastName
         }
@@ -153,5 +160,23 @@ openConfirmModal(){
   }
 
 
+  unlinkAccount(){
+    this.modalService.open(this.content6, { centered: true });
+  }
+
+  deleteAccountFromDB(){
+    // this.UserService.deleteUser(this.userID).subscribe({
+    //   next:value=>
+    //   {
+    //     // navigate to login page
+    //   }
+    //   ,
+    //   error:error => {
+    //     console.log(error)
+    //     this.modalService.open(this.content4, { centered: true });
+    //   }
+    // } )
+    // this.modalService.dismissAll(this.content);
+  }
 
 }

@@ -93,22 +93,35 @@ export class AvatarGroupComponent implements OnInit {
   getWorkspaceuserprofileImage(url:any){
     // alert("asd")
     this.ProfileImage = this.ProfileImagePlaceHolder
-    const storageRef = this.storage.ref(url.ProfileImage);
-    storageRef.getDownloadURL().subscribe(downloadURL => {
-      this.ProfileImage = this.ProfileImagePlaceHolder
-      this.ProfileImage = downloadURL
-      // console.log("work")
-      // console.log(this.ProfileImage)
+    if(!url.ProfileImage.includes("UserProfileImages/")){
+      this.newArray.push(url.ProfileImage)
+    }else{
+      const storageRef = this.storage.ref(url.ProfileImage);
+      storageRef.getDownloadURL().subscribe(downloadURL => {
+        this.ProfileImage = this.ProfileImagePlaceHolder
+        this.ProfileImage = downloadURL
+        // console.log("work")
+        // console.log(this.ProfileImage)
 
-      this.newArray.push(downloadURL);
-      // console.log(this.newArray)
-    })
+        this.newArray.push(downloadURL);
+        // console.log(this.newArray)
+      },error=>
+      {
+        this.newArray.push(this.ProfileImagePlaceHolder);
+      })
+    }
+
+
 
   }
 
   getProjectuserprofileImage(url:any){
     // alert("asd")
+
     this.ProfileImage = this.ProfileImagePlaceHolder
+    if(!url.ProfileImage.includes("UserProfileImages/")){
+      this.newArray.push(url.ProfileImage)
+    }else{
     const storageRef = this.storage.ref(url.ProfileImage);
     storageRef.getDownloadURL().subscribe(downloadURL => {
       this.ProfileImage = this.ProfileImagePlaceHolder
@@ -126,5 +139,5 @@ export class AvatarGroupComponent implements OnInit {
     })
 
 
-  }
+  }}
 }

@@ -93,6 +93,9 @@ export class DashboardComponent implements OnInit {
       ,
       error:error => {
         console.log(error)
+        this.errorMsg = "Error has been occurred!"
+        this.errorMsgStatus = false
+        this.loadingStatus = true
       }
     } )
   }
