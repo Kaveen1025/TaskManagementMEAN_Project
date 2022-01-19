@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {UserService} from "../../services/user.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
-// import {EmailService} from "../../services/emailservices";
+import emailjs, { EmailJSResponseStatus } from '@emailjs/browser';
 
 
 // import Cotter from 'cotter';
@@ -21,6 +21,7 @@ export class ForgotpasswordComponent implements OnInit {
   @ViewChild('content') private content: TemplateRef<any> | undefined;
   @ViewChild('content2') private content2: TemplateRef<any> | undefined;
   @ViewChild('content3') private content3: TemplateRef<any> | undefined;
+  @ViewChild('content4', {static: true}) modalContent4: TemplateRef<any> | undefined
 
   email : String =""
   User:any
@@ -51,6 +52,8 @@ export class ForgotpasswordComponent implements OnInit {
   mismatch: boolean = true;
   invalid: boolean = true;
 
+  err1:boolean = true
+
   public barLabel: string = "Password strength:";
 
   UserService:UserService
@@ -59,6 +62,10 @@ export class ForgotpasswordComponent implements OnInit {
   payload = null;
   payloadString = null;
   verifycode: any;
+
+  // emailText : String = "Here's the confirmation code to reset your password"
+
+
 
 
   constructor(private http : HttpClient,public fb: FormBuilder, UserService:UserService,private modalService: NgbModal) {
@@ -84,33 +91,107 @@ export class ForgotpasswordComponent implements OnInit {
     //   .catch((err: any) => console.log(err));
   }
 
-  getEmail(){
+  makeid(length:any) {
+    var result = "";
+    var characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  getEmail(e:Event){
     this.UserService.getEmail(this.email).subscribe((post: any)=> {
+
+
       console.log(post)
-      console.log(this.email)
 
-      // let [i] = post
-      let a= post[0]
-      console.log(a.Email)
-      console.log(post.length)
+      if(post!=""){
+        alert("abc")
 
-      this.userID = a._id
-      console.log(this.userID)
+        let a= post[0]
 
-      this.getUser()
+        this.userID = a._id
+        console.log(this.userID)
 
-      if (post[0].length !== 0) {
-          console.log('User Available')
-        this.display1=false
-        this.display2=true
-        // this.flag=1
-        }
-      else {
-          alert('Invalid Email')
-        }
+        this.getUser()
+          this.display1=false
+          this.display2=true
 
+          var codeMail = {
+            email: "tharindudeshan50@gmail.com",
+            message: "1234"
+          }
+          console.log(codeMail)
+
+        // public sendEmail(e: Event) {
+        //     e.preventDefault();
+            // @ts-ignore
+          emailjs.sendForm('service_9hfbzyd', 'template_bwhg6jb', codeMail, 'user_4ruC7f7ekFCVHV5AxCzHw')
+              .then((result: EmailJSResponseStatus) => {
+                console.log(result.text);
+              }, (error) => {
+                console.log(error.text);
+              });
+          // }
+
+
+      }
+      else{
+        // alert('dfg')
+        this.err1 = false
+        this.openVerticallyCentered4()
+      }
+
+      // console.log(this.email)
+      // console.log(post[0].Email)
+      //
+      // // let [i] = post
+      // let a= post[0]
+      // console.log(a.Email)
+      // console.log(post.length)
+      //
+      // this.userID = a._id
+      // console.log(this.userID)
+      //
+      // this.getUser()
+
+      // if (post[0].length !== null) {
+      //   console.log('Success')
+      //   this.display1=false
+      //   this.display2=true
+      //
+      //   var codeMail = {
+      //     email: "tharindudeshan50@gmail.com",
+      //     message: "1234"
+      //   }
+      //   console.log(codeMail)
+      //
+      // // public sendEmail(e: Event) {
+      // //     e.preventDefault();
+      //     // @ts-ignore
+      //   emailjs.sendForm('service_9hfbzyd', 'template_bwhg6jb', codeMail, 'user_4ruC7f7ekFCVHV5AxCzHw')
+      //       .then((result: EmailJSResponseStatus) => {
+      //         console.log(result.text);
+      //       }, (error) => {
+      //         console.log(error.text);
+      //       });
+      //   // }
+
+      //   }
+      // else {
+      //     alert('Invalid Email')
+      //   this.err1 = false
+      //   }
+
+    },err=>{
+      console.log(err)
     });
   }
+
+
 
   verifyCode() {
     if(this.verifycode === this.code){
@@ -128,6 +209,10 @@ export class ForgotpasswordComponent implements OnInit {
       // this.display1=true;
       // this.display3=false
     }
+  }
+
+  openVerticallyCentered4() {
+    this.modalService.open(this.modalContent4, { centered: true});
   }
 
   changeThePassword() {

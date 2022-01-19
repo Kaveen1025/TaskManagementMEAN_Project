@@ -54,12 +54,13 @@
     <div class="col-3" id="coll3">
       <img id="task2" src="./assets/images/featurePageIcons/management2.jpg">
     </div>
-
   </div>
+
   <ng-template #content let-modal  class = "mainModal">
     <app-loginerr [hidden]="err1" text1="Invalid Credentials" text2="Re-enter Your Password">
     </app-loginerr>
   </ng-template>
+
   <ng-template #content2 let-modal  class = "mainModal">
     <app-loginerr [hidden]="err2"  text1="Invalid User" text2="User does not exist">
     </app-loginerr>
