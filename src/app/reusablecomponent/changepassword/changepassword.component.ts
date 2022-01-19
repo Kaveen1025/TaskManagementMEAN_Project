@@ -35,7 +35,6 @@ export class ChangepasswordComponent implements OnInit {
   eyeImageUrl3: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/visibility.png"
   loadingStatus: any
   errorMsg:any
-
   newPasswordStrengthStatus:boolean = false
   confirmPasswordStrengthStatus:boolean = false
   public barLabel: string = "Password strength:";
@@ -51,6 +50,7 @@ export class ChangepasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUser()
+
   }
 
   changeThePassword() {

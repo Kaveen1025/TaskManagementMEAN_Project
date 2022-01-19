@@ -17,10 +17,13 @@ export class UserprofileComponent implements OnInit {
   userImagePlaceHolder: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
   userProfileImage:any
   @ViewChild('content99') private content99: TemplateRef<any> | undefined;
+  googleUserStatus: boolean;
   constructor(UserService:UserService, private modalService: NgbModal, private db: AngularFireDatabase, private storage: AngularFireStorage) {
-    this.userID = "61d59e7999dc1f31177898ba"
+    // this.userID = "61d59e7999dc1f31177898ba"
+    this.userID = "61e6c3cc40db72a82a8256cd"
     this.UserService = UserService
     this.userProfileImage = this.userImagePlaceHolder
+    this.googleUserStatus = false
   }
 
   ngOnInit(): void {
@@ -31,7 +34,10 @@ export class UserprofileComponent implements OnInit {
       next:value=>
       {
         this.user = value
-        this.getUserProfileImage(this.user.ProfileImage)
+        if(this.user.GoogleSignIn){
+          this.googleUserStatus = true
+        }
+        this.getUserProfileImage()
       }
       ,
       error:error => {
@@ -47,14 +53,28 @@ export class UserprofileComponent implements OnInit {
 
   // retrieve image from firebase
 
- getUserProfileImage(url:any){
-    this.userProfileImage = this.userImagePlaceHolder
-      const storageRef = this.storage.ref(url);
-       storageRef.getDownloadURL().subscribe(downloadURL => {
-        this.userProfileImage = this.userImagePlaceHolder
+
+ getUserProfileImage(){
+    if(this.user.GoogleSignIn){
+      this.userProfileImage = this.user.ProfileImage
+    }else{
+      const storageRef = this.storage.ref(this.user.ProfileImage);
+      storageRef.getDownloadURL().subscribe(downloadURL => {
         this.userProfileImage = downloadURL
       })
     }
+
+    }
+
+
+  updateUserProfileImage(){
+    this.userProfileImage = this.userImagePlaceHolder
+    const storageRef = this.storage.ref(this.user.ProfileImage);
+    storageRef.getDownloadURL().subscribe(downloadURL => {
+      this.userProfileImage = downloadURL
+      //this.userProfileImage = "https://cdn-icons-png.flaticon.com/512/149/149071.png"
+    })
+  }
 
 
 

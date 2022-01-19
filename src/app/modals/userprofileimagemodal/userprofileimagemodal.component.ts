@@ -33,6 +33,7 @@ export class UserprofileimagemodalComponent implements OnInit {
   contentStatus1: boolean = false
   percentageLoading:any = true
   @Output() someEvent = new EventEmitter()
+  @Output() someEvent2 = new EventEmitter()
   @Output() successEvent = new EventEmitter()
   constructor(private modalService: NgbModal,public fb: FormBuilder,FirebaseService: FirebasesService,UserService:UserService) {
     this.myForm = this.fb.group({
@@ -97,7 +98,8 @@ export class UserprofileimagemodalComponent implements OnInit {
       this.updateUserProfileInBackend()
       this.contentStatus1 = true
     }else{
-      this.temp.name = "UserProfileImages/"+this.userId+"UserImage.png"
+     // this.temp.name = "UserProfileImages/"+this.userId+"UserImage.png"
+      this.temp.name = "UserProfileImages/kfasfklsadfsdsklfUserImage.png"
       //console.log(this.temp.name)
       this.upload(this.temp)
       this.contentStatus1 = true

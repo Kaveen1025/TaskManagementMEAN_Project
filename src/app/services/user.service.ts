@@ -36,7 +36,7 @@ export class UserService {
     return this.http.put(environment.apiBaseUrl + 'user/updateDetails/'+userID, content);
   }
 
-  deleteUser(id:String){
+    deleteUser(id: String | undefined){
     return this.http.delete(environment.apiBaseUrl + 'user/delete/'+id);
   }
 

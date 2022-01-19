@@ -2,8 +2,8 @@
   <div class="card userImageCard">
     <div class="card-body text-center userCardBody">
 
-      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "userProfileImage" alt = "userProfile">
-      <br><br><a type = "button" (click)="openUserImageEditModal()"><img class = "img-fluid pencil iconClickable" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/pencil.png" alt = "pencil"></a>
+      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" src = "{{userProfileImage}}" alt = "userProfile">
+      <br><br><a type = "button" (click)="openUserImageEditModal()" [hidden]="googleUserStatus"><img class = "img-fluid pencil iconClickable" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/pencil.png" alt = "pencil"></a>
         <div>
         <br>
         <h1 class="username">{{user.Username}}</h1>
@@ -11,12 +11,12 @@
     </div>
   </div>
   <div class="card userDetails">
-<!--    <app-userdetails userID={{userID}}></app-userdetails>-->
-<app-changepassword></app-changepassword>
+    <app-userdetails userID={{userID}}></app-userdetails>
+<!--<app-changepassword></app-changepassword>-->
      </div>
 </div>
 
 <ng-template #content99 let-modal>
-  <app-userprofileimagemodal (someEvent)="getUser()" userProfileImage = {{userProfileImage}}></app-userprofileimagemodal>
+  <app-userprofileimagemodal (someEvent)="updateUserProfileImage()" userProfileImage = {{userProfileImage}}></app-userprofileimagemodal>
 </ng-template>
 
