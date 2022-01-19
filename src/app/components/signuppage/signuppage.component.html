@@ -35,7 +35,7 @@
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
         <img src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/user2.png" class="user1">
-        <input type="text" [formControl]="Username" class="form-control" placeholder="Username" required>
+        <input type="text" [formControl]="Username" class="form-control" placeholder="Username" onkeypress="return /[a-z]/i.test(event.key)" required>
       </div>
       </div>
 
@@ -83,15 +83,14 @@
         <i class="fa fa-eye " aria-hidden="true" *ngIf="show2" (click)="onClickk()"></i>
         </span>
       </div>
-        <app-password-strength-bar [passwordToCheck]="ConfirmPassword.value"  [barLabel]="barLabel" (statusEvent)="checkConfirmPasswordStrength($event)"></app-password-strength-bar>
+        <app-password-strength-bar [passwordToCheck]="ConfirmPassword.value"  [barLabel]="barLabel" (statusEvent)="checkConfirmPasswordStrength($event)" hidden></app-password-strength-bar>
         <h4 class="errorTxt" [hidden] = "mismatch">{{errorMsg}}</h4>
       </div>
-
+      <br/>
       <div class="form-group">
-        <label for="exampleFormControlFile1" class="profileI"><b>Profile Image</b></label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        <button type="button" class="button button1" (click)="openUserImageEditModal()">Choose a Profile Image</button>
       </div>
-
+      <br/>
       <div class="form-group">
       <div class="mb-3 form-check">
         <input type="checkbox" class="form-check-input" id="exampleCheck1" [formControl] = "checkbox" required>
@@ -99,7 +98,7 @@
       </div>
       </div>
 
-      <button type="submit" class="btn btn-primary" id="sign">Sign Up</button>
+      <button type="submit" class="btn btn-primary" id="sign" >Sign Up</button>
 <br/><br/><br/>
       <hr class="hrr">
       <div class="box">
@@ -137,3 +136,10 @@
   <app-loadinganimation></app-loadinganimation>
 </ng-template>
 
+<ng-template #content4 let-modal id = "content4">
+  <app-errormodal></app-errormodal>
+</ng-template>
+
+<ng-template #content99 let-modal>
+  <app-userprofileimagemodal  userProfileImage = {{userProfileImage}}></app-userprofileimagemodal>
+</ng-template>
