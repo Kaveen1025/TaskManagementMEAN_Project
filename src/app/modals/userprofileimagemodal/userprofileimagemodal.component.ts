@@ -98,8 +98,8 @@ export class UserprofileimagemodalComponent implements OnInit {
       this.updateUserProfileInBackend()
       this.contentStatus1 = true
     }else{
-     // this.temp.name = "UserProfileImages/"+this.userId+"UserImage.png"
-      this.temp.name = "UserProfileImages/kfasfklsadfsdsklfUserImage.png"
+     this.temp.name = "UserProfileImages/"+this.userId+"UserImage.png"
+     //  this.temp.name = "UserProfileImages/kfasfklsadfsdsklfUserImage.png"
       //console.log(this.temp.name)
       this.upload(this.temp)
       this.contentStatus1 = true
