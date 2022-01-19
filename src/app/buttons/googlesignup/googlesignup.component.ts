@@ -87,7 +87,7 @@ export class GooglesignupComponent implements OnInit {
       LastName : this.User.lastName,
       Password : this.User.id,
       GoogleSignIn : true,
-      ProfileImage : this.User.photoUrl
+      ProfileImage : this.User.photoUrl.replace("s96-c","s500-c")
     }
 
     this.UserService.createUser(NewUser).subscribe({
