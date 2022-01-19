@@ -94,7 +94,6 @@ export class ForgotpasswordComponent implements OnInit {
   getEmail(e:Event){
     this.UserService.getEmail(this.email).subscribe((post: any)=> {
       if(post!=""){
-
         this.code=this.makeid(5)
 
         let a= post[0]
@@ -104,18 +103,21 @@ export class ForgotpasswordComponent implements OnInit {
           this.display1=false
           this.display2=true
 
-          var codeMail = {
-            email: "tharindudeshan50@gmail.com", // this.email,
-            message: this.code
+          let codeMail = {
+          // ube template eke {{email}-> To email , {{code}} dahn
+            email: this.email,
+            code: this.code
           }
-          console.log(codeMail)
+          //console.log(codeMail)
 
           // @ts-ignore
-        emailjs.sendForm('service_9hfbzyd', 'template_bwhg6jb', codeMail, 'user_4ruC7f7ekFCVHV5AxCzHw')
+        // add your service ,template and user id (me tiyenne mage ewa)
+        emailjs.send('service_tbfxbdi', 'template_pcwlvj6', codeMail,
+          'user_TGhnW7M8Z4dNu0PzvbuZ9')
               .then((result: EmailJSResponseStatus) => {
                 console.log(result.text);
               }, (error) => {
-                console.log(error.text);
+                console.log(error);
               });
       }
       else{
