@@ -200,6 +200,7 @@ export class SignuppageComponent implements OnInit {
 
 
   upload(): void {
+
     this.modalService.open(this.content3, {centered: true});
     if(this.userProfileImage != this.userImagePlaceHolder){
       let percentage
@@ -233,7 +234,6 @@ export class SignuppageComponent implements OnInit {
     }else{
       this.userProfileImage = this.userImagePlaceHolder
     }
-
     }
 
 
