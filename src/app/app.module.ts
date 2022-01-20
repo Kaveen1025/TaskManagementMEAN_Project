@@ -82,6 +82,8 @@ import {SignuppageComponent} from "./components/signuppage/signuppage.component"
 import {LoginerrComponent} from "./modals/loginerr/loginerr.component";
 import { SignupuserprofileimagemodalComponent } from './modals/signupuserprofileimagemodal/signupuserprofileimagemodal.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { TaskcardComponent } from './cards/taskcard/taskcard.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 registerLocaleData(en);
 
 
@@ -141,7 +143,8 @@ registerLocaleData(en);
     ConfirmdeletemodalComponent,
     SignuppageComponent,
     LoginerrComponent,
-    SignupuserprofileimagemodalComponent
+    SignupuserprofileimagemodalComponent,
+    TaskcardComponent
 
   ],
     imports: [
@@ -167,7 +170,8 @@ registerLocaleData(en);
         AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireStorageModule,
         SocialLoginModule,
-        MatExpansionModule
+        MatExpansionModule,
+        MatProgressBarModule
 
 
     ],

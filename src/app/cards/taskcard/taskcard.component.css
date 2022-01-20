@@ -1,0 +1,118 @@
+.taskcard{
+  overflow-x: hidden;
+}
+
+.taskcard #card1 {
+
+  max-width: 20rem;
+  border: 2px solid #3FC1C9;
+  border-radius: 10px;
+
+}
+
+.taskcard .card-title{
+
+  text-decoration: underline;
+  color: #364F6B;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+.taskcard .addTask{
+
+  background-color: #FC5185;
+  font-weight: bold;
+  color: white;
+  border: none;
+  text-align: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+
+}
+
+.taskcard .btn {
+
+  display: block;
+  text-align: center;
+}
+
+.taskcard .add{
+
+  width:18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.taskcard .btn2{
+  border: none;
+  outline:none;
+  font-weight: bold;
+}
+
+.taskcard .btn2:hover, .btn2:focus {
+  outline: none;
+}
+
+.taskcard #card2{
+  border: 2px solid #3FC1C9;
+  border-radius: 5px;
+}
+
+.taskcard .progress-bar{
+  border: 1px solid #3FC1C9;
+}
+
+.taskcard #headingOne{
+
+  background-color: #FFFF00;
+
+}
+
+.taskcard .txt{
+  font-size: 10px;
+  margin-top: 1px;
+  color: red;
+}
+
+.taskcard .form-check-input{
+
+  border: 2px solid #3FC1C9;
+}
+
+.taskcard .form-check-label{
+
+  color: #364F6B;
+  font-family: Rambla, sans-serif;
+}
+
+.taskcard .editf{
+
+  width:28px;
+  height: 28px;
+}
+
+.taskcard .btn8{
+  background-color: #34FC34;
+  border-radius: 10px;
+}
+
+.taskcard .btn9{
+  background-color: #FFFF00;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.taskcard .btn10{
+  background-color: #FC3D3D;
+  border-radius: 10px;
+}
+
+.taskcard .btnnn{
+
+  width:20px;
+  height: 20px;
+}
