@@ -1,67 +1,82 @@
 <div class = "activity">
 
   <div class="collapse" id="collapseExample">
-    <div class="card card-body">
+    <div class="card">
 
       <div class="bg-box">
         <img src="./assets/images/images(Task Management)/newcover.jpg" class="card-img dynamicImage" alt="Responsive image">
       </div>
 
-      <div class = "content">
+
+
+<!--      <div class = "content">-->
         <div class="card-body text-center">
           <img src="./assets/images/featurePageIcons/hourglass.png" class = "rounded-circle workspaceImg shadow img-fluid"
                alt="userProfile">
           <div class="row">
             <div class="col-sm workspacename text-left">
               <h1>Project Name</h1>
+              <h5>Deadline Date</h5>
               <app-avatar-group [workspaceID]="workspaceID"></app-avatar-group>
+
             </div>
             <div class="col-sm deadline text-right">
               <label>Deadline Date</label>
             </div>
           </div>
 
-          <div class="editrow">
 
-            <div class="column">
-              <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png" alt="Snow" >
-            </div>
-            <div class="column">
-              <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/sharing.png" alt="Forest" >
-            </div>
-            <div class="column">
-              <img class = "imgBtn"src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt="Mountains" >
-            </div>
-          </div>
           <div class = "description">
             Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes. Description is the pattern of narrative development that aims to make vivid a place, object, character, or group. Description is one of four rhetorical modes, along with exposition, argumentation, and narration. In practice it would be difficult to write literature that drew on just one of the four basic modes.
+            <br>
           </div>
+
+                    <div class="editrow text-center">
+                      <div class="column">
+                        <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/edit.png" alt="Snow" >
+                      </div>
+                      <div class="column">
+                        <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/sharing.png" alt="Forest" >
+                      </div>
+                      <div class="column">
+                        <img class = "imgBtn"src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt="Mountains" >
+                      </div>
+                    </div>
+
         </div>
-      </div>
+<!--      </div>-->
+
+
     </div>
   </div>
-
-
+<br><br>
 
     <div class="text-center">
-      <button class = "creatbtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+      <button class = "creatbtn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"
+      (click)="max()">
+        <svg [hidden]="hide1" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
         </svg>
-        MINIMIZE
+        <svg [hidden]="hide2" xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+        </svg>
+        &nbsp; {{btnTxt}}
       </button>
       <br>
-
     </div>
-
+  <div class="text-center">
+    <button class = "creatbtn2" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+     <b> <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+     </svg></b>
+      &nbsp; ADD ACTIVITY
+    </button>
+    <br>
+  </div>
 
 </div>
 
-
-<!--modal-->
-<ng-template #content2 let-modal  id = "content2">
-  <app-projectadd  ></app-projectadd>
-</ng-template>
 
 
 
