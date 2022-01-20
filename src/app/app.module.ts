@@ -79,6 +79,7 @@ import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
 import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmdeletemodal.component";
 import {LoginerrComponent} from "./modals/loginerr/loginerr.component";
+import { ActivitypageComponent } from './components/activitypage/activitypage.component';
 registerLocaleData(en);
 
 
@@ -136,7 +137,8 @@ registerLocaleData(en);
         InvitationscardComponent,
         NotificationheaderComponent,
         ConfirmdeletemodalComponent,
-        LoginerrComponent
+        LoginerrComponent,
+        ActivitypageComponent
 
     ],
     imports: [

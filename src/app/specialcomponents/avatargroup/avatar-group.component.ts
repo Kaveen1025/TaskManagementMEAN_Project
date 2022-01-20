@@ -43,12 +43,13 @@ export class AvatarGroupComponent implements OnInit {
   }
 
   async getProjectMemberDetails() {
+
     await this.avatarGroupService.getAllMembers(this.projectID).subscribe(async (post: any) => {
       this.memberObject = post;
 
       this.members = this.memberObject[0].Members;
       // console.log("Single member")
-      // console.log(this.members)
+      console.log(this.members)
       // console.log(this.members[0].ProfileImage)
 
       this.avatarArray = this.members
@@ -71,6 +72,7 @@ export class AvatarGroupComponent implements OnInit {
   }
 
   async getWorkspaceMemberDetails() {
+    // alert('asd')
     await this.avatarGroupService.getWorkspaceMembers(this.workspaceID).subscribe(async (post: any) => {
       this.memberObject = post;
 
