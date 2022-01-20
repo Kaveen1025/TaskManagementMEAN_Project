@@ -736,9 +736,6 @@ router.route("/getUserbyUN/:userName").get(async (req, res) => {
     });
 
 
-
-
-
 });
 
 
@@ -757,6 +754,45 @@ router.route("/removefriendReqsts/:userID/:friendID").delete(async (req, res) =>
     res.status(200).send({status: "Friend Request Deleted Successful!"});
   } catch (error) {
     res.status(404).json({message: error.message});
+  }
+});
+
+//Get All Friends of a user
+router.route("/getAllFrieds/:userID").get(async (req, res) => {
+  let userID = req.params.userID;
+  try {
+    const result = await User.aggregate([
+      {
+        $match: { _id: ObjectId(userID)},
+      },
+      {
+        $project: {
+          Friends: {
+            $map: {
+              input: "$Friends",
+              as: "friends",
+              in: {
+                $convert: {
+                  input: "$$friends",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "Friends",
+          foreignField: "_id",
+          as: "AllFriends"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
   }
 });
 
