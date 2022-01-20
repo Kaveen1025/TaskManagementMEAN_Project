@@ -30,7 +30,7 @@
         <h3 class = "errorMsg" >{{errormsg}}</h3>
         <div class="container">
 
-    <form class="fbody"  #signUpForm="ngForm" (ngSubmit)="addUser(signUpForm)" ngNativeValidate>
+    <form class="fbody"  #signUpForm="ngForm" (ngSubmit)="upload()" ngNativeValidate>
 
       <div class="form-group">
       <div class="inner-addon left-addon mb-3">
@@ -141,5 +141,6 @@
 </ng-template>
 
 <ng-template #content99 let-modal>
-  <app-userprofileimagemodal  userProfileImage = {{userProfileImage}}></app-userprofileimagemodal>
+<!--  <app-userprofileimagemodal  userProfileImage = {{userProfileImage}}></app-userprofileimagemodal>-->
+  <app-signupuserprofileimagemodal (someEvent)="getUserProfileImage($event)" ></app-signupuserprofileimagemodal>
 </ng-template>

@@ -18,7 +18,6 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
   @ViewChild('content') private content: TemplateRef<any> | undefined;
   @ViewChild('content100') private content100: TemplateRef<any> | undefined;
 
-  userId: string
   filePath: string;
   myForm: FormGroup;
   userImagePlaceHolder: String = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/userPlaceHolder.png"
@@ -43,12 +42,12 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
     this.status = true
     this.FirebaseService = FirebaseService
     this.UserService = UserService
-    this.userId = "61d59e7999dc1f31177898ba"
 
+    this.userProfileImage = this.userImagePlaceHolder
+    this.temp = null
   }
 
   ngOnInit(): void {
-
   }
   closeModal() {
     this.modalService.dismissAll(this.content);
@@ -68,7 +67,16 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
   croppedImage: any = '';
   status: boolean;
 
-
+  generateFileName(length:any) {
+    let result = "";
+    let characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
 
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
@@ -78,6 +86,7 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
     //console.log(typeof event)
     this.userProfileImage = this.croppedImage
     this.temp = this.dataURItoBlobDD(event.base64)
+    this.temp.name = "UserProfileImages/"+this.generateFileName(10)+"UserImage.png"
   }
   imageLoaded(image: LoadedImage) {
     // show cropper
@@ -88,71 +97,26 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
   loadImageFailed() {
     // show message
   }
-
   async saveDetails() {
-    // append file name to the user profile
+    if(this.temp != null){
+      let content = {
+        profileImage : this.temp
+      }
+      this.someEvent.emit(content)
+      this.closeModal()
+    }else{
+      this.someEvent.emit(null)
+      this.closeModal()
+    }
 
-    // if(this.userProfileImage == this.userImagePlaceHolder){
-    //   this.updateUserProfileInBackend()
-    //   this.contentStatus1 = true
-    // }else{
-    //   this.temp.name = "UserProfileImages/"+this.userId+"UserImage.png"
-    //   //  this.temp.name = "UserProfileImages/kfasfklsadfsdsklfUserImage.png"
-    //   //console.log(this.temp.name)
-    //   this.upload(this.temp)
-    //   this.contentStatus1 = true
-    // }
-
-    // e.target.file[0].name
 
 
   }
-
   removeUserProfile() {
     this.userProfileImage = this.userImagePlaceHolder
     this.status = true
+    this.temp = null
   }
-
-
-// upload image
-  upload(selectedFile:any): void {
-    let percentage
-    let currentFileUpload = new FileUpload(selectedFile);
-    this.FirebaseService.pushFileToStorage(currentFileUpload).subscribe(
-      percentage => {
-        percentage = Math.round(percentage ? percentage : 0);
-        console.log('done')
-        if(percentage >= 100 && this.percentageLoading){
-          this.percentageLoading = false
-          let content = {
-            ProfileImage: this.temp.name,
-          }
-
-          this.UserService.updateUserProfileImage(this.userId,content).subscribe({
-            next: value => {
-              // alert("db updated")
-
-              this.contentStatus1 = false
-              this.closeModal()
-              this.someEvent.emit()
-            }
-            ,
-            error: error => {
-              console.log(error)
-              this.contentStatus1 = false
-              this.closeModal()
-            }
-          })
-        }
-      },
-      error => {
-        console.log(error);
-        this.contentStatus1 = false
-        this.closeModal()
-      }
-    );
-  }
-
   // covert base64 uri for image
   dataURItoBlobDD(dataURI:any) {
     const binary = atob(dataURI.split(',')[1]);
@@ -164,27 +128,5 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
     return new Blob([new Uint8Array(array)], {
       type: 'image/png',
     });
-  }
-
-  updateUserProfileInBackend(){
-    let content2 = {
-      ProfileImage : this.userImagePlaceHolder,
-    }
-    this.UserService.updateUserProfileImage(this.userId,content2).subscribe({
-      next: value => {
-        // alert("db updated")
-
-        this.contentStatus1 = false
-        this.closeModal()
-        this.someEvent.emit()
-
-      }
-      ,
-      error: error => {
-        console.log(error)
-        this.contentStatus1 = false
-        this.closeModal()
-      }
-    })
   }
 }

@@ -2,6 +2,8 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import { UserService} from "../../services/user.service";
 import {FormGroup, FormControl, Validators, NgForm} from "@angular/forms";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {FileUpload} from "../../module/file-upload";
+import {FirebasesService} from "../../services/firebases.service";
 
 @Component({
   selector: 'app-signuppage',
@@ -44,8 +46,13 @@ export class SignuppageComponent implements OnInit {
   @ViewChild('content4') private content4: TemplateRef<any> | undefined;
 
   @ViewChild('content99') private content99: TemplateRef<any> | undefined;
+   percentageLoading: boolean;
+  FirebaseService: FirebasesService;
 
-  constructor(private modalService: NgbModal, private userService: UserService) { }
+  constructor(private modalService: NgbModal, private userService: UserService,FirebaseService: FirebasesService) {
+    this.percentageLoading = true
+    this.FirebaseService = FirebaseService
+  }
 
 
   ngOnInit(): void {
@@ -110,15 +117,15 @@ export class SignuppageComponent implements OnInit {
 
 
 
-  addUser(signUpForm: NgForm){
+  addUser(){
 
 
-    this.modalService.open(this.content3, {centered: true});
+
 
     this.mismatch = true
 
 
-      if (this.PasswordStrengthStatus && !this.ConfirmPasswordStrengthStatus) {
+      if (this.PasswordStrengthStatus) {
         if (this.ConfirmPassword.value === this.Password.value) {
 
           this.mismatch = true
@@ -130,7 +137,8 @@ export class SignuppageComponent implements OnInit {
             FirstName: this.FirstName.value,
             LastName: this.LastName.value,
             Password: this.Password.value,
-            GoogleSignIn: false
+            GoogleSignIn: false,
+            ProfileImage : this.userProfileImage.name
 
           }
 
@@ -167,7 +175,7 @@ export class SignuppageComponent implements OnInit {
           }, error => {
 
             console.log(error);
-            // this.closeAnimation();
+             this.closeAnimation();
             // this.modalService.open(this.content4, {centered: true},);
 
           });
@@ -190,6 +198,43 @@ export class SignuppageComponent implements OnInit {
     }
 
 
+
+  upload(): void {
+    this.modalService.open(this.content3, {centered: true});
+    if(this.userProfileImage != this.userImagePlaceHolder){
+      let percentage
+      let currentFileUpload = new FileUpload(this.userProfileImage);
+      this.FirebaseService.pushFileToStorage(currentFileUpload).subscribe(
+        percentage => {
+          percentage = Math.round(percentage ? percentage : 0);
+
+          if(percentage >= 100 && this.percentageLoading){
+            this.percentageLoading = false
+              this.addUser()
+
+          }
+        },
+        error => {
+          console.log(error);
+          this.closeAnimation()
+        }
+      );
+    }else{
+
+    }
+
+  }
+
+
+
+  getUserProfileImage(event:any){
+    if(event != null){
+      this.userProfileImage = event.profileImage
+    }else{
+      this.userProfileImage = this.userImagePlaceHolder
+    }
+
+    }
 
 
 }
