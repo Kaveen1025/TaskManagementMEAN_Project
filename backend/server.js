@@ -46,6 +46,9 @@ app.use("/projectinv", ProjectInvitationsRouter);
 const ContactUSRouter = require("./routes/contactus");
 app.use("/contactus", ContactUSRouter);
 
+const TaskRouter = require("./routes/task");
+app.use("/tasks", TaskRouter);
+
 app.listen(PORT, () => {
   console.log(`Server is up and running on PORT ${PORT}`);
 });
