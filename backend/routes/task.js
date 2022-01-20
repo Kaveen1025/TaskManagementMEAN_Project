@@ -177,10 +177,10 @@ router.route("/getSubTaskDetails/:taskID").get(async (req, res) => {
       },
       {
         $lookup: {
-          from: "users",
-          localField: "MemberIDs",
+          from: "subtasks",
+          localField: "SubTaskIDs",
           foreignField: "_id",
-          as: "Members"
+          as: "subTasks"
         }
       }
     ])

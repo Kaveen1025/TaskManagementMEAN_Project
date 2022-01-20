@@ -50,7 +50,7 @@
         </div>
         <div class="col-sm">
           <br>
-          <app-crudbuttonpink (click) = "deleteworkspace()" text="DELETE"></app-crudbuttonpink>
+          <app-crudbuttonpink (click) = "confirmDelete()" text="DELETE"></app-crudbuttonpink>
         </div>
 
       </div>
@@ -60,11 +60,19 @@
   </div>
 
 </div>
-<img src = "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20main%20images/8sz44m1xhr961.png">
+<!--<img src = "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20main%20images/8sz44m1xhr961.png">-->
 <ng-template #content2 let-modal  id = "content2">
   <app-confirmmodal2></app-confirmmodal2>
   <div class="modal-body text-center">
   <button type="button" class="btn btnsave" id="okbtn" (click)="editworkspace()">Save</button>
   <button type="button" class="btn btnclose" id="canclbtn" (click)="closeModal()">Don't save</button>
+  </div>
+</ng-template>
+
+<ng-template #content3 let-modal  id = "content3">
+  <app-confirmmodal2></app-confirmmodal2>
+  <div class="modal-body text-center">
+    <button type="button" class="btn btnsave"  (click)="deleteworkspace()">Save</button>
+    <button type="button" class="btn btnclose"  (click)="closeModal()">Don't save</button>
   </div>
 </ng-template>

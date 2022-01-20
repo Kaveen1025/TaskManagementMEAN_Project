@@ -736,9 +736,6 @@ router.route("/getUserbyUN/:userName").get(async (req, res) => {
     });
 
 
-
-
-
 });
 
 
@@ -759,5 +756,86 @@ router.route("/removefriendReqsts/:userID/:friendID").delete(async (req, res) =>
     res.status(404).json({message: error.message});
   }
 });
+
+//Get All Friends of a user
+router.route("/getAllFrieds/:userID").get(async (req, res) => {
+  let userID = req.params.userID;
+  try {
+    const result = await User.aggregate([
+      {
+        $match: { _id: ObjectId(userID)},
+      },
+      {
+        $project: {
+          Friends: {
+            $map: {
+              input: "$Friends",
+              as: "friends",
+              in: {
+                $convert: {
+                  input: "$$friends",
+                  to: "objectId"
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        $lookup: {
+          from: "users",
+          localField: "Friends",
+          foreignField: "_id",
+          as: "AllFriends"
+        }
+      }
+    ])
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+});
+
+
+//Test Friends
+//URL -- >http://localhost:8070/user/getAll
+router.route("/getAllTest/:id").get((req, res) => {
+  let userID = req.params.id;
+  User.find()
+    .then((post) => {
+      let newArray = [{
+        name: "",
+        image: "",
+        status: ""
+      }];
+      newArray.push(newArray)
+      for(let i = 0; i < post.length; i++){
+        let status1 = 0;
+        let friendRequest = post[i].Friends;
+        let requestedFriends = post[i].RequestedFriends;
+
+        console.log(requestedFriends)
+        // let obj = {
+        //   name: post[i].FirstName,
+        //   image: post[i].ProfileImage,
+        //   status: status1
+        // }
+        // newArray.push(obj)
+        // for(let j = 0; j < friendRequest.length; i++){
+        //   // if(userID == friendRequest[i]){
+        //     status = 1;
+        //
+        //   // }
+        //
+
+      }
+      res.json(post[0].Friends);
+      console.log(post[0].Friends)
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 
 module.exports = router;

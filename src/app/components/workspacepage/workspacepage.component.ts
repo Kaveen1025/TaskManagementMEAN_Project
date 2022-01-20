@@ -16,6 +16,7 @@ export class WorkspacepageComponent implements OnInit {
   @ViewChild('content2', {static: true}) content2: TemplateRef<any> | undefined
   @ViewChild('content3', {static: true}) content3: TemplateRef<any> | undefined
   @ViewChild('content4', {static: true}) content4: TemplateRef<any> | undefined
+  @ViewChild('content5', {static: true}) content5: TemplateRef<any> | undefined
 
 
 
@@ -46,6 +47,7 @@ export class WorkspacepageComponent implements OnInit {
   memberIDs: string[] = [];
   workspaceObject: any;
 
+
   images = [
     {
       main : "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20cover%20images/bananas.png",
@@ -68,9 +70,12 @@ export class WorkspacepageComponent implements OnInit {
   min = Math.ceil(0);
   max = Math.floor(4);
   number = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+  number1 = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
 
-  workspaceMainPlaceHolder: string = this.images[this.number].main
-  workspaceCoverPlaceHolder: string =  this.images[this.number].cover
+
+
+  workspaceMainPlaceHolder: string =  this.images[this.number].main
+  workspaceCoverPlaceHolder: string =  this.images[this.number1].cover
 
 
   searchText: string = ""
@@ -262,4 +267,20 @@ export class WorkspacepageComponent implements OnInit {
     this.getProjectDetails();
     this.getWorkspaceDetails();
   }
+
+
+  confirmDelete(){
+    this.modalService.open(this.content5, { centered: true, backdrop: "static"});
+  }
+
+
+  deleteworkspace(){
+    this.closeModal()
+    this.openWaitingModal()
+
+    // this.openSuccessModal()
+
+
+  }
+
 }

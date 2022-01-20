@@ -3,10 +3,44 @@ a:hover {
   color: #FC5185;
 }
 
+freinddefault{
+
+}
 .errortext2{
   font-size: 15px;
   font-weight: bold;
   margin-top: 10px;
   color: #FC5185;
   text-align: center;
+}
+
+.freindrequest{
+  text-decoration: underline;
+  text-decoration-color: #FC5185;
+  text-decoration-thickness: 3px;
+  text-underline-position: under;
+  color: #364F6B;
+  font-weight: bolder;
+}
+
+
+.friends{
+  text-decoration: underline;
+  text-decoration-color: #FC5185;
+  text-decoration-thickness: 3px;
+  text-underline-position: under;
+  color: #364F6B;
+  font-weight: bolder;
+}
+
+.freinddefault{
+  text-decoration-thickness: 3px;
+  text-underline-position: under;
+  color: #364F6B;
+  font-weight: bolder;
+}
+.freindrequestdefault{
+
+  color: #364F6B;
+  font-weight: bolder;
 }

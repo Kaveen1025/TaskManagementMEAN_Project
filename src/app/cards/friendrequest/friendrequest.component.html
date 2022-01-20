@@ -9,8 +9,8 @@
       <p class="claspara">{{noofGroups}} Groups in common</p>
       <div class = "row " >
         <div class = "text-center">
-          <img class = "imgBtn" (click)="requestAccept()"  src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/check.png">
-          <img class = "imgBtn1" (click)="requestDecline()" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/remove.png">
+          <img class = "imgBtn" (click)="cancelModalDisplay('2')"  src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/check.png">
+          <img class = "imgBtn1" (click)="cancelModalDisplay('1')" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/remove.png">
         </div>
 
       </div>
@@ -18,5 +18,13 @@
     </div>
   </div>
 </div>
+
+<ng-template #cancelModal let-modal  id = "cancelModal">
+  <app-confirmmodal (someEvent) = "modalCancelRequest()"></app-confirmmodal>
+</ng-template>
+
+<ng-template #acceptModal let-modal  id = "acceptModal">
+  <app-confirmmodal (someEvent) = "modalAccecptRequest()"></app-confirmmodal>
+</ng-template>
 
 

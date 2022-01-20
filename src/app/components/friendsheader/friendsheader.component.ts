@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -9,11 +9,12 @@ import {map, startWith} from 'rxjs/operators';
   styleUrls: ['./friendsheader.component.css']
 })
 export class FriendsheaderComponent implements OnInit {
-  totFriends: number =  50;
 
+  @Input() noOfFriends: any
   @Output() searchContext = new EventEmitter<string>();
   searchText: string = ""
 
+  headertext1: string = "Your Friends"
   ngOnInit() {
 
   }

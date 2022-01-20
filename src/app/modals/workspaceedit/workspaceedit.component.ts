@@ -13,9 +13,11 @@ declare var $: any;
 })
 export class WorkspaceeditComponent implements OnInit  {
 
-  @ViewChild('content2', {static: true}) modalContent: TemplateRef<any> | undefined
   workspaceService : WorkspaceService;
   @ViewChild('content') private content: TemplateRef<any> | undefined;
+  @ViewChild('content2', {static: true}) modalContent: TemplateRef<any> | undefined
+  @ViewChild('content3', {static: true}) content3: TemplateRef<any> | undefined
+
 
   @Output() reRenderEvent = new EventEmitter<string>();
   @Output() modalEvent = new EventEmitter<string>();
@@ -113,7 +115,6 @@ export class WorkspaceeditComponent implements OnInit  {
       // this.closeModal()
       this.modalEvent.emit("1")
 
-      let percentage;
       if(this.mainImageFile.file != undefined && this.coverImageFile.file != undefined){
         // alert("both undefined")
         this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
@@ -268,7 +269,6 @@ export class WorkspaceeditComponent implements OnInit  {
         });
       }
 
-      // aa
     }
 
 
@@ -323,11 +323,20 @@ export class WorkspaceeditComponent implements OnInit  {
 
   confirmEdit(){
     // alert("asd")
-    this.modalService.open(this.modalContent, { centered: true, size : "lg", backdrop: "static"});
+    this.modalService.open(this.modalContent, { centered: true, backdrop: "static"});
+  }
+
+  confirmDelete(){
+    // alert("asd")
+    this.modalService.open(this.content3, { centered: true, backdrop: "static"});
   }
 
 
   deleteworkspace(){
+    this.closeModal()
+    alert("deleted")
+    this.modalEvent.emit("1");
+
     // Delete part completed......Just delete all projects belongs to this workplace and redirect to another page
     // this.workspaceService.deleteWorksplace(this.workspaceID).subscribe((post: any)=> {
     //   alert("Successfully Updated")
@@ -338,6 +347,9 @@ export class WorkspaceeditComponent implements OnInit  {
     // }, error => {
     //   console.log(error);
     // });
+    this.modalEvent.emit("2");
+    this.reRenderEvent.emit();
+
   }
 
 }

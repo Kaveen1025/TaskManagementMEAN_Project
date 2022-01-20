@@ -1,23 +1,31 @@
-<div class = "friendheaderdiv">
-    <div class = "row toolbar">
-
-    <div class = "col-md-9">
-      <span>YOUR FRIENDS</span>
-      <br>
-      <h4>{{50}} Friends</h4>
+<div class="nohead">
+  <div class="row">
+    <div class="col">
+      <h1>{{headertext1}}</h1>
+      <h3>{{noOfFriends}} Friends</h3>
     </div>
-      <div class = "col-md-3">
+
+    <div class="col-1" id="cul1">
+    </div>
+    <div class="col-1" id="cul2">
+    </div>
+    <div class="col-1" id="cul3">
+    </div>
+    <div class="col-1" id="cul4">
+    </div>
+    <div class="col-1" id="cul6">
+    </div>
+
+    <div class="col-sm text-left" id="cul5">
         <div class="container h-100">
           <div class="d-flex justify-content-center h-100">
             <div class="searchbar">
               <input class="search_input" [(ngModel)]="searchText" (ngModelChange)="searchProjects()" type="text" name="" placeholder="Search requests by name" >
-<!--              <a href="#" class="search_icon"><img class = "img141" src="./assets/images/images Used in Project Management UI Design\loupe.png"></a>-->
-            </div>
+              <a href="#" class="search_icon"><img class = "img141" src="./assets/images/images Used in Project Management UI Design\loupe.png"></a>
           </div>
         </div>
       </div>
-
-
+    </div>
   </div>
+  <hr>
 </div>
-<hr>

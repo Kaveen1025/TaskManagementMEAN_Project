@@ -54,7 +54,7 @@
         <img class = "imgBtn" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/sharing.png" alt="Forest" >
       </div>
       <div class="column">
-        <img class = "imgBtn"src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt="Mountains" >
+        <img class = "imgBtn" (click)="confirmDelete()" src="./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt="Mountains" >
       </div>
     </div>
 
@@ -117,4 +117,12 @@
 
 <ng-template #content4 id = "content4" let-modal>
   <app-successmodal></app-successmodal>
+</ng-template>
+
+<ng-template #content5 let-modal  id = "content5">
+  <app-confirmmodal2></app-confirmmodal2>
+  <div class="modal-body text-center">
+    <button type="button" class="btn btnsave"  (click)="deleteworkspace()">Save</button>
+    <button type="button" class="btn btnclose"  (click)="closeModal()">Don't save</button>
+  </div>
 </ng-template>
