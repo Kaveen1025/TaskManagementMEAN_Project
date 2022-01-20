@@ -64,6 +64,13 @@
               0 0 0 1px rgba(0, 0, 0, 0.1);*/
 }
 
+#okbtn2{
+
+  background-color: #FC5185;
+  color: #F5F5F5;
+  margin-right: 10px;
+  margin-bottom: 30px;
+}
 h1 {
   color: #130f40;
   font-family: 'Varela Round', sans-serif;

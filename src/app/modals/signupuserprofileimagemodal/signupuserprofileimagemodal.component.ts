@@ -82,6 +82,7 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
     this.imageChangedEvent = event;
   }
   imageCropped(event: ImageCroppedEvent) {
+    console.log(event)
     this.croppedImage = event.base64;
     //console.log(typeof event)
     this.userProfileImage = this.croppedImage
@@ -89,7 +90,6 @@ export class SignupuserprofileimagemodalComponent implements OnInit {
     this.temp.name = "UserProfileImages/"+this.generateFileName(10)+"UserImage.png"
   }
   imageLoaded(image: LoadedImage) {
-    // show cropper
   }
   cropperReady() {
     // cropper ready

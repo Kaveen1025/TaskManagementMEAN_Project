@@ -1,10 +1,10 @@
 
   <div class="success">
     <div class="modal-body text-center">
-      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "userProfileImage" alt = "userProfile">
+      <img class = "img-thumbnail rounded-circle userProfileImg shadow img-fluid" [src] = "userProfileImage || userImagePlaceHolder" alt = "userProfile">
      <br><br>
       <div [hidden] = "contentStatus1">
-      <button class = "btn removeBtn" (click)="removeUserProfile()"><img  class= "img-fluid removeBtnIcon" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt ="remove"></button>
+<!--      <button class = "btn removeBtn" (click)="removeUserProfile()"><img  class= "img-fluid removeBtnIcon" src = "./assets/images/images%20Used%20in%20Project%20Management%20UI%20Design/trash.png" alt ="remove"></button>-->
       <div class="wrapper">
         <div class="container card">
           <div class="upload-container card-body">
@@ -38,6 +38,9 @@
         <div class = "d-flex justify-content-center">
           <button type="button" class="btn" id="okbtn" (click)="saveDetails()">Save</button>
           <button type="button" class="btn" id="canclbtn" (click)="closeModal()">Don't save</button>
+        </div>
+        <div  class = "d-flex justify-content-center">
+          <button type="button" class="btn" id="okbtn2" (click)="removeUserProfile()">Remove User Profile and Save</button>
         </div>
       </div>
       <div class="card" style = "border: none" [hidden] = "!contentStatus1">

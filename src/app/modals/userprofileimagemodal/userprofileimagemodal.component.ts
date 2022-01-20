@@ -125,6 +125,7 @@ export class UserprofileimagemodalComponent implements OnInit {
   removeUserProfile() {
     this.userProfileImage = this.userImagePlaceHolder
     this.status = true
+    this.updateUserProfileInBackend()
   }
 
 
