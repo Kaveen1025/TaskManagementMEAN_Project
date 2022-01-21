@@ -116,3 +116,7 @@
   width:20px;
   height: 20px;
 }
+
+mat-accordion {
+  background : #ff8080;
+}

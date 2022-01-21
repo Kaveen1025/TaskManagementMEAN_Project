@@ -8,7 +8,9 @@
 .activity  .dynamicImage{
   max-height:460px;
 }
-
+.activity{
+  max-height : 3500px !important
+}
 .activity h1{
   font-weight: bold;
   font-size: 100%;
