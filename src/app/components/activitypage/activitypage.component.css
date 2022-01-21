@@ -1,12 +1,11 @@
 
 .activity .bg-box {
-  max-height:460px;
+  max-height:400px;
   border : none !important;
-
 }
 
 .activity  .dynamicImage{
-  max-height:460px;
+  max-height:400px;
 }
 .activity{
   max-height : 3500px !important
@@ -14,6 +13,7 @@
 .activity h1{
   font-weight: bold;
   font-size: 100%;
+  color: #364F6B;
 }
 
 .activity  .workspacename{
@@ -22,12 +22,6 @@
   font-weight: bold;
   margin-top: -10px;
   margin-left: 300px;
-}
-.activity .topic{
-  font-size: 30px;
-  color: #364F6B;
-  /*font-weight: bold;*/
-  margin-top: 200px;
 }
 
 .activity .description{
@@ -38,22 +32,7 @@
   margin-top: -60px;
 }
 
-.activity .numbertext{
-  font-family: Rambla, Roboto, normal, serif;
-  color: #FC5185;
-  font-size: 40px;
-  line-height: 35.16px;
-  font-weight: 700;
-}
 
-
-.activity  .titletext{
-  font-family: Rambla, Roboto, normal, serif;
-  color: #364F6B;
-  font-size: 30px;
-  line-height: 35.16px;
-  font-weight: 700;
-}
 .activity .membergroup{
 
   /*text-align: center;*/
@@ -104,12 +83,16 @@
 .activity  .imgBtn {
   width: 150%;
   margin-top: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.activity  .imgBtn:hover {
+  width: 140%;
+  background-color: #fff;
 }
 
 /*Clearfix (clear floats) */
 .activity  .editrow{
-  margin-top: 0px;
-
   margin: 0;
   position: absolute;
   left: 49%;
@@ -141,7 +124,7 @@
 }
 
 .activity  .creatbtn{
-  margin-top: 50px;
+  margin-top: 0px;
   margin-bottom: 10px;
   text-align: center;
   font-weight: bold;
@@ -151,6 +134,11 @@
   padding: 10px 30px 10px 20px;
   border-radius: 2px;
   /*box-shadow: 1px 2px #364F6B;*/
+}
+.activity .creatbtn:hover{
+
+  background-color: #F5F5F5;
+  color:#3FC1C9;
 }
 .activity  .creatbtn2{
   margin-bottom: 30px;
@@ -162,6 +150,10 @@
   padding: 10px 50px 10px 50px;
   border-radius: 2px;
   /*box-shadow: 1px 2px #364F6B;*/
+}
+.activity .creatbtn2:hover{
+  background-color: #F5F5F5;
+  color: #FC5185;
 }
 
 
@@ -403,9 +395,7 @@
   }
 }
 
-* {
-  box-sizing: border-box;
-}
+
 
 
 @media screen and (max-width: 415px) {
@@ -466,6 +456,7 @@
 
 .activity h5{
   color:#FC5185;
+  font-family: Rambla, Roboto, normal, serif;
 }
 
 @media screen and (min-width: 576px) {
@@ -479,3 +470,12 @@
   }
 }
 
+.activity card-body{
+  border: 0px;
+}
+
+
+.iconClickable:hover{
+  -webkit-filter: drop-shadow(5px 5px 5px #3FC1C9);
+  filter: drop-shadow(5px 5px 5px #3FC1C9);
+}

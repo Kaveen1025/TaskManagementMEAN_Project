@@ -8,11 +8,10 @@ import { Component, OnInit ,Input} from '@angular/core';
 export class ActivitypageComponent implements OnInit {
 
   // btnTxt=""
-  @Input() btnTxt: string ="MAXIMIZE";
+  @Input() btnTxt: string ="MINIMIZE";
 
   workspaceID = "61d448976fc2f6cc55b25ca5";
-  // workspaceID: any;
-  // hide1 = true;
+
   hide2: boolean = false;
   hide1: boolean = true;
 
@@ -22,10 +21,19 @@ export class ActivitypageComponent implements OnInit {
   }
 
   max(){
-    // alert("clicked")
-    this.btnTxt = "MINIMIZE"
-    this.hide1 = false;
-    this.hide2 = true;
+
+    if(this.btnTxt=="MAXIMIZE"){
+      this.btnTxt = "MINIMIZE"
+      this.hide1 = true;
+      this.hide2 = false;
+    }
+    else{
+      this.btnTxt = "MAXIMIZE"
+      this.hide1 = false;
+      this.hide2 = true;
+    }
+
+    //btn shadow
   }
 
 }
