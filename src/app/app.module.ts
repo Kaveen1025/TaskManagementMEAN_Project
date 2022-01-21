@@ -80,6 +80,7 @@ import {NotificationheaderComponent} from "./reusablecomponent/notificationheade
 import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmdeletemodal.component";
 import {LoginerrComponent} from "./modals/loginerr/loginerr.component";
 import { ActivitypageComponent } from './components/activitypage/activitypage.component';
+import {ProjectpageComponent} from "./components/projectpage/projectpage.component";
 registerLocaleData(en);
 
 
@@ -138,7 +139,8 @@ registerLocaleData(en);
         NotificationheaderComponent,
         ConfirmdeletemodalComponent,
         LoginerrComponent,
-        ActivitypageComponent
+        ActivitypageComponent,
+        ProjectpageComponent
 
     ],
     imports: [
