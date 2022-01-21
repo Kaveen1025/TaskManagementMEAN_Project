@@ -1,0 +1,479 @@
+
+.activity .bg-box {
+  max-height:460px;
+  border : none !important;
+
+}
+
+.activity  .dynamicImage{
+  max-height:460px;
+}
+
+.activity h1{
+  font-weight: bold;
+  font-size: 100%;
+}
+
+.activity  .workspacename{
+  font-size: 35px;
+  color: #364F6B;
+  font-weight: bold;
+  margin-top: -10px;
+  margin-left: 300px;
+}
+.activity .topic{
+  font-size: 30px;
+  color: #364F6B;
+  /*font-weight: bold;*/
+  margin-top: 200px;
+}
+
+.activity .description{
+  font-family: Rambla, Roboto, normal, serif;
+  color: #3FC1C9;
+  font-size: 20px;
+  line-height: 35.16px;
+  margin-top: -60px;
+}
+
+.activity .numbertext{
+  font-family: Rambla, Roboto, normal, serif;
+  color: #FC5185;
+  font-size: 40px;
+  line-height: 35.16px;
+  font-weight: 700;
+}
+
+
+.activity  .titletext{
+  font-family: Rambla, Roboto, normal, serif;
+  color: #364F6B;
+  font-size: 30px;
+  line-height: 35.16px;
+  font-weight: 700;
+}
+.activity .membergroup{
+
+  /*text-align: center;*/
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, +65%)
+
+}
+
+
+.activity  #box1 {
+  float:left;
+  width:35%;
+  height:100px;
+}
+.activity  #leftbox {
+  float:left;
+  width:10%;
+  height:100px;
+}
+.activity  #middlebox{
+  float:left;
+  width:10%;
+  height:100px;
+}
+.activity  #rightbox{
+  float:left;
+  width:10%;
+  height:100px;
+}
+.activity  #box2 {
+  float:right;
+  width:35%;
+  height:100px;
+}
+
+
+.activity .column {
+  float: left;
+  max-width: 30px;
+  margin-left: 40px;
+
+  /*text-align: center;*/
+}
+
+.activity  .imgBtn {
+  width: 150%;
+  margin-top: 5px;
+}
+
+/*Clearfix (clear floats) */
+.activity  .editrow{
+  margin-top: 0px;
+
+  margin: 0;
+  position: absolute;
+  left: 49%;
+  margin-right: -50%;
+  transform: translate(-50%, +50%);
+
+}
+.activity  .editrow::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.activity card{
+  border: 0px;
+}
+
+.activity .img141{
+  width: 50%;
+  transform: scaleX(-1);
+}
+
+
+.activity  .errortext{
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 40px;
+  color: #FC5185;
+  text-align: center;
+}
+
+.activity  .creatbtn{
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  font-weight: bold;
+  border: 0px;
+  background-color: #3FC1C9;
+  color: #F5F5F5;
+  padding: 10px 30px 10px 20px;
+  border-radius: 2px;
+  /*box-shadow: 1px 2px #364F6B;*/
+}
+.activity  .creatbtn2{
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+  border: 0px;
+  background-color: #FC5185;
+  color: #F5F5F5;
+  padding: 10px 50px 10px 50px;
+  border-radius: 2px;
+  /*box-shadow: 1px 2px #364F6B;*/
+}
+
+
+  .activity  .workspaceImg{
+    max-width : 200px;
+    margin: 0;
+    position: absolute;
+    /*left: 50%;*/
+    margin-right: 50%;
+    transform: translate(-280%, -65%)
+  }
+
+@media screen and (max-width: 1300px) {
+  .activity  .workspaceImg{
+    max-width : 200px;
+    transform: translate(-270%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 30px;
+    margin-left: 250px;
+  }
+  .activity h1{
+    font-size: 90%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .activity  .workspaceImg{
+    max-width : 190px;
+    transform: translate(-250%, -65%)
+  }
+  .activity .workspacename{
+    font-size: 30px;
+    margin-left: 270px;
+  }
+
+}
+@media screen and (max-width: 1100px) {
+  .activity  .workspaceImg{
+    max-width : 180px;
+    transform: translate(-230%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 30px;
+    margin-left: 260px;
+  }
+  .activity h1{
+    font-size: 95%;
+  }
+  .activity label{
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .activity  .workspaceImg{
+    max-width : 170px;
+    transform: translate(-210%, -65%)
+  }
+
+  .activity  .workspacename{
+    font-size: 30px;
+   margin-left: 250px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .activity  .workspaceImg{
+    max-width : 160px;
+    transform: translate(-190%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 28px;
+    margin-left: 230px;
+  }
+  .activity h1{
+    font-size: 90%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .activity  .workspaceImg{
+    max-width : 150px;
+    transform: translate(-200%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 28px;
+    margin-left: 200px;
+  }
+  .activity label{
+    font-size: 16px;
+  }
+
+}
+@media screen and (max-width: 700px) {
+  .activity  .workspaceImg{
+    max-width : 140px;
+    transform: translate(-180%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 24px;
+    margin-left: 190px;
+  }
+  .activity label{
+    font-size: 16px;
+  }
+
+}
+@media screen and (max-width: 600px) {
+  .activity  .workspaceImg{
+    max-width : 130px;
+    transform: translate(-165%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 22px;
+    margin-left: 170px;
+  }
+  .activity h1{
+    font-size: 85%;
+    margin-bottom: 0px;
+  }
+  .activity label{
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 550px) {
+  .activity  .workspaceImg{
+    max-width : 130px;
+    transform: translate(-160%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 20px;
+    margin-left: 150px;
+
+  }
+  .activity label{
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .activity  .workspaceImg{
+    max-width : 100px;
+    transform: translate(-160%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 19px;
+    margin-left: 130px;
+  }
+  .activity label{
+    font-size: 11px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .activity  .workspaceImg{
+    max-width : 90px;
+    transform: translate(-150%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 15px;
+    margin-left: 120px;
+  }
+  .activity h1{
+    font-size: 100%;
+  }
+  .activity label{
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .activity  .workspaceImg{
+    max-width : 70px;
+    transform: translate(-140%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 14px;
+    margin-left: 100px;
+  }
+  .activity  .creatbtn2{
+    padding: 10px 20px 10px 20px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .activity  .workspaceImg{
+    max-width : 65px;
+    transform: translate(-140%, -65%)
+  }
+  .activity  .workspacename{
+    font-size: 14px;
+    margin-left: 80px;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .activity  .numbertext{
+    font-size: 30px;
+    line-height: 30.16px;
+  }
+  .activity .titletext{
+    font-size: 20px;
+    line-height: 15.16px;
+
+  }
+
+
+}
+@media screen and (max-width: 760px) {
+  .activity .numbertext{
+    font-size: 30px;
+    line-height: 15.16px;
+  }
+  .activity .titletext{
+    font-size: 20px;
+    line-height: 10.16px;
+
+  }
+
+  .activity  #box1 {
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  .activity  #leftbox {
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  .activity  #middlebox{
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  .activity  #rightbox{
+    float:left;
+    width:20%;
+    height:100px;
+  }
+  .activity  #box2 {
+    float:right;
+    width:20%;
+    height:100px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+@media screen and (max-width: 415px) {
+  .activity  .numbertext{
+    font-size: 30px;
+    line-height: 15.16px;
+  }
+  .activity  .titletext{
+    font-size: 20px;
+    line-height: 10.16px;
+
+  }
+  .activity  #box1 {
+    float:left;
+    width:5%;
+    height:100px;
+  }
+  .activity  #leftbox {
+    float:left;
+    width:30%;
+    height:100px;
+  }
+  .activity  #middlebox{
+    float:left;
+    width:30%;
+    height:100px;
+  }
+  .activity  #rightbox{
+    float:left;
+    width:30%;
+    height:100px;
+  }
+  .activity  #box2 {
+    float:right;
+    width:5%;
+    height:100px;
+  }
+}
+
+.activity .deadline{
+  color:#FC5185;
+  margin-top: 0px;
+  font-size: 20px;
+  /*font-weight: bold;*/
+}
+
+/*@media screen and (max-width: 700px) {*/
+/*  .activity #col1{*/
+/*    display: none;*/
+/*  }*/
+/*  .activity #col4{*/
+/*    display: none;*/
+/*  }*/
+/*  .activity  .imgBtn {*/
+/*    width: 40%;*/
+/*  }*/
+/*}*/
+
+.activity h5{
+  color:#FC5185;
+}
+
+@media screen and (min-width: 576px) {
+  .activity h5{
+    display:none;
+  }
+}
+@media screen and (max-width: 576px) {
+  .activity label{
+    display: none;
+  }
+}
+

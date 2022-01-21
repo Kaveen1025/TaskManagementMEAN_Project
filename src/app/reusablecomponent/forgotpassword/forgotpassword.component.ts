@@ -53,6 +53,7 @@ export class ForgotpasswordComponent implements OnInit {
   invalid: boolean = true;
 
   err1:boolean = true
+  err2:boolean =true
 
   public barLabel: string = "Password strength:";
 
@@ -77,6 +78,15 @@ export class ForgotpasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+
+  checkvalidity(){
+    if(this.email.length < 1){
+      this.err2 = true
+    }else{
+      this.err2 = false
+    }
   }
 
   makeid(length:any) {
