@@ -1,14 +1,32 @@
 .taskcard{
-  overflow-x: hidden;
+  overflow-x:auto;
 }
 
 .taskcard #card1 {
 
-  max-width: 20rem;
+  min-width: 18rem;
   border: 2px solid #3FC1C9;
   border-radius: 10px;
+  max-width: 20rem;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+}
+
+.taskcard #card1:hover{
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
 
 }
+
+
+.taskcard .progress{
+
+  border: 3px solid #3FC1C9 !important;
+  border-radius: 15px !important;
+
+}
+
+
 
 .taskcard .card-title{
 
@@ -20,6 +38,7 @@
 
 }
 
+
 .taskcard .addTask{
 
   background-color: #FC5185;
@@ -30,13 +49,33 @@
   padding: 10px 20px;
   cursor: pointer;
   font-size: 14px;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 
 }
 
+.taskcard .btnn{
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.taskcard .btnn:hover{
+  background-color: #3FC1C9;
+}
+
+.taskcard .addTask:hover{
+  background-color: #3FC1C9;
+  color: white;
+}
 .taskcard .btn {
 
   display: block;
   text-align: center;
+  transition-duration: 0.4s;
+  cursor: pointer;
 }
 
 .taskcard .add{
@@ -50,16 +89,33 @@
   border: none;
   outline:none;
   font-weight: bold;
+
+}
+
+.taskcard .naa{
+  color:  #364F6B;
+  font-size: 18px;
 }
 
 .taskcard .btn2:hover, .btn2:focus {
   outline: none;
 }
 
-.taskcard #card2{
+.taskcard .cd2 {
   border: 2px solid #3FC1C9;
   border-radius: 5px;
 }
+
+.taskcard .cd3 {
+  border: 2px solid #3FC1C9;
+  border-radius: 5px;
+}
+
+.taskcard .cd4 {
+  border: 2px solid #3FC1C9;
+  border-radius: 5px;
+}
+
 
 .taskcard .progress-bar{
   border: 1px solid #3FC1C9;
@@ -70,6 +126,18 @@
   background-color: #FFFF00;
 
 }
+.taskcard #headingOne1{
+
+  background-color: #34FC34;
+
+}
+
+.taskcard #headingOne2{
+
+  background-color: #FC3D3D;
+
+}
+
 
 .taskcard .txt{
   font-size: 10px;
@@ -97,6 +165,14 @@
 .taskcard .btn8{
   background-color: #34FC34;
   border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.taskcard .btn8:hover{
+  background-color: #1ec41e;
 }
 
 .taskcard .btn9{
@@ -104,11 +180,28 @@
   border-radius: 10px;
   margin-right: 10px;
   margin-left: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
+
+.taskcard .btn9:hover{
+  background-color: #e0e013;
+}
+
 
 .taskcard .btn10{
   background-color: #FC3D3D;
   border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.taskcard .btn10:hover{
+  background-color: #f61c1c;
 }
 
 .taskcard .btnnn{

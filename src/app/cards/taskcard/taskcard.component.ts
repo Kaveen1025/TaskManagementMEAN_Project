@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskcardComponent implements OnInit {
 
-  panelOpenState: any;
+
 
   constructor() { }
 
