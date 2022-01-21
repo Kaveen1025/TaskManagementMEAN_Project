@@ -4,10 +4,10 @@
 
 .taskcard #card1 {
 
-  min-width: 18rem;
+  min-width: 19rem;
   border: 2px solid #3FC1C9;
   border-radius: 10px;
-  max-width: 20rem;
+  max-width: 21rem;
   box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
   transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
 }
@@ -209,3 +209,60 @@
   width:20px;
   height: 20px;
 }
+
+
+.taskcard .p-viewer {
+  z-index: 1;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.taskcard .fa{
+  font-size:25px;
+}
+
+.taskcard #btn2::after {
+  content: "\f107";
+  color: #333;
+  top: 11px;
+  right: 1px;
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "FontAwesome";
+}
+
+.taskcard #btn2[aria-expanded="true"]::after {
+  content: "\f106";
+}
+
+.taskcard #btn5::after {
+  content: "\f107";
+  color: #333;
+  top: 11px;
+  right: 1px;
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "FontAwesome";
+}
+
+.taskcard #btn5[aria-expanded="true"]::after {
+  content: "\f106";
+}
+
+.taskcard #btn6::after {
+  content: "\f107";
+  color: #333;
+  top: 11px;
+  right: 1px;
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "FontAwesome";
+}
+
+.taskcard #btn6[aria-expanded="true"]::after {
+  content: "\f106";
+}
+
