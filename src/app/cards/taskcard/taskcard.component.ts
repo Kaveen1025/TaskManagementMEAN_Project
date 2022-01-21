@@ -7,11 +7,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskcardComponent implements OnInit {
 
-  panelOpenState: any;
+  // show1 = false;
+  // areaExpanded = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  //
+  // onClick() {
+  //
+  //   if ( this.areaExpanded === true) {
+  //
+  //     this.show1 = true;
+  //
+  //   } else {
+  //
+  //     this.show1 = false;
+  //   }
+  // }
 }
+
+
