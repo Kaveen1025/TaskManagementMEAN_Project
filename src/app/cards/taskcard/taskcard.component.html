@@ -28,22 +28,22 @@
           <p class="txt">11/12/2022</p>
 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-             Brainstorm part 1
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault0">
+            <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>
+              Brainstorm part 1
             </label>
           </div>
 
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-            <label class="form-check-label" for="flexCheckDefault">
+            <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>
               Brainstorm part 2
             </label>
           </div>
 
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-            <label class="form-check-label" for="flexCheckDefault">
+            <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>
               Brainstorm part 3
             </label>
           </div>
@@ -106,21 +106,21 @@
 
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper >
                 Brainstorm part 1
               </label>
             </div>
 
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5">
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper >
                 Brainstorm part 2
               </label>
             </div>
 
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault6">
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>
                 Brainstorm part 3
               </label>
             </div>
@@ -182,21 +182,21 @@
 
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault9">
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>
                 Brainstorm part 1
               </label>
             </div>
 
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault12">
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>
                 Brainstorm part 2
               </label>
             </div>
 
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault13">
-              <label class="form-check-label" for="flexCheckDefault">
+              <label class="form-check-label" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>
                 Brainstorm part 3
               </label>
             </div>
@@ -240,8 +240,18 @@
   </div>
 </div>
     <br/><br/><br/>
+
+
 </div>
 </div>
+
+<!--<div class="warapper">-->
+<!--  <div class="editable" [ngStyle]="styleObject()" [attr.contenteditable]="allowEdit" (click)="onClick($event)" (dblclick)="onDblClick($event)" (blur)="onBlur($event)" #contentWrapper>-->
+<!--    Click here for select and press any key or double click here for edit this content-->
+<!--  </div>-->
+<!--</div>-->
+
+
 
 
 
