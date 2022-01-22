@@ -84,6 +84,9 @@ import {ProjectpageComponent} from "./components/projectpage/projectpage.compone
 import {TaskcardComponent} from "./cards/taskcard/taskcard.component";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
+import { TaskstructureComponent } from './draganddrop/taskstructure/taskstructure.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import { ActivitycardComponent } from './cards/activitycard/activitycard.component';
 registerLocaleData(en);
 
 
@@ -144,37 +147,40 @@ registerLocaleData(en);
     LoginerrComponent,
     ActivitypageComponent,
     ProjectpageComponent,
-    TaskcardComponent
+    TaskcardComponent,
+    TaskstructureComponent,
+    ActivitycardComponent
 
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    NgbModule,
-    MatSidenavModule,
-    MatListModule,
-    MatIconModule,
-    FormsModule,
-    HttpClientModule,
-    NzAvatarModule,
-    NzDividerModule,
-    NzToolTipModule,
-    MatCardModule,
-    MatToolbarModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatPasswordStrengthModule,
-    ImageCropperModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireStorageModule,
-    SocialLoginModule,
-    MatProgressBarModule,
-    MatExpansionModule
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        NgbModule,
+        MatSidenavModule,
+        MatListModule,
+        MatIconModule,
+        FormsModule,
+        HttpClientModule,
+        NzAvatarModule,
+        NzDividerModule,
+        NzToolTipModule,
+        MatCardModule,
+        MatToolbarModule,
+        ReactiveFormsModule,
+        MatAutocompleteModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatPasswordStrengthModule,
+        ImageCropperModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireStorageModule,
+        SocialLoginModule,
+        MatProgressBarModule,
+        MatExpansionModule,
+        DragDropModule
 
 
-  ],
+    ],
   providers: [{ provide: NZ_I18N, useValue: en_US },  {
     provide: 'SocialAuthServiceConfig',
     useValue: {

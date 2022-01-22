@@ -2,21 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 
 @Component({
-  selector: 'app-taskcard',
-  templateUrl: './taskcard.component.html',
-  styleUrls: ['./taskcard.component.css']
+  selector: 'app-taskstructure',
+  templateUrl: './taskstructure.component.html',
+  styleUrls: ['./taskstructure.component.css']
 })
-export class TaskcardComponent implements OnInit {
+export class TaskstructureComponent implements OnInit {
 
 
-  numbers:Number[] = [2, 4, 5]
-  numbers2:Number[] = [200,500]
-  constructor() {
+  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
 
-  }
+  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
+
+
+
+  constructor() { }
 
   ngOnInit(): void {
   }
+
 
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -32,5 +35,3 @@ export class TaskcardComponent implements OnInit {
   }
 
 }
-
-

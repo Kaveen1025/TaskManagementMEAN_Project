@@ -1,0 +1,51 @@
+<div class="example-container taskcard">
+  <div class="card justify-content-center card1">
+    <div class="card-body">
+      <h2 class="card-title">User Profile Management</h2>
+      <div class="btn">
+        <button type="button" class="addTask"><img
+          src="./assets/images/images(Task%20Management)/lmau1e6ojtvrbpsr0ul1k62dv1-767e6cd275b68fdeced88185bb782fca.png"
+          class="add">ADD TASK
+        </button>
+      </div>
+      <br>
+      <br>
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doneList]"
+        class="example-list border-0"
+        (cdkDropListDropped)="drop($event)">
+        <app-activitycard *ngFor="let item of todo" cdkDrag cardTitle={{item}}></app-activitycard>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="example-container taskcard">
+  <div class="card justify-content-center card1">
+    <div class="card-body">
+      <h2 class="card-title">User Profile Management</h2>
+      <div class="btn">
+        <button type="button" class="addTask"><img
+          src="./assets/images/images(Task%20Management)/lmau1e6ojtvrbpsr0ul1k62dv1-767e6cd275b68fdeced88185bb782fca.png"
+          class="add">ADD TASK
+        </button>
+      </div>
+      <br>
+      <br>
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[todoList]"
+        class="example-list border-0"
+        (cdkDropListDropped)="drop($event)">
+        <app-activitycard *ngFor="let item of done; let i = index;" cdkDrag cardTitle={{item}} collapseID={{i}}></app-activitycard>
+      </div>
+    </div>
+  </div>
+</div>
+

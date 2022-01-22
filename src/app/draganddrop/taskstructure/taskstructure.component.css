@@ -1,0 +1,324 @@
+.example-container {
+  width: 400px;
+  max-width: 100%;
+  margin: 0 25px 25px 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.example-list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: block;
+}
+
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+  font-size: 14px;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+.taskcard{
+  overflow-x:auto;
+}
+
+.taskcard .card1 {
+
+  min-width: 19rem;
+  border: 2px solid #3FC1C9;
+  border-radius: 10px;
+  max-width: 21rem;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
+  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
+}
+
+/*.taskcard #card1:hover{*/
+/*  transform: scale(1.05);*/
+/*  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);*/
+
+/*}*/
+
+
+.taskcard .progress{
+
+  border: 3px solid #3FC1C9 !important;
+  border-radius: 15px !important;
+
+}
+
+
+
+.taskcard .card-title{
+
+  text-decoration: underline;
+  color: #364F6B;
+  font-weight: bold;
+  text-align: center;
+  font-size: 18px;
+
+}
+
+
+.taskcard .addTask{
+
+  background-color: #FC5185;
+  font-weight: bold;
+  color: white;
+  border: none;
+  text-align: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+.taskcard .btnn{
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.taskcard .btnn:hover{
+  background-color: #3FC1C9;
+}
+
+.taskcard .addTask:hover{
+  background-color: #3FC1C9;
+  color: white;
+}
+.taskcard .btn {
+
+  display: block;
+  text-align: center;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.taskcard .add{
+
+  width:18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.taskcard .btn2{
+  border: none;
+  outline:none;
+  font-weight: bold;
+
+}
+
+.taskcard .naa{
+  color:  #364F6B;
+  font-size: 18px;
+}
+
+.taskcard .btn2:hover, .btn2:focus {
+  outline: none;
+}
+
+.taskcard .cd2 {
+  border: 2px solid #3FC1C9;
+  border-radius: 5px;
+}
+
+.taskcard .cd3 {
+  border: 2px solid #3FC1C9;
+  border-radius: 5px;
+}
+
+.taskcard .cd4 {
+  border: 2px solid #3FC1C9;
+  border-radius: 5px;
+}
+
+
+.taskcard .progress-bar{
+  border: 1px solid #3FC1C9;
+}
+
+.taskcard #headingOne{
+
+  background-color: #FFFF00;
+
+}
+.taskcard #headingOne1{
+
+  background-color: #34FC34;
+
+}
+
+.taskcard #headingOne2{
+
+  background-color: #FC3D3D;
+
+}
+
+
+.taskcard .txt{
+  font-size: 10px;
+  margin-top: 1px;
+  color: red;
+}
+
+.taskcard .form-check-input{
+
+  border: 2px solid #3FC1C9;
+}
+
+.taskcard .form-check-label{
+
+  color: #364F6B;
+  font-family: Rambla, sans-serif;
+}
+
+.taskcard .editf{
+
+  width:28px;
+  height: 28px;
+}
+
+.taskcard .btn8{
+  background-color: #34FC34;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.taskcard .btn8:hover{
+  background-color: #1ec41e;
+}
+
+.taskcard .btn9{
+  background-color: #FFFF00;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.taskcard .btn9:hover{
+  background-color: #e0e013;
+}
+
+
+.taskcard .btn10{
+  background-color: #FC3D3D;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.taskcard .btn10:hover{
+  background-color: #f61c1c;
+}
+
+.taskcard .btnnn{
+
+  width:20px;
+  height: 20px;
+}
+
+
+.taskcard .p-viewer {
+  z-index: 1;
+  position: absolute;
+  margin-left: 10px;
+}
+
+.taskcard .fa{
+  font-size:25px;
+}
+
+.taskcard #btn2::after {
+  content: "\f107";
+  color: #333;
+  top: 11px;
+  right: 1px;
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "FontAwesome";
+}
+
+.taskcard #btn2[aria-expanded="true"]::after {
+  content: "\f106";
+}
+
+.taskcard #btn5::after {
+  content: "\f107";
+  color: #333;
+  top: 11px;
+  right: 1px;
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "FontAwesome";
+}
+
+.taskcard #btn5[aria-expanded="true"]::after {
+  content: "\f106";
+}
+
+.taskcard #btn6::after {
+  content: "\f107";
+  color: #333;
+  top: 11px;
+  right: 1px;
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  font-family: "FontAwesome";
+}
+
+.taskcard #btn6[aria-expanded="true"]::after {
+  content: "\f106";
+}
+
