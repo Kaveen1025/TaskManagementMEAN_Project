@@ -1,26 +1,34 @@
 <div class = "friendpage">
-  <app-friendsheader (searchContext) = "searchRequests($event)"></app-friendsheader>
+  <app-friendsheader [noOfFriends]="noOfFriends" (searchContext) = "searchRequests($event)"></app-friendsheader>
 <!--  <app-notificationheader (searchContext) = "searchRequests($event)"></app-notificationheader>-->
 
   <div class = "" style = "padding-left: 40px; padding-right: 40px">
     <div class = "row">
       <div class = "col-lg-1  col-md-2 col-xs-3 col-sm-4">
-        <a href = "bbb"><h1  style = "color: #364F6B; font-weight: bolder;">Friends</h1></a>
+        <h1 [ngClass] = "freindsCss" (click) = "displayFriends()" >Friends </h1>
 
       </div>
       <div class = "col-lg-3 col-md-3 col-xs-4 col-sm-5">
-        <a href = "aaa"  ><h1 style = "color: #364F6B;  font-weight: bolder;">Friend Requests</h1></a>
+      <h1 [ngClass] = "friendRequestCss" (click) = "displayRequests()">Friend Requests</h1>
       </div>
     </div>
     <div class = "row">
       <div class = "col-lg-7  col-md-12 col-sm-12 col-xs-12" style = "overflow-y: scroll; height: 660px; ">
-        <div *ngIf="flagContent"  class = "row">
+        <div *ngIf="flagContent && requestDisplay"  class = "row">
           <div class = "col-lg-4 col-md-4 col-xs-6 col-sm-6 text-center" *ngFor="let requestDetails of friendRequest;">
-              <app-friendrequest [requestDetails]="requestDetails" (setEvent) = "getAllUserRequests()"></app-friendrequest>
+              <app-friendrequest [requestDetails]="requestDetails" (setEvent) = "displaySuccess()"></app-friendrequest>
             <br>
           </div>
         </div>
-        <p *ngIf="errorvalue" class = "errortext2">No friend Requests</p>
+        <div *ngIf="flagFriends && friendDisplay"  class = "row">
+          <div class = "col-lg-4 col-md-4 col-xs-6 col-sm-6 text-center" *ngFor="let friendDetails of friends;">
+            <app-friendcard [friendDetails]="friendDetails" (setEvent) = "displaySuccess2()"></app-friendcard>
+            <br>
+          </div>
+        </div>
+        <p *ngIf="errorvalue && requestDisplay" class = "errortext2">No friend Requests</p>
+        <p *ngIf="errorValuefriends && friendDisplay" class = "errortext2">No friends</p>
+
 
       </div>
 
@@ -32,3 +40,6 @@
     </div>
   </div>
 </div>
+<ng-template #successModal id = "content4" let-modal>
+  <app-successmodal></app-successmodal>
+</ng-template>

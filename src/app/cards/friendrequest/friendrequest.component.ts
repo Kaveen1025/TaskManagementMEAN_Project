@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, TemplateRef, ViewChild} from '@angular/core';
 import {FriendspageService} from "../../services/friendspage.service";
 import {AngularFireDatabase} from "@angular/fire/compat/database";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 
 @Component({
@@ -12,6 +13,9 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 export class FriendrequestComponent implements OnInit {
 
   @Output() setEvent = new EventEmitter();
+  @Input() requestDetails: any;
+  @ViewChild('cancelModal', {static: true}) cancelModal: TemplateRef<any> | undefined
+  @ViewChild('acceptModal', {static: true}) acceptModal: TemplateRef<any> | undefined
 
 
   // @ts-ignore
@@ -25,11 +29,11 @@ export class FriendrequestComponent implements OnInit {
 
 
   friendspageService : FriendspageService;
-  constructor(friendspageService : FriendspageService, private db: AngularFireDatabase, private storage: AngularFireStorage) {
+  constructor(friendspageService : FriendspageService, private db: AngularFireDatabase, private storage: AngularFireStorage, private modalService: NgbModal,) {
     this.friendspageService = friendspageService;
   }
 
-  @Input() requestDetails: any;
+
 
 
 
@@ -44,15 +48,21 @@ export class FriendrequestComponent implements OnInit {
 
   requestAccept() {
     this.friendspageService.addFriendToUser(this.userID, this.friendID).subscribe((post: any)=> {
-      alert("Request accepted")
-      this.friendspageService.deleteFriendRequest(this.userID, this.friendID).subscribe((post: any)=> {
+      // alert("Request accepted")
 
-      }, error => {
-        console.log(error);
-      });
 
       this.friendspageService.deleteRequestedFriend(this.friendID, this.userID).subscribe((post: any)=> {
-        this.setEvent.emit(null)
+
+        this.friendspageService.deleteFriendRequest(this.userID, this.friendID).subscribe((post: any)=> {
+          this.friendspageService.addFriendToUser(this.friendID, this.userID).subscribe((post: any)=> {
+            this.setEvent.emit(null)
+          }, error => {
+            console.log(error);
+          });
+
+        }, error => {
+          console.log(error);
+        });
 
       }, error => {
         console.log(error);
@@ -66,10 +76,8 @@ export class FriendrequestComponent implements OnInit {
   }
 
   requestDecline() {
-    this.friendspageService.deleteFriendRequest(this.userID, this.friendID).subscribe((post: any)=> {
-      alert("Request Cancelled")
-      console.log("Request cancelled")
 
+    this.friendspageService.deleteFriendRequest(this.userID, this.friendID).subscribe((post: any)=> {
       this.friendspageService.deleteRequestedFriend(this.friendID, this.userID).subscribe((post: any)=> {
         this.setEvent.emit(null)
 
@@ -95,5 +103,25 @@ export class FriendrequestComponent implements OnInit {
 
     })
   }
+
+  cancelModalDisplay(value: string) {
+    if(value == "1"){
+      this.modalService.open(this.cancelModal, { centered: true, backdrop: "static"});
+    }else if(value == "2"){
+      this.modalService.open(this.acceptModal, { centered: true, backdrop: "static"});
+    }
+  }
+
+  modalCancelRequest(){
+    // alert("cancel")
+    this.requestDecline();
+  }
+
+  modalAccecptRequest(){
+    // alert("accept")
+    this.requestAccept()
+  }
+
+
 
 }

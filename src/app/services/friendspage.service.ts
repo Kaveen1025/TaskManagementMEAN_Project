@@ -25,7 +25,7 @@ export class FriendspageService{
   //   this.members = members;
   // }
 
-  getAllUsers(userID: string){
+  getAllFriendRequests(userID: string){
     return this.httpClient.get("http://localhost:8070/user/getFriendRequestDetails/"+userID)
   }
 
@@ -40,7 +40,14 @@ export class FriendspageService{
   addFriendToUser(userID: string, friendID: string){
     // @ts-ignore
     return this.httpClient.put("http://localhost:8070/user/addfriend/"+userID+ "/"+friendID)
+  }
 
+  getAllFriends(userID: string){
+    return this.httpClient.get("http://localhost:8070/user/getAllFrieds/"+userID)
+  }
+
+  removeFriend(userID: string, friendID: string){
+    return this.httpClient.delete("http://localhost:8070/user/removefriend/"+userID+ "/"+friendID)
   }
   // getWorkspaceData(workspaceID: string){
   //   return this.httpClient.get("http://localhost:8070/workspace/getWorkspaceByID/"+workspaceID)
