@@ -11,10 +11,13 @@ export class NotificationheaderComponent implements OnInit {
   @Input() headertext2: any | undefined
   @Input() headertext3: any | undefined
 
+  @Output() searchInput = new EventEmitter<any>();
+
   msg: string ="";
   getMsgFromBaby($event: any) {this.msg = $event;
 
-    console.log(this.msg);
+    // console.log(this.msg);
+    this.searchInput.emit(this.msg);
   }
 
   @Output() searchContext = new EventEmitter<string>();

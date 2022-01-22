@@ -46,6 +46,14 @@ app.use("/projectinv", ProjectInvitationsRouter);
 const ContactUSRouter = require("./routes/contactus");
 app.use("/contactus", ContactUSRouter);
 
+
+const ActivityRouter = require("./routes/activity");
+app.use("/activity", ActivityRouter);
+
+const SubtaskRouter = require("./routes/subtasks");
+app.use("/subtask", SubtaskRouter);
+
+
 app.listen(PORT, () => {
   console.log(`Server is up and running on PORT ${PORT}`);
 });

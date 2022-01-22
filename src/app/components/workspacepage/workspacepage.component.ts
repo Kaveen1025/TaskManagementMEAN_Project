@@ -178,7 +178,7 @@ export class WorkspacepageComponent implements OnInit {
 
 
   CreateProject() {
-    this.modalService.open(this.content2, { centered: true, size:"lg" }, );
+    this.modalService.open(this.content2, { centered: true, size:"lg" , backdrop:"static" }, );
   }
 
   reload(){

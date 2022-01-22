@@ -4,6 +4,7 @@
 const router = require("express").Router();
 let ProjectInvitation = require('../models/projectInvitations');
 const WorkspaceInvitaion = require("../models/workspaceInvitations");
+const Project = require("../models/projects");
 
 
 //Create new ProjectInvitation
@@ -96,5 +97,40 @@ router.route("/delete/:projectID/:userID").delete(async (req, res) => {
       res.status(500).send({status: "Error while deleting Project Invitation", error: err.message});
     });
 });
+
+
+
+// check whether the User is already a member in Project Invitation or not
+//URL --> http://localhost:8070/projectinv/checkMember/:projectid/:memberID
+router.route("/checkMember/:projectid/:memberID").get((req, res) => {
+  let ProjectID = req.params.projectid;
+  let memberID = req.params.memberID;
+  let status = false;
+
+  ProjectInvitation.find({ projectID: ProjectID}).exec((err, post) => {
+    if (err) {
+      console.log(err);
+    } else {
+
+      console.log("Post Length : " + post.length);
+      for (let i = 0; i < post.length; i++) {
+        if (memberID === post[i].invitedUser) {
+          status = true;
+          break;
+        } else {
+          status = false
+        }
+      }
+      res.send(status);
+    }
+  });
+});
+
+
+
+
+
+
+
 
 module.exports = router;

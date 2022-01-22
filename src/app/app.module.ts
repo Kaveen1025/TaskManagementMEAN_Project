@@ -78,6 +78,7 @@ import { NotificationspageComponent } from './components/notificationspage/notif
 import {InvitationscardComponent} from "./cards/invitationscard/invitationscard.component";
 import {NotificationheaderComponent} from "./reusablecomponent/notificationheader/notificationheader.component";
 import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmdeletemodal.component";
+import { SharetestComponent } from './components/sharetest/sharetest.component';
 registerLocaleData(en);
 
 
@@ -134,7 +135,8 @@ registerLocaleData(en);
     NotificationspageComponent,
     InvitationscardComponent,
     NotificationheaderComponent,
-    ConfirmdeletemodalComponent
+    ConfirmdeletemodalComponent,
+    SharetestComponent
 
   ],
     imports: [

@@ -4,6 +4,9 @@ import {ProjectsService} from "../../services/projects/projects.service";
 import {WorkspaceservicesService} from "../../services/workspaces/workspaceservices.service";
 import {UserService} from "../../services/user.service";
 
+//Import Firebase services
+import {FileUpload} from "../../module/file-upload";
+import {FirebasesService} from "../../services/firebases.service";
 
 @Component({
   selector: 'app-projectadd',
@@ -17,14 +20,31 @@ export class ProjectAddComponent implements OnInit {
   projectName : String ="";
   Description : String ="";
   Deadline: String ="";
-  CoverImage : String ="";
-  MainImage: String ="";
+  CoverImage : string ="";
+  MainImage: string ="";
   AdminID: any = localStorage.getItem("AdminID");
   data:any;
   min:any = "";
   flagName = false;
   flagDescription = false;
   valid = false;
+
+  //File upload attributes
+  // @ts-ignore
+  mainImageFile = new FileUpload();
+  // @ts-ignore
+  coverImageFile = new FileUpload();
+
+  //Percentage loading attribute
+  percentageLoading:any = false;
+
+
+
+
+
+
+  //Declare Firebase Services
+  FirebaseService:FirebasesService
 
   // accessing the template
   @ViewChild('content') private content: TemplateRef<any> | undefined;
@@ -39,11 +59,15 @@ export class ProjectAddComponent implements OnInit {
 
   @Input() WorkSpaceID: any;
 
-  constructor(private modalService: NgbModal, private projectservices:ProjectsService, private userservice:UserService, private workspaceservice:WorkspaceservicesService) { }
+  constructor(private modalService: NgbModal, private projectservices:ProjectsService, private userservice:UserService, private workspaceservice:WorkspaceservicesService,FirebaseService: FirebasesService) {
+    //Initialize firebase services
+    this.FirebaseService = FirebaseService;
+  }
 
   ngOnInit(): void {
     localStorage.setItem("AdminID","61dd30e3dd092e9def37e4b5");
     this.getDate();
+
   }
 
 
@@ -75,7 +99,63 @@ export class ProjectAddComponent implements OnInit {
       this.valid = true
     }
   }
+
+
+  onMainSelected(event: any){
+    if(event.target.files.length > 0)
+    {
+      console.log(event.target.files[0].name);
+      this.MainImage = event.target.files[0].name;
+      let URL = new Date().getTime() + this.MainImage
+
+      this.MainImage = "ProjectMainImages/" + new Date().getTime() + this.MainImage
+
+      this.mainImageFile.setValues(this.MainImage,URL,event.target.files[0])
+
+      console.log("aaaa")
+      console.log(this.mainImageFile)
+      console.log(event.target.files[0])
+
+
+    }
+  }
+
+
+  onCoverSelected(event: any){
+    if(event.target.files.length > 0)
+    {
+
+      this.CoverImage = event.target.files[0].name;
+      let URL = new Date().getTime() + this.CoverImage
+
+      this.CoverImage = "ProjectCoverImages/" +new Date().getTime()+ this.CoverImage
+
+      this.coverImageFile.setValues(this.CoverImage,URL,event.target.files[0])
+
+      console.log(this.CoverImage)
+
+
+
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   addProject(){
+
+    //Open Loading Modal
+    this.modalService.open(this.content3, {centered: true},);
 
     this.checkvalidity();
 
@@ -144,13 +224,14 @@ export class ProjectAddComponent implements OnInit {
 
       } catch (error) {
         console.log(error);
+        alert(error);
         this.modalService.open(this.content4, {centered: true});
 
       }
 
 
+        }
 
-    }
   }
 
 
@@ -177,4 +258,118 @@ export class ProjectAddComponent implements OnInit {
     console.log(event.target.files)
 
   }
+
+
+
+
+  uploadImage(){
+
+    this.checkvalidity();
+
+    console.log("Upload Image Running");
+
+    let currentMainUpload = this.mainImageFile;
+    let currentCoverUpload = this.coverImageFile;
+
+
+    console.log(currentMainUpload);
+    console.log(currentMainUpload);
+
+    console.log("Valid :" + this.valid);
+
+    if(this.valid == false){
+
+    }else {
+
+      let a = 1
+      this.percentageLoading = true
+      let percentage;
+      if(a === 1){
+        this.FirebaseService.pushToWorkSpaceStorage(currentMainUpload).subscribe(
+          percentage => {
+            percentage = Math.round(percentage ? percentage : 0);
+            console.log('done')
+
+            if(percentage >= 100 && this.percentageLoading){
+              // let detailsObject = {
+              //   WorkspaceName: this.workspacename,
+              //   Description: this.description,
+              //   MainImage: this.mainimage,
+              //   CoverImage: this.coverimage,
+              // }
+              this.FirebaseService.pushToWorkSpaceStorage(currentCoverUpload).subscribe(
+                percentage => {
+                  percentage = Math.round(percentage ? percentage : 0);
+                  console.log('done')
+                  if(percentage >= 100 && this.percentageLoading){
+                    this.percentageLoading = false
+                    // this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+                    //   alert("Successfully Updated")
+                    //   this.percentageLoading = false;
+                    //   this.closeModal();
+                    //   this.reRenderEvent.emit();
+                    //
+                    //
+                    // }, error => {
+                    //   console.log(error);
+                    //
+                    // });
+
+                  }
+                },
+                error => {
+                  console.log(error);
+                  this.closeModal()
+                }
+              );
+            }
+
+          },
+          error => {
+            console.log(error);
+            alert("bbb")
+
+            // this.contentStatus1 = false
+            this.closeModal()
+          }
+        );
+      }else{
+        // let detailsObject = {
+        //   WorkspaceName: this.workspacename,
+        //   Description: this.description,
+        //   MainImage: this.mainimage,
+        //   CoverImage: this.coverimage,
+        // }
+        //
+        // this.workspaceService.updateWorkspace(this.workspaceID, detailsObject).subscribe((post: any) => {
+        //   alert("Successfully Updated")
+        //   this.percentageLoading = false;
+        //   this.closeModal();
+        //   this.reRenderEvent.emit();
+        //
+        //
+        // }, error => {
+        //   console.log(error);
+        //
+        // });
+
+        console.log("Mokk Hri Awulk");
+      }
+
+      // aa
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

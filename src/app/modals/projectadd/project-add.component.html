@@ -15,7 +15,7 @@
             <label class="form-label labels">Project Name<font class = "required">*</font></label>
             <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name" onkeypress="return /[a-z]/i.test(event.key)">
             <p *ngIf="flagName" class = "errortext2">Project Name Required</p>
-            <input type="text" [(ngModel)]="projectName" class="form-control inputFieldsTxt" placeholder = "Project Name" >
+
 
 
 
@@ -41,17 +41,17 @@
         <div class="col-sm">
           <div class="mb-3">
             <label class="form-label labels">Cover Image</label>
-            <input type="file" [(ngModel)]="CoverImage" class="form-control inputFieldsTxt"  accept="image/*" (change) = "test($event)">
+            <input type="file" [(ngModel)]="CoverImage" class="form-control inputFieldsTxt"  accept="image/*" (change)="onCoverSelected($event)">
           </div>
           <div class="mb-3">
             <label class="form-label labels">Main Image</label>
-            <input type="file"  [(ngModel)]="MainImage" class="form-control inputFieldsTxt"  accept="image/*">
+            <input type="file"  [(ngModel)]="MainImage" class="form-control inputFieldsTxt"  accept="image/*"  (change)="onMainSelected($event)">
           </div>
         </div>
       </div>
     </div>
     <div class = "text-center">
-      <app-crudbuttonpink text="CREATE"  (click)="addProject()" ></app-crudbuttonpink>
+      <app-crudbuttonpink text="CREATE"  (click)="uploadImage()" ></app-crudbuttonpink>
     </div>
   </div>
 
@@ -64,7 +64,9 @@
 
 
   <ng-template #content3 let-modal  id = "content3">
-    <app-loadinganimation></app-loadinganimation>
+    <div  class="modal-content" >
+      <app-loadinganimation></app-loadinganimation>
+    </div>
   </ng-template>
 
 

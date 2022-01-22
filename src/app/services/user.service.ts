@@ -71,4 +71,9 @@ export class UserService {
   removeProject(userID:any, projectID:any){
     return this.http.delete(environment.apiBaseUrl + 'user/removeproject/'+ userID + "/" + projectID);
   }
+
+  //Get all users
+  getAllUsers(){
+    return this.http.get(environment.apiBaseUrl+'user/getAll');
+  }
 }

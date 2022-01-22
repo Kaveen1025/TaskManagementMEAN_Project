@@ -1,8 +1,8 @@
-<app-notificationheader [headertext1]="HeaderType" [headertext2]="count" [headertext3]="HeaderType2"   ></app-notificationheader>
+<app-notificationheader [headertext1]="HeaderType" [headertext2]="count" [headertext3]="HeaderType2" (searchInput)="getMsgFromBaby($event)"  ></app-notificationheader>
 
 <div class="justify-content-end" *ngFor="let wrequest of workspaceinvitations;">
 <!--  <app-friendrequest [requestDetails]="requestDetails" (setEvent) = "getAllUserRequests()"></app-friendrequest>-->
-  <app-invitationscard [Sender]="wrequest.SenderName" [Workspace]="wrequest.WorkspaceName"  [Image]="wrequest.Image"  [Time]="wrequest.addedDateTime"  [Type]="TypeW"></app-invitationscard>
+  <app-invitationscard [Sender]="wrequest.SenderName" [Workspace]="wrequest.WorkspaceName"  [Image]="wrequest.Image"  [Time]="wrequest.addedDateTime"  [Type]="TypeW" [Details]="wrequest"></app-invitationscard>
 
   <br>
 
