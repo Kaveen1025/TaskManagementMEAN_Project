@@ -87,6 +87,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import { TaskstructureComponent } from './draganddrop/taskstructure/taskstructure.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { ActivitycardComponent } from './cards/activitycard/activitycard.component';
+import {Confirmmodal2Component} from "./modals/confirmmodal2/confirmmodal2.component";
 registerLocaleData(en);
 
 
@@ -149,7 +150,10 @@ registerLocaleData(en);
     ProjectpageComponent,
     TaskcardComponent,
     TaskstructureComponent,
-    ActivitycardComponent
+    ActivitycardComponent,
+    WorkspaceeditComponent,
+    Confirmmodal2Component
+
 
   ],
     imports: [
