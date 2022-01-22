@@ -1,4 +1,4 @@
-<div class="example-container taskcard">
+<div class="example-container taskcard" >
   <div class="card justify-content-center card1">
     <div class="card-body">
       <h2 class="card-title">User Profile Management</h2>
@@ -43,7 +43,7 @@
         [cdkDropListConnectedTo]="[todoList]"
         class="example-list border-0"
         (cdkDropListDropped)="drop($event)">
-        <app-activitycard *ngFor="let item of done; let i = index;" cdkDrag cardTitle={{item}} collapseID={{i}}></app-activitycard>
+        <app-activitycard *ngFor="let item of done; let i = index;" cdkDrag cardTitle={{item}} ></app-activitycard>
       </div>
     </div>
   </div>
