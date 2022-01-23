@@ -1,4 +1,4 @@
-import {Component, ElementRef, HostListener, Input, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-activitycard',
@@ -10,21 +10,23 @@ export class ActivitycardComponent implements OnInit {
 
   @ViewChild('contentWrapper') contentWrapper : any;
 
-  @Input() cardTitle: string | undefined
-  @Input() collapseID: string | undefined
-
-
-  panelOpenState = false;
-
   allowEdit: boolean;
   private isSelected: boolean;
-  editable: boolean;
+ private editable: boolean;
+
+  @Input() cardTitle: string | undefined
+  @Input() collapseID: string | undefined
+  panelOpenState = false;
+
+
 
   constructor() {
+
     this.allowEdit = false;
     this.isSelected = false;
     this.editable = true;
     this.contentWrapper = ElementRef;
+
   }
 
   ngOnInit(): void {
@@ -32,13 +34,14 @@ export class ActivitycardComponent implements OnInit {
 
   onClick($event:any) {
     this.isSelected = true;
+    if ( this.editable ) {
+      this.allowEdit = true;
+    }
   }
 
   onDblClick($event:any) {
     this.isSelected = true;
-    if ( this.editable ) {
-      this.allowEdit = true;
-    }
+
   }
 
   onBlur($event:any) {
@@ -81,5 +84,8 @@ export class ActivitycardComponent implements OnInit {
       borderWidth: '1px'
     };
   }
+
+
+
 
 }

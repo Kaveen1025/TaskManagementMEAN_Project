@@ -119,11 +119,7 @@ export class SignuppageComponent implements OnInit {
 
   addUser(){
 
-
-
-
     this.mismatch = true
-
 
       if (this.PasswordStrengthStatus) {
         if (this.ConfirmPassword.value === this.Password.value) {
@@ -146,8 +142,10 @@ export class SignuppageComponent implements OnInit {
 
           this.userService.createUser(object2).subscribe((post: any) => {
 
+
             if (post == "User Added Successfully!") {
 
+              this.upload();
               // alert("Success");
               // location.reload();
               this.errormsg = "";
@@ -167,6 +165,7 @@ export class SignuppageComponent implements OnInit {
               this.modalService.open(this.content, {centered: true},);
 
             } else {
+
               // alert(post);
               this.errormsg = post;
               this.closeAnimation();
@@ -211,8 +210,6 @@ export class SignuppageComponent implements OnInit {
 
           if(percentage >= 100 && this.percentageLoading){
             this.percentageLoading = false
-              this.addUser()
-
           }
         },
         error => {

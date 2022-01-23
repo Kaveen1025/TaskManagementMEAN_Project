@@ -247,23 +247,49 @@
   text-align: left;
 }
 
-  @media only screen and (max-width: 1000px) {
-    .signup .col-4{
-      display: none;
-    }
-
-    .signup .col-3 {
-      display: none;
-    }
-
-    .signup #sign{
-      width:200px;
-      font-size: 22px;
-    }
-
+@media only screen and (max-width: 1280px)  {
+  .signup .col{
+    width: 100%;
+    margin: 0px;
   }
 
-@media only screen and (min-width: 600px){
+  .signup #image2 {
+    width: 400px;
+    height: 450px;
+  }
+
+    .signup #image1 {
+
+      width: 350px;
+      height: 450px;
+
+    }
+    .signup .welcome {
+      font-size: 50px;
+
+    }
+
+  .signup #sign {
+    width: 300px;
+    font-size: 20px;
+  }
+
+}
+
+@media only screen and (max-width: 1024px){
+
+  .signup .col-3{
+    display: none;
+  }
+
+  .signup #sign {
+    width: 420px;
+    font-size: 20px;
+  }
+
+}
+
+@media only screen and (max-width: 1000px){
 
   .signup .col-4{
     display: none;
@@ -287,6 +313,21 @@
 
 }
 
+@media only screen and (max-width: 600px) {
+  .signup .col-4{
+    display: none;
+  }
+
+  .signup .col-3 {
+    display: none;
+  }
+
+  .signup #sign{
+    width:200px;
+    font-size: 22px;
+  }
+
+}
 
 @media only screen and (max-width: 280px) {
   .signup .col-4 {
@@ -297,7 +338,6 @@
     display: none;
   }
 
-
   .signup #sign{
     width:130px;
     font-size: 16px;
@@ -305,16 +345,13 @@
 
   .signup .form-control{
 
-    font-size: 9px;
+    font-size: 10px;
   }
 
   .signup .user1 {
     height: 30px;
     width: 30px;
   }
-
-
-
 
   .signup .inner-addon .user1{
 
@@ -330,48 +367,47 @@
 
   .signup .fa{
 
-    font-size: 8px;
+    font-size: 10px;
+  }
+
+  .signup .card{
+
+    padding-left: 2px;
+    padding-right: 2px;
+
   }
 
 
 }
 
-@media only screen and (min-width: 1024px)  {
 
-  .signup .col-4{
 
-    display: block;
-  }
+/*  */
+/*  .signup .col{*/
+/*    margin: 0px;*/
+ /*  }*/
 
-  .signup .col-3{
-    display: block;
-  }
+/*  .signup #sign{*/
+/*    width:430px;*/
+/*    font-size: 20px;*/
+/*  }*/
+/*  .signup #image2{*/
 
-  .signup .col{
-    margin: 0px;
-  }
+/*    width: 400px;*/
+/*    height: 450px;*/
+/*  }*/
 
-  .signup #sign{
-    width:430px;
-    font-size: 20px;
-  }
-  .signup #image2{
+/*  .signup #image1{*/
 
-    width: 400px;
-    height: 450px;
-  }
+/*    width: 350px;*/
+/*    height: 450px;*/
+/*  }*/
 
-  .signup #image1{
+/*  .signup .welcome{*/
+/*    font-size: 50px;*/
+/*  }*/
 
-    width: 350px;
-    height: 450px;
-  }
-
-  .signup .welcome{
-    font-size: 50px;
-  }
-
-}
+/*}*/
 
 
 

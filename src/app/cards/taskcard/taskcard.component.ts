@@ -10,7 +10,7 @@ import {Component, OnInit, HostListener, ViewChild, ElementRef} from '@angular/c
 export class TaskcardComponent implements OnInit {
 
 
-  @ViewChild('contentWrapper') contentWrapper : any;
+  @ViewChild('contentWrapper') contentWrapper: any
 
 
   allowEdit: boolean;
@@ -24,11 +24,16 @@ export class TaskcardComponent implements OnInit {
     this.isSelected = false;
     this.editable = true;
     this.contentWrapper = ElementRef;
+
   }
 
 
+  ngOnInit(): void {
+  }
+
 
   onClick($event:any) {
+
     this.isSelected = true;
   }
 
@@ -61,7 +66,7 @@ export class TaskcardComponent implements OnInit {
             this.contentWrapper.nativeElement.innerHTML = '';
             this.contentWrapper.nativeElement.focus();
             this.contentWrapper.nativeElement.dispatchEvent($event);
-          }, 5);
+          }, 1);
         }
       }
     }
@@ -80,24 +85,6 @@ export class TaskcardComponent implements OnInit {
     };
   }
 
-  // show1 = false;
-  // areaExpanded = false;
-
-
-  ngOnInit(): void {
-  }
-  //
-  // onClick() {
-  //
-  //   if ( this.areaExpanded === true) {
-  //
-  //     this.show1 = true;
-  //
-  //   } else {
-  //
-  //     this.show1 = false;
-  //   }
-  // }
 
 }
 

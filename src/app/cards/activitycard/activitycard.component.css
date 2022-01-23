@@ -160,6 +160,7 @@
 
 .mat-expansion-panel:hover {
   background-color: #1ec41e;
+  color: white;
 }
 
 ::ng-deep .mat-expansion-panel-header-title{

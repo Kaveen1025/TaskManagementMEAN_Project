@@ -88,6 +88,10 @@ import { TaskstructureComponent } from './draganddrop/taskstructure/taskstructur
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import { ActivitycardComponent } from './cards/activitycard/activitycard.component';
 import {Confirmmodal2Component} from "./modals/confirmmodal2/confirmmodal2.component";
+import {SignuppageComponent} from "./components/signuppage/signuppage.component";
+import {
+  SignupuserprofileimagemodalComponent
+} from "./modals/signupuserprofileimagemodal/signupuserprofileimagemodal.component";
 registerLocaleData(en);
 
 
@@ -152,7 +156,9 @@ registerLocaleData(en);
     TaskstructureComponent,
     ActivitycardComponent,
     WorkspaceeditComponent,
-    Confirmmodal2Component
+    Confirmmodal2Component,
+    SignuppageComponent,
+    SignupuserprofileimagemodalComponent
 
 
   ],
