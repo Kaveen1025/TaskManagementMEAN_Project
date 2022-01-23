@@ -1,45 +1,4 @@
-.taskcard{
-  overflow-x:auto;
-}
-
-.taskcard #card1 {
-
-  min-width: 19rem;
-  border: 2px solid #3FC1C9;
-  border-radius: 10px;
-  max-width: 21rem;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, .08), 0 0 6px rgba(0, 0, 0, .05);
-  transition: .3s transform cubic-bezier(.155, 1.105, .295, 1.12), .3s box-shadow, .3s -webkit-transform cubic-bezier(.155, 1.105, .295, 1.12);
-}
-
-.taskcard #card1:hover{
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-
-}
-
-
-.taskcard .progress{
-
-  border: 3px solid #3FC1C9 !important;
-  border-radius: 15px !important;
-
-}
-
-
-
-.taskcard .card-title{
-
-  text-decoration: underline;
-  color: #364F6B;
-  font-weight: bold;
-  text-align: center;
-  font-size: 18px;
-
-}
-
-
-.taskcard .addTask{
+.activitycard .addTask{
 
   background-color: #FC5185;
   font-weight: bold;
@@ -54,7 +13,7 @@
 
 }
 
-.taskcard .btnn{
+.activitycard .btnn{
   border: none;
   text-align: center;
   cursor: pointer;
@@ -62,15 +21,15 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.taskcard .btnn:hover{
+.activitycard .btnn:hover{
   background-color: #3FC1C9;
 }
 
-.taskcard .addTask:hover{
+.activitycard .addTask:hover{
   background-color: #3FC1C9;
   color: white;
 }
-.taskcard .btn {
+.activitycard.btn {
 
   display: block;
   text-align: center;
@@ -78,91 +37,54 @@
   cursor: pointer;
 }
 
-.taskcard .add{
+.activitycard .add{
 
   width:18px;
   height: 18px;
   margin-right: 5px;
 }
 
-.taskcard .btn2{
+.activitycard .btn2{
   border: none;
   outline:none;
   font-weight: bold;
 
 }
 
-.taskcard .naa{
+.activitycard .naa{
   color:  #364F6B;
   font-size: 18px;
 }
 
-.taskcard .btn2:hover, .btn2:focus {
+.activitycard .btn2:hover, .btn2:focus {
   outline: none;
 }
 
-.taskcard .cd2 {
-  border: 2px solid #3FC1C9;
-  border-radius: 5px;
-}
 
-.taskcard .cd3 {
-  border: 2px solid #3FC1C9;
-  border-radius: 5px;
-}
-
-.taskcard .cd4 {
-  border: 2px solid #3FC1C9;
-  border-radius: 5px;
-}
-
-
-.taskcard .progress-bar{
-  border: 1px solid #3FC1C9;
-}
-
-.taskcard #headingOne{
-
-  background-color: #FFFF00;
-
-}
-.taskcard #headingOne1{
-
-  background-color: #34FC34;
-
-}
-
-.taskcard #headingOne2{
-
-  background-color: #FC3D3D;
-
-}
-
-
-.taskcard .txt{
+.activitycard .txt{
   font-size: 10px;
   margin-top: 1px;
   color: red;
 }
 
-.taskcard .form-check-input{
+.activitycard .form-check-input{
 
   border: 2px solid #3FC1C9;
 }
 
-.taskcard .form-check-label{
+.activitycard .form-check-label{
 
   color: #364F6B;
   font-family: Rambla, sans-serif;
 }
 
-.taskcard .editf{
+.activitycard .editf{
 
   width:28px;
   height: 28px;
 }
 
-.taskcard .btn8{
+.activitycard .btn8{
   background-color: #34FC34;
   border-radius: 10px;
   text-align: center;
@@ -171,11 +93,11 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.taskcard .btn8:hover{
+.activitycard .btn8:hover{
   background-color: #1ec41e;
 }
 
-.taskcard .btn9{
+.activitycard .btn9{
   background-color: #FFFF00;
   border-radius: 10px;
   margin-right: 10px;
@@ -186,12 +108,12 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.taskcard .btn9:hover{
+.activitycard .btn9:hover{
   background-color: #e0e013;
 }
 
 
-.taskcard .btn10{
+.activitycard .btn10{
   background-color: #FC3D3D;
   border-radius: 10px;
   text-align: center;
@@ -200,73 +122,52 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.taskcard .btn10:hover{
+.activitycard .btn10:hover{
   background-color: #f61c1c;
 }
 
-.taskcard .btnnn{
+.activitycard .btnnn{
 
   width:20px;
   height: 20px;
 }
 
+::ng-deep .mat-expansion-panel-body {
+  background-color: white;
+  border : 3px solid #3FC1C9;
+  border-top: none;
+  border-radius: 5px;
 
-.taskcard .p-viewer {
-  z-index: 1;
-  position: absolute;
-  margin-left: 10px;
 }
 
-.taskcard .fa{
-  font-size:25px;
+::ng-deep .mat-progress-bar-fill::after {
+  background-color: #1ec41e;
 }
 
-.taskcard #btn2::after {
-  content: "\f107";
-  color: #333;
-  top: 11px;
-  right: 1px;
-  position: absolute;
-  font-size: 28px;
-  font-weight: bold;
-  font-family: "FontAwesome";
+::ng-deep .mat-progress-bar-buffer {
+  background: #E4E8EB;
 }
 
-.taskcard #btn2[aria-expanded="true"]::after {
-  content: "\f106";
+::ng-deep .mat-progress-bar {
+
+  border-radius: 2px;
+  height: 8px !important;
 }
 
-.taskcard #btn5::after {
-  content: "\f107";
-  color: #333;
-  top: 11px;
-  right: 1px;
-  position: absolute;
-  font-size: 28px;
-  font-weight: bold;
-  font-family: "FontAwesome";
+::ng-deep .mat-expansion-panel-header{
+  background-color: #1ec41e;
 }
 
-.taskcard #btn5[aria-expanded="true"]::after {
-  content: "\f106";
+.mat-expansion-panel:hover {
+  background-color: #1ec41e;
 }
 
-.taskcard #btn6::after {
-  content: "\f107";
-  color: #333;
-  top: 11px;
-  right: 1px;
-  position: absolute;
-  font-size: 28px;
-  font-weight: bold;
-  font-family: "FontAwesome";
+::ng-deep .mat-expansion-panel-header-title{
+  color:white;
 }
 
-.taskcard #btn6[aria-expanded="true"]::after {
-  content: "\f106";
+.mat-expansion-panel-header.mat-expanded,
+.mat-expansion-panel-header.mat-expanded:focus{
+  background-color: #1ec41e;
 }
 
-
-.expandedPanel {
-  background-color: pink;
-}
