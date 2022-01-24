@@ -20,11 +20,15 @@
 </div>
 
 <ng-template #cancelModal let-modal  id = "cancelModal">
-  <app-confirmmodal (someEvent) = "modalCancelRequest()"></app-confirmmodal>
+<!--  <app-confirmmodal (someEvent) = "modalCancelRequest()"></app-confirmmodal>-->
+  <app-multiconfirmmodal2 text="Are you sure you want to cancel this friend request?" (someEvent) = "modalCancelRequest()"></app-multiconfirmmodal2>
+
 </ng-template>
 
 <ng-template #acceptModal let-modal  id = "acceptModal">
-  <app-confirmmodal (someEvent) = "modalAccecptRequest()"></app-confirmmodal>
+<!--  <app-confirmmodal (someEvent) = "modalAccecptRequest()"></app-confirmmodal>-->
+  <app-multiconfirmmodal2 text="Are you sure you want to accept this friend request?" (someEvent) = "modalAccecptRequest()"></app-multiconfirmmodal2>
+
 </ng-template>
 
 

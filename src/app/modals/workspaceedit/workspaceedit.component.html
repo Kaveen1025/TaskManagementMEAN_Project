@@ -62,17 +62,19 @@
 </div>
 <!--<img src = "./assets/images/Workspace%20and%20Project%20Images/Default%20workspace%20main%20images/8sz44m1xhr961.png">-->
 <ng-template #content2 let-modal  id = "content2">
-  <app-confirmmodal2></app-confirmmodal2>
+<!--  <app-confirmmodal2></app-confirmmodal2>-->
+  <app-multiconfirmmodal [text]="'Are you sure you want to edit this workplace'"></app-multiconfirmmodal>
   <div class="modal-body text-center">
-  <button type="button" class="btn btnsave" id="okbtn" (click)="editworkspace()">Save</button>
-  <button type="button" class="btn btnclose" id="canclbtn" (click)="closeModal()">Don't save</button>
+  <button type="button" class="btn btnsave" id="okbtn" (click)="editworkspace()">Confirm</button>
+  <button type="button" class="btn btnclose" id="canclbtn" (click)="closeModal()">Deny</button>
   </div>
 </ng-template>
 
 <ng-template #content3 let-modal  id = "content3">
-  <app-confirmmodal2></app-confirmmodal2>
+<!--  <app-confirmmodal2></app-confirmmodal2>-->
+  <app-multiconfirmmodal [text]="'Are you sure you want to delete this workplace'"></app-multiconfirmmodal>
   <div class="modal-body text-center">
-    <button type="button" class="btn btnsave"  (click)="deleteworkspace()">Save</button>
-    <button type="button" class="btn btnclose"  (click)="closeModal()">Don't save</button>
+    <button type="button" class="btn btnsave"  (click)="deleteworkspace()">Confirm</button>
+    <button type="button" class="btn btnclose"  (click)="closeModal()">Deny</button>
   </div>
 </ng-template>

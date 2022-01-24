@@ -17,5 +17,6 @@
 </div>
 
 <ng-template #cancelModal1 let-modal  id = "cancelModal1">
-  <app-confirmmodal (someEvent) = "removeFriend()"></app-confirmmodal>
+<!--  <app-confirmmodal (someEvent) = "removeFriend()"></app-confirmmodal>-->
+  <app-multiconfirmmodal2 text="Are you sure you want to remove this friend?" (someEvent) = "removeFriend()"></app-multiconfirmmodal2>
 </ng-template>

@@ -160,6 +160,7 @@ export class FriendspageComponent implements OnInit {
   displaySuccess(){
     this.modalService.open(this.successModal, { centered: true, backdrop: "static"});
     this.getAllUserRequests()
+    this.getAllUserFriends()
   }
 
   displaySuccess2(){
