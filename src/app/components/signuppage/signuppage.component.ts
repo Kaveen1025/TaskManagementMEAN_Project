@@ -176,7 +176,7 @@ export class SignuppageComponent implements OnInit {
 
             console.log(error);
              this.closeAnimation();
-            this.errormsg = "Error has been occurred! Sign Up Failed!"
+            this.errormsg = "Something went wrong! Sign Up Failed!"
             // this.modalService.open(this.content4, {centered: true},);
 
           });
