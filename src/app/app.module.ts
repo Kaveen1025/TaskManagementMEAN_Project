@@ -81,6 +81,8 @@ import {ConfirmdeletemodalComponent} from "./modals/confirmdeletemodal/confirmde
 import {SignuppageComponent} from "./components/signuppage/signuppage.component";
 import {Confirmmodal2Component} from "./modals/confirmmodal2/confirmmodal2.component";
 import {LoginerrComponent} from "./modals/loginerr/loginerr.component";
+import { MulticonfirmmodalComponent } from './modals/multiconfirmmodal/multiconfirmmodal.component';
+import { Multiconfirmmodal2Component } from './modals/multiconfirmmodal2/multiconfirmmodal2.component';
 registerLocaleData(en);
 
 
@@ -140,7 +142,9 @@ registerLocaleData(en);
     ConfirmdeletemodalComponent,
     SignuppageComponent,
     Confirmmodal2Component,
-    LoginerrComponent
+    LoginerrComponent,
+    MulticonfirmmodalComponent,
+    Multiconfirmmodal2Component,
 
   ],
     imports: [
