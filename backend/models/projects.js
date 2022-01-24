@@ -34,6 +34,12 @@ const projectSchema = new Schema({
     required : false
   }],
 
+
+  ActivityIDs : [{
+    type : String,
+    required : false
+  }],
+
   Deadline: {
     type : String,
     required : false

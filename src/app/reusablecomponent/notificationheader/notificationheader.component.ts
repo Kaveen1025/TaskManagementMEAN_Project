@@ -7,8 +7,18 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class NotificationheaderComponent implements OnInit {
 
-  @Input() headertext1: string | undefined;
-  @Input() headertext2: string | undefined;
+  @Input() headertext1: any | undefined;
+  @Input() headertext2: any | undefined
+  @Input() headertext3: any | undefined
+
+  @Output() searchInput = new EventEmitter<any>();
+
+  msg: string ="";
+  getMsgFromBaby($event: any) {this.msg = $event;
+
+    // console.log(this.msg);
+    this.searchInput.emit(this.msg);
+  }
 
   @Output() searchContext = new EventEmitter<string>();
   searchText: string = ""
@@ -16,6 +26,7 @@ export class NotificationheaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   searchProjects(){

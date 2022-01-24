@@ -33,6 +33,11 @@ export class ProjectsService {
   removeProject(projectID: any){
     return this.http.delete(environment.apiBaseUrl+"project/deleteproject/"+ projectID);
   }
+
+  //Check for a member
+  checkInvitation(projectID:any, userID:any){
+    return this.http.get(environment.apiBaseUrl + 'project/checkMember/' + projectID + "/" + userID);
+  }
 }
 
 
