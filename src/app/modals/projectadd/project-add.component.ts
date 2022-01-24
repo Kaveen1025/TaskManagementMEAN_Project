@@ -319,7 +319,11 @@ export class ProjectAddComponent implements OnInit {
             this.closeModal()
           }
         );
-      }else{
+      }else if(this.mainImageFile.file == undefined && this.coverImageFile.file == undefined) {
+
+
+
+
 
 
         console.log("Mokk Hri Awulk");

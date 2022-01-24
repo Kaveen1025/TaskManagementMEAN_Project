@@ -93,9 +93,9 @@ export class SharetestComponent implements OnInit {
 
 
 
-           // console.log(c1 == (this.usersArray[i].Projects.length -1 ) );
+            // console.log(c1 == (this.usersArray[i].Projects.length -1 ) );
 
-          if(c1 == (this.usersArray[i].Projects.length) && c2 == (this.usersArray[i].ProjectInvitationIDs.length) ){
+          if(c1 >= (this.usersArray[i].Projects.length) && c2 >= (this.usersArray[i].ProjectInvitationIDs.length) ){
 
             let Object = {
 
