@@ -92,6 +92,8 @@ import {SignuppageComponent} from "./components/signuppage/signuppage.component"
 import {
   SignupuserprofileimagemodalComponent
 } from "./modals/signupuserprofileimagemodal/signupuserprofileimagemodal.component";
+import {MulticonfirmmodalComponent} from "./modals/multiconfirmmodal/multiconfirmmodal.component";
+import {Multiconfirmmodal2Component} from "./modals/multiconfirmmodal2/multiconfirmmodal2.component";
 registerLocaleData(en);
 
 
@@ -158,7 +160,10 @@ registerLocaleData(en);
     WorkspaceeditComponent,
     Confirmmodal2Component,
     SignuppageComponent,
-    SignupuserprofileimagemodalComponent
+    SignupuserprofileimagemodalComponent,
+    MulticonfirmmodalComponent,
+    Multiconfirmmodal2Component,
+
 
 
   ],
